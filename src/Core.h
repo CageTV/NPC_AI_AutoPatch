@@ -20,6 +20,8 @@ namespace Core
 		bool                  followers = true;   // NPCs that can become followers (3DNPC's, for example) get the AI too
 		std::set<std::string> exclude;            // plugin file names (lower case) whose NPCs are never touched
 		std::set<std::string> excludeNames;       // NPC names containing one of these words (lower case) are never touched
+		bool                  forward = true;     // put an AI overhaul's AI back on the NPCs a later mod overrides (profiles/*.json of type forward)
+		std::set<std::string> wins;               // plugins whose changes win over every overhaul: an NPC one of them touches is left exactly as it is
 	};
 
 	enum class Status { Patched, Planned, Left };
@@ -38,6 +40,8 @@ namespace Core
 		std::map<std::string, int> skipped;           // reason -> NPCs
 		std::map<std::string, int> perTown;           // town -> patched or planned
 		std::vector<std::string>   townsDisabled;     // towns whose ICAIO records were not found
+		std::map<std::string, int> forwarded;         // profile name -> NPCs whose AI was put back
+		std::vector<std::string>   profiles;          // profiles found and used (plugin loaded)
 	};
 
 	// Finds the NPCs that mods add to Skyrim's towns and that Immersive Citizens - AI Overhaul's quests would never pick up, and gives them the AI that

@@ -69,6 +69,7 @@ namespace Core
 		{
 			g_cfg = Config{};
 			g_cfg.excludeNames = { "corpse" };
+			g_cfg.wins = { "better vampires.esp" };
 			std::ifstream in(Dir() / "config.json");
 			if (!in) {
 				return;
@@ -80,6 +81,13 @@ namespace Core
 			}
 			g_cfg.apply = j.value("apply", true);
 			g_cfg.followers = j.value("followers", true);
+			g_cfg.forward = j.value("forward", true);
+			if (j.contains("wins")) {
+				g_cfg.wins.clear();
+				for (const auto& e : j["wins"]) {
+					g_cfg.wins.insert(Lower(e.get<std::string>()));
+				}
+			}
 			if (j.contains("excludePlugins")) {
 				for (const auto& e : j["excludePlugins"]) {
 					g_cfg.exclude.insert(Lower(e.get<std::string>()));
@@ -115,6 +123,11 @@ namespace Core
 		nlohmann::json j;
 		j["apply"] = g_cfg.apply;
 		j["followers"] = g_cfg.followers;
+		j["forward"] = g_cfg.forward;
+		j["wins"] = nlohmann::json::array();
+		for (const auto& e : g_cfg.wins) {
+			j["wins"].push_back(e);
+		}
 		j["excludePlugins"] = nlohmann::json::array();
 		for (const auto& e : g_cfg.exclude) {
 			j["excludePlugins"].push_back(e);
@@ -175,6 +188,229 @@ namespace Core
 		}
 	}
 
+	// ---- "forward" profiles: put an AI overhaul's AI back on the NPCs a later mod overrides (what the Mutagen "AI Overhaul Patcher" does at build time).
+	// A profile (profiles/*.json, made by tools/build_forward_profile.py from the overhaul's plugin) lists, per NPC, the overhaul's package list, the packages it
+	// removed, the factions it added, the four override lists, the Protected / Essential flags and the confidence. Nothing in it is a master.
+	namespace
+	{
+		RE::TESForm* FindRef(RE::TESDataHandler* a_dh, const std::string& a_ref)
+		{
+			const auto bar = a_ref.find('|');
+			if (bar == std::string::npos) {
+				return nullptr;
+			}
+			try {
+				return a_dh->LookupForm(static_cast<RE::FormID>(std::stoul(a_ref.substr(bar + 1), nullptr, 16)), a_ref.substr(0, bar));
+			} catch (...) {
+				return nullptr;
+			}
+		}
+
+		std::vector<std::string> ChainOf(const RE::TESForm* a_f)
+		{
+			std::vector<std::string> out;
+			for (std::uint32_t i = 0; i < 128; ++i) {
+				const auto* f = a_f->GetFile(i);
+				if (!f) {
+					break;
+				}
+				out.push_back(Lower(std::string(f->GetFilename())));
+			}
+			return out;
+		}
+
+		int  Confidence(const RE::TESNPC* a_npc) { return (reinterpret_cast<const std::uint8_t*>(&a_npc->aiData)[0] >> 2) & 7; }
+		void SetConfidence(RE::TESNPC* a_npc, int a_v)
+		{
+			auto* raw = reinterpret_cast<std::uint8_t*>(&a_npc->aiData);
+			raw[0] = static_cast<std::uint8_t>((raw[0] & ~(7 << 2)) | ((a_v & 7) << 2));
+		}
+
+		void Forward(RE::TESDataHandler* a_dh, std::vector<Row>& a_rows, Summary& a_info)
+		{
+			std::error_code ec;
+			const auto      dir = Dir() / "profiles";
+			if (!std::filesystem::is_directory(dir, ec)) {
+				return;
+			}
+			for (const auto& entry : std::filesystem::directory_iterator(dir, ec)) {
+				if (entry.path().extension() != ".json") {
+					continue;
+				}
+				std::ifstream in(entry.path());
+				const auto    prof = nlohmann::json::parse(in, nullptr, false, true);
+				if (prof.is_discarded() || prof.value("type", std::string()) != "forward") {
+					continue;
+				}
+				const std::string name = prof.value("name", entry.path().stem().string());
+				const std::string requires_ = prof.value("requires", std::string());
+				if (!requires_.empty() && !a_dh->LookupModByName(requires_)) {
+					SKSE::log::info("forward profile '{}': {} is not loaded, skipped", name, requires_);
+					continue;
+				}
+				std::set<std::string> own;
+				for (const auto& o : prof.value("ownPlugins", nlohmann::json::array())) {
+					own.insert(Lower(o.get<std::string>()));
+				}
+				a_info.profiles.push_back(name);
+				int forwarded = 0, missing = 0;
+				for (const auto& e : prof["npcs"]) {
+					Row row;
+					row.name = e.value("name", std::string());
+					row.town = "forward: " + name;
+					auto* f0 = FindRef(a_dh, e.value("npc", std::string()));
+					auto* npc = f0 ? f0->As<RE::TESNPC>() : nullptr;
+					const auto skip = [&](const std::string& why) {
+						row.status = Status::Left;
+						row.reason = why;
+						++a_info.skipped["forward: " + why];
+						a_rows.push_back(row);
+					};
+					if (!npc) {
+						++missing;
+						skip("the NPC is not in this game");
+						continue;
+					}
+					const auto chain = ChainOf(npc);
+					row.plugin = chain.empty() ? std::string() : chain.back();
+					if (chain.empty() || own.count(chain.back())) {
+						skip("the overhaul's own record already wins");
+						continue;
+					}
+					bool wins = false;
+					for (const auto& c : chain) {
+						wins = wins || g_cfg.wins.count(c) > 0;
+					}
+					if (wins) {
+						skip("a plugin that must win (Better Vampires) changes this NPC");
+						continue;
+					}
+					std::vector<std::string> done;
+					// packages: the overhaul's list in its order, then what later mods added that the overhaul did not remove
+					if (e.contains("packages") && !npc->actorData.templateUseFlags.any(RE::ACTOR_BASE_DATA::TEMPLATE_USE_FLAG::kAIPackages)) {
+						std::vector<RE::TESPackage*> want, cur, removed;
+						bool                         ok = true;
+						for (const auto& r : e["packages"]) {
+							auto* f = FindRef(a_dh, r.get<std::string>());
+							auto* pk = f ? f->As<RE::TESPackage>() : nullptr;
+							pk ? want.push_back(pk) : void(ok = false);
+						}
+						for (const auto& r : e.value("packagesRemoved", nlohmann::json::array())) {
+							if (auto* f = FindRef(a_dh, r.get<std::string>())) {
+								if (auto* pk = f->As<RE::TESPackage>()) {
+									removed.push_back(pk);
+								}
+							}
+						}
+						for (auto* pk : npc->aiPackages.packages) {
+							cur.push_back(pk);
+						}
+						if (ok) {
+							std::vector<RE::TESPackage*> next = want;
+							for (auto* pk : cur) {
+								if (std::find(want.begin(), want.end(), pk) == want.end() && std::find(removed.begin(), removed.end(), pk) == removed.end()) {
+									next.push_back(pk);
+								}
+							}
+							if (next != cur) {
+								if (g_cfg.apply) {
+									auto& l = npc->aiPackages.packages;
+									l.clear();
+									for (auto it = next.rbegin(); it != next.rend(); ++it) {
+										l.push_front(*it);
+									}
+								}
+								done.push_back("packages");
+							}
+						} else {
+							++missing;
+						}
+					}
+					// factions the overhaul added
+					for (const auto& fa : e.value("factionsAdded", nlohmann::json::array())) {
+						auto* f = FindRef(a_dh, fa.value("form", std::string()));
+						auto* fac = f ? f->As<RE::TESFaction>() : nullptr;
+						if (!fac) {
+							continue;
+						}
+						bool has = false;
+						for (const auto& fr : npc->factions) {
+							has = has || fr.faction == fac;
+						}
+						if (!has) {
+							if (g_cfg.apply) {
+								npc->factions.push_back({ fac, static_cast<std::int8_t>(fa.value("rank", 0)) });
+							}
+							done.push_back("faction");
+						}
+					}
+					// the four override lists: set when a later mod did not change them from what the overhaul found
+					static const std::pair<const char*, RE::BGSListForm* RE::BGSOverridePackCollection::*> kLists[] = {
+						{ "spectator", &RE::BGSOverridePackCollection::spectatorOverRidePackList }, { "combat", &RE::BGSOverridePackCollection::enterCombatOverRidePackList },
+						{ "observe", &RE::BGSOverridePackCollection::observeCorpseOverRidePackList }, { "guardWarn", &RE::BGSOverridePackCollection::guardWarnOverRidePackList }
+					};
+					for (const auto& [key, member] : kLists) {
+						if (!e.contains("lists") || !e["lists"].contains(key)) {
+							continue;
+						}
+						const auto& l = e["lists"][key];
+						auto*       fromF = l["from"].is_string() ? FindRef(a_dh, l["from"].get<std::string>()) : nullptr;
+						auto*       toF = l["to"].is_string() ? FindRef(a_dh, l["to"].get<std::string>()) : nullptr;
+						auto*       to = toF ? toF->As<RE::BGSListForm>() : nullptr;
+						if (!to) {
+							continue;
+						}
+						auto*& slot = npc->*member;
+						auto*  from = fromF ? fromF->As<RE::BGSListForm>() : nullptr;
+						if (slot == to) {
+							continue;
+						}
+						if (slot == from) {
+							if (g_cfg.apply) {
+								slot = to;
+							}
+							done.push_back(std::string(key) + " list");
+						}
+					}
+					if (e.contains("flagsAdded")) {
+						for (const auto& fl : e["flagsAdded"]) {
+							const auto flag = fl.get<std::string>() == "Essential" ? RE::ACTOR_BASE_DATA::Flag::kEssential : RE::ACTOR_BASE_DATA::Flag::kProtected;
+							if (npc->actorData.actorBaseFlags.none(flag)) {
+								if (g_cfg.apply) {
+									npc->actorData.actorBaseFlags.set(flag);
+								}
+								done.push_back(fl.get<std::string>() == "Essential" ? "essential" : "protected");
+							}
+						}
+					}
+					if (e.contains("confidence")) {
+						const int to = e["confidence"].value("to", 2);
+						if (to < Confidence(npc)) {  // the lower confidence (more cowardly) of the overhaul and what the winner has
+							if (g_cfg.apply) {
+								SetConfidence(npc, to);
+							}
+							done.push_back("confidence");
+						}
+					}
+					if (done.empty()) {
+						skip("already has the overhaul's AI");
+						continue;
+					}
+					row.status = g_cfg.apply ? Status::Patched : Status::Planned;
+					std::string what;
+					for (const auto& d : done) {
+						what += (what.empty() ? "" : ", ") + d;
+					}
+					row.reason = std::string(g_cfg.apply ? "put back: " : "would put back: ") + what + " (winner: " + row.plugin + ")";
+					++a_info.forwarded[name];
+					++forwarded;
+					a_rows.push_back(row);
+				}
+				SKSE::log::info("forward profile '{}': {} NPCs got the overhaul's AI back, {} references not found", name, forwarded, missing);
+			}
+		}
+	}
+
 	void Run()
 	{
 		auto* dh = RE::TESDataHandler::GetSingleton();
@@ -185,10 +421,45 @@ namespace Core
 		g_rows.clear();
 		g_info = Summary{};
 		const auto audit = Audit(dh);
+		auto finish = [&]() {
+		if (g_cfg.forward) {
+			Forward(dh, g_rows, g_info);
+			g_info.ran = g_info.ran || !g_info.profiles.empty();
+		}
+		int nPatched = 0, nPlanned = 0, nLeft = 0;
+		for (const auto& r : g_rows) {
+			(r.status == Status::Patched ? nPatched : r.status == Status::Planned ? nPlanned : nLeft)++;
+		}
+		SKSE::log::info("{} NPCs of mods stand in a town and its crime faction: {} patched, {} planned, {} left alone ({} towns with ICAIO records)", g_info.looked, nPatched, nPlanned, nLeft, g_info.towns);
+
+		try {
+			std::error_code ec;
+			std::filesystem::create_directories(Dir(), ec);
+			nlohmann::json j;
+			j["audit"] = audit;
+			j["icaio"] = g_info.icaio;
+			j["three"] = g_info.three;
+			j["apply"] = g_cfg.apply;
+			j["looked"] = g_info.looked;
+			j["skipped"] = g_info.skipped;
+			j["perTown"] = g_info.perTown;
+			j["townsDisabled"] = g_info.townsDisabled;
+			auto& rows = j["npcs"] = nlohmann::json::array();
+			for (const auto& r : g_rows) {
+				rows.push_back({ { "name", r.name }, { "plugin", r.plugin }, { "town", r.town },
+					{ "status", r.status == Status::Patched ? "patched" : r.status == Status::Planned ? "planned" : "left" }, { "reason", r.reason } });
+			}
+			std::ofstream out(Dir() / "report.json");
+			out << j.dump(1);
+		} catch (const std::exception& e) {
+			SKSE::log::warn("could not write report.json: {}", e.what());
+		}
+		};
 		g_info.icaio = dh->LookupModByName(kIcaio) != nullptr;
 		g_info.three = dh->LookupModByName("3DNPC.esp") != nullptr;
 		SKSE::log::info("Immersive Citizens - AI Overhaul: {}, Interesting NPCs (3DNPC): {}", g_info.icaio ? "loaded" : "NOT loaded", g_info.three ? "loaded" : "not loaded");
 		if (!g_info.icaio) {
+			finish();
 			return;
 		}
 		g_info.ran = true;
@@ -214,6 +485,7 @@ namespace Core
 		auto* exclusion = dh->LookupForm<RE::TESFaction>(kExclusion, kIcaio);
 		if (!citizens || !exclusion) {
 			SKSE::log::error("ICAIO's citizens or exclusion faction was not found: nothing is changed");
+			finish();
 			return;
 		}
 		std::set<const RE::TESFaction*> black;
@@ -339,33 +611,6 @@ namespace Core
 			++g_info.perTown[row.town];
 			g_rows.push_back(row);
 		}
-		int nPatched = 0, nPlanned = 0, nLeft = 0;
-		for (const auto& r : g_rows) {
-			(r.status == Status::Patched ? nPatched : r.status == Status::Planned ? nPlanned : nLeft)++;
-		}
-		SKSE::log::info("{} NPCs of mods stand in a town and its crime faction: {} patched, {} planned, {} left alone ({} towns with ICAIO records)", g_info.looked, nPatched, nPlanned, nLeft, g_info.towns);
-
-		try {
-			std::error_code ec;
-			std::filesystem::create_directories(Dir(), ec);
-			nlohmann::json j;
-			j["audit"] = audit;
-			j["icaio"] = g_info.icaio;
-			j["three"] = g_info.three;
-			j["apply"] = g_cfg.apply;
-			j["looked"] = g_info.looked;
-			j["skipped"] = g_info.skipped;
-			j["perTown"] = g_info.perTown;
-			j["townsDisabled"] = g_info.townsDisabled;
-			auto& rows = j["npcs"] = nlohmann::json::array();
-			for (const auto& r : g_rows) {
-				rows.push_back({ { "name", r.name }, { "plugin", r.plugin }, { "town", r.town },
-					{ "status", r.status == Status::Patched ? "patched" : r.status == Status::Planned ? "planned" : "left" }, { "reason", r.reason } });
-			}
-			std::ofstream out(Dir() / "report.json");
-			out << j.dump(1);
-		} catch (const std::exception& e) {
-			SKSE::log::warn("could not write report.json: {}", e.what());
-		}
+		finish();
 	}
 }
