@@ -557,6 +557,16 @@ namespace Core
 				skip("no name");
 				continue;
 			}
+			{
+				bool wins = false;
+				for (const auto& c : ChainOf(npc)) {
+					wins = wins || g_cfg.wins.count(c) > 0;
+				}
+				if (wins) {
+					skip("a plugin that must win (Better Vampires) changes this NPC");
+					continue;
+				}
+			}
 			const auto lname = Lower(row.name);
 			bool       named = false;
 			for (const auto& w : g_cfg.excludeNames) {
