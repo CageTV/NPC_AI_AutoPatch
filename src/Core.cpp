@@ -127,6 +127,54 @@ namespace Core
 		out << j.dump(2);
 	}
 
+	// who wins the NPCs each AI overhaul touches? (diagnostic for the planned "forward the overhaul's AI onto NPCs that a later mod overrides" step)
+	namespace
+	{
+		nlohmann::json Audit(RE::TESDataHandler* a_dh)
+		{
+			static const char* kPlugins[] = { "AI Overhaul.esp", "Immersive Citizens - AI Overhaul.esp", "Better Vampires.esp", "3DNPC.esp" };
+			nlohmann::json out = nlohmann::json::object();
+			for (const char* name : kPlugins) {
+				if (!a_dh->LookupModByName(name)) {
+					continue;
+				}
+				const std::string lname = Lower(name);
+				std::map<std::string, int> winners;
+				std::map<std::string, int> between;  // plugins loaded after the overhaul that also touch the NPC
+				int                        touched = 0, ownDefined = 0;
+				for (auto* npc : a_dh->GetFormArray<RE::TESNPC>()) {
+					if (!npc) {
+						continue;
+					}
+					std::vector<std::string> chain;
+					for (std::uint32_t i = 0; i < 64; ++i) {
+						const auto* f = npc->GetFile(i);
+						if (!f) {
+							break;
+						}
+						chain.push_back(Lower(std::string(f->GetFilename())));
+					}
+					const auto it = std::find(chain.begin(), chain.end(), lname);
+					if (it == chain.end()) {
+						continue;
+					}
+					++touched;
+					if (chain.front() == lname) {
+						++ownDefined;
+					}
+					const auto& winner = chain.back();
+					++winners[winner];
+					for (auto k = it + 1; k != chain.end(); ++k) {
+						++between[*k];
+					}
+				}
+				out[name] = { { "touches", touched }, { "definesItself", ownDefined }, { "winners", winners }, { "alsoOverriddenBy", between } };
+				SKSE::log::info("audit: {} touches {} NPCs ({} of them it defines); winners: {}", name, touched, ownDefined, nlohmann::json(winners).dump());
+			}
+			return out;
+		}
+	}
+
 	void Run()
 	{
 		auto* dh = RE::TESDataHandler::GetSingleton();
@@ -136,6 +184,7 @@ namespace Core
 		LoadConfig();
 		g_rows.clear();
 		g_info = Summary{};
+		const auto audit = Audit(dh);
 		g_info.icaio = dh->LookupModByName(kIcaio) != nullptr;
 		g_info.three = dh->LookupModByName("3DNPC.esp") != nullptr;
 		SKSE::log::info("Immersive Citizens - AI Overhaul: {}, Interesting NPCs (3DNPC): {}", g_info.icaio ? "loaded" : "NOT loaded", g_info.three ? "loaded" : "not loaded");
@@ -300,6 +349,7 @@ namespace Core
 			std::error_code ec;
 			std::filesystem::create_directories(Dir(), ec);
 			nlohmann::json j;
+			j["audit"] = audit;
 			j["icaio"] = g_info.icaio;
 			j["three"] = g_info.three;
 			j["apply"] = g_cfg.apply;
