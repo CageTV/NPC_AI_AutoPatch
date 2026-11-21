@@ -69,7 +69,7 @@ namespace Core
 		{
 			g_cfg = Config{};
 			g_cfg.excludeNames = { "corpse" };
-			g_cfg.wins = { "better vampires.esp" };
+			g_cfg.wins = { "better vampires.esp", "relationship dialogue overhaul.esp", "nwsfollowerframework.esp", "nwsff_noteammagicdamage.esp" };
 			std::ifstream in(Dir() / "config.json");
 			if (!in) {
 				in.open("Data/SKSE/Plugins/ICAIOAutoPatch/config.json");  // the settings of the earlier name, read once
