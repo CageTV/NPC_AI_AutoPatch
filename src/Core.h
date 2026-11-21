@@ -1,5 +1,5 @@
 /*
- * ICAIO AutoPatch
+ * NPC AI AutoPatch
  * Copyright (c) 2026 CageTV
  *
  * Released under the GNU General Public License, version 3 or later; see LICENSE.
@@ -13,7 +13,7 @@
 
 namespace Core
 {
-	// Data/SKSE/Plugins/ICAIOAutoPatch/config.json
+	// Data/SKSE/Plugins/NPCAIAutoPatch/config.json
 	struct Config
 	{
 		bool                  apply = true;       // false: only write the report
@@ -21,6 +21,8 @@ namespace Core
 		std::set<std::string> exclude;            // plugin file names (lower case) whose NPCs are never touched
 		std::set<std::string> excludeNames;       // NPC names containing one of these words (lower case) are never touched
 		bool                  forward = true;     // put an AI overhaul's AI back on the NPCs a later mod overrides (profiles/*.json of type forward)
+		bool                  icaioStep = true;   // Immersive Citizens - AI Overhaul: give its AI to mod-added town NPCs
+		std::set<std::string> offProfiles;        // forward profiles (lower case names) switched off in the menu
 		std::set<std::string> wins;               // plugins whose changes win over every overhaul: an NPC one of them touches is left exactly as it is
 	};
 
@@ -41,6 +43,9 @@ namespace Core
 		std::map<std::string, int> perTown;           // town -> patched or planned
 		std::vector<std::string>   townsDisabled;     // towns whose ICAIO records were not found
 		std::map<std::string, int> forwarded;         // profile name -> NPCs whose AI was put back
+		std::vector<std::string>   profilesMissing;   // profiles whose overhaul plugin is not loaded
+		std::vector<std::string>   profilesOff;       // profiles switched off
+		int                        icaioGiven = 0;    // NPCs given ICAIO's AI
 		std::vector<std::string>   profiles;          // profiles found and used (plugin loaded)
 	};
 

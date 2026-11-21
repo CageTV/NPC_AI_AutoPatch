@@ -1,5 +1,5 @@
 /*
- * ICAIO AutoPatch
+ * NPC AI AutoPatch
  * Copyright (c) 2026 CageTV
  *
  * Released under the GNU General Public License, version 3 or later; see LICENSE.
@@ -16,8 +16,8 @@ namespace
 		if (!dir) {
 			return;
 		}
-		auto sink = std::make_shared<spdlog::sinks::basic_file_sink_mt>((*dir / "ICAIOAutoPatch.log").string(), true);
-		auto log = std::make_shared<spdlog::logger>("ICAIOAutoPatch", std::move(sink));
+		auto sink = std::make_shared<spdlog::sinks::basic_file_sink_mt>((*dir / "NPCAIAutoPatch.log").string(), true);
+		auto log = std::make_shared<spdlog::logger>("NPCAIAutoPatch", std::move(sink));
 		log->set_level(spdlog::level::info);
 		log->flush_on(spdlog::level::info);
 		log->set_pattern("[%Y-%m-%d %H:%M:%S.%e] [%l] %v");
@@ -42,7 +42,7 @@ SKSEPluginLoad(const SKSE::LoadInterface* a_skse)
 {
 	SKSE::Init(a_skse);
 	SetupLog();
-	SKSE::log::info("ICAIOAutoPatch 0.1.0, game {}", REL::Module::get().version().string());
+	SKSE::log::info("NPCAIAutoPatch 0.2.0, game {}", REL::Module::get().version().string());
 	SKSE::GetMessagingInterface()->RegisterListener(OnMessage);
 	return true;
 }

@@ -1,5 +1,5 @@
 /*
- * ICAIO AutoPatch
+ * NPC AI AutoPatch
  * Copyright (c) 2026 CageTV
  *
  * Released under the GNU General Public License, version 3 or later; see LICENSE.
@@ -52,39 +52,92 @@ namespace Menu
 		void __stdcall RenderOverview()
 		{
 			const auto& info = Core::Info();
-			SeparatorText("ICAIO AutoPatch");
-			TextWrapped("Immersive Citizens - AI Overhaul gives its AI to the people of Skyrim's towns through quests. The people that other mods add to a town (Interesting NPCs and "
-			            "many more) are in the town's factions but not in any of ICAIO's quests, so they walk through rain and dragon attacks like vanilla NPCs. At game start this "
-			            "gives each of them what ICAIO gives its extra citizens of that town: its package, its combat override list and its citizens faction (and the exclusion "
-			            "faction, so ICAIO's quest slots stay free for other people). Nothing is written to your save and no plugin is added.");
+			auto&       cfg = Core::Cfg();
+			SeparatorText("NPC AI AutoPatch");
+			TextWrapped("Works with the AI overhauls of your load order, with none of them as a master. At game start it gives the people of mods the AI an overhaul gives "
+			            "its own citizens, and puts an overhaul's AI back on the NPCs a later mod overrides. A plugin that must win (Better Vampires) is never overruled. "
+			            "Nothing is written to your save and no plugin is added.");
 			Spacing();
-			Flag("Immersive Citizens - AI Overhaul", info.icaio);
-			Flag("Interesting NPCs (3DNPC)", info.three);
-			if (!info.ran) {
-				TextColored(ImVec4(1.0f, 0.55f, 0.45f, 1.0f), "Immersive Citizens - AI Overhaul is not loaded: nothing is changed.");
-				return;
+			SeparatorText("AI overhauls");
+			int icaioN = 0;
+			for (const auto& r : Core::Rows()) {
+				icaioN += (r.status == Core::Status::Patched && r.town.rfind("forward", 0) != 0) ? 1 : 0;
 			}
-			Spacing();
-			auto& cfg = Core::Cfg();
-			SeparatorText("Switches (applied at the next game start)");
+			if (BeginTable("##ov", 4, ImGuiTableFlags_RowBg | ImGuiTableFlags_Borders | ImGuiTableFlags_SizingStretchProp)) {
+				TableSetupColumn("Overhaul", ImGuiTableColumnFlags_WidthStretch, 4.0f);
+				TableSetupColumn("State", ImGuiTableColumnFlags_WidthFixed, 110.0f);
+				TableSetupColumn("People", ImGuiTableColumnFlags_WidthFixed, 70.0f);
+				TableSetupColumn("Use", ImGuiTableColumnFlags_WidthFixed, 60.0f);
+				TableHeadersRow();
+				TableNextRow();
+				TableSetColumnIndex(0);
+				TextUnformatted("Immersive Citizens - AI Overhaul (mod-added town people)");
+				TableSetColumnIndex(1);
+				TextUnformatted(!info.icaio ? "not loaded" : cfg.icaioStep ? "active" : "off");
+				TableSetColumnIndex(2);
+				Text("%d", icaioN);
+				TableSetColumnIndex(3);
+				if (info.icaio) {
+					bool v = cfg.icaioStep;
+					if (Checkbox("##icaio", &v)) {
+						cfg.icaioStep = v;
+						Core::SaveConfig();
+						needsRestart = true;
+					}
+				}
+				const auto row = [&](const std::string& n, const char* state, int people, bool can) {
+					TableNextRow();
+					TableSetColumnIndex(0);
+					TextUnformatted(n.c_str());
+					TableSetColumnIndex(1);
+					TextUnformatted(state);
+					TableSetColumnIndex(2);
+					Text("%d", people);
+					TableSetColumnIndex(3);
+					if (can) {
+						const std::string key = Lower(n);
+						bool              v = cfg.offProfiles.count(key) == 0;
+						if (Checkbox(("##p" + n).c_str(), &v)) {
+							if (v) {
+								cfg.offProfiles.erase(key);
+							} else {
+								cfg.offProfiles.insert(key);
+							}
+							Core::SaveConfig();
+							needsRestart = true;
+						}
+					}
+				};
+				for (const auto& n : info.profiles) {
+					const auto it = info.forwarded.find(n);
+					row(n, "active", it == info.forwarded.end() ? 0 : it->second, true);
+				}
+				for (const auto& n : info.profilesOff) {
+					row(n, "off", 0, true);
+				}
+				for (const auto& n : info.profilesMissing) {
+					row(n, "not loaded", 0, false);
+				}
+				EndTable();
+			}
+			TextDisabled("A loaded overhaul is used automatically; untick one to leave it out. Profiles: Data/SKSE/Plugins/NPCAIAutoPatch/profiles.");
 			if (Checkbox("Apply the changes", &cfg.apply)) {
 				Core::SaveConfig();
 				needsRestart = true;
 			}
 			Tip("Off: the pages show what would be done, nothing is changed in the game.");
-			if (Checkbox("Give the AI to followers and marriage candidates too", &cfg.followers)) {
+			if (Checkbox("Give the town AI to followers and marriage candidates too", &cfg.followers)) {
 				Core::SaveConfig();
 				needsRestart = true;
 			}
-			Tip("People who can become your followers (many of Interesting NPCs' are) get the town's package like everyone else. The package only acts in rain, snow, "
+			Tip("People who can become your followers get the town's package like everyone else. The package only acts in rain, snow, "
 			    "or when a dragon or vampire attacks, and never while the person follows you.");
 			if (needsRestart) {
 				TextColored(ImVec4(1.0f, 0.8f, 0.4f, 1.0f), "Saved. Restart the game for it to take effect.");
 			}
 			Spacing();
 			SeparatorText("This game session");
-			Text("%d people of mods stand in a town and its hold's crime faction.", info.looked);
-			Text("Given the AI: %d    Planned: %d    Left alone: %d", Count(Core::Status::Patched), Count(Core::Status::Planned), Count(Core::Status::Left));
+			Text("Changed: %d    Planned: %d    Left alone: %d", Count(Core::Status::Patched), Count(Core::Status::Planned), Count(Core::Status::Left));
 			if (!info.townsDisabled.empty()) {
 				std::string t;
 				for (const auto& n : info.townsDisabled) {
@@ -92,8 +145,8 @@ namespace Menu
 				}
 				TextColored(ImVec4(1.0f, 0.8f, 0.4f, 1.0f), "Towns left out (ICAIO records not found): %s", t.c_str());
 			}
-			if (BeginTable("##towns", 2, ImGuiTableFlags_RowBg | ImGuiTableFlags_Borders | ImGuiTableFlags_SizingStretchProp)) {
-				TableSetupColumn("Town", ImGuiTableColumnFlags_WidthStretch, 3.0f);
+			if (!info.perTown.empty() && BeginTable("##towns", 2, ImGuiTableFlags_RowBg | ImGuiTableFlags_Borders | ImGuiTableFlags_SizingStretchProp)) {
+				TableSetupColumn("Town (mod-added people)", ImGuiTableColumnFlags_WidthStretch, 3.0f);
 				TableSetupColumn("People", ImGuiTableColumnFlags_WidthFixed, 80.0f);
 				TableHeadersRow();
 				for (const auto& [town, n] : info.perTown) {
@@ -105,7 +158,7 @@ namespace Menu
 				}
 				EndTable();
 			}
-			TextDisabled("Full detail: Data/SKSE/Plugins/ICAIOAutoPatch/report.json");
+			TextDisabled("Full detail: Data/SKSE/Plugins/NPCAIAutoPatch/report.json");
 		}
 
 		struct PageState
@@ -205,7 +258,7 @@ namespace Menu
 		void __stdcall RenderSkipped()
 		{
 			const auto& info = Core::Info();
-			if (!info.ran) {
+			if (!info.ran && Core::Rows().empty()) {
 				TextDisabled("Nothing to show.");
 				return;
 			}
@@ -232,7 +285,7 @@ namespace Menu
 			SKSE::log::info("SKSE Menu Framework is not installed: the pages are not available");
 			return;
 		}
-		SKSEMenuFramework::SetSection("ICAIO AutoPatch");
+		SKSEMenuFramework::SetSection("NPC AI AutoPatch");
 		SKSEMenuFramework::AddSectionItem("Overview", RenderOverview);
 		SKSEMenuFramework::AddSectionItem("People", RenderNpcs);
 		SKSEMenuFramework::AddSectionItem("Mods", RenderMods);

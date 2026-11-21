@@ -1,5 +1,5 @@
 /*
- * ICAIO AutoPatch
+ * NPC AI AutoPatch
  * Copyright (c) 2026 CageTV
  *
  * Released under the GNU General Public License, version 3 or later; see LICENSE.
@@ -17,7 +17,7 @@ namespace Core
 		Summary          g_info;
 		std::vector<Row> g_rows;
 
-		std::filesystem::path Dir() { return std::filesystem::path("Data/SKSE/Plugins/ICAIOAutoPatch"); }
+		std::filesystem::path Dir() { return std::filesystem::path("Data/SKSE/Plugins/NPCAIAutoPatch"); }
 
 		std::string Lower(std::string a_s)
 		{
@@ -72,6 +72,9 @@ namespace Core
 			g_cfg.wins = { "better vampires.esp" };
 			std::ifstream in(Dir() / "config.json");
 			if (!in) {
+				in.open("Data/SKSE/Plugins/ICAIOAutoPatch/config.json");  // the settings of the earlier name, read once
+			}
+			if (!in) {
 				return;
 			}
 			const auto j = nlohmann::json::parse(in, nullptr, false, true);
@@ -82,6 +85,12 @@ namespace Core
 			g_cfg.apply = j.value("apply", true);
 			g_cfg.followers = j.value("followers", true);
 			g_cfg.forward = j.value("forward", true);
+			g_cfg.icaioStep = j.value("icaio", true);
+			if (j.contains("offProfiles")) {
+				for (const auto& e : j["offProfiles"]) {
+					g_cfg.offProfiles.insert(Lower(e.get<std::string>()));
+				}
+			}
 			if (j.contains("wins")) {
 				g_cfg.wins.clear();
 				for (const auto& e : j["wins"]) {
@@ -124,6 +133,8 @@ namespace Core
 		j["apply"] = g_cfg.apply;
 		j["followers"] = g_cfg.followers;
 		j["forward"] = g_cfg.forward;
+		j["icaio"] = g_cfg.icaioStep;
+		j["offProfiles"] = g_cfg.offProfiles;
 		j["wins"] = nlohmann::json::array();
 		for (const auto& e : g_cfg.wins) {
 			j["wins"].push_back(e);
@@ -246,6 +257,11 @@ namespace Core
 				const std::string requires_ = prof.value("requires", std::string());
 				if (!requires_.empty() && !a_dh->LookupModByName(requires_)) {
 					SKSE::log::info("forward profile '{}': {} is not loaded, skipped", name, requires_);
+					a_info.profilesMissing.push_back(name);
+					continue;
+				}
+				if (g_cfg.offProfiles.count(Lower(name))) {
+					a_info.profilesOff.push_back(name);
 					continue;
 				}
 				std::set<std::string> own;
@@ -458,7 +474,7 @@ namespace Core
 		g_info.icaio = dh->LookupModByName(kIcaio) != nullptr;
 		g_info.three = dh->LookupModByName("3DNPC.esp") != nullptr;
 		SKSE::log::info("Immersive Citizens - AI Overhaul: {}, Interesting NPCs (3DNPC): {}", g_info.icaio ? "loaded" : "NOT loaded", g_info.three ? "loaded" : "not loaded");
-		if (!g_info.icaio) {
+		if (!g_info.icaio || !g_cfg.icaioStep) {
 			finish();
 			return;
 		}
