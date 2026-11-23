@@ -7,6 +7,7 @@
 #include "PCH.h"
 #include "Menu.h"
 #include "Core.h"
+#include "Lang.h"
 
 #include "SKSEMenuFramework.h"
 
@@ -15,6 +16,73 @@ namespace Menu
 	namespace
 	{
 		using namespace ImGuiMCP;
+
+		// Every text the pages draw goes through Lang::T (a whole string) first: these are the ImGui calls of this file with the text translated.
+		// Texts the plugin builds (reasons, states, table cells) go through Lang::P where they are built.
+		std::string Fmt(const char* a_fmt, va_list a_args)
+		{
+			char buf[4096];
+			std::vsnprintf(buf, sizeof(buf), a_fmt, a_args);
+			return buf;
+		}
+
+		void LTextUnformatted(const char* a_text) { ImGuiMCP::TextUnformatted(Lang::T(a_text)); }
+
+		void LText(const char* a_fmt, ...)
+		{
+			va_list args;
+			va_start(args, a_fmt);
+			const auto s = Fmt(Lang::T(a_fmt), args);
+			va_end(args);
+			ImGuiMCP::TextUnformatted(s.c_str());
+		}
+
+		void LTextWrapped(const char* a_fmt, ...)
+		{
+			va_list args;
+			va_start(args, a_fmt);
+			const auto s = Fmt(Lang::T(a_fmt), args);
+			va_end(args);
+			ImGuiMCP::TextWrapped("%s", s.c_str());
+		}
+
+		void LTextDisabled(const char* a_fmt, ...)
+		{
+			va_list args;
+			va_start(args, a_fmt);
+			const auto s = Fmt(Lang::T(a_fmt), args);
+			va_end(args);
+			ImGuiMCP::TextDisabled("%s", s.c_str());
+		}
+
+		void LTextColored(const ImVec4 a_col, const char* a_fmt, ...)
+		{
+			va_list args;
+			va_start(args, a_fmt);
+			const auto s = Fmt(Lang::T(a_fmt), args);
+			va_end(args);
+			ImGuiMCP::TextColored(a_col, "%s", s.c_str());
+		}
+
+		void LSeparatorText(const char* a_label) { ImGuiMCP::SeparatorText(Lang::T(a_label)); }
+		bool LButton(const char* a_label) { return ImGuiMCP::Button(Lang::T(a_label)); }
+		bool LSmallButton(const char* a_label) { return ImGuiMCP::SmallButton(Lang::T(a_label)); }
+		bool LCheckbox(const char* a_label, bool* a_v) { return ImGuiMCP::Checkbox(Lang::T(a_label), a_v); }
+		bool LInputText(const char* a_label, char* a_buf, std::size_t a_size) { return ImGuiMCP::InputText(Lang::T(a_label), a_buf, a_size); }
+
+		void LTableSetupColumn(const char* a_label, ImGuiTableColumnFlags a_flags, float a_weight)
+		{
+			ImGuiMCP::TableSetupColumn(Lang::T(a_label), a_flags, a_weight);
+		}
+
+		bool LCombo(const char* a_label, int* a_current, const char* const a_items[], int a_count)
+		{
+			std::vector<const char*> items;
+			for (int i = 0; i < a_count; ++i) {
+				items.push_back(Lang::T(a_items[i]));
+			}
+			return ImGuiMCP::Combo(Lang::T(a_label), a_current, items.data(), a_count);
+		}
 
 		bool needsRestart = false;
 
@@ -29,7 +97,7 @@ namespace Menu
 			if (IsItemHovered()) {
 				BeginTooltip();
 				PushTextWrapPos(420.0f);
-				TextUnformatted(tip);
+				LTextUnformatted(tip);
 				PopTextWrapPos();
 				EndTooltip();
 			}
@@ -37,7 +105,7 @@ namespace Menu
 
 		void Flag(const char* a_name, bool a_on)
 		{
-			TextColored(a_on ? ImVec4(0.55f, 0.85f, 0.6f, 1.0f) : ImVec4(0.6f, 0.6f, 0.6f, 1.0f), "%s %s", a_on ? "loaded:" : "not loaded:", a_name);
+			LTextColored(a_on ? ImVec4(0.55f, 0.85f, 0.6f, 1.0f) : ImVec4(0.6f, 0.6f, 0.6f, 1.0f), "%s %s", Lang::T(a_on ? "loaded:" : "not loaded:"), a_name);
 		}
 
 		int Count(Core::Status s)
@@ -51,35 +119,36 @@ namespace Menu
 
 		void __stdcall RenderOverview()
 		{
+			Lang::Ensure(Core::Cfg().language);
 			const auto& info = Core::Info();
 			auto&       cfg = Core::Cfg();
-			SeparatorText("NPC AI AutoPatch");
-			TextWrapped("Works with the AI overhauls of your load order, with none of them as a master. At game start it gives the people of mods the AI an overhaul gives "
+			LSeparatorText("NPC AI AutoPatch");
+			LTextWrapped("Works with the AI overhauls of your load order, with none of them as a master. At game start it gives the people of mods the AI an overhaul gives "
 			            "its own citizens, and puts an overhaul's AI back on the NPCs a later mod overrides. A plugin that must win (Better Vampires) is never overruled. "
 			            "Nothing is written to your save and no plugin is added.");
 			Spacing();
-			SeparatorText("AI overhauls");
+			LSeparatorText("AI overhauls");
 			int icaioN = 0;
 			for (const auto& r : Core::Rows()) {
 				icaioN += (r.status == Core::Status::Patched && r.town.rfind("forward", 0) != 0) ? 1 : 0;
 			}
 			if (BeginTable("##ov", 4, ImGuiTableFlags_RowBg | ImGuiTableFlags_Borders | ImGuiTableFlags_SizingStretchProp)) {
-				TableSetupColumn("Overhaul", ImGuiTableColumnFlags_WidthStretch, 4.0f);
-				TableSetupColumn("State", ImGuiTableColumnFlags_WidthFixed, 110.0f);
-				TableSetupColumn("People", ImGuiTableColumnFlags_WidthFixed, 70.0f);
-				TableSetupColumn("Use", ImGuiTableColumnFlags_WidthFixed, 60.0f);
+				LTableSetupColumn("Overhaul", ImGuiTableColumnFlags_WidthStretch, 4.0f);
+				LTableSetupColumn("State", ImGuiTableColumnFlags_WidthFixed, 110.0f);
+				LTableSetupColumn("People", ImGuiTableColumnFlags_WidthFixed, 70.0f);
+				LTableSetupColumn("Use", ImGuiTableColumnFlags_WidthFixed, 60.0f);
 				TableHeadersRow();
 				TableNextRow();
 				TableSetColumnIndex(0);
-				TextUnformatted("Immersive Citizens - AI Overhaul (mod-added town people)");
+				LTextUnformatted("Immersive Citizens - AI Overhaul (mod-added town people)");
 				TableSetColumnIndex(1);
-				TextUnformatted(!info.icaio ? "not loaded" : cfg.icaioStep ? "active" : "off");
+				LTextUnformatted(!info.icaio ? "not loaded" : cfg.icaioStep ? "active" : "off");
 				TableSetColumnIndex(2);
-				Text("%d", icaioN);
+				LText("%d", icaioN);
 				TableSetColumnIndex(3);
 				if (info.icaio) {
 					bool v = cfg.icaioStep;
-					if (Checkbox("##icaio", &v)) {
+					if (LCheckbox("##icaio", &v)) {
 						cfg.icaioStep = v;
 						Core::SaveConfig();
 						needsRestart = true;
@@ -88,16 +157,16 @@ namespace Menu
 				const auto row = [&](const std::string& n, const std::string& state, int people, bool can) {
 					TableNextRow();
 					TableSetColumnIndex(0);
-					TextUnformatted(n.c_str());
+					LTextUnformatted(n.c_str());
 					TableSetColumnIndex(1);
-					TextUnformatted(state.c_str());
+					ImGuiMCP::TextUnformatted(Lang::P(state).c_str());
 					TableSetColumnIndex(2);
-					Text("%d", people);
+					LText("%d", people);
 					TableSetColumnIndex(3);
 					if (can) {
 						const std::string key = Lower(n);
 						bool              v = cfg.offProfiles.count(key) == 0;
-						if (Checkbox(("##p" + n).c_str(), &v)) {
+						if (LCheckbox(("##p" + n).c_str(), &v)) {
 							if (v) {
 								cfg.offProfiles.erase(key);
 							} else {
@@ -128,45 +197,72 @@ namespace Menu
 				}
 				EndTable();
 			}
-			TextDisabled("A loaded overhaul is used automatically; untick one to leave it out. Where an overhaul has several versions (AI Overhaul 1.9 and 1.9.5, for example) the one that fits the loaded plugin best is used. Profiles: Data/SKSE/Plugins/NPCAIAutoPatch/profiles.");
-			if (Checkbox("Apply the changes", &cfg.apply)) {
+			LTextDisabled("A loaded overhaul is used automatically; untick one to leave it out. Where an overhaul has several versions (AI Overhaul 1.9 and 1.9.5, for example) the one that fits the loaded plugin best is used. Profiles: Data/SKSE/Plugins/NPCAIAutoPatch/profiles.");
+			if (LCheckbox("Apply the changes", &cfg.apply)) {
 				Core::SaveConfig();
 				needsRestart = true;
 			}
 			Tip("Off: the pages show what would be done, nothing is changed in the game.");
-			if (Checkbox("Give the town AI to followers and marriage candidates too", &cfg.followers)) {
+			if (LCheckbox("Give the town AI to followers and marriage candidates too", &cfg.followers)) {
 				Core::SaveConfig();
 				needsRestart = true;
 			}
 			Tip("People who can become your followers get the town's package like everyone else. The package only acts in rain, snow, "
 			    "or when a dragon or vampire attacks, and never while the person follows you.");
+			Spacing();
+			{
+				std::vector<std::string> codes{ "auto" }, labels{ std::string(Lang::T("Windows language")) + ": " };
+				for (const auto& [code, name] : Lang::Available()) {
+					codes.push_back(code);
+					labels.push_back(name);
+					if (code == Lang::Detected()) {
+						labels[0] += name;
+					}
+				}
+				int cur = 0;
+				for (std::size_t i = 0; i < codes.size(); ++i) {
+					cur = codes[i] == cfg.language ? static_cast<int>(i) : cur;
+				}
+				std::vector<const char*> items;
+				for (const auto& l : labels) {
+					items.push_back(l.c_str());
+				}
+				SetNextItemWidth(260.0f);
+				if (ImGuiMCP::Combo(Lang::T("Language"), &cur, items.data(), static_cast<int>(items.size()))) {
+					cfg.language = codes[static_cast<std::size_t>(cur)];
+					Core::SaveConfig();
+				}
+				if (const auto font = Lang::FontNeeded(); !font.empty()) {
+					ImGuiMCP::TextColored(ImVec4(1.0f, 0.8f, 0.4f, 1.0f), "%s", ("This language needs a font: set " + font + " = true in Data/SKSE/Plugins/SKSEMenuFramework.ini (section [Fonts]) and restart the game. Until then the pages stay in English.").c_str());
+				}
+			}
 			if (needsRestart) {
-				TextColored(ImVec4(1.0f, 0.8f, 0.4f, 1.0f), "Saved. Restart the game for it to take effect.");
+				LTextColored(ImVec4(1.0f, 0.8f, 0.4f, 1.0f), "Saved. Restart the game for it to take effect.");
 			}
 			Spacing();
-			SeparatorText("This game session");
-			Text("Changed: %d    Planned: %d    Left alone: %d", Count(Core::Status::Patched), Count(Core::Status::Planned), Count(Core::Status::Left));
+			LSeparatorText("This game session");
+			LText("Changed: %d    Planned: %d    Left alone: %d", Count(Core::Status::Patched), Count(Core::Status::Planned), Count(Core::Status::Left));
 			if (!info.townsDisabled.empty()) {
 				std::string t;
 				for (const auto& n : info.townsDisabled) {
 					t += (t.empty() ? "" : ", ") + n;
 				}
-				TextColored(ImVec4(1.0f, 0.8f, 0.4f, 1.0f), "Towns left out (ICAIO records not found): %s", t.c_str());
+				LTextColored(ImVec4(1.0f, 0.8f, 0.4f, 1.0f), "Towns left out (ICAIO records not found): %s", t.c_str());
 			}
 			if (!info.perTown.empty() && BeginTable("##towns", 2, ImGuiTableFlags_RowBg | ImGuiTableFlags_Borders | ImGuiTableFlags_SizingStretchProp)) {
-				TableSetupColumn("Town (mod-added people)", ImGuiTableColumnFlags_WidthStretch, 3.0f);
-				TableSetupColumn("People", ImGuiTableColumnFlags_WidthFixed, 80.0f);
+				LTableSetupColumn("Town (mod-added people)", ImGuiTableColumnFlags_WidthStretch, 3.0f);
+				LTableSetupColumn("People", ImGuiTableColumnFlags_WidthFixed, 80.0f);
 				TableHeadersRow();
 				for (const auto& [town, n] : info.perTown) {
 					TableNextRow();
 					TableSetColumnIndex(0);
-					TextUnformatted(town.c_str());
+					LTextUnformatted(town.c_str());
 					TableSetColumnIndex(1);
-					Text("%d", n);
+					LText("%d", n);
 				}
 				EndTable();
 			}
-			TextDisabled("Full detail: Data/SKSE/Plugins/NPCAIAutoPatch/report.json");
+			LTextDisabled("Full detail: Data/SKSE/Plugins/NPCAIAutoPatch/report.json");
 		}
 
 		struct PageState
@@ -178,16 +274,17 @@ namespace Menu
 
 		void __stdcall RenderNpcs()
 		{
+			Lang::Ensure(Core::Cfg().language);
 			if (!Core::Info().ran) {
-				TextDisabled("Nothing to show.");
+				LTextDisabled("Nothing to show.");
 				return;
 			}
 			static const char* kFilters[] = { "Everything", "Given the AI / planned", "Left alone" };
 			SetNextItemWidth(220.0f);
-			Combo("Show##n", &npcs.filter, kFilters, 3);
+			LCombo("Show##n", &npcs.filter, kFilters, 3);
 			SameLine();
 			SetNextItemWidth(220.0f);
-			InputText("Search##n", npcs.search, sizeof(npcs.search));
+			LInputText("Search##n", npcs.search, sizeof(npcs.search));
 			const std::string needle = Lower(npcs.search);
 			std::vector<const Core::Row*> shown;
 			int                           total = 0;
@@ -207,26 +304,26 @@ namespace Menu
 					shown.push_back(&r);
 				}
 			}
-			Text("%d match%s%s", total, total == 1 ? "" : "es", total > 400 ? " (the first 400 are listed: narrow the search)" : "");
+			LText("%s", (std::to_string(total) + " " + Lang::T(total == 1 ? "match" : "matches") + (total > 400 ? Lang::T(" (the first 400 are listed: narrow the search)") : "")).c_str());
 			const float tableHeight = std::max(180.0f, GetContentRegionAvail().y - 10.0f);
 			if (BeginTable("##npcs", 4, ImGuiTableFlags_RowBg | ImGuiTableFlags_Borders | ImGuiTableFlags_ScrollY | ImGuiTableFlags_Resizable | ImGuiTableFlags_SizingStretchProp,
 			               ImVec2(0.0f, tableHeight))) {
 				TableSetupScrollFreeze(0, 1);
-				TableSetupColumn("Person", ImGuiTableColumnFlags_WidthStretch, 2.5f);
-				TableSetupColumn("Mod", ImGuiTableColumnFlags_WidthStretch, 2.0f);
-				TableSetupColumn("Town", ImGuiTableColumnFlags_WidthFixed, 130.0f);
-				TableSetupColumn("What", ImGuiTableColumnFlags_WidthStretch, 4.0f);
+				LTableSetupColumn("Person", ImGuiTableColumnFlags_WidthStretch, 2.5f);
+				LTableSetupColumn("Mod", ImGuiTableColumnFlags_WidthStretch, 2.0f);
+				LTableSetupColumn("Town", ImGuiTableColumnFlags_WidthFixed, 130.0f);
+				LTableSetupColumn("What", ImGuiTableColumnFlags_WidthStretch, 4.0f);
 				TableHeadersRow();
 				for (const auto* r : shown) {
 					TableNextRow();
 					TableSetColumnIndex(0);
-					TextUnformatted(r->name.c_str());
+					LTextUnformatted(r->name.c_str());
 					TableSetColumnIndex(1);
-					TextUnformatted(r->plugin.c_str());
+					LTextUnformatted(r->plugin.c_str());
 					TableSetColumnIndex(2);
-					TextUnformatted(r->town.c_str());
+					ImGuiMCP::TextUnformatted(Lang::P(r->town).c_str());
 					TableSetColumnIndex(3);
-					TextUnformatted(r->reason.c_str());
+					ImGuiMCP::TextUnformatted(Lang::P(r->reason).c_str());
 				}
 				EndTable();
 			}
@@ -266,30 +363,31 @@ namespace Menu
 
 		void __stdcall RenderInspect()
 		{
-			SeparatorText("Check one person");
-			TextWrapped("Shows what the game has on a person right now (packages, factions, override lists, flags, confidence) next to what the AI overhaul gives them. "
+			Lang::Ensure(Core::Cfg().language);
+			LSeparatorText("Check one person");
+			LTextWrapped("Shows what the game has on a person right now (packages, factions, override lists, flags, confidence) next to what the AI overhaul gives them. "
 			            "Green: the overhaul's value is there. Red: it is not. Grey: information, nothing to compare. Nothing here changes the game.");
-			if (Button("Person selected in the console")) {
+			if (LButton("Person selected in the console")) {
 				auto ref = RE::Console::GetSelectedRef();
 				PickRef(ref.get());
 			}
 			Tip("Open the console (~), click the person, then press this. Opening the menu does not clear the console's selection.");
 			SameLine();
-			if (Button("Person under the crosshair")) {
+			if (LButton("Person under the crosshair")) {
 				auto* pick = RE::CrosshairPickData::GetSingleton();
 				auto  ref = pick ? pick->target.get() : RE::NiPointer<RE::TESObjectREFR>();
 				PickRef(ref.get());
 			}
 			SameLine();
-			if (ins.cur.valid && Button("Refresh")) {
+			if (ins.cur.valid && LButton("Refresh")) {
 				Refresh();
 			}
 			SetNextItemWidth(220.0f);
-			InputText("Find by name##i", ins.search, sizeof(ins.search));
+			LInputText("Find by name##i", ins.search, sizeof(ins.search));
 			Tip("Searches the people the loaded AI overhaul profile changes. The record is shown; the actor values only when you picked the person in the world.");
 			if (ins.search[0]) {
 				for (const auto& [label, id] : Core::FindInProfile(ins.search, 12)) {
-					if (SmallButton((label + "##" + std::to_string(id)).c_str())) {
+					if (LSmallButton((label + "##" + std::to_string(id)).c_str())) {
 						ins.npc = id;
 						ins.live = RE::ActorHandle();
 						ins.msg.clear();
@@ -298,40 +396,40 @@ namespace Menu
 				}
 			}
 			if (!ins.msg.empty()) {
-				TextColored(ImVec4(1.0f, 0.8f, 0.4f, 1.0f), "%s", ins.msg.c_str());
+				LTextColored(ImVec4(1.0f, 0.8f, 0.4f, 1.0f), "%s", Lang::T(ins.msg.c_str()));
 			}
 			if (!ins.cur.valid) {
 				return;
 			}
 			Spacing();
-			SeparatorText(ins.cur.title.c_str());
-			Text("Record last changed by: %s", ins.cur.winner.c_str());
+			ImGuiMCP::SeparatorText(ins.cur.title.c_str());
+			LText("Record last changed by: %s", ins.cur.winner.c_str());
 			if (!ins.cur.profile.empty()) {
-				Text("Compared with: %s", ins.cur.profile.c_str());
+				LText("Compared with: %s", ins.cur.profile.c_str());
 			}
 			if (!ins.cur.note.empty()) {
-				TextColored(ImVec4(1.0f, 0.8f, 0.4f, 1.0f), "%s", ins.cur.note.c_str());
+				ImGuiMCP::TextColored(ImVec4(1.0f, 0.8f, 0.4f, 1.0f), "%s", Lang::P(ins.cur.note).c_str());
 			}
 			const float h = std::max(180.0f, GetContentRegionAvail().y - 10.0f);
 			if (BeginTable("##insp", 4, ImGuiTableFlags_RowBg | ImGuiTableFlags_Borders | ImGuiTableFlags_ScrollY | ImGuiTableFlags_Resizable | ImGuiTableFlags_SizingStretchProp,
 			               ImVec2(0.0f, h))) {
 				TableSetupScrollFreeze(0, 1);
-				TableSetupColumn("What", ImGuiTableColumnFlags_WidthStretch, 3.0f);
-				TableSetupColumn("In the game now", ImGuiTableColumnFlags_WidthStretch, 4.0f);
-				TableSetupColumn("The overhaul gives", ImGuiTableColumnFlags_WidthStretch, 4.0f);
-				TableSetupColumn("", ImGuiTableColumnFlags_WidthFixed, 30.0f);
+				LTableSetupColumn("What", ImGuiTableColumnFlags_WidthStretch, 3.0f);
+				LTableSetupColumn("In the game now", ImGuiTableColumnFlags_WidthStretch, 4.0f);
+				LTableSetupColumn("The overhaul gives", ImGuiTableColumnFlags_WidthStretch, 4.0f);
+				LTableSetupColumn("", ImGuiTableColumnFlags_WidthFixed, 30.0f);
 				TableHeadersRow();
 				for (const auto& r : ins.cur.rows) {
 					const ImVec4 col = r.state == 1 ? ImVec4(0.55f, 0.85f, 0.6f, 1.0f) : r.state == 2 ? ImVec4(0.95f, 0.45f, 0.4f, 1.0f) : ImVec4(0.7f, 0.7f, 0.7f, 1.0f);
 					TableNextRow();
 					TableSetColumnIndex(0);
-					TextColored(col, "%s", r.what.c_str());
+					ImGuiMCP::TextColored(col, "%s", Lang::P(r.what).c_str());
 					TableSetColumnIndex(1);
-					TextColored(col, "%s", r.now.c_str());
+					ImGuiMCP::TextColored(col, "%s", (r.now.find('|') == std::string::npos ? Lang::P(r.now) : r.now).c_str());
 					TableSetColumnIndex(2);
-					TextColored(col, "%s", r.want.c_str());
+					ImGuiMCP::TextColored(col, "%s", Lang::T(r.want.c_str()));
 					TableSetColumnIndex(3);
-					TextColored(col, "%s", r.state == 1 ? "ok" : r.state == 2 ? "!!" : "");
+					ImGuiMCP::TextColored(col, "%s", r.state == 1 ? Lang::T("ok") : r.state == 2 ? "!!" : "");
 				}
 				EndTable();
 			}
@@ -339,12 +437,13 @@ namespace Menu
 
 		void __stdcall RenderMods()
 		{
+			Lang::Ensure(Core::Cfg().language);
 			if (!Core::Info().ran) {
-				TextDisabled("Nothing to show.");
+				LTextDisabled("Nothing to show.");
 				return;
 			}
-			SeparatorText("Mods whose people are never touched");
-			TextWrapped("Tick a mod to leave all of its people out. Takes effect at the next game start.");
+			LSeparatorText("Mods whose people are never touched");
+			LTextWrapped("Tick a mod to leave all of its people out. Takes effect at the next game start.");
 			std::map<std::string, int> perMod;
 			for (const auto& r : Core::Rows()) {
 				++perMod[r.plugin];
@@ -352,8 +451,8 @@ namespace Menu
 			auto& cfg = Core::Cfg();
 			for (const auto& [plugin, n] : perMod) {
 				bool off = cfg.exclude.count(plugin) > 0;
-				const std::string label = plugin + "  (" + std::to_string(n) + " people)";
-				if (Checkbox(label.c_str(), &off)) {
+				const std::string label = plugin + "  (" + std::to_string(n) + " " + Lang::T("people") + ")";
+				if (LCheckbox(label.c_str(), &off)) {
 					if (off) {
 						cfg.exclude.insert(plugin);
 					} else {
@@ -364,28 +463,29 @@ namespace Menu
 				}
 			}
 			if (needsRestart) {
-				TextColored(ImVec4(1.0f, 0.8f, 0.4f, 1.0f), "Saved. Restart the game for it to take effect.");
+				LTextColored(ImVec4(1.0f, 0.8f, 0.4f, 1.0f), "Saved. Restart the game for it to take effect.");
 			}
 		}
 
 		void __stdcall RenderSkipped()
 		{
+			Lang::Ensure(Core::Cfg().language);
 			const auto& info = Core::Info();
 			if (!info.ran && Core::Rows().empty()) {
-				TextDisabled("Nothing to show.");
+				LTextDisabled("Nothing to show.");
 				return;
 			}
-			SeparatorText("Why people were left alone");
+			LSeparatorText("Why people were left alone");
 			if (BeginTable("##skipped", 2, ImGuiTableFlags_RowBg | ImGuiTableFlags_Borders | ImGuiTableFlags_SizingStretchProp)) {
-				TableSetupColumn("Reason", ImGuiTableColumnFlags_WidthStretch, 5.0f);
-				TableSetupColumn("People", ImGuiTableColumnFlags_WidthFixed, 70.0f);
+				LTableSetupColumn("Reason", ImGuiTableColumnFlags_WidthStretch, 5.0f);
+				LTableSetupColumn("People", ImGuiTableColumnFlags_WidthFixed, 70.0f);
 				TableHeadersRow();
 				for (const auto& [reason, n] : info.skipped) {
 					TableNextRow();
 					TableSetColumnIndex(0);
-					TextUnformatted(reason.c_str());
+					ImGuiMCP::TextUnformatted(Lang::P(reason).c_str());
 					TableSetColumnIndex(1);
-					Text("%d", n);
+					LText("%d", n);
 				}
 				EndTable();
 			}

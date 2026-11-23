@@ -6,6 +6,7 @@
  */
 #pragma once
 
+#include <filesystem>
 #include <map>
 #include <set>
 #include <string>
@@ -30,6 +31,7 @@ namespace Core
 		bool                  icaioStep = true;   // Immersive Citizens - AI Overhaul: give its AI to mod-added town NPCs
 		std::set<std::string> offProfiles;        // forward profiles (lower case names) switched off in the menu
 		std::string           profile;            // forward profile (lower case name) to use for its family, whatever fits the loaded plugin best (config.json only)
+		std::string           language = "auto"; // language of the in-game pages: auto (the Windows language), or a code with a file in lang/ (en, es, de, ja, zh, ko)
 		std::set<std::string> wins;               // plugins whose changes win over every overhaul: an NPC one of them touches is left exactly as it is
 	};
 
@@ -78,6 +80,8 @@ namespace Core
 
 	Inspection                                         Inspect(RE::TESNPC* a_npc, RE::Actor* a_live);
 	std::vector<std::pair<std::string, std::uint32_t>> FindInProfile(const std::string& a_needle, std::size_t a_max);
+
+	std::filesystem::path   DataDir();  // Data/SKSE/Plugins/NPCAIAutoPatch
 
 	Config&                 Cfg();
 	void                    SaveConfig();

@@ -88,6 +88,7 @@ namespace Core
 			g_cfg.forward = j.value("forward", true);
 			g_cfg.icaioStep = j.value("icaio", true);
 			g_cfg.profile = Lower(j.value("profile", std::string()));
+			g_cfg.language = Lower(j.value("language", std::string("auto")));
 			if (j.contains("offProfiles")) {
 				for (const auto& e : j["offProfiles"]) {
 					g_cfg.offProfiles.insert(Lower(e.get<std::string>()));
@@ -126,6 +127,7 @@ namespace Core
 	Config&                 Cfg() { return g_cfg; }
 	const Summary&          Info() { return g_info; }
 	const std::vector<Row>& Rows() { return g_rows; }
+	std::filesystem::path   DataDir() { return Dir(); }
 
 	void SaveConfig()
 	{
@@ -136,6 +138,7 @@ namespace Core
 		j["followers"] = g_cfg.followers;
 		j["forward"] = g_cfg.forward;
 		j["icaio"] = g_cfg.icaioStep;
+		j["language"] = g_cfg.language;
 		if (!g_cfg.profile.empty()) {
 			j["profile"] = g_cfg.profile;
 		}

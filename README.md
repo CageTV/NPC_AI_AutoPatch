@@ -29,10 +29,15 @@ A person is given ICAIO's AI when a mod defines them, they are a person (race wi
 `Data/SKSE/Plugins/NPCAIAutoPatch/config.json` (created when you change a switch): `apply` (default true; false only reports), `followers` (true), `forward` (true), `icaio` (true), `offProfiles` (profiles switched off), `profile` (see above), `wins` (plugins whose NPCs are never overruled), `excludePlugins` (plugin names, lower case), `excludeNames` (words in a name; default `corpse`).
 
 ## Install
-With your mod manager, like any SKSE plugin. The files are `SKSE/Plugins/NPCAIAutoPatch.dll` and `SKSE/Plugins/NPCAIAutoPatch/profiles/*.json`.
+With your mod manager. The installer (FOMOD) asks which DLL you want: **Skyrim 1.6.1170 and newer** (SE / AE, including 1.7.x), or **Skyrim VR and 1.6.1130 and older**. On 1.6.1170 either works. The files are `SKSE/Plugins/NPCAIAutoPatch.dll`, `SKSE/Plugins/NPCAIAutoPatch/profiles/*.json` and `SKSE/Plugins/NPCAIAutoPatch/lang/*.json`.
+
+## Languages
+The in-game pages follow the language Windows is set to: English, Spanish, German, Japanese, Simplified Chinese and Korean. Change it in **Overview > Language**, or set `language` in `config.json` (`auto`, `en`, `es`, `de`, `ja`, `zh`, `ko`). The translations are AI-made: corrections are welcome. Add a language by adding `lang/<code>.json` (the English text of a string is its key; what a file lacks stays English).
+
+Japanese, Chinese and Korean need a font that SKSE Menu Framework only loads when you turn it on: set `EnableJapanese`, `EnableChinese` or `EnableKorean` to `true` in `Data/SKSE/Plugins/SKSEMenuFramework.ini` (section `[Fonts]`) and restart. Until then, an automatic setting stays in English and the page says which setting to turn on.
 
 ## Requirements
-Skyrim SE/AE 1.6.1170 or newer, SKSE and Address Library. The two overhauls are independent and each is optional: with only AI Overhaul (1.9 or 1.9.5) it restores its AI on overridden NPCs; with only Immersive Citizens - AI Overhaul 0.4.0.2 it gives its AI to mod-added town people; with both it does both. Whichever is not installed is skipped. SKSE Menu Framework for the in-game pages (optional).
+Skyrim SE/AE 1.6.1170 or newer (or Skyrim VR / 1.6.1130 and older with the older DLL), SKSE and Address Library. The two overhauls are independent and each is optional: with only AI Overhaul (1.9 or 1.9.5) it restores its AI on overridden NPCs; with only Immersive Citizens - AI Overhaul 0.4.0.2 it gives its AI to mod-added town people; with both it does both. Whichever is not installed is skipped. SKSE Menu Framework for the in-game pages (optional).
 
 ## Making a profile
 `profiles/*.json` hold, per NPC, the references an overhaul's plugin gives it (packages, removed packages, factions, override lists, flags, confidence). `tools/build_forward_profile.py` builds one from a Spriggit export of the overhaul's plugin; it can be rerun for a new version. Nothing in a profile is a master.
