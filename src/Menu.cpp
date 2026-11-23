@@ -85,12 +85,12 @@ namespace Menu
 						needsRestart = true;
 					}
 				}
-				const auto row = [&](const std::string& n, const char* state, int people, bool can) {
+				const auto row = [&](const std::string& n, const std::string& state, int people, bool can) {
 					TableNextRow();
 					TableSetColumnIndex(0);
 					TextUnformatted(n.c_str());
 					TableSetColumnIndex(1);
-					TextUnformatted(state);
+					TextUnformatted(state.c_str());
 					TableSetColumnIndex(2);
 					Text("%d", people);
 					TableSetColumnIndex(3);
@@ -108,9 +108,17 @@ namespace Menu
 						}
 					}
 				};
+				// the number after the state is how many of the profile's references name no record in this game (nothing shown = the profile fits the loaded plugin)
+				const auto lacking = [&](const std::string& n) {
+					const auto u = info.profileUnresolved.find(n);
+					return u == info.profileUnresolved.end() || u->second == 0 ? std::string() : " (" + std::to_string(u->second) + " not found)";
+				};
 				for (const auto& n : info.profiles) {
 					const auto it = info.forwarded.find(n);
-					row(n, "active", it == info.forwarded.end() ? 0 : it->second, true);
+					row(n, "active" + lacking(n), it == info.forwarded.end() ? 0 : it->second, true);
+				}
+				for (const auto& n : info.profilesNotChosen) {
+					row(n, "not used: another version fits better" + lacking(n), 0, false);
 				}
 				for (const auto& n : info.profilesOff) {
 					row(n, "off", 0, true);
@@ -120,7 +128,7 @@ namespace Menu
 				}
 				EndTable();
 			}
-			TextDisabled("A loaded overhaul is used automatically; untick one to leave it out. Profiles: Data/SKSE/Plugins/NPCAIAutoPatch/profiles.");
+			TextDisabled("A loaded overhaul is used automatically; untick one to leave it out. Where an overhaul has several versions (AI Overhaul 1.9 and 1.9.5, for example) the one that fits the loaded plugin best is used. Profiles: Data/SKSE/Plugins/NPCAIAutoPatch/profiles.");
 			if (Checkbox("Apply the changes", &cfg.apply)) {
 				Core::SaveConfig();
 				needsRestart = true;
@@ -224,6 +232,111 @@ namespace Menu
 			}
 		}
 
+		// ---- Inspect: what the game has on one person against what the AI overhaul's profile says
+		struct InspectState
+		{
+			Core::Inspection cur;
+			std::uint32_t    npc = 0;
+			RE::ActorHandle  live;
+			char             search[64] = "";
+			std::string      msg;
+		};
+		InspectState ins;
+
+		void Refresh()
+		{
+			auto* npc = ins.npc ? RE::TESForm::LookupByID<RE::TESNPC>(ins.npc) : nullptr;
+			auto  a = ins.live.get();
+			ins.cur = Core::Inspect(npc, a.get());
+		}
+
+		void PickRef(RE::TESObjectREFR* a_ref)
+		{
+			auto* actor = a_ref ? a_ref->As<RE::Actor>() : nullptr;
+			auto* base = actor ? actor->GetActorBase() : nullptr;
+			if (!base) {
+				ins.msg = "That is not a person. Click one in the console (open it with ~) or aim at one.";
+				return;
+			}
+			ins.msg.clear();
+			ins.npc = base->GetFormID();
+			ins.live = actor->CreateRefHandle();
+			Refresh();
+		}
+
+		void __stdcall RenderInspect()
+		{
+			SeparatorText("Check one person");
+			TextWrapped("Shows what the game has on a person right now (packages, factions, override lists, flags, confidence) next to what the AI overhaul gives them. "
+			            "Green: the overhaul's value is there. Red: it is not. Grey: information, nothing to compare. Nothing here changes the game.");
+			if (Button("Person selected in the console")) {
+				auto ref = RE::Console::GetSelectedRef();
+				PickRef(ref.get());
+			}
+			Tip("Open the console (~), click the person, then press this. Opening the menu does not clear the console's selection.");
+			SameLine();
+			if (Button("Person under the crosshair")) {
+				auto* pick = RE::CrosshairPickData::GetSingleton();
+				auto  ref = pick ? pick->target.get() : RE::NiPointer<RE::TESObjectREFR>();
+				PickRef(ref.get());
+			}
+			SameLine();
+			if (ins.cur.valid && Button("Refresh")) {
+				Refresh();
+			}
+			SetNextItemWidth(220.0f);
+			InputText("Find by name##i", ins.search, sizeof(ins.search));
+			Tip("Searches the people the loaded AI overhaul profile changes. The record is shown; the actor values only when you picked the person in the world.");
+			if (ins.search[0]) {
+				for (const auto& [label, id] : Core::FindInProfile(ins.search, 12)) {
+					if (SmallButton((label + "##" + std::to_string(id)).c_str())) {
+						ins.npc = id;
+						ins.live = RE::ActorHandle();
+						ins.msg.clear();
+						Refresh();
+					}
+				}
+			}
+			if (!ins.msg.empty()) {
+				TextColored(ImVec4(1.0f, 0.8f, 0.4f, 1.0f), "%s", ins.msg.c_str());
+			}
+			if (!ins.cur.valid) {
+				return;
+			}
+			Spacing();
+			SeparatorText(ins.cur.title.c_str());
+			Text("Record last changed by: %s", ins.cur.winner.c_str());
+			if (!ins.cur.profile.empty()) {
+				Text("Compared with: %s", ins.cur.profile.c_str());
+			}
+			if (!ins.cur.note.empty()) {
+				TextColored(ImVec4(1.0f, 0.8f, 0.4f, 1.0f), "%s", ins.cur.note.c_str());
+			}
+			const float h = std::max(180.0f, GetContentRegionAvail().y - 10.0f);
+			if (BeginTable("##insp", 4, ImGuiTableFlags_RowBg | ImGuiTableFlags_Borders | ImGuiTableFlags_ScrollY | ImGuiTableFlags_Resizable | ImGuiTableFlags_SizingStretchProp,
+			               ImVec2(0.0f, h))) {
+				TableSetupScrollFreeze(0, 1);
+				TableSetupColumn("What", ImGuiTableColumnFlags_WidthStretch, 3.0f);
+				TableSetupColumn("In the game now", ImGuiTableColumnFlags_WidthStretch, 4.0f);
+				TableSetupColumn("The overhaul gives", ImGuiTableColumnFlags_WidthStretch, 4.0f);
+				TableSetupColumn("", ImGuiTableColumnFlags_WidthFixed, 30.0f);
+				TableHeadersRow();
+				for (const auto& r : ins.cur.rows) {
+					const ImVec4 col = r.state == 1 ? ImVec4(0.55f, 0.85f, 0.6f, 1.0f) : r.state == 2 ? ImVec4(0.95f, 0.45f, 0.4f, 1.0f) : ImVec4(0.7f, 0.7f, 0.7f, 1.0f);
+					TableNextRow();
+					TableSetColumnIndex(0);
+					TextColored(col, "%s", r.what.c_str());
+					TableSetColumnIndex(1);
+					TextColored(col, "%s", r.now.c_str());
+					TableSetColumnIndex(2);
+					TextColored(col, "%s", r.want.c_str());
+					TableSetColumnIndex(3);
+					TextColored(col, "%s", r.state == 1 ? "ok" : r.state == 2 ? "!!" : "");
+				}
+				EndTable();
+			}
+		}
+
 		void __stdcall RenderMods()
 		{
 			if (!Core::Info().ran) {
@@ -288,6 +401,7 @@ namespace Menu
 		SKSEMenuFramework::SetSection("NPC AI AutoPatch");
 		SKSEMenuFramework::AddSectionItem("Overview", RenderOverview);
 		SKSEMenuFramework::AddSectionItem("People", RenderNpcs);
+		SKSEMenuFramework::AddSectionItem("Inspect", RenderInspect);
 		SKSEMenuFramework::AddSectionItem("Mods", RenderMods);
 		SKSEMenuFramework::AddSectionItem("Skipped", RenderSkipped);
 		SKSE::log::info("Registered with SKSE Menu Framework {}", SKSEMenuFramework::GetMenuFrameworkVersion());

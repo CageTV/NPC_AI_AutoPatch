@@ -1,22 +1,49 @@
 # NPC AI AutoPatch
 
-An SKSE add-on that gives the people that other mods add to Skyrim's towns (Interesting NPCs 3DNPC and many more) the AI of **Immersive Citizens - AI Overhaul** (ICAIO), at game start, with no patch plugin.
+An SKSE plugin that makes the AI overhauls of your load order reach the NPCs other mods add or replace, at game start. No patch plugin, no master, nothing written to your save.
 
-ICAIO hands its AI out through quests. A person that a mod adds to a town is in the town's factions but not in any of those quests, so they walk through rain and dragon attacks like a vanilla NPC. This gives each of them what ICAIO gives the extra citizens of that town: its package (`NPCO<Town>ExtraCitizen...`), its combat override list, its citizens faction and its exclusion faction (so ICAIO's quest slots stay free for other people).
+It does two things:
 
-## Rules
-A person is patched when a mod defines them, they are a person (race with ActorTypeNPC), they are in a town's faction and that hold's crime faction (18 towns), and they are not in a guard, war, Thalmor, Penitus Oculatus, Companions, College, Dark Brotherhood, Thieves Guild, Forsworn, Imperial justiciar or Dawnguard faction, not already in ICAIO's citizens or exclusion faction, do not already have an ICAIO package, and do not take their factions or packages from a template. Followers and marriage candidates are patched too (a switch turns that off). People whose name contains "corpse" are left alone.
+1. **Puts an AI overhaul's AI back on the NPCs a later mod overrides.** Look replacers (High Poly NPC Overhaul and the many single-NPC replacers) win the NPC record and drop the AI overhaul's packages, factions, override lists and confidence. This restores them, the way a Synthesis or xEdit patch would, without a plugin. Supported: **AI Overhaul** (SpiderAkira / mnikjom), versions 1.9 and 1.9.5.
+2. **Gives the people mods add to Skyrim's towns the AI of Immersive Citizens - AI Overhaul** (ICAIO): Interesting NPCs (3DNPC) and many more. ICAIO hands its AI out through quests, and a person a mod adds to a town is in none of them, so they walk through rain and dragon attacks like a vanilla NPC. They get what ICAIO gives the extra citizens of that town: its package, its combat override list, its citizens faction and its exclusion faction.
 
-Nothing is written to your save. Report: `Data/SKSE/Plugins/NPCAIAutoPatch/report.json` and the SKSE Menu Framework pages (Overview, People, Mods, Skipped).
+A plugin that must win (Better Vampires, Relationship Dialogue Overhaul, Nether's Follower Framework) is never overruled: an NPC one of them touches is left exactly as it is.
+
+## Versions of an overhaul
+AI Overhaul 1.9 (needs USSEP and uses its fix packages) and 1.9.5 (ships its own copies) are not the same plugin. Each has its own profile, and the plugin applies **only the one that fits the loaded game best** (the fewest references that name no record). You do not choose; the menu and the log show which one was used and how many references it could not find. To force one, put `"profile": "<profile name in lower case>"` in `config.json`.
+
+## In-game pages
+SKSE Menu Framework (optional) adds the section **NPC AI AutoPatch**:
+
+- **Overview**: the overhauls found, which profile is used, switches, counts.
+- **People**: every NPC that was changed or left alone, and why. Searchable.
+- **Inspect**: pick a person (selected in the console, under the crosshair, or by name) and see what the game has on them next to what the overhaul gives them: packages in order, the package the overhaul removes, factions, the four override lists, Essential / Protected, confidence. Green = the overhaul's value is there, red = it is not. Read-only. A save can keep an actor value the base record no longer has: check the live value with `getav confidence` in the console.
+- **Mods** and **Skipped**: leave a mod's people out; why people were skipped.
+
+Full detail is also written to `Data/SKSE/Plugins/NPCAIAutoPatch/report.json`.
+
+## Rules for the town step
+A person is given ICAIO's AI when a mod defines them, they are a person (race with ActorTypeNPC), they are in a town's faction and that hold's crime faction (18 towns), and they are not in a guard, war, Thalmor, Penitus Oculatus, Companions, College, Dark Brotherhood, Thieves Guild, Forsworn, Imperial justiciar or Dawnguard faction, not already in ICAIO's citizens or exclusion faction, do not already have an ICAIO package, and do not take their factions or packages from a template. Followers and marriage candidates are included (a switch turns that off). People whose name contains "corpse" are left alone.
 
 ## Settings
-`Data/SKSE/Plugins/NPCAIAutoPatch/config.json` (created when you change a switch): `apply` (default true; false only reports), `followers` (true), `excludePlugins` (plugin names, lower case), `excludeNames` (words in a name; default `corpse`).
+`Data/SKSE/Plugins/NPCAIAutoPatch/config.json` (created when you change a switch): `apply` (default true; false only reports), `followers` (true), `forward` (true), `icaio` (true), `offProfiles` (profiles switched off), `profile` (see above), `wins` (plugins whose NPCs are never overruled), `excludePlugins` (plugin names, lower case), `excludeNames` (words in a name; default `corpse`).
+
+## Install
+With your mod manager, like any SKSE plugin. The files are `SKSE/Plugins/NPCAIAutoPatch.dll` and `SKSE/Plugins/NPCAIAutoPatch/profiles/*.json`.
 
 ## Requirements
-Skyrim SE/AE 1.6.1170 or newer, SKSE, Address Library, Immersive Citizens - AI Overhaul 0.4.0.2. SKSE Menu Framework for the pages (optional).
+Skyrim SE/AE 1.6.1170 or newer, SKSE, Address Library, and at least one of AI Overhaul (1.9 or 1.9.5) or Immersive Citizens - AI Overhaul 0.4.0.2. SKSE Menu Framework for the in-game pages (optional).
+
+## Making a profile
+`profiles/*.json` hold, per NPC, the references an overhaul's plugin gives it (packages, removed packages, factions, override lists, flags, confidence). `tools/build_forward_profile.py` builds one from a Spriggit export of the overhaul's plugin; it can be rerun for a new version. Nothing in a profile is a master.
 
 ## Credits
-Immersive Citizens - AI Overhaul is by Arnaud dOrchymont. The idea of a patcher that gives mod NPCs ICAIO's AI comes from Wolfman5750's ICAIO AI for Modded NPCs (a Synthesis patcher); no code from it is used here.
+- **AI Overhaul** is by SpiderAkira and mnikjom (Nexus mod 21654). The profiles list references taken from its plugin; this plugin needs the mod installed and contains none of its files. Please endorse and support it.
+- **Immersive Citizens - AI Overhaul** is by Arnaud dOrchymont (Nexus mod 173).
+- The idea of a patcher that gives mod NPCs ICAIO's AI comes from Wolfman5750's ICAIO AI for Modded NPCs (a Synthesis patcher); no code from it is used here.
+
+## AI use
+The code was written with AI assistance (Claude) and tested in game by the author. Scripts and results were checked by hand against xEdit and the game.
 
 ## License
 GNU General Public License, version 3 or later; see `LICENSE`.

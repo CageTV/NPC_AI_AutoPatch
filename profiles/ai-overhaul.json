@@ -1,8 +1,9 @@
 {
  "format": 1,
  "id": "ai-overhaul",
- "name": "AI Overhaul SSE 1.9.5",
+ "name": "AI Overhaul 1.9.5",
  "type": "forward",
+ "family": "ai-overhaul",
  "requires": "AI Overhaul.esp",
  "ownPlugins": [
   "AI Overhaul.esp"
