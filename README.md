@@ -43,7 +43,7 @@ Skyrim SE/AE 1.6.1170 or newer, SKSE, Address Library, and at least one of AI Ov
 - The idea of a patcher that gives mod NPCs ICAIO's AI comes from Wolfman5750's ICAIO AI for Modded NPCs (a Synthesis patcher); no code from it is used here.
 
 ## AI use
-The code was written with AI assistance (Claude) and tested in game by the author. Scripts and results were checked by hand against xEdit and the game.
+The code was written with AI assistance Verification and tested in game by the author. Scripts and results were checked by hand against xEdit and the game.
 
 ## License
 GNU General Public License, version 3 or later; see `LICENSE`.
