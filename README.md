@@ -32,7 +32,7 @@ A person is given ICAIO's AI when a mod defines them, they are a person (race wi
 With your mod manager, like any SKSE plugin. The files are `SKSE/Plugins/NPCAIAutoPatch.dll` and `SKSE/Plugins/NPCAIAutoPatch/profiles/*.json`.
 
 ## Requirements
-Skyrim SE/AE 1.6.1170 or newer, SKSE, Address Library, and at least one of AI Overhaul (1.9 or 1.9.5) or Immersive Citizens - AI Overhaul 0.4.0.2. SKSE Menu Framework for the in-game pages (optional).
+Skyrim SE/AE 1.6.1170 or newer, SKSE and Address Library. The two overhauls are independent and each is optional: with only AI Overhaul (1.9 or 1.9.5) it restores its AI on overridden NPCs; with only Immersive Citizens - AI Overhaul 0.4.0.2 it gives its AI to mod-added town people; with both it does both. Whichever is not installed is skipped. SKSE Menu Framework for the in-game pages (optional).
 
 ## Making a profile
 `profiles/*.json` hold, per NPC, the references an overhaul's plugin gives it (packages, removed packages, factions, override lists, flags, confidence). `tools/build_forward_profile.py` builds one from a Spriggit export of the overhaul's plugin; it can be rerun for a new version. Nothing in a profile is a master.
