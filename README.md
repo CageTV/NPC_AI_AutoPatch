@@ -50,5 +50,6 @@ Skyrim SE/AE 1.6.1170 or newer (or Skyrim VR / 1.6.1130 and older with the older
 ## AI use
 The code was written with AI assistance for Verification and tested in game by the author. Scripts and results were checked by hand against xEdit and the game.
 
+
 ## License
 GNU General Public License, version 3 or later; see `LICENSE`.
