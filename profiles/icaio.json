@@ -1,0 +1,156 @@
+{
+ "format": 1,
+ "id": "icaio",
+ "name": "Immersive Citizens - AI Overhaul 0.4.0.2",
+ "type": "town",
+ "requires": "Immersive Citizens - AI Overhaul.esp",
+ "ownPlugins": [
+  "Immersive Citizens - AI Overhaul.esp"
+ ],
+ "citizens": "Immersive Citizens - AI Overhaul.esp|2FDA89",
+ "exclusion": "Immersive Citizens - AI Overhaul.esp|237FB4",
+ "follower": "Skyrim.esm|05C84D",
+ "skipFactions": [
+  "Skyrim.esm|086EEE",
+  "Skyrim.esm|02BF9A",
+  "Skyrim.esm|02BF9B",
+  "Skyrim.esm|028849",
+  "Skyrim.esm|02584B",
+  "Skyrim.esm|039F26",
+  "Skyrim.esm|048362",
+  "Skyrim.esm|01F259",
+  "Skyrim.esm|01BDB3",
+  "Skyrim.esm|029DA9",
+  "Skyrim.esm|043599",
+  "Skyrim.esm|0B79AC",
+  "Dawnguard.esm|003375"
+ ],
+ "towns": [
+  {
+   "name": "Whiterun",
+   "crime": "Skyrim.esm|0267EA",
+   "town": "Skyrim.esm|028172",
+   "package": "Immersive Citizens - AI Overhaul.esp|A74D3C",
+   "combat": "Immersive Citizens - AI Overhaul.esp|31E2DA"
+  },
+  {
+   "name": "Riverwood",
+   "crime": "Skyrim.esm|0267EA",
+   "town": "Skyrim.esm|013481",
+   "package": "Immersive Citizens - AI Overhaul.esp|ABBB88",
+   "combat": "Immersive Citizens - AI Overhaul.esp|238A7B"
+  },
+  {
+   "name": "Falkreath",
+   "crime": "Skyrim.esm|028170",
+   "town": "Skyrim.esm|028177",
+   "package": "Immersive Citizens - AI Overhaul.esp|AD509D",
+   "combat": "Immersive Citizens - AI Overhaul.esp|238FE8"
+  },
+  {
+   "name": "Rorikstead",
+   "crime": "Skyrim.esm|0267EA",
+   "town": "Skyrim.esm|028174",
+   "package": "Immersive Citizens - AI Overhaul.esp|ABBB89",
+   "combat": "Immersive Citizens - AI Overhaul.esp|238FE2"
+  },
+  {
+   "name": "Ivarstead",
+   "crime": "Skyrim.esm|02816B",
+   "town": "Skyrim.esm|028185",
+   "package": "Immersive Citizens - AI Overhaul.esp|AC0C89",
+   "combat": "Immersive Citizens - AI Overhaul.esp|238FE4"
+  },
+  {
+   "name": "Darkwater Crossing",
+   "crime": "Skyrim.esm|0267E3",
+   "town": "Skyrim.esm|028183",
+   "package": "Immersive Citizens - AI Overhaul.esp|AC0C8B",
+   "combat": "Immersive Citizens - AI Overhaul.esp|23955D"
+  },
+  {
+   "name": "Riften",
+   "crime": "Skyrim.esm|02816B",
+   "town": "Skyrim.esm|028186",
+   "package": "Immersive Citizens - AI Overhaul.esp|AD50A0",
+   "combat": "Immersive Citizens - AI Overhaul.esp|3284E5"
+  },
+  {
+   "name": "Dawnstar",
+   "crime": "Skyrim.esm|02816E",
+   "town": "Skyrim.esm|02817F",
+   "package": "Immersive Citizens - AI Overhaul.esp|AD509B",
+   "combat": "Immersive Citizens - AI Overhaul.esp|32D5FD"
+  },
+  {
+   "name": "Morthal",
+   "crime": "Skyrim.esm|02816D",
+   "town": "Skyrim.esm|02817D",
+   "package": "Immersive Citizens - AI Overhaul.esp|AD509F",
+   "combat": "Immersive Citizens - AI Overhaul.esp|238FEE"
+  },
+  {
+   "name": "Dragon Bridge",
+   "crime": "Skyrim.esm|029DB0",
+   "town": "Skyrim.esm|02817B",
+   "package": "Immersive Citizens - AI Overhaul.esp|ABBB8D",
+   "combat": "Immersive Citizens - AI Overhaul.esp|238FF4"
+  },
+  {
+   "name": "Windhelm",
+   "crime": "Skyrim.esm|0267E3",
+   "town": "Skyrim.esm|028173",
+   "package": "Immersive Citizens - AI Overhaul.esp|AD50A2",
+   "combat": "Immersive Citizens - AI Overhaul.esp|3284EF"
+  },
+  {
+   "name": "Shor's Stone",
+   "crime": "Skyrim.esm|02816B",
+   "town": "Skyrim.esm|028184",
+   "package": "Immersive Citizens - AI Overhaul.esp|AC0C8C",
+   "combat": "Immersive Citizens - AI Overhaul.esp|23955B"
+  },
+  {
+   "name": "Kynesgrove",
+   "crime": "Skyrim.esm|0267E3",
+   "town": "Skyrim.esm|028182",
+   "package": "Immersive Citizens - AI Overhaul.esp|ABBB8C",
+   "combat": "Immersive Citizens - AI Overhaul.esp|239AC1"
+  },
+  {
+   "name": "Solitude",
+   "crime": "Skyrim.esm|029DB0",
+   "town": "Skyrim.esm|02817C",
+   "package": "Immersive Citizens - AI Overhaul.esp|AD50A1",
+   "combat": "Immersive Citizens - AI Overhaul.esp|3284E9"
+  },
+  {
+   "name": "Stone Hills",
+   "crime": "Skyrim.esm|02816D",
+   "town": "Skyrim.esm|02817E",
+   "package": "Immersive Citizens - AI Overhaul.esp|A74D3D",
+   "combat": "Immersive Citizens - AI Overhaul.esp|238FEB"
+  },
+  {
+   "name": "Winterhold",
+   "crime": "Skyrim.esm|02816F",
+   "town": "Skyrim.esm|028181",
+   "package": "Immersive Citizens - AI Overhaul.esp|332712",
+   "combat": "Immersive Citizens - AI Overhaul.esp|239AC7"
+  },
+  {
+   "name": "Markarth",
+   "crime": "Skyrim.esm|02816C",
+   "town": "Skyrim.esm|028178",
+   "package": "Immersive Citizens - AI Overhaul.esp|AD509E",
+   "combat": "Immersive Citizens - AI Overhaul.esp|3284EC"
+  },
+  {
+   "name": "Karthwasten",
+   "crime": "Skyrim.esm|02816C",
+   "town": "Skyrim.esm|02817A",
+   "package": "Immersive Citizens - AI Overhaul.esp|AC0C8A",
+   "combat": "Immersive Citizens - AI Overhaul.esp|238FF1"
+  }
+ ]
+}

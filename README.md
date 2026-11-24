@@ -24,7 +24,7 @@ SKSE Menu Framework (optional) adds the section **NPC AI AutoPatch**:
 Full detail is also written to `Data/SKSE/Plugins/NPCAIAutoPatch/report.json`.
 
 ## Rules for the town step
-A person is given ICAIO's AI when a mod defines them, they are a person (race with ActorTypeNPC), they are in a town's faction and that hold's crime faction (18 towns), and they are not in a guard, war, Thalmor, Penitus Oculatus, Companions, College, Dark Brotherhood, Thieves Guild, Forsworn, Imperial justiciar or Dawnguard faction, not already in ICAIO's citizens or exclusion faction, do not already have an ICAIO package, and do not take their factions or packages from a template. Followers and marriage candidates are included (a switch turns that off). People whose name contains "corpse" are left alone.
+The towns, packages and factions come from a profile too (`profiles/icaio.json`, type `town`), so nothing about ICAIO is built into the plugin. A person is given ICAIO's AI when a mod defines them, they are a person (race with ActorTypeNPC), they are in a town's faction and that hold's crime faction (18 towns), and they are not in a guard, war, Thalmor, Penitus Oculatus, Companions, College, Dark Brotherhood, Thieves Guild, Forsworn, Imperial justiciar or Dawnguard faction, not already in ICAIO's citizens or exclusion faction, do not already have an ICAIO package, and do not take their factions or packages from a template. Followers and marriage candidates are included (a switch turns that off). People whose name contains "corpse" are left alone.
 
 ## Settings
 `Data/SKSE/Plugins/NPCAIAutoPatch/config.json` (created when you change a switch): `apply` (default true; false only reports), `followers` (true), `forward` (true), `baseline` (true: the bug-fix patches), `icaio` (true), `offProfiles` (profiles switched off), `profile` (see above), `wins` (plugins whose NPCs are never overruled), `excludePlugins` (plugin names, lower case), `excludeNames` (words in a name; default `corpse`).
@@ -41,9 +41,10 @@ Japanese, Chinese and Korean need a font that SKSE Menu Framework only loads whe
 Skyrim SE/AE 1.6.1170 or newer (or Skyrim VR / 1.6.1130 and older with the older DLL), SKSE and Address Library. The two overhauls are independent and each is optional: with only AI Overhaul (1.9 or 1.9.5) it restores its AI on overridden NPCs; with only Immersive Citizens - AI Overhaul 0.4.0.2 it gives its AI to mod-added town people; with both it does both. Whichever is not installed is skipped. SKSE Menu Framework for the in-game pages (optional).
 
 ## Making a profile
-A profile (`profiles/*.json`) names, per NPC, what a plugin gives that NPC, as `Plugin.esp|LocalID` references; nothing in it is a master. Two kinds:
+A profile (`profiles/*.json`) names, per NPC, what a plugin gives that NPC, as `Plugin.esp|LocalID` references; nothing in it is a master. Three kinds:
 
 - **forward** (an AI overhaul): packages, removed packages, factions, the four override lists, Protected / Essential, confidence. Header: `"type": "forward"`, `"requires": "<plugin>"`, `"ownPlugins": [...]`, optional `"family"` (versions of one overhaul: only the best-fitting one is used) and `"priority"`.
+- **town** (an overhaul that has "extra citizen" records per town, like ICAIO): `citizens` and `exclusion` (the factions given to the people), `skipFactions` (factions whose members are left alone), `follower` (the faction that marks a possible follower) and `towns`: per town its `crime` faction, its `town` faction, the `package` and the `combat` override list its extra citizens get. Header: `"type": "town"`, `"requires"`, `"ownPlugins"`. Written by hand: see `profiles/icaio.json`.
 - **baseline** (a bug-fix patch): class, skill values, health / magicka / stamina, perks, spells, keywords, crime faction, combat style, packages, factions, Protected / Essential, confidence. Header adds `"baseline": true`; `"priority"` is the order profiles are applied in (lowest first).
 
 To make one from a plugin you have, with one command (needs Python 3 and [Spriggit](https://github.com/Mutagen-Modding/Spriggit) on your PATH):
@@ -55,7 +56,7 @@ python tools/make_profile.py --kind baseline --plugin "<path>/SomePatch.esp"   -
 
 It reads the plugin's masters from its header, finds them in the game's Data folder (`--data`, or `--search <mod folder>` for masters that live in a mod), exports them with Spriggit (cached, so the next profile is fast), compares the plugin's NPC records with the originals and writes the profile. `--prior <plugin>` makes a baseline patch start from an earlier patch's records (USMP on USSEP); `--base latest` compares with the masters' latest records instead of the original ones (default `original`: a patch like USSEP then also carries what Update.esm fixed, which a look replacer built from the vanilla record loses too). Read the printed counts, then copy the file to `Data/SKSE/Plugins/NPCAIAutoPatch/profiles/`. The lower-level scripts `tools/build_forward_profile.py` and `tools/build_baseline_profile.py` take an existing export. Rerun it for a new version of the plugin.
 
-Shipped profiles: AI Overhaul 1.9 (422 NPCs) and 1.9.5 (420), USSEP 4.3.9c (498) and USMP 2.6.8b (24; mostly housecarl packages, because USMP's NPC changes are mainly on dragons and creatures). Each is used only when its plugin is loaded.
+Shipped profiles: AI Overhaul 1.9 (422 NPCs) and 1.9.5 (420), Immersive Citizens - AI Overhaul 0.4.0.2 (18 towns), USSEP 4.3.9c (498) and USMP 2.6.8b (24; mostly housecarl packages, because USMP's NPC changes are mainly on dragons and creatures). Each is used only when its plugin is loaded.
 
 ## Credits
 - **AI Overhaul** is by SpiderAkira and mnikjom (Nexus mod 21654). The profiles list references taken from its plugin; this plugin needs the mod installed and contains none of its files. Please endorse and support it.

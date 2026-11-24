@@ -27,43 +27,9 @@ namespace Core
 			return a_s;
 		}
 
-		constexpr auto kIcaio = "Immersive Citizens - AI Overhaul.esp";
-		constexpr auto kSky = "Skyrim.esm";
-
-		// The towns ICAIO has "extra citizen" records for. crime = the hold's crime faction, town = the town's faction (both Skyrim.esm). package and combat
-		// are ICAIO's own (Immersive Citizens - AI Overhaul.esp, 0.4.0.2): the town's NPCO<Town>ExtraCitizen... package and its NPCO<Town>ExtraCitizen form list.
-		struct TownRule
-		{
-			const char*   name;
-			std::uint32_t crime, town, package, combat;
-		};
-		constexpr TownRule kTowns[] = {
-			{ "Whiterun", 0x0267EA, 0x028172, 0xA74D3C, 0x31E2DA },
-			{ "Riverwood", 0x0267EA, 0x013481, 0xABBB88, 0x238A7B },
-			{ "Falkreath", 0x028170, 0x028177, 0xAD509D, 0x238FE8 },
-			{ "Rorikstead", 0x0267EA, 0x028174, 0xABBB89, 0x238FE2 },
-			{ "Ivarstead", 0x02816B, 0x028185, 0xAC0C89, 0x238FE4 },
-			{ "Darkwater Crossing", 0x0267E3, 0x028183, 0xAC0C8B, 0x23955D },
-			{ "Riften", 0x02816B, 0x028186, 0xAD50A0, 0x3284E5 },
-			{ "Dawnstar", 0x02816E, 0x02817F, 0xAD509B, 0x32D5FD },
-			{ "Morthal", 0x02816D, 0x02817D, 0xAD509F, 0x238FEE },
-			{ "Dragon Bridge", 0x029DB0, 0x02817B, 0xABBB8D, 0x238FF4 },
-			{ "Windhelm", 0x0267E3, 0x028173, 0xAD50A2, 0x3284EF },
-			{ "Shor's Stone", 0x02816B, 0x028184, 0xAC0C8C, 0x23955B },
-			{ "Kynesgrove", 0x0267E3, 0x028182, 0xABBB8C, 0x239AC1 },
-			{ "Solitude", 0x029DB0, 0x02817C, 0xAD50A1, 0x3284E9 },
-			{ "Stone Hills", 0x02816D, 0x02817E, 0xA74D3D, 0x238FEB },
-			{ "Winterhold", 0x02816F, 0x028181, 0x332712, 0x239AC7 },
-			{ "Markarth", 0x02816C, 0x028178, 0xAD509E, 0x3284EC },
-			{ "Karthwasten", 0x02816C, 0x02817A, 0xAC0C8A, 0x238FF1 },
-		};
-
-		// factions whose members ICAIO's quests, or the people who use them, treat on their own: guards, the war, Thalmor, Penitus Oculatus, the Companions, the
-		// College, the Dark Brotherhood, the Thieves Guild, the Forsworn, the Imperial justiciars and the Dawnguard faction ICAIO's quests exclude
-		constexpr std::uint32_t kBlackSky[] = { 0x086EEE, 0x02BF9A, 0x02BF9B, 0x028849, 0x02584B, 0x039F26, 0x048362, 0x01F259, 0x01BDB3, 0x029DA9, 0x043599, 0x0B79AC };
-		constexpr std::uint32_t kBlackDawnguard = 0x003375;
-		constexpr std::uint32_t kCitizens = 0x2FDA89, kExclusion = 0x237FB4;  // ICAIO's NPCO_CitizensFaction and NPCO_ExclusionFaction
-		constexpr std::uint32_t kPotentialFollower = 0x05C84D;
+		// The town step is data: profiles/*.json of type "town" (profiles/icaio.json is Immersive Citizens - AI Overhaul's) list, per town, the crime faction, the
+		// town's faction, the package and the combat override list its extra citizens get, plus the citizens / exclusion factions, the factions to leave alone and the
+		// follower faction.
 
 		const std::set<std::string> kOfficial = { "skyrim.esm", "update.esm", "dawnguard.esm", "hearthfires.esm", "dragonborn.esm" };
 
@@ -117,7 +83,7 @@ namespace Core
 
 		struct Town
 		{
-			const TownRule*   rule;
+			std::string       name;
 			RE::TESFaction*   crime{ nullptr };
 			RE::TESFaction*   town{ nullptr };
 			RE::TESPackage*   package{ nullptr };
@@ -1254,8 +1220,53 @@ namespace Core
 			SKSE::log::warn("could not write report.json: {}", e.what());
 		}
 		};
-		g_info.icaio = dh->LookupModByName(kIcaio) != nullptr;
 		g_info.three = dh->LookupModByName("3DNPC.esp") != nullptr;
+
+		// ---- the town profiles whose plugin is loaded (profiles/*.json of type "town", in name order)
+		struct TownProfile
+		{
+			std::string                     name;
+			std::set<std::string>           own;  // plugins that are the overhaul itself (lower case): their people and packages are never "mod-added"
+			RE::TESFaction *                citizens{ nullptr }, *exclusion{ nullptr }, *follower{ nullptr };
+			std::set<const RE::TESFaction*> black;
+			std::vector<Town>               towns;
+			nlohmann::json                  json;
+		};
+		std::vector<TownProfile> tprofs;
+		{
+			std::error_code ec;
+			std::vector<nlohmann::json> found;
+			const auto dir = Dir() / "profiles";
+			if (std::filesystem::is_directory(dir, ec)) {
+				for (const auto& entry : std::filesystem::directory_iterator(dir, ec)) {
+					if (entry.path().extension() != ".json") {
+						continue;
+					}
+					std::ifstream in(entry.path());
+					auto          prof = nlohmann::json::parse(in, nullptr, false, true);
+					if (prof.is_discarded() || prof.value("type", std::string()) != "town") {
+						continue;
+					}
+					if (!prof.contains("name")) {
+						prof["name"] = entry.path().stem().string();
+					}
+					found.push_back(std::move(prof));
+				}
+			}
+			std::sort(found.begin(), found.end(), [](const auto& x, const auto& y) { return x.value("name", std::string()) < y.value("name", std::string()); });
+			for (auto& prof : found) {
+				const std::string requires_ = prof.value("requires", std::string());
+				if (!requires_.empty() && !dh->LookupModByName(requires_)) {
+					SKSE::log::info("town profile '{}': {} is not loaded, skipped", prof.value("name", std::string()), requires_);
+					continue;
+				}
+				g_info.icaio = true;  // Immersive Citizens - AI Overhaul is loaded
+				TownProfile tp;
+				tp.name = prof.value("name", std::string());
+				tp.json = std::move(prof);
+				tprofs.push_back(std::move(tp));
+			}
+		}
 		SKSE::log::info("Immersive Citizens - AI Overhaul: {}, Interesting NPCs (3DNPC): {}", g_info.icaio ? "loaded" : "NOT loaded", g_info.three ? "loaded" : "not loaded");
 		if (!g_info.icaio || !g_cfg.icaioStep) {
 			finish();
@@ -1263,162 +1274,178 @@ namespace Core
 		}
 		g_info.ran = true;
 
-		// ---- ICAIO's records and the vanilla factions, looked up by id; a town whose records are not all found is left out and says so
-		std::vector<Town> towns;
-		for (const auto& r : kTowns) {
-			Town t{ &r };
-			t.crime = dh->LookupForm<RE::TESFaction>(r.crime, kSky);
-			t.town = dh->LookupForm<RE::TESFaction>(r.town, kSky);
-			t.package = dh->LookupForm<RE::TESPackage>(r.package, kIcaio);
-			t.combat = dh->LookupForm<RE::BGSListForm>(r.combat, kIcaio);
-			t.ok = t.crime && t.town && t.package && t.combat;
-			if (!t.ok) {
-				g_info.townsDisabled.push_back(r.name);
-				SKSE::log::warn("{}: ICAIO records not found (crime {} town {} package {} combat list {}): this town is left out", r.name, !!t.crime, !!t.town, !!t.package, !!t.combat);
-			} else {
-				++g_info.towns;
+		// ---- the profile's records, looked up by reference; a town whose records are not all found is left out and says so
+		const auto face = [&](const nlohmann::json& a_j, const char* a_key) -> RE::TESFaction* {
+			const auto it = a_j.find(a_key);
+			auto*      f = it != a_j.end() && it->is_string() ? FindRef(dh, it->get<std::string>()) : nullptr;
+			return f ? f->As<RE::TESFaction>() : nullptr;
+		};
+		for (auto& tp : tprofs) {
+			const auto& pj = tp.json;
+			for (const auto& o : pj.value("ownPlugins", nlohmann::json::array())) {
+				tp.own.insert(Lower(o.get<std::string>()));
 			}
-			towns.push_back(t);
-		}
-		auto* citizens = dh->LookupForm<RE::TESFaction>(kCitizens, kIcaio);
-		auto* exclusion = dh->LookupForm<RE::TESFaction>(kExclusion, kIcaio);
-		if (!citizens || !exclusion) {
-			SKSE::log::error("ICAIO's citizens or exclusion faction was not found: nothing is changed");
-			finish();
-			return;
-		}
-		std::set<const RE::TESFaction*> black;
-		for (const auto id : kBlackSky) {
-			if (auto* f = dh->LookupForm<RE::TESFaction>(id, kSky)) {
-				black.insert(f);
-			}
-		}
-		if (auto* f = dh->LookupForm<RE::TESFaction>(kBlackDawnguard, "Dawnguard.esm")) {
-			black.insert(f);
-		}
-		black.insert(exclusion);
-		auto* follower = dh->LookupForm<RE::TESFaction>(kPotentialFollower, kSky);
-
-		// ---- every NPC that a mod defines
-		for (auto* npc : dh->GetFormArray<RE::TESNPC>()) {
-			if (!npc || npc->IsDeleted()) {
-				continue;
-			}
-			const auto* file = npc->GetFile(0);
-			const std::string plugin = file ? Lower(std::string(file->GetFilename())) : std::string();
-			if (plugin.empty() || kOfficial.count(plugin) || plugin == Lower(kIcaio)) {
-				continue;
-			}
-			// does it stand in a town and its hold's crime faction? (cheap test first: most NPCs of a mod are not citizens)
-			const Town* hit = nullptr;
-			bool        isBlack = false, isFollower = false, already = false;
-			for (const auto& fr : npc->factions) {
-				if (!fr.faction) {
-					continue;
-				}
-				isBlack = isBlack || black.count(fr.faction) > 0;
-				already = already || fr.faction == citizens;
-				isFollower = isFollower || fr.faction == follower;
-			}
-			for (const auto& t : towns) {
+			for (const auto& r : pj.value("towns", nlohmann::json::array())) {
+				Town t;
+				t.name = r.value("name", std::string());
+				t.crime = face(r, "crime");
+				t.town = face(r, "town");
+				const auto pk = r.find("package"), cb = r.find("combat");
+				auto*      pf = pk != r.end() && pk->is_string() ? FindRef(dh, pk->get<std::string>()) : nullptr;
+				auto*      cf = cb != r.end() && cb->is_string() ? FindRef(dh, cb->get<std::string>()) : nullptr;
+				t.package = pf ? pf->As<RE::TESPackage>() : nullptr;
+				t.combat = cf ? cf->As<RE::BGSListForm>() : nullptr;
+				t.ok = t.crime && t.town && t.package && t.combat;
 				if (!t.ok) {
+					g_info.townsDisabled.push_back(t.name);
+					SKSE::log::warn("{}: ICAIO records not found (crime {} town {} package {} combat list {}): this town is left out", t.name, !!t.crime, !!t.town, !!t.package, !!t.combat);
+				} else {
+					++g_info.towns;
+				}
+				tp.towns.push_back(std::move(t));
+			}
+			tp.citizens = face(pj, "citizens");
+			tp.exclusion = face(pj, "exclusion");
+			if (!tp.citizens || !tp.exclusion) {
+				SKSE::log::error("ICAIO's citizens or exclusion faction was not found: nothing is changed");
+				tp.towns.clear();
+				continue;
+			}
+			for (const auto& r : pj.value("skipFactions", nlohmann::json::array())) {
+				auto* f = r.is_string() ? FindRef(dh, r.get<std::string>()) : nullptr;
+				if (auto* fac = f ? f->As<RE::TESFaction>() : nullptr) {
+					tp.black.insert(fac);
+				}
+			}
+			tp.black.insert(tp.exclusion);
+			tp.follower = face(pj, "follower");
+		}
+
+		for (auto& tp : tprofs) {
+			if (tp.towns.empty()) {
+				continue;
+			}
+			// ---- every NPC that a mod defines
+			for (auto* npc : dh->GetFormArray<RE::TESNPC>()) {
+				if (!npc || npc->IsDeleted()) {
 					continue;
 				}
-				bool inTown = false, inCrime = false;
+				const auto* file = npc->GetFile(0);
+				const std::string plugin = file ? Lower(std::string(file->GetFilename())) : std::string();
+				if (plugin.empty() || kOfficial.count(plugin) || tp.own.count(plugin) > 0) {
+					continue;
+				}
+				// does it stand in a town and its hold's crime faction? (cheap test first: most NPCs of a mod are not citizens)
+				const Town* hit = nullptr;
+				bool        isBlack = false, isFollower = false, already = false;
 				for (const auto& fr : npc->factions) {
-					inTown = inTown || fr.faction == t.town;
-					inCrime = inCrime || fr.faction == t.crime;
+					if (!fr.faction) {
+						continue;
+					}
+					isBlack = isBlack || tp.black.count(fr.faction) > 0;
+					already = already || fr.faction == tp.citizens;
+					isFollower = isFollower || fr.faction == tp.follower;
 				}
-				if (inTown && inCrime) {
-					hit = &t;
-					break;
+				for (const auto& t : tp.towns) {
+					if (!t.ok) {
+						continue;
+					}
+					bool inTown = false, inCrime = false;
+					for (const auto& fr : npc->factions) {
+						inTown = inTown || fr.faction == t.town;
+						inCrime = inCrime || fr.faction == t.crime;
+					}
+					if (inTown && inCrime) {
+						hit = &t;
+						break;
+					}
 				}
-			}
-			if (!hit) {
-				continue;
-			}
-			++g_info.looked;
-			Row row;
-			row.name = npc->GetName() ? npc->GetName() : "";
-			row.plugin = plugin;
-			row.town = hit->rule->name;
-			const auto skip = [&](const char* why) {
-				row.status = Status::Left;
-				row.reason = why;
-				++g_info.skipped[why];
-				g_rows.push_back(row);
-			};
-			if (g_cfg.exclude.count(plugin)) {
-				skip("the mod is excluded in the menu");
-				continue;
-			}
-			if (row.name.empty()) {
-				skip("no name");
-				continue;
-			}
-			{
-				bool wins = false;
-				for (const auto& c : ChainOf(npc)) {
-					wins = wins || g_cfg.wins.count(c) > 0;
-				}
-				if (wins) {
-					skip("a plugin that must win (Better Vampires) changes this NPC");
+				if (!hit) {
 					continue;
 				}
-			}
-			const auto lname = Lower(row.name);
-			bool       named = false;
-			for (const auto& w : g_cfg.excludeNames) {
-				named = named || lname.find(w) != std::string::npos;
-			}
-			if (named) {
-				skip("its name contains an excluded word");
-				continue;
-			}
-			if (!npc->race || !npc->race->HasKeywordString("ActorTypeNPC")) {
-				skip("not a person (race without ActorTypeNPC)");
-				continue;
-			}
-			if (isBlack) {
-				skip("in a guard, war, Thalmor, guild or other faction that ICAIO leaves to its own rules");
-				continue;
-			}
-			if (isFollower && !g_cfg.followers) {
-				skip("can be a follower (followers are switched off)");
-				continue;
-			}
-			if (already) {
-				skip("already has ICAIO's citizens faction");
-				continue;
-			}
-			if (npc->actorData.templateUseFlags.any(RE::ACTOR_BASE_DATA::TEMPLATE_USE_FLAG::kFactions, RE::ACTOR_BASE_DATA::TEMPLATE_USE_FLAG::kAIPackages)) {
-				skip("takes its factions or packages from a template");
-				continue;
-			}
-			bool hasIcaioPackage = false;
-			for (const auto* pkg : npc->aiPackages.packages) {
-				const auto* pf = pkg ? pkg->GetFile(0) : nullptr;
-				hasIcaioPackage = hasIcaioPackage || (pf && Lower(std::string(pf->GetFilename())) == Lower(kIcaio));
-			}
-			if (hasIcaioPackage) {
-				skip("already has an ICAIO package");
-				continue;
-			}
-			if (g_cfg.apply) {
-				npc->aiPackages.packages.push_front(hit->package);
-				npc->factions.push_back({ citizens, 0 });
-				npc->factions.push_back({ exclusion, 0 });
-				if (!npc->enterCombatOverRidePackList) {
-					npc->enterCombatOverRidePackList = hit->combat;
+				++g_info.looked;
+				Row row;
+				row.name = npc->GetName() ? npc->GetName() : "";
+				row.plugin = plugin;
+				row.town = hit->name;
+				const auto skip = [&](const char* why) {
+					row.status = Status::Left;
+					row.reason = why;
+					++g_info.skipped[why];
+					g_rows.push_back(row);
+				};
+				if (g_cfg.exclude.count(plugin)) {
+					skip("the mod is excluded in the menu");
+					continue;
 				}
-				row.status = Status::Patched;
-				row.reason = "given the town's ICAIO package, factions and combat list";
-			} else {
-				row.status = Status::Planned;
-				row.reason = "would be given the town's ICAIO package, factions and combat list (apply is off)";
+				if (row.name.empty()) {
+					skip("no name");
+					continue;
+				}
+				{
+					bool wins = false;
+					for (const auto& c : ChainOf(npc)) {
+						wins = wins || g_cfg.wins.count(c) > 0;
+					}
+					if (wins) {
+						skip("a plugin that must win (Better Vampires) changes this NPC");
+						continue;
+					}
+				}
+				const auto lname = Lower(row.name);
+				bool       named = false;
+				for (const auto& w : g_cfg.excludeNames) {
+					named = named || lname.find(w) != std::string::npos;
+				}
+				if (named) {
+					skip("its name contains an excluded word");
+					continue;
+				}
+				if (!npc->race || !npc->race->HasKeywordString("ActorTypeNPC")) {
+					skip("not a person (race without ActorTypeNPC)");
+					continue;
+				}
+				if (isBlack) {
+					skip("in a guard, war, Thalmor, guild or other faction that ICAIO leaves to its own rules");
+					continue;
+				}
+				if (isFollower && !g_cfg.followers) {
+					skip("can be a follower (followers are switched off)");
+					continue;
+				}
+				if (already) {
+					skip("already has ICAIO's citizens faction");
+					continue;
+				}
+				if (npc->actorData.templateUseFlags.any(RE::ACTOR_BASE_DATA::TEMPLATE_USE_FLAG::kFactions, RE::ACTOR_BASE_DATA::TEMPLATE_USE_FLAG::kAIPackages)) {
+					skip("takes its factions or packages from a template");
+					continue;
+				}
+				bool hasIcaioPackage = false;
+				for (const auto* pkg : npc->aiPackages.packages) {
+					const auto* pf = pkg ? pkg->GetFile(0) : nullptr;
+					hasIcaioPackage = hasIcaioPackage || (pf && tp.own.count(Lower(std::string(pf->GetFilename()))) > 0);
+				}
+				if (hasIcaioPackage) {
+					skip("already has an ICAIO package");
+					continue;
+				}
+				if (g_cfg.apply) {
+					npc->aiPackages.packages.push_front(hit->package);
+					npc->factions.push_back({ tp.citizens, 0 });
+					npc->factions.push_back({ tp.exclusion, 0 });
+					if (!npc->enterCombatOverRidePackList) {
+						npc->enterCombatOverRidePackList = hit->combat;
+					}
+					row.status = Status::Patched;
+					row.reason = "given the town's ICAIO package, factions and combat list";
+				} else {
+					row.status = Status::Planned;
+					row.reason = "would be given the town's ICAIO package, factions and combat list (apply is off)";
+				}
+				++g_info.perTown[row.town];
+				g_rows.push_back(row);
 			}
-			++g_info.perTown[row.town];
-			g_rows.push_back(row);
 		}
 		finish();
 	}
