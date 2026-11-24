@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.21)
 
 # NPCAIAutoPatch.dll for the older CommonLibSSE line (Skyrim SE 1.5.97, AE up to 1.6.1170, VR).
 # The same sources as the alandtse (NG) build in ../ng.cmake; NPCAIAUTOPATCH_LEGACY_COMMONLIB switches the few lines that differ.
-project(NPCAIAutoPatchLegacy VERSION 0.4.1 LANGUAGES CXX)
+project(NPCAIAutoPatchLegacy VERSION 0.4.2 LANGUAGES CXX)
 
 find_package(CommonLibSSE CONFIG REQUIRED)
 

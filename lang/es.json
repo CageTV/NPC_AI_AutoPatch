@@ -52,7 +52,17 @@
   "Why people were left alone": "Por qué se dejó sin tocar a las personas",
   "Reason": "Motivo",
   "Language": "Idioma",
-  "Windows language": "Idioma de Windows"
+  "Windows language": "Idioma de Windows",
+  "Plugins whose changes always win": "Plugins cuyos cambios siempre ganan",
+  "A person any of these plugins changes is left exactly as it is by every step. Remove one to let the patcher work on the people it changes; add a plugin to protect its people. Takes effect at the next game start.": "Una persona que cambie cualquiera de estos plugins se queda exactamente como está en todos los pasos. Quita uno para que el parcheador trabaje con las personas que cambia; añade un plugin para proteger a sus personas. Se aplica al próximo inicio del juego.",
+  "loaded": "cargado",
+  "not loaded": "no cargado",
+  "people left alone": "personas sin tocar",
+  "Remove": "Quitar",
+  "Add": "Añadir",
+  "Plugin file name (for example Better Vampires.esp)": "Nombre del archivo del plugin (por ejemplo Better Vampires.esp)",
+  "Back to the default list": "Volver a la lista por defecto",
+  "This plugin is not in your load order: it is added anyway.": "Este plugin no está en tu orden de carga: se añade de todos modos."
  },
  "phrases": {
   "given the town's ICAIO package, factions and combat list": "se le dieron el paquete, las facciones y la lista de combate de ICAIO del pueblo",

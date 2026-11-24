@@ -18,6 +18,7 @@ namespace Core
 		std::vector<Row> g_rows;
 		std::map<std::uint32_t, std::pair<std::string, nlohmann::json>> g_expected;  // NPC form id -> (profile used, its entry): for the Inspect page
 		std::map<std::uint32_t, std::pair<std::string, nlohmann::json>> g_baseline;  // NPC form id -> (baseline profile, its entry): for the Inspect page
+		std::map<std::uint32_t, std::vector<std::pair<std::string, std::string>>> g_why;  // NPC form id -> (step, why it was left alone): for the Inspect page
 
 		std::filesystem::path Dir() { return std::filesystem::path("Data/SKSE/Plugins/NPCAIAutoPatch"); }
 
@@ -37,7 +38,7 @@ namespace Core
 		{
 			g_cfg = Config{};
 			g_cfg.excludeNames = { "corpse" };
-			g_cfg.wins = { "better vampires.esp", "relationship dialogue overhaul.esp", "nwsfollowerframework.esp", "nwsff_noteammagicdamage.esp" };
+			g_cfg.wins = { "better vampires.esp", "relationship dialogue overhaul.esp", "nwsfollowerframework.esp", "nwsff_noteammagicdamage.esp" };  // see DefaultWins()
 			std::ifstream in(Dir() / "config.json");
 			if (!in) {
 				in.open("Data/SKSE/Plugins/ICAIOAutoPatch/config.json");  // the settings of the earlier name, read once
@@ -92,6 +93,14 @@ namespace Core
 		};
 	}
 
+	std::vector<std::string> DefaultWins() { return { "better vampires.esp", "relationship dialogue overhaul.esp", "nwsfollowerframework.esp", "nwsff_noteammagicdamage.esp" }; }
+
+	bool IsLoaded(const std::string& a_plugin)
+	{
+		auto* dh = RE::TESDataHandler::GetSingleton();
+		return dh && dh->LookupModByName(a_plugin) != nullptr;
+	}
+
 	Config&                 Cfg() { return g_cfg; }
 	const Summary&          Info() { return g_info; }
 	const std::vector<Row>& Rows() { return g_rows; }
@@ -126,6 +135,8 @@ namespace Core
 		}
 		std::ofstream out(Dir() / "config.json");
 		out << j.dump(2);
+		SKSE::log::info("config.json saved: {} plugin(s) that win, {} mod(s) excluded, {} profile(s) off, apply {}", g_cfg.wins.size(), g_cfg.exclude.size(), g_cfg.offProfiles.size(),
+			g_cfg.apply ? "on" : "off");
 	}
 
 	// who wins the NPCs each AI overhaul touches? (diagnostic for the planned "forward the overhaul's AI onto NPCs that a later mod overrides" step)
@@ -205,6 +216,17 @@ namespace Core
 				out.push_back(Lower(std::string(f->GetFilename())));
 			}
 			return out;
+		}
+
+		// the first plugin of the NPC's record chain that is on the "must win" list (lower case), or empty
+		std::string WinsOf(const std::vector<std::string>& a_chain)
+		{
+			for (const auto& c : a_chain) {
+				if (g_cfg.wins.count(c)) {
+					return c;
+				}
+			}
+			return {};
 		}
 
 		int  Confidence(const RE::TESNPC* a_npc) { return (reinterpret_cast<const std::uint8_t*>(&a_npc->aiData)[0] >> 2) & 7; }
@@ -352,6 +374,9 @@ namespace Core
 						row.reason = why;
 						++a_info.skipped["forward: " + why];
 						a_rows.push_back(row);
+						if (npc) {
+							g_why[npc->GetFormID()].emplace_back(name, why);
+						}
 					};
 					if (!npc) {
 						++missing;
@@ -365,11 +390,8 @@ namespace Core
 						skip("the overhaul's own record already wins");
 						continue;
 					}
-					bool wins = false;
-					for (const auto& c : chain) {
-						wins = wins || g_cfg.wins.count(c) > 0;
-					}
-					if (wins) {
+					if (const auto w = WinsOf(chain); !w.empty()) {
+						++a_info.winsSkipped[w];
 						skip("a plugin that must win (Better Vampires) changes this NPC");
 						continue;
 					}
@@ -608,14 +630,13 @@ namespace Core
 					const auto chain = ChainOf(npc);
 					if (chain.empty() || own.count(chain.back())) {
 						++a_info.skipped["baseline: the patch's own record wins"];
+						g_why[npc->GetFormID()].emplace_back(name, "the patch's own record wins");
 						continue;
 					}
-					bool wins = false;
-					for (const auto& c : chain) {
-						wins = wins || g_cfg.wins.count(c) > 0;
-					}
-					if (wins) {
+					if (const auto w = WinsOf(chain); !w.empty()) {
+						++a_info.winsSkipped[w];
 						++a_info.skipped["baseline: a plugin that must win changes this NPC"];
+						g_why[npc->GetFormID()].emplace_back(name, "a plugin that must win changes this NPC: " + w);
 						continue;
 					}
 					const auto uses = [&](Tpl a_t) { return npc->actorData.templateUseFlags.any(a_t); };
@@ -846,6 +867,7 @@ namespace Core
 
 					if (done.empty()) {
 						++a_info.skipped["baseline: already has the patch's data"];
+						g_why[npc->GetFormID()].emplace_back(name, "already has the patch's data (or a value the winner chose itself is kept)");
 						continue;
 					}
 					Row row;
@@ -1092,6 +1114,13 @@ namespace Core
 				}
 			}
 		}
+
+		// why a step left this person alone (grey rows)
+		if (const auto w = g_why.find(a_npc->GetFormID()); w != g_why.end()) {
+			for (const auto& [step, why] : w->second) {
+				add("Not changed by " + step, why, "", 0);
+			}
+		}
 		return r;
 	}
 
@@ -1180,6 +1209,7 @@ namespace Core
 		g_rows.clear();
 		g_expected.clear();
 		g_baseline.clear();
+		g_why.clear();
 		g_info = Summary{};
 		const auto audit = Audit(dh);
 		auto finish = [&]() {
@@ -1373,6 +1403,7 @@ namespace Core
 					row.reason = why;
 					++g_info.skipped[why];
 					g_rows.push_back(row);
+					g_why[npc->GetFormID()].emplace_back(tp.name, why);
 				};
 				if (g_cfg.exclude.count(plugin)) {
 					skip("the mod is excluded in the menu");
@@ -1383,11 +1414,8 @@ namespace Core
 					continue;
 				}
 				{
-					bool wins = false;
-					for (const auto& c : ChainOf(npc)) {
-						wins = wins || g_cfg.wins.count(c) > 0;
-					}
-					if (wins) {
+					if (const auto w = WinsOf(ChainOf(npc)); !w.empty()) {
+						++g_info.winsSkipped[w];
 						skip("a plugin that must win (Better Vampires) changes this NPC");
 						continue;
 					}

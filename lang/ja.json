@@ -52,7 +52,17 @@
   "Why people were left alone": "対象外になった理由",
   "Reason": "理由",
   "Language": "言語",
-  "Windows language": "Windowsの言語"
+  "Windows language": "Windowsの言語",
+  "Plugins whose changes always win": "変更が常に優先されるプラグイン",
+  "A person any of these plugins changes is left exactly as it is by every step. Remove one to let the patcher work on the people it changes; add a plugin to protect its people. Takes effect at the next game start.": "これらのプラグインのいずれかが変更した人物は、どの処理でもそのまま残されます。外すと、そのプラグインが変更した人物にもパッチャーが作用します。追加すると、そのプラグインの人物を保護します。次回のゲーム起動から有効です。",
+  "loaded": "読み込み済み",
+  "not loaded": "未読み込み",
+  "people left alone": "人物をそのまま",
+  "Remove": "外す",
+  "Add": "追加",
+  "Plugin file name (for example Better Vampires.esp)": "プラグインのファイル名（例: Better Vampires.esp）",
+  "Back to the default list": "初期リストに戻す",
+  "This plugin is not in your load order: it is added anyway.": "このプラグインはロード順にありませんが、そのまま追加されます。"
  },
  "phrases": {
   "given the town's ICAIO package, factions and combat list": "街のICAIOパッケージ・派閥・戦闘リストを付与",

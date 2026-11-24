@@ -59,6 +59,7 @@ namespace Core
 		std::vector<std::string>   profiles;          // profiles found and used (plugin loaded)
 		std::vector<std::string>   profilesNotChosen; // another edition of the same overhaul fits the loaded plugin better
 		std::map<std::string, int> profileUnresolved; // profile name -> references that name no record in this game
+		std::map<std::string, int> winsSkipped;       // plugin that must win (lower case) -> NPCs it kept the patcher away from (all steps)
 	};
 
 	// Finds the NPCs that mods add to Skyrim's towns and that Immersive Citizens - AI Overhaul's quests would never pick up, and gives them the AI that
@@ -87,6 +88,9 @@ namespace Core
 	std::vector<std::pair<std::string, std::uint32_t>> FindInProfile(const std::string& a_needle, std::size_t a_max);
 
 	std::filesystem::path   DataDir();  // Data/SKSE/Plugins/NPCAIAutoPatch
+
+	std::vector<std::string> DefaultWins();  // the plugins that win in a fresh config.json
+	bool                     IsLoaded(const std::string& a_plugin);  // is this plugin file in the load order?
 
 	Config&                 Cfg();
 	void                    SaveConfig();

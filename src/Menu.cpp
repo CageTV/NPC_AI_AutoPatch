@@ -435,9 +435,71 @@ namespace Menu
 			}
 		}
 
+		char        winsInput[128] = "";
+		std::string winsNote;  // what the last Add said
+
+		// The plugins whose changes win over every step: a person one of them changes is left exactly as it is.
+		void DrawWinsSection()
+		{
+			auto& cfg = Core::Cfg();
+			LSeparatorText("Plugins whose changes always win");
+			LTextWrapped("A person any of these plugins changes is left exactly as it is by every step. Remove one to let the patcher work on the people it changes; add a plugin to protect its people. Takes effect at the next game start.");
+			const auto& skipped = Core::Info().winsSkipped;
+			std::string toRemove;
+			for (const auto& w : cfg.wins) {
+				std::string label = w + "  (" + Lang::T(Core::IsLoaded(w) ? "loaded" : "not loaded");
+				if (const auto it = skipped.find(w); it != skipped.end()) {
+					label += ", " + std::to_string(it->second) + " " + Lang::T("people left alone");
+				}
+				label += ")";
+				ImGuiMCP::TextUnformatted(label.c_str());
+				ImGuiMCP::SameLine();
+				if (ImGuiMCP::SmallButton((std::string(Lang::T("Remove")) + "##w_" + w).c_str())) {
+					toRemove = w;
+				}
+			}
+			if (!toRemove.empty()) {
+				cfg.wins.erase(toRemove);
+				Core::SaveConfig();
+				needsRestart = true;
+			}
+			ImGuiMCP::InputText((std::string(Lang::T("Plugin file name (for example Better Vampires.esp)")) + "##wins").c_str(), winsInput, sizeof(winsInput));
+			ImGuiMCP::SameLine();
+			if (ImGuiMCP::Button((std::string(Lang::T("Add")) + "##wins").c_str())) {
+				std::string name = winsInput;
+				while (!name.empty() && name.back() == ' ') {
+					name.pop_back();
+				}
+				std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return static_cast<char>(std::tolower(c)); });
+				if (!name.empty()) {
+					cfg.wins.insert(name);
+					Core::SaveConfig();
+					needsRestart = true;
+					winsNote = Core::IsLoaded(name) ? std::string() : std::string(Lang::T("This plugin is not in your load order: it is added anyway."));
+					winsInput[0] = '\0';
+				}
+			}
+			if (LButton("Back to the default list")) {
+				cfg.wins.clear();
+				for (const auto& d : Core::DefaultWins()) {
+					cfg.wins.insert(d);
+				}
+				Core::SaveConfig();
+				needsRestart = true;
+				winsNote.clear();
+			}
+			if (!winsNote.empty()) {
+				ImGuiMCP::TextColored(ImVec4(1.0f, 0.8f, 0.4f, 1.0f), "%s", winsNote.c_str());
+			}
+			if (needsRestart) {
+				LTextColored(ImVec4(1.0f, 0.8f, 0.4f, 1.0f), "Saved. Restart the game for it to take effect.");
+			}
+		}
+
 		void __stdcall RenderMods()
 		{
 			Lang::Ensure(Core::Cfg().language);
+			DrawWinsSection();
 			if (!Core::Info().ran) {
 				LTextDisabled("Nothing to show.");
 				return;
