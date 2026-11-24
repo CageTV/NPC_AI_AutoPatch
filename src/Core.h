@@ -28,6 +28,7 @@ namespace Core
 		std::set<std::string> exclude;            // plugin file names (lower case) whose NPCs are never touched
 		std::set<std::string> excludeNames;       // NPC names containing one of these words (lower case) are never touched
 		bool                  forward = true;     // put an AI overhaul's AI back on the NPCs a later mod overrides (profiles/*.json of type forward)
+		bool                  baseline = true;    // put a bug-fix patch's (USSEP) gameplay data back on the NPCs a later mod took over (profiles/*.json with "baseline": true)
 		bool                  icaioStep = true;   // Immersive Citizens - AI Overhaul: give its AI to mod-added town NPCs
 		std::set<std::string> offProfiles;        // forward profiles (lower case names) switched off in the menu
 		std::string           profile;            // forward profile (lower case name) to use for its family, whatever fits the loaded plugin best (config.json only)
@@ -63,6 +64,10 @@ namespace Core
 	// Finds the NPCs that mods add to Skyrim's towns and that Immersive Citizens - AI Overhaul's quests would never pick up, and gives them the AI that
 	// ICAIO gives to the extra citizens of that town (its package, its combat override list, its citizens faction and its exclusion faction).
 	void Run();
+
+	// Checks again, at a later moment (main menu, new game, a save loaded), that the factions the profiles add are still on the records, puts back
+	// the ones that are gone, and logs how many it was. Something rebuilds NPC faction lists after the data has loaded.
+	void Recheck(const char* a_when);
 
 	// What the loaded game has on one NPC next to what the overhaul's profile says it should have (the Inspect page).
 	struct InspectRow

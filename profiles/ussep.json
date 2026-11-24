@@ -1,0 +1,7714 @@
+{
+ "format": 1,
+ "id": "ussep",
+ "name": "USSEP (bug fixes)",
+ "type": "forward",
+ "family": "ussep",
+ "baseline": true,
+ "priority": 0,
+ "requires": "unofficial skyrim special edition patch.esp",
+ "ownPlugins": [
+  "unofficial skyrim special edition patch.esp"
+ ],
+ "npcs": [
+  {
+   "npc": "Skyrim.esm|0661AD",
+   "name": "Adeber",
+   "packages": [
+    "Skyrim.esm|0F9955",
+    "Skyrim.esm|034BDE",
+    "Skyrim.esm|01E61A",
+    "Skyrim.esm|0661AC"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|0661AC"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01411D",
+   "name": "Adelaisa",
+   "class": {
+    "from": "Skyrim.esm|01326B",
+    "to": "Skyrim.esm|013176"
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 24,
+      "to": 31
+     },
+     "TwoHanded": {
+      "from": 15,
+      "to": 19
+     },
+     "Archery": {
+      "from": 19,
+      "to": 22
+     },
+     "Block": {
+      "from": 20,
+      "to": 27
+     },
+     "Smithing": {
+      "from": 21,
+      "to": 15
+     },
+     "HeavyArmor": {
+      "from": 20,
+      "to": 31
+     },
+     "LightArmor": {
+      "from": 19,
+      "to": 15
+     },
+     "Sneak": {
+      "from": 19,
+      "to": 15
+     },
+     "Alchemy": {
+      "from": 22,
+      "to": 15
+     },
+     "Speech": {
+      "from": 19,
+      "to": 15
+     },
+     "Enchanting": {
+      "from": 27,
+      "to": 20
+     }
+    },
+    "health": {
+     "from": 91,
+     "to": 108
+    },
+    "magicka": {
+     "from": 67,
+     "to": 50
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|01A696",
+   "name": "AelaTheHuntress",
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 28,
+      "to": 26
+     },
+     "Archery": {
+      "from": 29,
+      "to": 28
+     },
+     "Block": {
+      "from": 24,
+      "to": 23
+     },
+     "HeavyArmor": {
+      "from": 15,
+      "to": 25
+     },
+     "LightArmor": {
+      "from": 31,
+      "to": 27
+     },
+     "Sneak": {
+      "from": 26,
+      "to": 25
+     },
+     "Speech": {
+      "from": 28,
+      "to": 27
+     }
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|013BBE",
+   "name": "Ahlam",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|093B16",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01325C",
+   "name": "AiaArria",
+   "packages": [
+    "Skyrim.esm|0B3B1B",
+    "Skyrim.esm|0C4213",
+    "Skyrim.esm|0D6A0D",
+    "Skyrim.esm|0853A2",
+    "Skyrim.esm|0D6A03",
+    "Skyrim.esm|0C2A56",
+    "Skyrim.esm|034BDF"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|0853A3"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|0B3B1B",
+    "Skyrim.esm|0C4213",
+    "Skyrim.esm|0D6A0D",
+    "Skyrim.esm|0D6A03",
+    "Skyrim.esm|0853A3",
+    "Skyrim.esm|034BDF",
+    "Skyrim.esm|0C2A56"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01402E",
+   "name": "Aicantar",
+   "perksAdded": [
+    {
+     "perk": "Skyrim.esm|0581E7",
+     "rank": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0135E6",
+   "name": "Alva",
+   "packages": [
+    "unofficial skyrim special edition patch.esp|07B62C",
+    "Skyrim.esm|041FC0",
+    "Skyrim.esm|041FBF",
+    "Skyrim.esm|0DBA3C"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|041FC0",
+    "Skyrim.esm|041FBF",
+    "Skyrim.esm|0DBA3C"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013BAA",
+   "name": "Amren",
+   "packages": [
+    "Skyrim.esm|09E0B7",
+    "unofficial skyrim special edition patch.esp|044EC9",
+    "Skyrim.esm|101A69",
+    "Skyrim.esm|02C8FF",
+    "Skyrim.esm|02C901",
+    "Skyrim.esm|02C902",
+    "Skyrim.esm|0914FA"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|09E0B7",
+    "Skyrim.esm|101A69",
+    "Skyrim.esm|02C901",
+    "Skyrim.esm|02C8FF",
+    "Skyrim.esm|02C902",
+    "Skyrim.esm|0914FA"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|014137",
+   "name": "Angrenor",
+   "packages": [
+    "Skyrim.esm|0CD925",
+    "Skyrim.esm|0CD92C",
+    "Skyrim.esm|035E75",
+    "unofficial skyrim special edition patch.esp|006CA9",
+    "Skyrim.esm|0FF27F"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|0CD925",
+    "Skyrim.esm|0CD92C",
+    "Skyrim.esm|0FF27F",
+    "Skyrim.esm|035E75"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0D6AD8",
+   "name": "AquilliusAeresius",
+   "packages": [
+    "Skyrim.esm|01B435",
+    "Skyrim.esm|01B210",
+    "Skyrim.esm|0C97B8"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|034BEB"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|034BEB",
+    "Skyrim.esm|01B435",
+    "Skyrim.esm|01B210",
+    "Skyrim.esm|0C97B8"
+   ],
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 20,
+      "to": 22
+     },
+     "Archery": {
+      "from": 15,
+      "to": 17
+     },
+     "Smithing": {
+      "from": 15,
+      "to": 19
+     },
+     "LightArmor": {
+      "from": 15,
+      "to": 17
+     },
+     "Sneak": {
+      "from": 15,
+      "to": 18
+     },
+     "Alchemy": {
+      "from": 15,
+      "to": 19
+     },
+     "Speech": {
+      "from": 15,
+      "to": 18
+     },
+     "Enchanting": {
+      "from": 20,
+      "to": 24
+     }
+    },
+    "health": {
+     "from": 1,
+     "to": 75
+    },
+    "magicka": {
+     "from": 50,
+     "to": 60
+    },
+    "stamina": {
+     "from": 50,
+     "to": 60
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|01334A",
+   "name": "Aringoth",
+   "packages": [
+    "Skyrim.esm|056314",
+    "Skyrim.esm|01B217"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|056314"
+   ],
+   "skills": {
+    "values": {
+     "Archery": {
+      "from": 30,
+      "to": 40
+     },
+     "LightArmor": {
+      "from": 31,
+      "to": 36
+     },
+     "Pickpocket": {
+      "from": 15,
+      "to": 20
+     },
+     "Lockpicking": {
+      "from": 15,
+      "to": 20
+     },
+     "Sneak": {
+      "from": 20,
+      "to": 25
+     },
+     "Alchemy": {
+      "from": 15,
+      "to": 20
+     },
+     "Alteration": {
+      "from": 20,
+      "to": 15
+     },
+     "Conjuration": {
+      "from": 20,
+      "to": 15
+     },
+     "Destruction": {
+      "from": 20,
+      "to": 15
+     },
+     "Illusion": {
+      "from": 25,
+      "to": 15
+     },
+     "Restoration": {
+      "from": 20,
+      "to": 15
+     },
+     "Enchanting": {
+      "from": 20,
+      "to": 15
+     }
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|014127",
+   "name": "Arivanya",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|0E73C9",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01BDB0",
+   "name": "Arnbjorn",
+   "class": {
+    "from": "Skyrim.esm|01317F",
+    "to": "Skyrim.esm|01CE16"
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 28,
+      "to": 23
+     },
+     "TwoHanded": {
+      "from": 25,
+      "to": 33
+     },
+     "Block": {
+      "from": 20,
+      "to": 26
+     },
+     "LightArmor": {
+      "from": 26,
+      "to": 29
+     },
+     "Sneak": {
+      "from": 24,
+      "to": 15
+     },
+     "Alteration": {
+      "from": 18,
+      "to": 15
+     }
+    },
+    "health": {
+     "from": 183,
+     "to": 196
+    },
+    "magicka": {
+     "from": 57,
+     "to": 50
+    },
+    "stamina": {
+     "from": 120,
+     "to": 114
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|01C19D",
+   "name": "ArnielGane",
+   "class": {
+    "from": "Skyrim.esm|0C969F",
+    "to": "unofficial skyrim special edition patch.esp|006CAA"
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 57,
+      "to": 15
+     },
+     "Sneak": {
+      "from": 36,
+      "to": 15
+     },
+     "Destruction": {
+      "from": 15,
+      "to": 78
+     }
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|029DAD",
+   "name": "Arnskar",
+   "packages": [
+    "unofficial skyrim special edition patch.esp|077A6E",
+    "Skyrim.esm|0EF577"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|0EF577"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013B7B",
+   "name": "Arob",
+   "skills": {
+    "magicka": {
+     "from": 67,
+     "to": 50
+    },
+    "stamina": {
+     "from": 100,
+     "to": 117
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|01334B",
+   "name": "Asgeir",
+   "packages": [
+    "Skyrim.esm|044D28",
+    "Skyrim.esm|06D62D",
+    "Skyrim.esm|0445BE",
+    "Skyrim.esm|044D27",
+    "Skyrim.esm|0445BB",
+    "Skyrim.esm|0445BC",
+    "Skyrim.esm|01B217"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|044D28",
+    "Skyrim.esm|06D62D",
+    "Skyrim.esm|0445BE",
+    "Skyrim.esm|0445BC",
+    "Skyrim.esm|044D27",
+    "Skyrim.esm|0445BB",
+    "Skyrim.esm|01B217"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01C18A",
+   "name": "Assur",
+   "factionsAdded": [
+    {
+     "form": "Update.esm|90000C",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013295",
+   "name": "AtAfAlan",
+   "packages": [
+    "Skyrim.esm|0B3B1B",
+    "Skyrim.esm|0D6A12",
+    "Skyrim.esm|0D6A10",
+    "Skyrim.esm|08539F",
+    "Skyrim.esm|0D6A00",
+    "Skyrim.esm|095884",
+    "Skyrim.esm|0C2A57",
+    "Skyrim.esm|034BDF"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|095842"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|0B3B1B",
+    "Skyrim.esm|095842",
+    "Skyrim.esm|0D6A12",
+    "Skyrim.esm|0D6A10",
+    "Skyrim.esm|0D6A00",
+    "Skyrim.esm|034BDF"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01A6D5",
+   "name": "Athis",
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 23,
+      "to": 22
+     },
+     "Archery": {
+      "from": 21,
+      "to": 20
+     },
+     "Block": {
+      "from": 21,
+      "to": 20
+     },
+     "HeavyArmor": {
+      "from": 24,
+      "to": 22
+     },
+     "LightArmor": {
+      "from": 20,
+      "to": 25
+     }
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|019E18",
+   "name": "Atub",
+   "packages": [
+    "Skyrim.esm|028D4B",
+    "Skyrim.esm|01B210",
+    "unofficial skyrim special edition patch.esp|00284D"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|01E606"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|028D4B",
+    "Skyrim.esm|01B210",
+    "Skyrim.esm|01E606"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|014132",
+   "name": "AventusAretino",
+   "packages": [
+    "Skyrim.esm|050DB0",
+    "Skyrim.esm|026679",
+    "Skyrim.esm|02661F",
+    "Skyrim.esm|050DAF"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|016FA9"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|050DB0",
+    "Skyrim.esm|050DAF",
+    "Skyrim.esm|016FA9"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013B9A",
+   "name": "AvulsteinGrayMane",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|01745F",
+     "rank": 0
+    }
+   ],
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|01CE16"
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 28,
+      "to": 23
+     },
+     "TwoHanded": {
+      "from": 28,
+      "to": 33
+     },
+     "HeavyArmor": {
+      "from": 24,
+      "to": 15
+     },
+     "LightArmor": {
+      "from": 20,
+      "to": 29
+     }
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|019A2A",
+   "name": "AzzadaLylvieve",
+   "packages": [
+    "Skyrim.esm|02EBF7",
+    "Skyrim.esm|0862F9",
+    "Skyrim.esm|0862F6",
+    "Skyrim.esm|0862FA",
+    "Skyrim.esm|01B210",
+    "Skyrim.esm|01B217"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|0862F9",
+    "Skyrim.esm|02EBF7",
+    "Skyrim.esm|0862F6",
+    "Skyrim.esm|0862FA",
+    "Skyrim.esm|01B210",
+    "Skyrim.esm|01B217"
+   ],
+   "keywordsAdded": [
+    "Skyrim.esm|0EDF14"
+   ]
+  },
+  {
+   "npc": "HearthFires.esm|00BE12",
+   "name": "BYOHCarriageDriver2",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|02816D",
+     "rank": 0
+    }
+   ],
+   "crimeFaction": {
+    "from": "Skyrim.esm|028170",
+    "to": "Skyrim.esm|02816D"
+   }
+  },
+  {
+   "npc": "HearthFires.esm|010FBA",
+   "name": "BYOHCarriageDriver3",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|02816E",
+     "rank": 0
+    }
+   ],
+   "crimeFaction": {
+    "from": "Skyrim.esm|028170",
+    "to": "Skyrim.esm|02816E"
+   }
+  },
+  {
+   "npc": "HearthFires.esm|019630",
+   "name": "BYOHHouse2Bard",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|02816D",
+     "rank": 0
+    }
+   ],
+   "crimeFaction": {
+    "from": "Skyrim.esm|028170",
+    "to": "Skyrim.esm|02816D"
+   }
+  },
+  {
+   "npc": "HearthFires.esm|019631",
+   "name": "BYOHHouse3Bard",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|02816E",
+     "rank": 0
+    }
+   ],
+   "crimeFaction": {
+    "from": "Skyrim.esm|028170",
+    "to": "Skyrim.esm|02816E"
+   }
+  },
+  {
+   "npc": "HearthFires.esm|00521B",
+   "name": "BYOHHousecarlHjaalmarch",
+   "skills": {
+    "values": {
+     "HeavyArmor": {
+      "from": 29,
+      "to": 15
+     },
+     "LightArmor": {
+      "from": 20,
+      "to": 34
+     }
+    }
+   }
+  },
+  {
+   "npc": "HearthFires.esm|00521E",
+   "name": "BYOHHousecarlPale",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|01CE15"
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 39,
+      "to": 27
+     },
+     "TwoHanded": {
+      "from": 32,
+      "to": 44
+     }
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|01D4B7",
+   "name": "Babette",
+   "packages": [
+    "Skyrim.esm|04016C",
+    "Skyrim.esm|0481AB",
+    "Skyrim.esm|077372",
+    "unofficial skyrim special edition patch.esp|037D95",
+    "Skyrim.esm|0956B8"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|04016C",
+    "Skyrim.esm|0481AB",
+    "Skyrim.esm|077372",
+    "Skyrim.esm|0956B8"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0AE779",
+   "name": "Badnir",
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 5,
+      "to": 27
+     },
+     "TwoHanded": {
+      "from": 5,
+      "to": 27
+     },
+     "Archery": {
+      "from": 5,
+      "to": 19
+     },
+     "Block": {
+      "from": 5,
+      "to": 24
+     },
+     "Smithing": {
+      "from": 5,
+      "to": 20
+     },
+     "HeavyArmor": {
+      "from": 5,
+      "to": 22
+     },
+     "LightArmor": {
+      "from": 5,
+      "to": 20
+     },
+     "Pickpocket": {
+      "from": 5,
+      "to": 15
+     },
+     "Lockpicking": {
+      "from": 5,
+      "to": 15
+     },
+     "Sneak": {
+      "from": 5,
+      "to": 15
+     },
+     "Alchemy": {
+      "from": 5,
+      "to": 15
+     },
+     "Speech": {
+      "from": 5,
+      "to": 20
+     },
+     "Alteration": {
+      "from": 5,
+      "to": 15
+     },
+     "Conjuration": {
+      "from": 5,
+      "to": 15
+     },
+     "Destruction": {
+      "from": 5,
+      "to": 15
+     },
+     "Illusion": {
+      "from": 5,
+      "to": 15
+     },
+     "Restoration": {
+      "from": 5,
+      "to": 15
+     },
+     "Enchanting": {
+      "from": 5,
+      "to": 15
+     }
+    },
+    "health": {
+     "from": 11,
+     "to": 85
+    },
+    "magicka": {
+     "from": 10,
+     "to": 50
+    },
+    "stamina": {
+     "from": 65535,
+     "to": 60
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|019955",
+   "name": "Bagrak",
+   "skills": {
+    "magicka": {
+     "from": 67,
+     "to": 50
+    },
+    "stamina": {
+     "from": 100,
+     "to": 117
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|038C6E",
+   "name": "BalagogGroNolob",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|02816E",
+     "rank": 0
+    }
+   ],
+   "crimeFaction": {
+    "from": "Skyrim.esm|02816C",
+    "to": "Skyrim.esm|02816E"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|013BBD",
+   "name": "BalgruuftheGreater",
+   "flagsAdded": [
+    "Essential"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|09A7A8",
+   "name": "Banning",
+   "packages": [
+    "Skyrim.esm|09BB4B",
+    "Skyrim.esm|01E61A",
+    "Skyrim.esm|09A7B4",
+    "Skyrim.esm|01E618",
+    "Skyrim.esm|01B210",
+    "Skyrim.esm|01B217"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|09BB4B",
+    "Skyrim.esm|09A7B4",
+    "Skyrim.esm|01E61A",
+    "Skyrim.esm|01E618",
+    "Skyrim.esm|01B210",
+    "Skyrim.esm|01B217"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01334D",
+   "name": "Bersi",
+   "factionsAdded": [
+    {
+     "form": "Update.esm|000944",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013264",
+   "name": "BolgeirBearclaw",
+   "packages": [
+    "Skyrim.esm|01E61A",
+    "unofficial skyrim special edition patch.esp|029B0C",
+    "Skyrim.esm|034BF0"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|10C06A"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|01E61A",
+    "Skyrim.esm|10C06A",
+    "Skyrim.esm|034BF0"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013651",
+   "name": "Bolund",
+   "packages": [
+    "Skyrim.esm|0CDEC4",
+    "Skyrim.esm|0CDEC5",
+    "Skyrim.esm|0862F0",
+    "Skyrim.esm|01B210",
+    "Skyrim.esm|0CF016"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|0CDEC4",
+    "Skyrim.esm|0CDEC5",
+    "Skyrim.esm|0862F0",
+    "Skyrim.esm|0CF016"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|019959",
+   "name": "Borgakh",
+   "skills": {
+    "magicka": {
+     "from": 80,
+     "to": 50
+    },
+    "stamina": {
+     "from": 100,
+     "to": 130
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|01338A",
+   "name": "Borkul",
+   "packages": [
+    "Skyrim.esm|0E2511",
+    "Skyrim.esm|10F79C",
+    "Skyrim.esm|10F79D",
+    "Skyrim.esm|0D9230",
+    "Skyrim.esm|0DC539",
+    "Skyrim.esm|01B217"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|0E2511",
+    "Skyrim.esm|10F79C",
+    "Skyrim.esm|10F79D",
+    "Skyrim.esm|0DC539",
+    "Skyrim.esm|0D9230",
+    "Skyrim.esm|01B217"
+   ],
+   "skills": {
+    "magicka": {
+     "from": 80,
+     "to": 50
+    },
+    "stamina": {
+     "from": 50,
+     "to": 80
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|013BA7",
+   "name": "Brenuin",
+   "packages": [
+    "Skyrim.esm|08F15A",
+    "Skyrim.esm|09191A",
+    "Skyrim.esm|09191B",
+    "Skyrim.esm|034BE8",
+    "Skyrim.esm|02C90E"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|08F15A",
+    "Skyrim.esm|09191A",
+    "Skyrim.esm|09191B",
+    "Skyrim.esm|02C90E"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01A6A2",
+   "name": "Brill",
+   "flagsAdded": [
+    "Essential"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013613",
+   "name": "Bulfrek",
+   "packages": [
+    "Skyrim.esm|10FE78",
+    "Skyrim.esm|0A9272",
+    "Skyrim.esm|103AEA",
+    "Skyrim.esm|103AE9",
+    "Skyrim.esm|103AEB",
+    "Skyrim.esm|01CB1A",
+    "Skyrim.esm|0877C5"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|01B217"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|10FE78",
+    "Skyrim.esm|0A9272",
+    "Skyrim.esm|103AEA",
+    "Skyrim.esm|103AE9",
+    "Skyrim.esm|103AEB",
+    "Skyrim.esm|0877C5",
+    "Skyrim.esm|01B217"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|106269",
+   "name": "C04GlenmorilWitchHeadless",
+   "keywordsAdded": [
+    "Skyrim.esm|06F6FB"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0F6087",
+   "name": "CR13FarkasWolfSpirit",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0F6089",
+   "name": "CR13VilkasWolfSpirit",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0D0570",
+   "name": "CWBattleGalmar",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|01CE16"
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 39,
+      "to": 27
+     },
+     "TwoHanded": {
+      "from": 32,
+      "to": 44
+     },
+     "HeavyArmor": {
+      "from": 35,
+      "to": 15
+     },
+     "LightArmor": {
+      "from": 20,
+      "to": 40
+     }
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0D0573",
+   "name": "CWBattleRikke",
+   "combatStyle": {
+    "from": null,
+    "to": "Skyrim.esm|0E6C50"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0D0575",
+   "name": "CWBattleUlfric",
+   "spellsAdded": [
+    "Skyrim.esm|013E07",
+    "Skyrim.esm|070981"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|08454E",
+   "name": "CWFieldCOImperialEastmarch",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|08455E",
+   "name": "CWFieldCOImperialFalkreath",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0844B1",
+   "name": "CWFieldCOImperialHaafingar",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0844B2",
+   "name": "CWFieldCOImperialHjaalmarch",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|084539",
+   "name": "CWFieldCOImperialPale",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0844D0",
+   "name": "CWFieldCOImperialReach",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|08454F",
+   "name": "CWFieldCOImperialRift",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0844D1",
+   "name": "CWFieldCOImperialWhiterun",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|08453A",
+   "name": "CWFieldCOImperialWinterhold",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|084551",
+   "name": "CWFieldCOSonsEastmarch",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|08455F",
+   "name": "CWFieldCOSonsFalkreath",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|084550",
+   "name": "CWFieldCOSonsHaafingar",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|084552",
+   "name": "CWFieldCOSonsHjaalmarch",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|084553",
+   "name": "CWFieldCOSonsPale",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|084556",
+   "name": "CWFieldCOSonsReach",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|08455B",
+   "name": "CWFieldCOSonsRift",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|08455D",
+   "name": "CWFieldCOSonsWhiterun",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|084568",
+   "name": "CWFieldCOSonsWinterhold",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0EA329",
+   "name": "CWFort04SoldierCommanderImperial",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0EA32C",
+   "name": "CWFort04SoldierCommanderSons",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0EA325",
+   "name": "CWFort04SoldierImperial",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0EA326",
+   "name": "CWFort04SoldierSons",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|051B4B",
+   "name": "CWFortSoldierCommanderImperial",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|051B4C",
+   "name": "CWFortSoldierCommanderSons",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|037B66",
+   "name": "CWFortSoldierImperial",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|037B67",
+   "name": "CWFortSoldierSons",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0FD826",
+   "name": "CWFortSoldierSonsWounded",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|01338E",
+   "name": "Calcelmo",
+   "perksAdded": [
+    {
+     "perk": "Skyrim.esm|0581E7",
+     "rank": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|014134",
+   "name": "CaptainLonelyGale",
+   "flagsAdded": [
+    "Essential"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|09BCAF",
+   "name": "CiceroDawnstar",
+   "packages": [
+    "unofficial skyrim special edition patch.esp|037D98",
+    "Skyrim.esm|09BCB3"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|09BCB3"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|038257",
+   "name": "CommanderCaius",
+   "packages": [
+    "Skyrim.esm|03825A",
+    "Skyrim.esm|0FE2D0",
+    "Skyrim.esm|091923",
+    "Skyrim.esm|0E73CA"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|0A926E"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|0A926E",
+    "Skyrim.esm|03825A",
+    "Skyrim.esm|0FE2D0",
+    "Skyrim.esm|091923",
+    "Skyrim.esm|0E73CA"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01D4B5",
+   "name": "CommanderMaro",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|01745F",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013390",
+   "name": "Cosnach",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|01CE16"
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 26,
+      "to": 19
+     },
+     "TwoHanded": {
+      "from": 19,
+      "to": 26
+     },
+     "HeavyArmor": {
+      "from": 26,
+      "to": 15
+     },
+     "LightArmor": {
+      "from": 15,
+      "to": 26
+     }
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0834FE",
+   "name": "DA02Champion",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|01BCC0",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|104F46",
+   "name": "DA05EncWhiteStag",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0CE086",
+   "name": "DA05Hunter11_04Melee_Ahjisi",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0136AC",
+   "name": "DA05Sinding",
+   "factionsAdded": [
+    {
+     "form": "Update.esm|000944",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|090CF2",
+   "name": "DA05SindingGhost",
+   "factionsAdded": [
+    {
+     "form": "Update.esm|000944",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|06C1B7",
+   "name": "DA05SindingHuman",
+   "factionsAdded": [
+    {
+     "form": "Update.esm|000944",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01CB33",
+   "name": "DA14Hagraven",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|10FE03",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|04C16E",
+   "name": "DB10LvlPenitusOculatusMelee1H",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|015CFE",
+   "name": "DBInitiate2",
+   "packages": [
+    "Skyrim.esm|037D0F",
+    "Skyrim.esm|037D11",
+    "Skyrim.esm|037CBA",
+    "Skyrim.esm|037D97",
+    "unofficial skyrim special edition patch.esp|037D99",
+    "Skyrim.esm|015D0A"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|037D0F",
+    "Skyrim.esm|037D11",
+    "Skyrim.esm|037CBA",
+    "Skyrim.esm|037D97",
+    "Skyrim.esm|015D0A"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0A0E49",
+   "name": "DBSpectralAssassin",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|01541E",
+   "name": "DLC1Celann",
+   "perksAdded": [
+    {
+     "perk": "Skyrim.esm|058F6F",
+     "rank": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|017702",
+   "name": "DLC1EncGargoyleSmall",
+   "packages": [],
+   "packagesRemoved": [
+    "Skyrim.esm|04B040"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|04B040"
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|016907",
+   "name": "DLC1EncGargoyleSummon",
+   "packages": [
+    "Skyrim.esm|04B040"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": []
+  },
+  {
+   "npc": "Dawnguard.esm|0176FC",
+   "name": "DLC1EncVampire01BretonF",
+   "spellsAdded": [
+    "Dawnguard.esm|010F6A"
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|017701",
+   "name": "DLC1EncVampire02NordF",
+   "spellsAdded": [
+    "Dawnguard.esm|010F6A"
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|017F86",
+   "name": "DLC1EncVampire03NordF",
+   "spellsAdded": [
+    "Dawnguard.esm|010F6B"
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|017F87",
+   "name": "DLC1EncVampire04BretonF",
+   "spellsAdded": [
+    "Dawnguard.esm|010F6B"
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|017F8F",
+   "name": "DLC1EncVampire06NordF",
+   "spellsAdded": [
+    "Dawnguard.esm|010F6C"
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|00336D",
+   "name": "DLC1FlorentiusBaenius",
+   "crimeFaction": {
+    "from": null,
+    "to": "Skyrim.esm|02816B"
+   }
+  },
+  {
+   "npc": "Dawnguard.esm|003BA7",
+   "name": "DLC1Harkon",
+   "combatStyle": {
+    "from": "Dawnguard.esm|01A345",
+    "to": "Skyrim.esm|02DFB5"
+   }
+  },
+  {
+   "npc": "Dawnguard.esm|01AA77",
+   "name": "DLC1HireableVampireDeathhound1",
+   "flagsAdded": [
+    "Protected"
+   ],
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 23,
+      "to": 34
+     },
+     "Archery": {
+      "from": 21,
+      "to": 28
+     },
+     "Block": {
+      "from": 21,
+      "to": 28
+     },
+     "LightArmor": {
+      "from": 18,
+      "to": 22
+     },
+     "Sneak": {
+      "from": 59,
+      "to": 70
+     }
+    },
+    "health": {
+     "from": 146,
+     "to": 205
+    },
+    "stamina": {
+     "from": 114,
+     "to": 130
+    }
+   }
+  },
+  {
+   "npc": "Dawnguard.esm|01AA78",
+   "name": "DLC1HireableVampireDeathhound2",
+   "flagsAdded": [
+    "Protected"
+   ],
+   "class": {
+    "from": "Dawnguard.esm|00D6F6",
+    "to": "Dawnguard.esm|0145DC"
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 23,
+      "to": 34
+     },
+     "Archery": {
+      "from": 21,
+      "to": 28
+     },
+     "Block": {
+      "from": 21,
+      "to": 28
+     },
+     "LightArmor": {
+      "from": 18,
+      "to": 22
+     },
+     "Sneak": {
+      "from": 59,
+      "to": 70
+     }
+    },
+    "health": {
+     "from": 146,
+     "to": 205
+    },
+    "stamina": {
+     "from": 114,
+     "to": 130
+    }
+   }
+  },
+  {
+   "npc": "Dawnguard.esm|003361",
+   "name": "DLC1Orthjolf",
+   "class": {
+    "from": "Skyrim.esm|015BE7",
+    "to": "Skyrim.esm|02E00F"
+   }
+  },
+  {
+   "npc": "Dawnguard.esm|007EC8",
+   "name": "DLC1RadiantDisguisedVampireAdvisor",
+   "keywordsAdded": [
+    "Skyrim.esm|013796"
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|005E4C",
+   "name": "DLC1RadiantDisguisedVampireBard",
+   "keywordsAdded": [
+    "Skyrim.esm|013796"
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|005E4D",
+   "name": "DLC1RadiantDisguisedVampireMerchant",
+   "keywordsAdded": [
+    "Skyrim.esm|013796"
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|005E4E",
+   "name": "DLC1RadiantDisguisedVampirePilgrim",
+   "keywordsAdded": [
+    "Skyrim.esm|013796"
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|0198B6",
+   "name": "DLC1RefugeeAlvide",
+   "packages": [
+    "Skyrim.esm|0317C8"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": []
+  },
+  {
+   "npc": "Dawnguard.esm|0198B4",
+   "name": "DLC1RefugeeBarknar",
+   "packages": [
+    "Skyrim.esm|0317C8"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": []
+  },
+  {
+   "npc": "Dawnguard.esm|0198B8",
+   "name": "DLC1RefugeeJayri",
+   "packages": [
+    "Skyrim.esm|0317C8"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": []
+  },
+  {
+   "npc": "Dawnguard.esm|0198F7",
+   "name": "DLC1RefugeeSern",
+   "packages": [
+    "Skyrim.esm|0317C8"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": []
+  },
+  {
+   "npc": "Dawnguard.esm|00336B",
+   "name": "DLC1SorineJurard",
+   "crimeFaction": {
+    "from": null,
+    "to": "Skyrim.esm|02816B"
+   }
+  },
+  {
+   "npc": "Dawnguard.esm|00F4E3",
+   "name": "DLC1dunHarkonEncGargoyleSummon",
+   "factionsAdded": [
+    {
+     "form": "Dawnguard.esm|011BE2",
+     "rank": 0
+    },
+    {
+     "form": "Dawnguard.esm|018C4F",
+     "rank": 0
+    }
+   ],
+   "skills": {
+    "health": {
+     "from": 220,
+     "to": 240
+    },
+    "stamina": {
+     "from": 110,
+     "to": 90
+    }
+   }
+  },
+  {
+   "npc": "Dragonborn.esm|01E84E",
+   "name": "DLC2EncBandit03MissileDarkElf02F",
+   "class": {
+    "from": "Skyrim.esm|01CE17",
+    "to": "Skyrim.esm|015BE7"
+   },
+   "combatStyle": {
+    "from": "Skyrim.esm|068849",
+    "to": "Skyrim.esm|03BE1D"
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 32,
+      "to": 26
+     },
+     "TwoHanded": {
+      "from": 32,
+      "to": 15
+     },
+     "Archery": {
+      "from": 15,
+      "to": 32
+     },
+     "Block": {
+      "from": 27,
+      "to": 21
+     },
+     "Sneak": {
+      "from": 20,
+      "to": 32
+     }
+    }
+   },
+   "perksAdded": [
+    {
+     "perk": "Skyrim.esm|105F1C",
+     "rank": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dragonborn.esm|01E85B",
+   "name": "DLC2EncBandit04Melee1HDarkElf01M",
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 15,
+      "to": 43
+     },
+     "TwoHanded": {
+      "from": 15,
+      "to": 43
+     },
+     "Block": {
+      "from": 15,
+      "to": 34
+     },
+     "HeavyArmor": {
+      "from": 15,
+      "to": 25
+     },
+     "LightArmor": {
+      "from": 20,
+      "to": 39
+     }
+    },
+    "health": {
+     "from": 170,
+     "to": 318
+    },
+    "stamina": {
+     "from": 100,
+     "to": 152
+    }
+   }
+  },
+  {
+   "npc": "Dragonborn.esm|01E85D",
+   "name": "DLC2EncBandit04Melee1HDarkElf02M",
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 15,
+      "to": 43
+     },
+     "TwoHanded": {
+      "from": 15,
+      "to": 43
+     },
+     "Block": {
+      "from": 15,
+      "to": 34
+     },
+     "HeavyArmor": {
+      "from": 15,
+      "to": 25
+     },
+     "LightArmor": {
+      "from": 20,
+      "to": 39
+     }
+    },
+    "health": {
+     "from": 170,
+     "to": 318
+    },
+    "stamina": {
+     "from": 100,
+     "to": 152
+    }
+   }
+  },
+  {
+   "npc": "Dragonborn.esm|01E860",
+   "name": "DLC2EncBandit04Melee1HDarkElf03M",
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 15,
+      "to": 43
+     },
+     "TwoHanded": {
+      "from": 15,
+      "to": 43
+     },
+     "Block": {
+      "from": 15,
+      "to": 34
+     },
+     "HeavyArmor": {
+      "from": 15,
+      "to": 25
+     },
+     "LightArmor": {
+      "from": 20,
+      "to": 39
+     }
+    },
+    "health": {
+     "from": 170,
+     "to": 318
+    },
+    "stamina": {
+     "from": 100,
+     "to": 152
+    }
+   }
+  },
+  {
+   "npc": "Dragonborn.esm|017934",
+   "name": "DLC2Frea",
+   "skills": {
+    "values": {
+     "HeavyArmor": {
+      "from": 15,
+      "to": 43
+     },
+     "LightArmor": {
+      "from": 48,
+      "to": 20
+     }
+    }
+   },
+   "perksAdded": [
+    {
+     "perk": "Skyrim.esm|058F6F",
+     "rank": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dragonborn.esm|01959A",
+   "name": "DLC2Mogrul",
+   "packages": [
+    "Dragonborn.esm|027201",
+    "Dragonborn.esm|027200",
+    "unofficial skyrim special edition patch.esp|00A313"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Dragonborn.esm|027201",
+    "Dragonborn.esm|027200"
+   ],
+   "class": {
+    "from": "Skyrim.esm|01CE15",
+    "to": "Skyrim.esm|013176"
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 41,
+      "to": 83
+     },
+     "TwoHanded": {
+      "from": 83,
+      "to": 41
+     }
+    }
+   }
+  },
+  {
+   "npc": "Dragonborn.esm|019596",
+   "name": "DLC2MogrulThugTT1b",
+   "packages": [
+    "unofficial skyrim special edition patch.esp|00A314",
+    "Dragonborn.esm|0271FC",
+    "unofficial skyrim special edition patch.esp|00A315"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Dragonborn.esm|0271FC"
+   ]
+  },
+  {
+   "npc": "Dragonborn.esm|01773A",
+   "name": "DLC2Neloth",
+   "spellsAdded": [
+    "Skyrim.esm|10F7F7"
+   ]
+  },
+  {
+   "npc": "Dragonborn.esm|018278",
+   "name": "DLC2RRCresciusCaerellius",
+   "packages": [
+    "Dragonborn.esm|035E42",
+    "Dragonborn.esm|0184CB",
+    "Dragonborn.esm|035E43",
+    "Dragonborn.esm|039D0A",
+    "Dragonborn.esm|0184CC"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Dragonborn.esm|0184CB",
+    "Dragonborn.esm|035E43",
+    "Dragonborn.esm|035E42",
+    "Dragonborn.esm|039D0A",
+    "Dragonborn.esm|0184CC"
+   ]
+  },
+  {
+   "npc": "Dragonborn.esm|0182AE",
+   "name": "DLC2RRGjalundSaltSageWindhelm",
+   "factionsAdded": [
+    {
+     "form": "Update.esm|000944",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Dragonborn.esm|0376F5",
+   "name": "DLC2RRLygrleidSolstheim",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|0267E3",
+     "rank": 0
+    }
+   ],
+   "crimeFaction": {
+    "from": "Dragonborn.esm|018279",
+    "to": "Skyrim.esm|0267E3"
+   }
+  },
+  {
+   "npc": "Dragonborn.esm|0182AC",
+   "name": "DLC2RRModynVeleth",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|086EEE",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Dragonborn.esm|0376F6",
+   "name": "DLC2RRSogrlafSolstheim",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|0267E3",
+     "rank": 0
+    }
+   ],
+   "crimeFaction": {
+    "from": "Dragonborn.esm|018279",
+    "to": "Skyrim.esm|0267E3"
+   }
+  },
+  {
+   "npc": "Dragonborn.esm|018FBD",
+   "name": "DLC2SVEdla",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|05091C",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Dragonborn.esm|017777",
+   "name": "DLC2Talvas",
+   "perksAdded": [
+    {
+     "perk": "Skyrim.esm|0581EA",
+     "rank": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dragonborn.esm|01777C",
+   "name": "DLC2Varona",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|09653A",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Dragonborn.esm|0179C7",
+   "name": "DLC2dunKolbjornRalis",
+   "perksAdded": [
+    {
+     "perk": "Skyrim.esm|0581EA",
+     "rank": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01434B",
+   "name": "Dagny",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|03662A",
+     "rank": 0
+    },
+    {
+     "form": "Skyrim.esm|036633",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0132A4",
+   "name": "DalanMerchad",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|0267E3",
+     "rank": 0
+    }
+   ],
+   "crimeFaction": {
+    "from": "Skyrim.esm|02816F",
+    "to": "Skyrim.esm|0267E3"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|013268",
+   "name": "Deeja",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|085DBF",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|072663",
+   "name": "Delacourt",
+   "packages": [
+    "Skyrim.esm|0F9955",
+    "Skyrim.esm|0D6C2A"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|0D6C2A"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01CB78",
+   "name": "DelvinMallory",
+   "packages": [
+    "Skyrim.esm|10F123",
+    "Skyrim.esm|10F122",
+    "Skyrim.esm|10F121",
+    "Skyrim.esm|10F125",
+    "Skyrim.esm|10F124",
+    "unofficial skyrim special edition patch.esp|041300",
+    "Skyrim.esm|10F120",
+    "Skyrim.esm|049530"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|10F123",
+    "Skyrim.esm|10F122",
+    "Skyrim.esm|10F121",
+    "Skyrim.esm|10F125",
+    "Skyrim.esm|10F124",
+    "Skyrim.esm|10F120",
+    "Skyrim.esm|049530"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01365A",
+   "name": "Dengeir",
+   "packages": [
+    "Skyrim.esm|0A9273",
+    "Skyrim.esm|086306",
+    "Skyrim.esm|0862FD",
+    "Skyrim.esm|0862D3",
+    "Skyrim.esm|01B210",
+    "Skyrim.esm|0CF016"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|01BCDD"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|0A9273",
+    "Skyrim.esm|086306",
+    "Skyrim.esm|01BCDD",
+    "Skyrim.esm|0862FD",
+    "Skyrim.esm|0862D3",
+    "Skyrim.esm|01B210",
+    "Skyrim.esm|0CF016"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01336D",
+   "name": "Dirge",
+   "packages": [
+    "Skyrim.esm|10F12B",
+    "Skyrim.esm|10F128",
+    "Skyrim.esm|10F129",
+    "Skyrim.esm|10F12A",
+    "Skyrim.esm|10F126",
+    "Skyrim.esm|10F127",
+    "unofficial skyrim special edition patch.esp|0412FE",
+    "Skyrim.esm|103080"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|10F12B",
+    "Skyrim.esm|10F128",
+    "Skyrim.esm|10F129",
+    "Skyrim.esm|10F12A",
+    "Skyrim.esm|10F126",
+    "Skyrim.esm|10F127",
+    "Skyrim.esm|103080"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01365F",
+   "name": "Dravynea",
+   "spellsAdded": [
+    "Skyrim.esm|034C58",
+    "Skyrim.esm|040000",
+    "Skyrim.esm|05AD5D",
+    "Skyrim.esm|072315",
+    "Skyrim.esm|07231A"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013354",
+   "name": "Drifa",
+   "flagsAdded": [
+    "Essential"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0C78C0",
+   "name": "Dulug",
+   "skills": {
+    "magicka": {
+     "from": 67,
+     "to": 50
+    },
+    "stamina": {
+     "from": 100,
+     "to": 117
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|03481A",
+   "name": "DunRannveigGhostLvlBandit01Melee1H",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0515F6",
+   "name": "DunRannveigGhostLvlBandit01Melee2H",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0515F5",
+   "name": "DunRannveigGhostLvlBanditMissile",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|02C18D",
+   "name": "DunValthumeGhostValdar",
+   "spellsAdded": [
+    "Skyrim.esm|0D2060"
+   ],
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|1019C6",
+   "name": "DunVolunruudBoss",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0DE517",
+   "name": "DunYsgramorsTomb_LvlGhostMelee1HFemale",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|0CE198",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0AB102",
+   "name": "DunYsgramorsTomb_LvlGhostMelee1HMale",
+   "confidence": {
+    "from": 2,
+    "to": 4
+   },
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0DE516",
+   "name": "DunYsgramorsTomb_LvlGhostMelee2HFemale",
+   "confidence": {
+    "from": 2,
+    "to": 4
+   },
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0DE519",
+   "name": "DunYsgramorsTomb_LvlGhostMelee2HMale",
+   "confidence": {
+    "from": 2,
+    "to": 4
+   },
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0DE518",
+   "name": "DunYsgramorsTomb_LvlGhostMissileFemale",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0AB104",
+   "name": "DunYsgramorsTomb_LvlGhostMissileMale",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01B079",
+   "name": "Dushnamub",
+   "skills": {
+    "magicka": {
+     "from": 67,
+     "to": 50
+    },
+    "stamina": {
+     "from": 100,
+     "to": 117
+    }
+   },
+   "keywordsAdded": [
+    "Skyrim.esm|0A800B"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|03550B",
+   "name": "Embry",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|035D44",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|03DEF8",
+   "name": "EncBandit04Boss2HNordM",
+   "skills": {
+    "magicka": {
+     "from": 40,
+     "to": 25
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|01E60D",
+   "name": "EncBandit04TemplateMelee",
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 20,
+      "to": 48
+     },
+     "TwoHanded": {
+      "from": 25,
+      "to": 53
+     },
+     "Block": {
+      "from": 20,
+      "to": 39
+     },
+     "HeavyArmor": {
+      "from": 15,
+      "to": 25
+     },
+     "LightArmor": {
+      "from": 20,
+      "to": 39
+     }
+    },
+    "health": {
+     "from": 170,
+     "to": 318
+    },
+    "stamina": {
+     "from": 100,
+     "to": 152
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|03DEFF",
+   "name": "EncBandit05Boss1HNordM",
+   "skills": {
+    "health": {
+     "from": 282,
+     "to": 395
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|023A8A",
+   "name": "EncBear",
+   "skills": {
+    "health": {
+     "from": 260,
+     "to": 310
+    },
+    "stamina": {
+     "from": 225,
+     "to": 300
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|023A8B",
+   "name": "EncBearCave",
+   "skills": {
+    "health": {
+     "from": 450,
+     "to": 400
+    },
+    "stamina": {
+     "from": 425,
+     "to": 350
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|058303",
+   "name": "EncC06WolfSpirit",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0FEA9B",
+   "name": "EncDragon03FireNoScript",
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 87,
+      "to": 65
+     },
+     "Archery": {
+      "from": 87,
+      "to": 65
+     },
+     "Block": {
+      "from": 87,
+      "to": 65
+     },
+     "Sneak": {
+      "from": 100,
+      "to": 97
+     }
+    },
+    "health": {
+     "from": 2255,
+     "to": 1860
+    },
+    "stamina": {
+     "from": 230,
+     "to": 197
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|043BDC",
+   "name": "EncForsworn00Template",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|10FE03",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|04430C",
+   "name": "EncForsworn03TemplateBossMagic",
+   "class": {
+    "from": "Skyrim.esm|043BCB",
+    "to": "Skyrim.esm|043BCC"
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 47,
+      "to": 15
+     },
+     "LightArmor": {
+      "from": 37,
+      "to": 26
+     },
+     "Conjuration": {
+      "from": 25,
+      "to": 47
+     },
+     "Destruction": {
+      "from": 37,
+      "to": 47
+     },
+     "Restoration": {
+      "from": 31,
+      "to": 42
+     }
+    },
+    "magicka": {
+     "from": 110,
+     "to": 140
+    },
+    "stamina": {
+     "from": 50,
+     "to": 20
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|04430D",
+   "name": "EncForsworn03TemplateBossMelee",
+   "combatStyle": {
+    "from": "Skyrim.esm|068847",
+    "to": "Skyrim.esm|10F546"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|04430F",
+   "name": "EncForsworn04TemplateBossMelee",
+   "combatStyle": {
+    "from": "Skyrim.esm|086F4F",
+    "to": "Skyrim.esm|0442CE"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|044313",
+   "name": "EncForsworn06TemplateBossMelee",
+   "combatStyle": {
+    "from": "Skyrim.esm|0E6C50",
+    "to": "Skyrim.esm|0442CE"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|023AB3",
+   "name": "EncIceWraith",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0DEEDF",
+   "name": "EncNightingaleTemplateFemale",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0E0CDD",
+   "name": "EncNightingaleTemplateMale",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0640B5",
+   "name": "EncSummonFamiliar",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0C5677",
+   "name": "EncTGSummerset01Melee1HHighElfM",
+   "class": {
+    "from": "Skyrim.esm|01CE17",
+    "to": "Skyrim.esm|01317E"
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 15,
+      "to": 28
+     },
+     "Archery": {
+      "from": 15,
+      "to": 28
+     },
+     "Block": {
+      "from": 15,
+      "to": 22
+     },
+     "LightArmor": {
+      "from": 15,
+      "to": 34
+     },
+     "Sneak": {
+      "from": 15,
+      "to": 35
+     }
+    },
+    "health": {
+     "from": 40,
+     "to": 115
+    },
+    "stamina": {
+     "from": 90,
+     "to": 150
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|07297A",
+   "name": "EncThalmor02Melee1HF",
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 23,
+      "to": 44
+     },
+     "Block": {
+      "from": 20,
+      "to": 34
+     },
+     "LightArmor": {
+      "from": 20,
+      "to": 35
+     },
+     "Sneak": {
+      "from": 18,
+      "to": 25
+     },
+     "Restoration": {
+      "from": 23,
+      "to": 30
+     }
+    },
+    "health": {
+     "from": 127,
+     "to": 249
+    },
+    "magicka": {
+     "from": 56,
+     "to": 72
+    },
+    "stamina": {
+     "from": 62,
+     "to": 94
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0F960E",
+   "name": "EncThalmor02Melee1HFDual",
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 23,
+      "to": 44
+     },
+     "Block": {
+      "from": 20,
+      "to": 34
+     },
+     "LightArmor": {
+      "from": 20,
+      "to": 35
+     },
+     "Sneak": {
+      "from": 18,
+      "to": 25
+     },
+     "Restoration": {
+      "from": 23,
+      "to": 30
+     }
+    },
+    "health": {
+     "from": 127,
+     "to": 249
+    },
+    "magicka": {
+     "from": 56,
+     "to": 72
+    },
+    "stamina": {
+     "from": 62,
+     "to": 94
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0F95F2",
+   "name": "EncThalmor02Melee1HFShield",
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 23,
+      "to": 44
+     },
+     "Block": {
+      "from": 20,
+      "to": 34
+     },
+     "LightArmor": {
+      "from": 20,
+      "to": 35
+     },
+     "Sneak": {
+      "from": 18,
+      "to": 25
+     },
+     "Restoration": {
+      "from": 23,
+      "to": 30
+     }
+    },
+    "health": {
+     "from": 127,
+     "to": 249
+    },
+    "magicka": {
+     "from": 56,
+     "to": 72
+    },
+    "stamina": {
+     "from": 62,
+     "to": 94
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0F9612",
+   "name": "EncThalmor04Melee1HFDual",
+   "combatStyle": {
+    "from": "Skyrim.esm|068847",
+    "to": "Skyrim.esm|0F960C"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|03300E",
+   "name": "EncVampire01BretonF",
+   "spellsAdded": [
+    "Dawnguard.esm|010F6A"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|033424",
+   "name": "EncVampire01NordF",
+   "spellsAdded": [
+    "Dawnguard.esm|010F6A"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|032FE8",
+   "name": "EncVampire01Template",
+   "spellsAdded": [
+    "Dawnguard.esm|010F6A"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|033853",
+   "name": "EncVampire02BretonF",
+   "spellsAdded": [
+    "Dawnguard.esm|010F6A"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|03386E",
+   "name": "EncVampire02ImperialF",
+   "spellsAdded": [
+    "Dawnguard.esm|010F6A"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|03386F",
+   "name": "EncVampire02NordF",
+   "spellsAdded": [
+    "Dawnguard.esm|010F6A"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|03384E",
+   "name": "EncVampire02Template",
+   "spellsAdded": [
+    "Dawnguard.esm|010F6A"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|03384F",
+   "name": "EncVampire03Template",
+   "spellsAdded": [
+    "Dawnguard.esm|010F6B"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|033881",
+   "name": "EncVampire04ImperialF",
+   "spellsAdded": [
+    "Dawnguard.esm|010F6B"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|033850",
+   "name": "EncVampire04Template",
+   "spellsAdded": [
+    "Dawnguard.esm|010F6B"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|033883",
+   "name": "EncVampire05BretonF",
+   "spellsAdded": [
+    "Dawnguard.esm|010F6C"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|033851",
+   "name": "EncVampire05Template",
+   "spellsAdded": [
+    "Dawnguard.esm|010F6C"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|033888",
+   "name": "EncVampire06BretonF",
+   "spellsAdded": [
+    "Dawnguard.esm|010F6C"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|03392E",
+   "name": "EncVampire06ImperialF",
+   "spellsAdded": [
+    "Dawnguard.esm|010F6C"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|03392F",
+   "name": "EncVampire06NordF",
+   "spellsAdded": [
+    "Dawnguard.esm|010F6C"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|033852",
+   "name": "EncVampire06Template",
+   "spellsAdded": [
+    "Dawnguard.esm|010F6C"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|06D262",
+   "name": "EncWarlockAtro06ImperialM",
+   "class": {
+    "from": "Skyrim.esm|01317A",
+    "to": "Skyrim.esm|01CE14"
+   },
+   "skills": {
+    "values": {
+     "Conjuration": {
+      "from": 66,
+      "to": 92
+     },
+     "Destruction": {
+      "from": 97,
+      "to": 71
+     }
+    }
+   },
+   "perksAdded": [
+    {
+     "perk": "Skyrim.esm|0CB419",
+     "rank": 1
+    },
+    {
+     "perk": "Skyrim.esm|058200",
+     "rank": 1
+    },
+    {
+     "perk": "Skyrim.esm|0CB41A",
+     "rank": 1
+    },
+    {
+     "perk": "Skyrim.esm|10FCFA",
+     "rank": 1
+    }
+   ],
+   "spellsAdded": [
+    "Skyrim.esm|02DD29",
+    "Skyrim.esm|045F9D",
+    "Skyrim.esm|0F95EE",
+    "Skyrim.esm|0F95EF",
+    "Skyrim.esm|100E78"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|02C3C7",
+   "name": "EncWisp",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|023ABD",
+   "name": "EncWispMother",
+   "perksAdded": [
+    {
+     "perk": "Skyrim.esm|0153CF",
+     "rank": 1
+    },
+    {
+     "perk": "Skyrim.esm|0153D2",
+     "rank": 1
+    }
+   ],
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013396",
+   "name": "Ennoc",
+   "packages": [
+    "Skyrim.esm|034BCB",
+    "Skyrim.esm|034BF1",
+    "Skyrim.esm|034BCC",
+    "Skyrim.esm|0661AC"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|0661AC"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01990F",
+   "name": "Eola",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|05C84E",
+     "rank": -1
+    }
+   ],
+   "perksAdded": [
+    {
+     "perk": "Skyrim.esm|0581E7",
+     "rank": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013B9D",
+   "name": "EorlundGrayMane",
+   "packages": [
+    "Skyrim.esm|02BE29",
+    "Skyrim.esm|01CB15",
+    "Skyrim.esm|096104"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|02BE29",
+    "Skyrim.esm|096104"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013271",
+   "name": "Erdi",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|0A3909",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0350A7",
+   "name": "Erik",
+   "class": {
+    "from": "Skyrim.esm|01CE16",
+    "to": "Skyrim.esm|013176"
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 23,
+      "to": 28
+     },
+     "TwoHanded": {
+      "from": 33,
+      "to": 28
+     },
+     "HeavyArmor": {
+      "from": 15,
+      "to": 24
+     },
+     "LightArmor": {
+      "from": 29,
+      "to": 20
+     }
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0135E9",
+   "name": "Falion",
+   "combatStyle": {
+    "from": null,
+    "to": "Skyrim.esm|03BE1C"
+   },
+   "spellsAdded": [
+    "Skyrim.esm|072316",
+    "Skyrim.esm|07231A",
+    "Skyrim.esm|07231C",
+    "Skyrim.esm|0ABDF3",
+    "Skyrim.esm|0C969B",
+    "Skyrim.esm|0C96A2",
+    "Skyrim.esm|0CAB66"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013274",
+   "name": "FalkFirebeard",
+   "packages": [
+    "Skyrim.esm|0ABE16",
+    "Skyrim.esm|034BEE",
+    "unofficial skyrim special edition patch.esp|029B0B",
+    "Skyrim.esm|01B217"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|01B210"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|0ABE16",
+    "Skyrim.esm|034BEE",
+    "Skyrim.esm|01B210",
+    "Skyrim.esm|01B217"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013BBB",
+   "name": "FarengarSecretFire",
+   "combatStyle": {
+    "from": null,
+    "to": "Skyrim.esm|03BE1C"
+   },
+   "spellsAdded": [
+    "Skyrim.esm|072316",
+    "Skyrim.esm|07231A",
+    "Skyrim.esm|07231C",
+    "Skyrim.esm|0BB967",
+    "Skyrim.esm|0C969B",
+    "Skyrim.esm|0C96A2",
+    "Skyrim.esm|0CAB65"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01A692",
+   "name": "Farkas",
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 30,
+      "to": 25
+     },
+     "TwoHanded": {
+      "from": 25,
+      "to": 39
+     },
+     "Archery": {
+      "from": 15,
+      "to": 24
+     },
+     "Block": {
+      "from": 20,
+      "to": 30
+     },
+     "Smithing": {
+      "from": 35,
+      "to": 20
+     },
+     "HeavyArmor": {
+      "from": 15,
+      "to": 33
+     },
+     "Pickpocket": {
+      "from": 25,
+      "to": 15
+     },
+     "Sneak": {
+      "from": 20,
+      "to": 15
+     },
+     "Speech": {
+      "from": 36,
+      "to": 20
+     }
+    },
+    "health": {
+     "from": 170,
+     "to": 181
+    },
+    "stamina": {
+     "from": 135,
+     "to": 124
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|013B9C",
+   "name": "FraliaGrayMane",
+   "packages": [
+    "Skyrim.esm|02BE2B",
+    "Skyrim.esm|02BE2D",
+    "Skyrim.esm|02BE2E",
+    "Skyrim.esm|01CB15",
+    "Skyrim.esm|091501"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|038255"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|038255",
+    "Skyrim.esm|02BE2B",
+    "Skyrim.esm|02BE2D",
+    "Skyrim.esm|02BE2E",
+    "Skyrim.esm|091501"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0681A2",
+   "name": "FreeformOldHroldanBGhost",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01347E",
+   "name": "Frodnar",
+   "packages": [
+    "Skyrim.esm|08D2B6",
+    "Skyrim.esm|01E61B",
+    "Skyrim.esm|01E619",
+    "Skyrim.esm|01E618",
+    "Skyrim.esm|01B210",
+    "Skyrim.esm|01B217"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|01E61B",
+    "Skyrim.esm|01E619",
+    "Skyrim.esm|01E618",
+    "Skyrim.esm|01B210",
+    "Skyrim.esm|01B217",
+    "Skyrim.esm|08D2B6"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01434C",
+   "name": "Frothar",
+   "packages": [
+    "Skyrim.esm|0A926E",
+    "Skyrim.esm|0D0FEF",
+    "Skyrim.esm|0D0FED",
+    "Skyrim.esm|0C36AD",
+    "Skyrim.esm|0C36AC",
+    "Skyrim.esm|0D16D8"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|0C36AE"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|0A926E",
+    "Skyrim.esm|0D0FEF",
+    "Skyrim.esm|0D0FED",
+    "Skyrim.esm|0C36AD",
+    "Skyrim.esm|0C36AE",
+    "Skyrim.esm|0D16D8"
+   ],
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|03662A",
+     "rank": 0
+    },
+    {
+     "form": "Skyrim.esm|036633",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01BDB8",
+   "name": "Gabriella",
+   "crimeFaction": {
+    "from": null,
+    "to": "Skyrim.esm|01BDB3"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|014128",
+   "name": "Galmar",
+   "packages": [
+    "Skyrim.esm|048502",
+    "Skyrim.esm|048501",
+    "Skyrim.esm|048500"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|048502",
+    "Skyrim.esm|048500",
+    "Skyrim.esm|048501"
+   ],
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|01CE16"
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 39,
+      "to": 27
+     },
+     "TwoHanded": {
+      "from": 32,
+      "to": 44
+     },
+     "HeavyArmor": {
+      "from": 35,
+      "to": 15
+     },
+     "LightArmor": {
+      "from": 20,
+      "to": 40
+     }
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|019E1C",
+   "name": "Garakh",
+   "factionsAdded": [
+    {
+     "form": "unofficial skyrim special edition patch.esp|00F6BB",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0C78C2",
+   "name": "Ghak",
+   "skills": {
+    "magicka": {
+     "from": 67,
+     "to": 50
+    },
+    "stamina": {
+     "from": 100,
+     "to": 117
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|013B81",
+   "name": "Ghorbash",
+   "class": {
+    "from": "Skyrim.esm|013181",
+    "to": "Skyrim.esm|013176"
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 33,
+      "to": 39
+     },
+     "TwoHanded": {
+      "from": 20,
+      "to": 27
+     },
+     "Archery": {
+      "from": 34,
+      "to": 28
+     },
+     "HeavyArmor": {
+      "from": 25,
+      "to": 45
+     },
+     "LightArmor": {
+      "from": 35,
+      "to": 15
+     },
+     "Sneak": {
+      "from": 22,
+      "to": 15
+     }
+    },
+    "health": {
+     "from": 140,
+     "to": 155
+    },
+    "stamina": {
+     "from": 145,
+     "to": 130
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|013281",
+   "name": "GiraudGemane",
+   "packages": [
+    "Skyrim.esm|0B2410",
+    "Skyrim.esm|0D6A05",
+    "Skyrim.esm|0A95C1",
+    "Skyrim.esm|0C2A58",
+    "Skyrim.esm|034BDF"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|034BDE",
+    "Skyrim.esm|01E61A",
+    "Skyrim.esm|0C2A57"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|0B2410",
+    "Skyrim.esm|034BDE",
+    "Skyrim.esm|01E61A",
+    "Skyrim.esm|0C2A57",
+    "Skyrim.esm|034BDF",
+    "Skyrim.esm|0D6A05"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|028DD6",
+   "name": "Gloth",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|10DE9C",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0135EA",
+   "name": "Gorm",
+   "flagsAdded": [
+    "Essential"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|019C01",
+   "name": "Gralnach",
+   "packages": [
+    "Skyrim.esm|0746A4",
+    "Skyrim.esm|06BBAB",
+    "Skyrim.esm|06BBAA",
+    "Skyrim.esm|06BBA9",
+    "Skyrim.esm|06BBAC",
+    "Skyrim.esm|0302BD"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|06BBAB",
+    "Skyrim.esm|06BBAA",
+    "Skyrim.esm|06BBA9",
+    "Skyrim.esm|06BBAC",
+    "Skyrim.esm|0302BD"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0A852D",
+   "name": "GuardDarkwaterCrossingImperial",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0A852E",
+   "name": "GuardDarkwaterCrossingSons",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|08756D",
+   "name": "GuardDawnstarImperialDay6x12",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|087571",
+   "name": "GuardDawnstarImperialDay7x12",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|02D792",
+   "name": "GuardDawnstarImperialDay8x12",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|087573",
+   "name": "GuardDawnstarImperialNight18x12",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|087572",
+   "name": "GuardDawnstarImperialNight19x12",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|02D793",
+   "name": "GuardDawnstarImperialNight20x12",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|087578",
+   "name": "GuardDawnstarImperialNoShift",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0212BA",
+   "name": "GuardDragonBridgeImperial",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0212BB",
+   "name": "GuardDragonBridgeSons",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|02EBED",
+     "rank": 0
+    }
+   ],
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0F18E5",
+   "name": "GuardHeartwoodMillImperial",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|02C81C",
+   "name": "GuardHjaalmarchSons",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|01C9FD",
+     "rank": 0
+    },
+    {
+     "form": "Skyrim.esm|02BF9B",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|02429B",
+   "name": "GuardKarthwastenSons01",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|01FD6A",
+   "name": "GuardKolskeggrSons",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|02E70E",
+   "name": "GuardKynesgroveImperial",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|02E70F",
+   "name": "GuardKynesgroveSons",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|09E482",
+   "name": "GuardLeftHandMineSons",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|08B319",
+   "name": "GuardMarkarthImperialKeep",
+   "packages": [
+    "unofficial skyrim special edition patch.esp|0511F0",
+    "Skyrim.esm|0E138A"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|0E138A"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0210CF",
+   "name": "GuardMarkarthSonsDayShift01",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0D66FB",
+   "name": "GuardMarkarthSonsExterior",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|08B31A",
+   "name": "GuardMarkarthSonsKeep",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|036F06",
+   "name": "GuardMarkarthSonsNightShift01",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|030274",
+   "name": "GuardMerryfairFarmImperial",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0EA154",
+   "name": "GuardRiftenGateImpNorthStartup",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   },
+   "combatStyle": {
+    "from": null,
+    "to": "Skyrim.esm|068848"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0E66F6",
+   "name": "GuardRiftenGateNorthStartup",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   },
+   "combatStyle": {
+    "from": null,
+    "to": "Skyrim.esm|068848"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|039FD8",
+   "name": "GuardRoriksteadSons",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|09E480",
+   "name": "GuardSalviusFarmSons",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0303EC",
+   "name": "GuardSarethiFarmImperial",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0300A3",
+   "name": "GuardSnowShodImperial",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0300A4",
+   "name": "GuardSnowShodSons",
+   "packages": [
+    "Skyrim.esm|0587E1"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": []
+  },
+  {
+   "npc": "Skyrim.esm|0BED96",
+   "name": "GuardSolitudeImperialJail",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0461DD",
+   "name": "GuardSolitudeImperialWarroomNight",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0B0E92",
+   "name": "GuardSolitudeSonsBluePalace",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0B3E50",
+   "name": "GuardSolitudeSonsBluePalaceMaleGuard",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|098B71",
+   "name": "GuardSolitudeSonsDay",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|061368",
+   "name": "GuardSoljundsSons",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0ABE28",
+   "name": "GuardWhiterunHoldSonsGeneric",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|108298",
+   "name": "GuardWhiterunSonsDragonsreachPorchPatrol",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|108D8A",
+   "name": "GuardWhiterunSonsDragonsreachPorchPatrolB",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|03708C",
+   "name": "GuardWhiterunSonsPatrolDay",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0FE2D1",
+   "name": "GuardWhiterunSonsTemplate",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0FCE7F",
+   "name": "GuardWindhelmImperial",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|03EECF",
+   "name": "GuardWindhelmSonsGateDocks",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0480C5",
+   "name": "GuardWindhelmSonsPatrol1a",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0480C7",
+   "name": "GuardWindhelmSonsPatrol1b",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0480C8",
+   "name": "GuardWindhelmSonsPatrol1c",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0480C9",
+   "name": "GuardWindhelmSonsPatrol1d",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0A24A8",
+   "name": "GuardWindhelmSonsPatrol2a",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0A24AA",
+   "name": "GuardWindhelmSonsPatrol2b",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0A24AC",
+   "name": "GuardWindhelmSonsPatrol2c",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0A24BA",
+   "name": "GuardWindhelmSonsPatrol3a",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0A24C5",
+   "name": "GuardWindhelmSonsPatrol3b",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0A24C7",
+   "name": "GuardWindhelmSonsPatrol4a",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0A24C9",
+   "name": "GuardWindhelmSonsPatrol4b",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0A24D2",
+   "name": "GuardWindhelmSonsPatrol5a",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0A24D4",
+   "name": "GuardWindhelmSonsPatrol5b",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0A24DF",
+   "name": "GuardWindhelmSonsPatrol6a",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0A24E1",
+   "name": "GuardWindhelmSonsPatrol6b",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0A24E3",
+   "name": "GuardWindhelmSonsPatrol6c",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0FCE7E",
+   "name": "GuardWindhelmSonsTemplate",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|024B49",
+   "name": "GuardWinterholdImperial",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|019E20",
+   "name": "Gularzob",
+   "skills": {
+    "magicka": {
+     "from": 67,
+     "to": 50
+    },
+    "stamina": {
+     "from": 50,
+     "to": 67
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|013361",
+   "name": "Harrald",
+   "packages": [
+    "Skyrim.esm|0A9272",
+    "Skyrim.esm|10CEE2",
+    "Skyrim.esm|044D30",
+    "Skyrim.esm|10CEE0",
+    "Skyrim.esm|044D2E",
+    "Skyrim.esm|044D2D"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|10CEE2",
+    "Skyrim.esm|044D30",
+    "Skyrim.esm|10CEE0",
+    "Skyrim.esm|044D2E",
+    "Skyrim.esm|044D2D"
+   ],
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|03662A",
+     "rank": 0
+    },
+    {
+     "form": "Skyrim.esm|036634",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013BAC",
+   "name": "Heimskr",
+   "packages": [
+    "Skyrim.esm|107052",
+    "Skyrim.esm|02C3B7",
+    "Skyrim.esm|108B15",
+    "Skyrim.esm|02C3B8",
+    "Skyrim.esm|108B14",
+    "Skyrim.esm|0E73CA"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|107052",
+    "Skyrim.esm|02C3B7",
+    "Skyrim.esm|108B15",
+    "Skyrim.esm|108B14",
+    "Skyrim.esm|02C3B8",
+    "Skyrim.esm|0E73CA"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013286",
+   "name": "Heimvar",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|0A6C03",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|029DAE",
+   "name": "HerluinLothaire",
+   "packages": [
+    "unofficial skyrim special edition patch.esp|077A6E",
+    "Skyrim.esm|0EF577"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|0EF577"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01367B",
+   "name": "Hern",
+   "packages": [
+    "Skyrim.esm|083D8F",
+    "Skyrim.esm|02EBF0",
+    "Skyrim.esm|02EBEF",
+    "Skyrim.esm|01BCE1",
+    "Skyrim.esm|01B210",
+    "Skyrim.esm|01B217"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|083D1E",
+    "Skyrim.esm|083D21",
+    "Skyrim.esm|083D23"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|083D1E",
+    "Skyrim.esm|083D21",
+    "Skyrim.esm|083D23",
+    "Skyrim.esm|02EBF0",
+    "Skyrim.esm|02EBEF",
+    "Skyrim.esm|01BCE1",
+    "Skyrim.esm|01B210",
+    "Skyrim.esm|01B217"
+   ],
+   "combatStyle": {
+    "from": null,
+    "to": "Skyrim.esm|02DFB3"
+   },
+   "spellsAdded": [
+    "Dawnguard.esm|010F6A",
+    "Skyrim.esm|033976",
+    "Skyrim.esm|0F5B58",
+    "Skyrim.esm|0F5B5C",
+    "Skyrim.esm|0F5B5D"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01367C",
+   "name": "Hert",
+   "packages": [
+    "Skyrim.esm|083D1E",
+    "Skyrim.esm|083D21",
+    "Skyrim.esm|083D23",
+    "Skyrim.esm|02EBF0",
+    "Skyrim.esm|02EBEF",
+    "Skyrim.esm|01BCE1",
+    "Skyrim.esm|01B210",
+    "Skyrim.esm|01B217"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|083D8F"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|083D1E",
+    "Skyrim.esm|083D21",
+    "Skyrim.esm|083D23",
+    "Skyrim.esm|083D8F",
+    "Skyrim.esm|02EBF0",
+    "Skyrim.esm|02EBEF",
+    "Skyrim.esm|01BCE1",
+    "Skyrim.esm|01B210",
+    "Skyrim.esm|01B217"
+   ],
+   "combatStyle": {
+    "from": null,
+    "to": "Skyrim.esm|02DFB3"
+   },
+   "spellsAdded": [
+    "Dawnguard.esm|010F6A",
+    "Skyrim.esm|033976",
+    "Skyrim.esm|0F5B58",
+    "Skyrim.esm|0F5B5C",
+    "Skyrim.esm|0F5B5D"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|035533",
+   "name": "Hilde",
+   "packages": [
+    "Skyrim.esm|0EA073",
+    "Skyrim.esm|01E61A",
+    "Skyrim.esm|08B828",
+    "Skyrim.esm|01CB15"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|035536"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|0EA073",
+    "Skyrim.esm|08B828",
+    "Skyrim.esm|035536",
+    "Skyrim.esm|01E61A",
+    "Skyrim.esm|01CB15"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0B9981",
+   "name": "HirelingBelrand",
+   "perksAdded": [
+    {
+     "perk": "Skyrim.esm|05F56F",
+     "rank": 1
+    }
+   ],
+   "spellsAdded": [
+    "Skyrim.esm|040000"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|065657",
+   "name": "HirelingErikTheSlayer",
+   "class": {
+    "from": "Skyrim.esm|01CE16",
+    "to": "Skyrim.esm|013176"
+   },
+   "combatStyle": {
+    "from": "Skyrim.esm|03DECF",
+    "to": "Skyrim.esm|03DECE"
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 27,
+      "to": 39
+     },
+     "TwoHanded": {
+      "from": 44,
+      "to": 32
+     },
+     "HeavyArmor": {
+      "from": 15,
+      "to": 35
+     },
+     "LightArmor": {
+      "from": 40,
+      "to": 20
+     }
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0B997F",
+   "name": "HirelingVorstag",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|01CE16"
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 39,
+      "to": 27
+     },
+     "TwoHanded": {
+      "from": 32,
+      "to": 44
+     },
+     "HeavyArmor": {
+      "from": 35,
+      "to": 15
+     },
+     "LightArmor": {
+      "from": 20,
+      "to": 40
+     }
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|01347D",
+   "name": "Hod",
+   "packages": [
+    "Skyrim.esm|01E604",
+    "Skyrim.esm|0734CE",
+    "Skyrim.esm|0734CD",
+    "Skyrim.esm|035696",
+    "Skyrim.esm|01E618",
+    "Skyrim.esm|01CB15",
+    "Skyrim.esm|01B217"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|01B210"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|01E604",
+    "Skyrim.esm|0734CE",
+    "Skyrim.esm|0734CD",
+    "Skyrim.esm|035696",
+    "Skyrim.esm|01B210",
+    "Skyrim.esm|01E618",
+    "Skyrim.esm|01B217"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013351",
+   "name": "Hofgrir",
+   "packages": [
+    "Skyrim.esm|0C7FD6",
+    "Skyrim.esm|01B217",
+    "Skyrim.esm|0E73CA"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|01B217",
+    "Skyrim.esm|0C7FD6",
+    "Skyrim.esm|0E73CA"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|072A08",
+   "name": "HorseForCarriageNew",
+   "factionsAdded": [
+    {
+     "form": "unofficial skyrim special edition patch.esp|0969F9",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0A2C8C",
+   "name": "HousecarlMarkarth",
+   "packages": [
+    "unofficial skyrim special edition patch.esp|02EF1F"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|01B217"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|01B217"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0A2C91",
+   "name": "HousecarlRiften",
+   "packages": [
+    "unofficial skyrim special edition patch.esp|02EF1E"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|01B217"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|01B217"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0A2C8F",
+   "name": "HousecarlSolitude",
+   "packages": [
+    "unofficial skyrim special edition patch.esp|02EF1D"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|01B217"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|01B217"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0A2C8E",
+   "name": "HousecarlWhiterun",
+   "packages": [
+    "Skyrim.esm|100770",
+    "Skyrim.esm|0E0EC6",
+    "unofficial skyrim special edition patch.esp|00C51E"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|01B217"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|100770",
+    "Skyrim.esm|0E0EC6",
+    "Skyrim.esm|01B217"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0A2C90",
+   "name": "HousecarlWindhelm",
+   "packages": [
+    "unofficial skyrim special edition patch.esp|02EF1C"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|01B217"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|01B217"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01339E",
+   "name": "Hroki",
+   "class": {
+    "from": "Skyrim.esm|013279",
+    "to": "Skyrim.esm|01326B"
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 5,
+      "to": 24
+     },
+     "TwoHanded": {
+      "from": 5,
+      "to": 25
+     },
+     "Archery": {
+      "from": 5,
+      "to": 19
+     },
+     "Block": {
+      "from": 5,
+      "to": 20
+     },
+     "Smithing": {
+      "from": 5,
+      "to": 26
+     },
+     "HeavyArmor": {
+      "from": 5,
+      "to": 15
+     },
+     "LightArmor": {
+      "from": 5,
+      "to": 24
+     },
+     "Pickpocket": {
+      "from": 5,
+      "to": 15
+     },
+     "Lockpicking": {
+      "from": 5,
+      "to": 15
+     },
+     "Sneak": {
+      "from": 5,
+      "to": 19
+     },
+     "Alchemy": {
+      "from": 5,
+      "to": 22
+     },
+     "Speech": {
+      "from": 5,
+      "to": 24
+     },
+     "Alteration": {
+      "from": 5,
+      "to": 15
+     },
+     "Conjuration": {
+      "from": 5,
+      "to": 15
+     },
+     "Destruction": {
+      "from": 5,
+      "to": 15
+     },
+     "Illusion": {
+      "from": 5,
+      "to": 15
+     },
+     "Restoration": {
+      "from": 5,
+      "to": 15
+     },
+     "Enchanting": {
+      "from": 5,
+      "to": 22
+     }
+    },
+    "health": {
+     "from": 628,
+     "to": 91
+    },
+    "magicka": {
+     "from": 61038,
+     "to": 67
+    },
+    "stamina": {
+     "from": 49185,
+     "to": 67
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|01411B",
+   "name": "IdesaSadri",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|045F64",
+     "rank": 0
+    },
+    {
+     "form": "Skyrim.esm|051596",
+     "rank": -1
+    },
+    {
+     "form": "Skyrim.esm|051599",
+     "rank": -1
+    },
+    {
+     "form": "Skyrim.esm|0A3F12",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0135EC",
+   "name": "IdgrodTheYounger",
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 24,
+      "to": 22
+     },
+     "HeavyArmor": {
+      "from": 19,
+      "to": 17
+     },
+     "Alteration": {
+      "from": 15,
+      "to": 19
+     },
+     "Conjuration": {
+      "from": 15,
+      "to": 22
+     },
+     "Illusion": {
+      "from": 22,
+      "to": 15
+     }
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|013BB2",
+   "name": "IdolafBattleBorn",
+   "packages": [
+    "Skyrim.esm|0CC852",
+    "Skyrim.esm|02C39C",
+    "Skyrim.esm|034BE9",
+    "Skyrim.esm|0946FA",
+    "Skyrim.esm|02C39E"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|038254"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|038254",
+    "Skyrim.esm|0CC852",
+    "Skyrim.esm|02C39C",
+    "Skyrim.esm|034BE9",
+    "Skyrim.esm|0946FA",
+    "Skyrim.esm|02C39E"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013289",
+   "name": "Illdi",
+   "packages": [
+    "Skyrim.esm|0B3B1B",
+    "Skyrim.esm|0D6A13",
+    "Skyrim.esm|0D6A0E",
+    "Skyrim.esm|095842",
+    "Skyrim.esm|0D6A02",
+    "Skyrim.esm|0853A3",
+    "Skyrim.esm|0C2A57",
+    "Skyrim.esm|034BDF"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|095884",
+    "Skyrim.esm|08539F",
+    "Skyrim.esm|0C2A58"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|0B3B1B",
+    "Skyrim.esm|095884",
+    "Skyrim.esm|08539F",
+    "Skyrim.esm|0D6A13",
+    "Skyrim.esm|0D6A0E",
+    "Skyrim.esm|0D6A02",
+    "Skyrim.esm|0C2A58",
+    "Skyrim.esm|034BDF"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01328A",
+   "name": "IngeSixFingers",
+   "packages": [
+    "Skyrim.esm|0D6A04",
+    "Skyrim.esm|0D6A11",
+    "Skyrim.esm|0D6A5D",
+    "Skyrim.esm|0A95C1",
+    "Skyrim.esm|0C2A56",
+    "Skyrim.esm|01B217"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|0D6A04",
+    "Skyrim.esm|0D6A11",
+    "Skyrim.esm|0D6A5D",
+    "Skyrim.esm|0C2A56",
+    "Skyrim.esm|01B217"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|039840",
+   "name": "IsabelleRolaine",
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 19,
+      "to": 17
+     },
+     "HeavyArmor": {
+      "from": 19,
+      "to": 17
+     },
+     "Alteration": {
+      "from": 20,
+      "to": 24
+     },
+     "Conjuration": {
+      "from": 25,
+      "to": 32
+     },
+     "Illusion": {
+      "from": 27,
+      "to": 20
+     }
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|01328D",
+   "name": "JareeRa",
+   "packages": [
+    "unofficial skyrim special edition patch.esp|00EFB1",
+    "Skyrim.esm|01E61A",
+    "Skyrim.esm|034C01",
+    "Skyrim.esm|034C00",
+    "Skyrim.esm|034BDB",
+    "Skyrim.esm|01B217"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|0B3B1B"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|0B3B1B",
+    "Skyrim.esm|01E61A",
+    "Skyrim.esm|034C01",
+    "Skyrim.esm|034C00",
+    "Skyrim.esm|034BDB",
+    "Skyrim.esm|01B217"
+   ],
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|085DBF",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|014135",
+   "name": "Jorleif",
+   "packages": [
+    "Skyrim.esm|0A9272"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|035E74",
+    "Skyrim.esm|01CB15",
+    "Skyrim.esm|10E2B7"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|035E74",
+    "Skyrim.esm|01CB15",
+    "Skyrim.esm|10E2B7"
+   ],
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|036629",
+     "rank": -1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01328F",
+   "name": "Jorn",
+   "packages": [
+    "Skyrim.esm|0B3B1B",
+    "Skyrim.esm|0D6A14",
+    "Skyrim.esm|0D6A0F",
+    "Skyrim.esm|0D6A01",
+    "Skyrim.esm|034BCE",
+    "Skyrim.esm|0C2A57",
+    "Skyrim.esm|034BDF"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|085475"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|0B3B1B",
+    "Skyrim.esm|085475",
+    "Skyrim.esm|0D6A14",
+    "Skyrim.esm|0D6A0F",
+    "Skyrim.esm|0D6A01",
+    "Skyrim.esm|034BCE",
+    "Skyrim.esm|0C2A57",
+    "Skyrim.esm|034BDF"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0136B3",
+   "name": "JouaneManette",
+   "spellsAdded": [
+    "Skyrim.esm|034C38",
+    "Skyrim.esm|072315",
+    "Skyrim.esm|072319",
+    "Skyrim.esm|0C969A",
+    "Skyrim.esm|0C969B",
+    "Skyrim.esm|0F95ED"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|026F0F",
+   "name": "JulienneLylvieve",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|02817B",
+     "rank": 0
+    },
+    {
+     "form": "Skyrim.esm|029DB0",
+     "rank": 0
+    }
+   ],
+   "crimeFaction": {
+    "from": null,
+    "to": "Skyrim.esm|029DB0"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|01BB28",
+   "name": "JyrikGauldurson",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01C195",
+   "name": "Jzargo",
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 27,
+      "to": 24
+     },
+     "HeavyArmor": {
+      "from": 22,
+      "to": 19
+     },
+     "Alteration": {
+      "from": 15,
+      "to": 22
+     },
+     "Conjuration": {
+      "from": 15,
+      "to": 25
+     },
+     "Illusion": {
+      "from": 26,
+      "to": 15
+     }
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|013290",
+   "name": "Katla",
+   "keywordsAdded": [
+    "Skyrim.esm|0EDF15"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013292",
+   "name": "Kayd",
+   "packages": [
+    "Skyrim.esm|0B3B1B",
+    "Skyrim.esm|069676",
+    "unofficial skyrim special edition patch.esp|0407EC",
+    "Skyrim.esm|01B217"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|01B210"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|0B3B1B",
+    "Skyrim.esm|069676",
+    "Skyrim.esm|01B210",
+    "Skyrim.esm|01B217"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013291",
+   "name": "KharagGroShurkul",
+   "packages": [
+    "unofficial skyrim special edition patch.esp|0513F7",
+    "Skyrim.esm|034C03",
+    "Skyrim.esm|034BDE",
+    "Skyrim.esm|0484FF",
+    "unofficial skyrim special edition patch.esp|0513F6",
+    "Skyrim.esm|034C0D",
+    "Skyrim.esm|0C97B8"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|034BF9"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|034C03",
+    "Skyrim.esm|034BDE",
+    "Skyrim.esm|034C0D",
+    "Skyrim.esm|034BF9",
+    "Skyrim.esm|0C97B8"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013293",
+   "name": "Kjar",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|0267E3",
+     "rank": 0
+    }
+   ],
+   "crimeFaction": {
+    "from": "Skyrim.esm|02816F",
+    "to": "Skyrim.esm|0267E3"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|019A22",
+   "name": "Lodvar",
+   "packages": [
+    "Skyrim.esm|0B70C1",
+    "Skyrim.esm|0B70C2",
+    "Skyrim.esm|0548F2",
+    "Skyrim.esm|086307",
+    "Skyrim.esm|02EBF9",
+    "Skyrim.esm|0E73CA"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|0B70C1",
+    "Skyrim.esm|0B70C2",
+    "Skyrim.esm|0548F2",
+    "Skyrim.esm|02EBF9",
+    "Skyrim.esm|086307",
+    "Skyrim.esm|0E73CA"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|014145",
+   "name": "Lortheim",
+   "packages": [
+    "Skyrim.esm|035E92",
+    "Skyrim.esm|035E91",
+    "Skyrim.esm|0235AC",
+    "Skyrim.esm|0235AB",
+    "Skyrim.esm|035E3E"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|035E92",
+    "Skyrim.esm|035E91",
+    "Skyrim.esm|0235AC",
+    "Skyrim.esm|0235AB"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013368",
+   "name": "LouisLetrush",
+   "keywordsAdded": [
+    "Update.esm|00099F"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01AA63",
+   "name": "Lurbuk",
+   "packages": [
+    "Skyrim.esm|10E808",
+    "unofficial skyrim special edition patch.esp|05221E"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|10E808"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0D93A2",
+   "name": "LvlBanditGhostMelee1HFemale",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0B1F96",
+   "name": "LvlBanditGhostMelee1HMale",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0D93A3",
+   "name": "LvlBanditGhostMelee2HFemale",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0B1F97",
+   "name": "LvlBanditGhostMelee2HMale",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0D93A4",
+   "name": "LvlBanditGhostMeleeBerserkerFemale",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0B1F98",
+   "name": "LvlBanditGhostMeleeBerserkerMale",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0D93A5",
+   "name": "LvlBanditGhostMeleeTankFemale",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0B1F99",
+   "name": "LvlBanditGhostMeleeTankMale",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0D93A6",
+   "name": "LvlBanditGhostMissileFemale",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0B1F9A",
+   "name": "LvlBanditGhostMissileMale",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0B1F9B",
+   "name": "LvlBanditGhostWizardMale",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|1019BB",
+   "name": "LvlDraugrAmbushWarlockFemale",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|076249",
+   "name": "LvlFalmerAmbushMissile",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   },
+   "combatStyle": {
+    "from": "Skyrim.esm|052388",
+    "to": "Skyrim.esm|05238A"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|04C16A",
+   "name": "LvlPenitusOculatusMelee1H",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0F9060",
+   "name": "MG07Dog",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0F7385",
+   "name": "MG07LabyrinthianThrall02",
+   "class": {
+    "from": "Skyrim.esm|01CE1C",
+    "to": "Skyrim.esm|039D30"
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 20,
+      "to": 25
+     },
+     "TwoHanded": {
+      "from": 25,
+      "to": 15
+     },
+     "Archery": {
+      "from": 15,
+      "to": 20
+     },
+     "LightArmor": {
+      "from": 20,
+      "to": 15
+     },
+     "Speech": {
+      "from": 20,
+      "to": 15
+     },
+     "Alteration": {
+      "from": 15,
+      "to": 20
+     },
+     "Destruction": {
+      "from": 15,
+      "to": 20
+     }
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|06A152",
+   "name": "MGArnielSummon",
+   "keywordsAdded": [
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|028502",
+   "name": "MS06NecromancerCultist1",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|034B74",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0284F2",
+   "name": "MS06NecromancerLeader",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|034B74",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0C4409",
+   "name": "MS09Geirlund",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|01CE15"
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 5,
+      "to": 20
+     },
+     "TwoHanded": {
+      "from": 5,
+      "to": 25
+     },
+     "Archery": {
+      "from": 5,
+      "to": 15
+     },
+     "Block": {
+      "from": 5,
+      "to": 20
+     },
+     "Smithing": {
+      "from": 5,
+      "to": 20
+     },
+     "HeavyArmor": {
+      "from": 5,
+      "to": 15
+     },
+     "LightArmor": {
+      "from": 5,
+      "to": 20
+     },
+     "Pickpocket": {
+      "from": 5,
+      "to": 15
+     },
+     "Lockpicking": {
+      "from": 5,
+      "to": 15
+     },
+     "Sneak": {
+      "from": 5,
+      "to": 15
+     },
+     "Alchemy": {
+      "from": 5,
+      "to": 15
+     },
+     "Speech": {
+      "from": 5,
+      "to": 20
+     },
+     "Alteration": {
+      "from": 5,
+      "to": 15
+     },
+     "Conjuration": {
+      "from": 5,
+      "to": 15
+     },
+     "Destruction": {
+      "from": 5,
+      "to": 15
+     },
+     "Illusion": {
+      "from": 5,
+      "to": 15
+     },
+     "Restoration": {
+      "from": 5,
+      "to": 15
+     },
+     "Enchanting": {
+      "from": 5,
+      "to": 15
+     }
+    },
+    "health": {
+     "from": 26473,
+     "to": 50
+    },
+    "magicka": {
+     "from": 25959,
+     "to": 50
+    },
+    "stamina": {
+     "from": 12658,
+     "to": 50
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0C78BE",
+   "name": "Mahk",
+   "skills": {
+    "magicka": {
+     "from": 67,
+     "to": 50
+    },
+    "stamina": {
+     "from": 100,
+     "to": 117
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|01B1D5",
+   "name": "Majhad",
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 5,
+      "to": 26
+     },
+     "TwoHanded": {
+      "from": 5,
+      "to": 17
+     },
+     "Archery": {
+      "from": 5,
+      "to": 24
+     },
+     "Block": {
+      "from": 5,
+      "to": 19
+     },
+     "Smithing": {
+      "from": 5,
+      "to": 15
+     },
+     "HeavyArmor": {
+      "from": 5,
+      "to": 22
+     },
+     "LightArmor": {
+      "from": 5,
+      "to": 15
+     },
+     "Pickpocket": {
+      "from": 5,
+      "to": 20
+     },
+     "Lockpicking": {
+      "from": 5,
+      "to": 29
+     },
+     "Sneak": {
+      "from": 5,
+      "to": 25
+     },
+     "Alchemy": {
+      "from": 5,
+      "to": 20
+     },
+     "Speech": {
+      "from": 5,
+      "to": 15
+     },
+     "Alteration": {
+      "from": 5,
+      "to": 15
+     },
+     "Conjuration": {
+      "from": 5,
+      "to": 15
+     },
+     "Destruction": {
+      "from": 5,
+      "to": 15
+     },
+     "Illusion": {
+      "from": 5,
+      "to": 15
+     },
+     "Restoration": {
+      "from": 5,
+      "to": 15
+     },
+     "Enchanting": {
+      "from": 5,
+      "to": 15
+     }
+    },
+    "health": {
+     "from": null,
+     "to": 96
+    },
+    "magicka": {
+     "from": null,
+     "to": 50
+    },
+    "stamina": {
+     "from": null,
+     "to": 64
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|02BA8E",
+   "name": "MallusMaccius",
+   "packages": [
+    "Skyrim.esm|101962",
+    "Skyrim.esm|0B297C",
+    "Skyrim.esm|101961",
+    "Skyrim.esm|0B297B",
+    "Skyrim.esm|0B297A",
+    "Skyrim.esm|10195A",
+    "Skyrim.esm|0B2979"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|101961",
+    "Skyrim.esm|101962",
+    "Skyrim.esm|0B297C",
+    "Skyrim.esm|0B297B",
+    "Skyrim.esm|0B297A",
+    "Skyrim.esm|10195A",
+    "Skyrim.esm|0B2979"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|060ABA",
+   "name": "MarkarthImperialThalmor",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|01364E",
+   "name": "Mathies",
+   "factionsAdded": [
+    {
+     "form": "Update.esm|000944",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01B075",
+   "name": "Mauhulakh",
+   "skills": {
+    "magicka": {
+     "from": 97,
+     "to": 50
+    },
+    "stamina": {
+     "from": 100,
+     "to": 147
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0371D6",
+   "name": "Maul",
+   "packages": [
+    "Skyrim.esm|0649FF",
+    "unofficial skyrim special edition patch.esp|077A6C",
+    "Skyrim.esm|064A02"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|0649FF",
+    "Skyrim.esm|064A02"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013299",
+   "name": "Melaran",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|0B2036",
+     "rank": 0
+    },
+    {
+     "form": "Skyrim.esm|0C13D0",
+     "rank": 0
+    }
+   ],
+   "combatStyle": {
+    "from": null,
+    "to": "Skyrim.esm|03BE1C"
+   },
+   "spellsAdded": [
+    "Skyrim.esm|072316",
+    "Skyrim.esm|07231B",
+    "Skyrim.esm|0BB967",
+    "Skyrim.esm|0BB969",
+    "Skyrim.esm|0BB96B",
+    "Skyrim.esm|0CAB65",
+    "Skyrim.esm|0F95EB"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|019A2E",
+   "name": "MichelLylvieve",
+   "crimeFaction": {
+    "from": null,
+    "to": "Skyrim.esm|029DB0"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|01A670",
+   "name": "Mikael",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|09CAFC",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01329B",
+   "name": "MinetteVinius",
+   "packages": [
+    "Skyrim.esm|0B3B1B",
+    "Skyrim.esm|069677",
+    "unofficial skyrim special edition patch.esp|041330",
+    "Skyrim.esm|10B063"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|04C1D1"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|0B3B1B",
+    "Skyrim.esm|069677",
+    "Skyrim.esm|04C1D1",
+    "Skyrim.esm|10B063"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01336C",
+   "name": "Molgrom",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|01745F",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|055A5E",
+   "name": "MothgroBagol",
+   "packages": [
+    "Skyrim.esm|10CBA2",
+    "Skyrim.esm|055A66",
+    "Skyrim.esm|01B217"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|055A66",
+    "Skyrim.esm|01B217"
+   ],
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|0F18EA",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013654",
+   "name": "Narri",
+   "packages": [
+    "Skyrim.esm|07275D",
+    "Skyrim.esm|0F3925",
+    "unofficial skyrim special edition patch.esp|01F8F9"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|0CF016"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|07275D",
+    "Skyrim.esm|0F3925",
+    "Skyrim.esm|0CF016"
+   ],
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|0A6BFB",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013BBF",
+   "name": "Nazeem",
+   "packages": [
+    "Skyrim.esm|0E1BAB",
+    "Skyrim.esm|02C91A",
+    "Skyrim.esm|0E1BAC",
+    "Skyrim.esm|0E1BAA",
+    "Skyrim.esm|1036F3"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|0E1BAB",
+    "Skyrim.esm|0E1BAC",
+    "Skyrim.esm|0E1BAA",
+    "Skyrim.esm|02C91A",
+    "Skyrim.esm|1036F3"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01C3AB",
+   "name": "Nazir",
+   "packages": [
+    "Skyrim.esm|0956B8"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|01B210"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|01B210",
+    "Skyrim.esm|0956B8"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01434D",
+   "name": "Nelkir",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|03662A",
+     "rank": 0
+    },
+    {
+     "form": "Skyrim.esm|036633",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|014123",
+   "name": "Niranye",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|0E73C9",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01C19B",
+   "name": "Nirya",
+   "packages": [
+    "Skyrim.esm|036E9B",
+    "Skyrim.esm|036E99",
+    "Skyrim.esm|036E98",
+    "Skyrim.esm|036E9A"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|0C9F0D"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|0C9F0D",
+    "Skyrim.esm|036E9B",
+    "Skyrim.esm|036E99",
+    "Skyrim.esm|036E98",
+    "Skyrim.esm|036E9A"
+   ],
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 19,
+      "to": 17
+     },
+     "HeavyArmor": {
+      "from": 19,
+      "to": 17
+     },
+     "Alteration": {
+      "from": 20,
+      "to": 24
+     },
+     "Conjuration": {
+      "from": 20,
+      "to": 27
+     },
+     "Illusion": {
+      "from": 32,
+      "to": 25
+     }
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|01A6D9",
+   "name": "NjadaStonearm",
+   "skills": {
+    "values": {
+     "LightArmor": {
+      "from": 20,
+      "to": 25
+     },
+     "Pickpocket": {
+      "from": 20,
+      "to": 15
+     }
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|01329E",
+   "name": "Odar",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|0A3909",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013B80",
+   "name": "Oglub",
+   "packages": [
+    "Skyrim.esm|0C50A6",
+    "Skyrim.esm|0606FA",
+    "Skyrim.esm|01B217"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|0606FA",
+    "Skyrim.esm|01B217"
+   ],
+   "skills": {
+    "magicka": {
+     "from": 67,
+     "to": 50
+    },
+    "stamina": {
+     "from": 100,
+     "to": 117
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0133AD",
+   "name": "Ogmund",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|01745F",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|019E22",
+   "name": "Ogol",
+   "skills": {
+    "magicka": {
+     "from": 80,
+     "to": 50
+    },
+    "stamina": {
+     "from": 100,
+     "to": 130
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|013BAE",
+   "name": "OlavatheFeeble",
+   "packages": [
+    "Skyrim.esm|02C3AF",
+    "Skyrim.esm|01F250",
+    "Skyrim.esm|02C3AE",
+    "Skyrim.esm|01B210"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|02C3AF",
+    "Skyrim.esm|02C3AE",
+    "Skyrim.esm|01B210",
+    "Skyrim.esm|01F250"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013B9B",
+   "name": "OlfinaGrayMane",
+   "flagsAdded": [
+    "Essential"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013BB4",
+   "name": "OlfridBattleBorn",
+   "packages": [
+    "Skyrim.esm|02C394",
+    "Skyrim.esm|0946F9",
+    "Skyrim.esm|02C397",
+    "Skyrim.esm|0E73CA"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|038253"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|038253",
+    "Skyrim.esm|02C394",
+    "Skyrim.esm|0946F9",
+    "Skyrim.esm|02C397",
+    "Skyrim.esm|0E73CA"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01995B",
+   "name": "Olur",
+   "packages": [
+    "Skyrim.esm|06FCCC",
+    "Skyrim.esm|031730"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|0C78C9"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|06FCCC",
+    "Skyrim.esm|0C78C9",
+    "Skyrim.esm|031730"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01C194",
+   "name": "Onmund",
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 27,
+      "to": 24
+     },
+     "HeavyArmor": {
+      "from": 22,
+      "to": 19
+     },
+     "Alteration": {
+      "from": 15,
+      "to": 22
+     },
+     "Conjuration": {
+      "from": 15,
+      "to": 25
+     },
+     "Illusion": {
+      "from": 26,
+      "to": 15
+     }
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|01329F",
+   "name": "PanteaAteia",
+   "packages": [
+    "Skyrim.esm|0B3B1B",
+    "Skyrim.esm|0A95C0",
+    "Skyrim.esm|0C4214",
+    "Skyrim.esm|0B2411",
+    "Skyrim.esm|095883",
+    "Skyrim.esm|0A95C1",
+    "Skyrim.esm|0C2A57",
+    "Skyrim.esm|034BDF"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|01B217"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|0B3B1B",
+    "Skyrim.esm|095883",
+    "Skyrim.esm|0B2411",
+    "Skyrim.esm|0C4214",
+    "Skyrim.esm|0C2A57",
+    "Skyrim.esm|01B217"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01996C",
+   "name": "Perth",
+   "packages": [
+    "Skyrim.esm|06136C",
+    "Skyrim.esm|01E619",
+    "Skyrim.esm|01E620",
+    "Skyrim.esm|01E61F",
+    "Skyrim.esm|01B210",
+    "Skyrim.esm|05E9B3",
+    "Skyrim.esm|09976D",
+    "Skyrim.esm|01B217"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|06136C",
+    "Skyrim.esm|01E619",
+    "Skyrim.esm|01E620",
+    "Skyrim.esm|09976D",
+    "Skyrim.esm|05E9B3",
+    "Skyrim.esm|01E61F",
+    "Skyrim.esm|01B210",
+    "Skyrim.esm|01B217"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01C199",
+   "name": "PhinisGestor",
+   "packages": [
+    "Skyrim.esm|036A69",
+    "Skyrim.esm|036A68",
+    "Skyrim.esm|036A6A"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|01B217"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|036A69",
+    "Skyrim.esm|036A68",
+    "Skyrim.esm|036A6A",
+    "Skyrim.esm|01B217"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01B1D3",
+   "name": "Razhinda",
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 5,
+      "to": 34
+     },
+     "TwoHanded": {
+      "from": 5,
+      "to": 20
+     },
+     "Archery": {
+      "from": 5,
+      "to": 30
+     },
+     "Block": {
+      "from": 5,
+      "to": 25
+     },
+     "Smithing": {
+      "from": 5,
+      "to": 15
+     },
+     "HeavyArmor": {
+      "from": 5,
+      "to": 29
+     },
+     "LightArmor": {
+      "from": 5,
+      "to": 15
+     },
+     "Pickpocket": {
+      "from": 5,
+      "to": 20
+     },
+     "Lockpicking": {
+      "from": 5,
+      "to": 39
+     },
+     "Sneak": {
+      "from": 5,
+      "to": 25
+     },
+     "Alchemy": {
+      "from": 5,
+      "to": 20
+     },
+     "Speech": {
+      "from": 5,
+      "to": 15
+     },
+     "Alteration": {
+      "from": 5,
+      "to": 15
+     },
+     "Conjuration": {
+      "from": 5,
+      "to": 15
+     },
+     "Destruction": {
+      "from": 5,
+      "to": 15
+     },
+     "Illusion": {
+      "from": 5,
+      "to": 15
+     },
+     "Restoration": {
+      "from": 5,
+      "to": 15
+     },
+     "Enchanting": {
+      "from": 5,
+      "to": 15
+     }
+    },
+    "health": {
+     "from": 1089,
+     "to": 155
+    },
+    "magicka": {
+     "from": null,
+     "to": 50
+    },
+    "stamina": {
+     "from": null,
+     "to": 80
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|013377",
+   "name": "Romlyn",
+   "packages": [
+    "unofficial skyrim special edition patch.esp|058EE1",
+    "unofficial skyrim special edition patch.esp|058EE2",
+    "Skyrim.esm|044654",
+    "Skyrim.esm|044657",
+    "Skyrim.esm|0445C3",
+    "Skyrim.esm|044655",
+    "Skyrim.esm|044656",
+    "Skyrim.esm|10CC25"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|044654",
+    "Skyrim.esm|044657",
+    "Skyrim.esm|0445C3",
+    "Skyrim.esm|044655",
+    "Skyrim.esm|044656",
+    "Skyrim.esm|10CC25"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013BA2",
+   "name": "Saadia",
+   "packages": [
+    "unofficial skyrim special edition patch.esp|069D2E",
+    "Skyrim.esm|02BE16",
+    "Skyrim.esm|10E2C6"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|01F250"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|02BE16",
+    "Skyrim.esm|01F250",
+    "Skyrim.esm|10E2C6"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013379",
+   "name": "Saerlund",
+   "packages": [
+    "Skyrim.esm|0A9272",
+    "Skyrim.esm|064AFE",
+    "Skyrim.esm|064AFD",
+    "Skyrim.esm|064AFC",
+    "unofficial skyrim special edition patch.esp|01F8E6",
+    "Skyrim.esm|064AFF"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|064AFE",
+    "Skyrim.esm|064AFD",
+    "Skyrim.esm|064AFC",
+    "Skyrim.esm|064AFF"
+   ],
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|03662A",
+     "rank": 0
+    },
+    {
+     "form": "Skyrim.esm|036634",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0AF524",
+   "name": "SailorDorian",
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 50,
+      "to": 28
+     },
+     "Archery": {
+      "from": 50,
+      "to": 28
+     },
+     "Block": {
+      "from": 33,
+      "to": 22
+     },
+     "LightArmor": {
+      "from": 67,
+      "to": 34
+     },
+     "Sneak": {
+      "from": 67,
+      "to": 35
+     }
+    },
+    "health": {
+     "from": 250,
+     "to": 125
+    },
+    "stamina": {
+     "from": 210,
+     "to": 110
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0AF522",
+   "name": "SailorEris",
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 39,
+      "to": 33
+     },
+     "Block": {
+      "from": 33,
+      "to": 26
+     },
+     "LightArmor": {
+      "from": 20,
+      "to": 27
+     },
+     "Alteration": {
+      "from": 15,
+      "to": 22
+     },
+     "Conjuration": {
+      "from": 15,
+      "to": 28
+     },
+     "Destruction": {
+      "from": 35,
+      "to": 34
+     },
+     "Illusion": {
+      "from": 28,
+      "to": 15
+     }
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|01C19F",
+   "name": "SavosAren",
+   "spellsAdded": [
+    "Skyrim.esm|07231C",
+    "Skyrim.esm|0BB967",
+    "Skyrim.esm|0C969B"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01C23E",
+   "name": "SergiusTurrianus",
+   "packages": [
+    "Skyrim.esm|05DD75",
+    "Skyrim.esm|05DD74",
+    "Skyrim.esm|05DD73",
+    "Skyrim.esm|036EA4",
+    "Skyrim.esm|05DD76",
+    "Skyrim.esm|01B217"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|05DD76",
+    "Skyrim.esm|05DD75",
+    "Skyrim.esm|05DD74",
+    "Skyrim.esm|05DD73",
+    "Skyrim.esm|036EA4",
+    "Skyrim.esm|01B217"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|02C925",
+   "name": "SeverioPelagia",
+   "keywordsAdded": [
+    "Skyrim.esm|0EDF13"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013B7D",
+   "name": "Shel",
+   "skills": {
+    "magicka": {
+     "from": 67,
+     "to": 50
+    },
+    "stamina": {
+     "from": 100,
+     "to": 117
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|014121",
+   "name": "Silda",
+   "packages": [
+    "unofficial skyrim special edition patch.esp|10CE18",
+    "Skyrim.esm|0CD932",
+    "Skyrim.esm|0CD930",
+    "Skyrim.esm|0CD92F"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|0CD932",
+    "Skyrim.esm|0CD930",
+    "Skyrim.esm|0CD92F"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0132A7",
+   "name": "SorexVinius",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|0A6BF9",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01E62A",
+   "name": "Stump",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|000013",
+     "rank": 0
+    },
+    {
+     "form": "Skyrim.esm|013481",
+     "rank": 0
+    },
+    {
+     "form": "Skyrim.esm|043596",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0CDECE",
+   "name": "SummonAtronachStormThrallPotent",
+   "class": {
+    "from": "Skyrim.esm|01E7D0",
+    "to": "Skyrim.esm|0AD237"
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 15,
+      "to": 77
+     },
+     "TwoHanded": {
+      "from": 15,
+      "to": 46
+     },
+     "Block": {
+      "from": 15,
+      "to": 46
+     },
+     "Sneak": {
+      "from": 64,
+      "to": 77
+     },
+     "Alteration": {
+      "from": 65,
+      "to": 15
+     },
+     "Conjuration": {
+      "from": 40,
+      "to": 15
+     },
+     "Destruction": {
+      "from": 89,
+      "to": 100
+     },
+     "Restoration": {
+      "from": 89,
+      "to": 15
+     }
+    },
+    "health": {
+     "from": 484,
+     "to": 483
+    },
+    "magicka": {
+     "from": 326,
+     "to": 213
+    },
+    "stamina": {
+     "from": 150,
+     "to": 264
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|01412B",
+   "name": "Susanna",
+   "packages": [
+    "Skyrim.esm|048504",
+    "Skyrim.esm|048505",
+    "Skyrim.esm|048506",
+    "Skyrim.esm|048503"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|048503",
+    "Skyrim.esm|048504",
+    "Skyrim.esm|048505",
+    "Skyrim.esm|048506"
+   ],
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|09E0E5",
+     "rank": 0
+    },
+    {
+     "form": "Skyrim.esm|0A3F01",
+     "rank": 0
+    },
+    {
+     "form": "Skyrim.esm|0DEE93",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01337C",
+   "name": "Svana",
+   "packages": [
+    "Skyrim.esm|0449EF",
+    "Skyrim.esm|0449EE",
+    "Skyrim.esm|0449ED",
+    "Skyrim.esm|0449EB",
+    "Skyrim.esm|064999",
+    "Skyrim.esm|0449EC"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|064999",
+    "Skyrim.esm|0449EF",
+    "Skyrim.esm|0449EE",
+    "Skyrim.esm|0449ED",
+    "Skyrim.esm|0449EB",
+    "Skyrim.esm|0449EC"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0132AA",
+   "name": "SybilleStentor",
+   "combatStyle": {
+    "from": null,
+    "to": "Skyrim.esm|03BE1C"
+   },
+   "spellsAdded": [
+    "Skyrim.esm|033976",
+    "Skyrim.esm|072316",
+    "Skyrim.esm|07231B",
+    "Skyrim.esm|0C969C",
+    "Skyrim.esm|0C96A2",
+    "Skyrim.esm|0CAB65",
+    "Skyrim.esm|0F5B59",
+    "Skyrim.esm|0F5B5C",
+    "Skyrim.esm|0F5B5D"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|029DAA",
+   "name": "Syndus",
+   "packages": [
+    "unofficial skyrim special edition patch.esp|077A6D",
+    "Skyrim.esm|0EF577"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|0EF577"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01C605",
+   "name": "T03Maurice",
+   "confidence": {
+    "from": 2,
+    "to": 0
+   }
+  },
+  {
+   "npc": "Skyrim.esm|084D16",
+   "name": "TGCrownGhost02",
+   "combatStyle": {
+    "from": "Skyrim.esm|03DECF",
+    "to": "Skyrim.esm|03DECE"
+   },
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|084D18",
+   "name": "TGCrownGhost03",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|084D15",
+   "name": "TGCrownGhostBase",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013373",
+   "name": "TalenJei",
+   "flagsAdded": [
+    "Essential"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|083D99",
+   "name": "TalsgarTheWanderer",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|01745F",
+     "rank": 0
+    },
+    {
+     "form": "Update.esm|000944",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01360A",
+   "name": "TeebaEi",
+   "packages": [
+    "Skyrim.esm|02EA46",
+    "Skyrim.esm|02EA41",
+    "Skyrim.esm|07EABE",
+    "Skyrim.esm|02EA44",
+    "Skyrim.esm|01B217"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|01B210"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|02EA46",
+    "Skyrim.esm|02EA41",
+    "Skyrim.esm|07EABE",
+    "Skyrim.esm|02EA44",
+    "Skyrim.esm|01B210",
+    "Skyrim.esm|01B217"
+   ],
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|0FA050",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0658D2",
+   "name": "TembaWideArm",
+   "packages": [
+    "Skyrim.esm|083DAC",
+    "Skyrim.esm|083DAA",
+    "Skyrim.esm|083DAB",
+    "Skyrim.esm|083DAE",
+    "Skyrim.esm|065AA4",
+    "Skyrim.esm|065AA3",
+    "Skyrim.esm|065AA6"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|083DAE",
+    "Skyrim.esm|065AA4",
+    "Skyrim.esm|065AA3",
+    "Skyrim.esm|065AA6",
+    "Skyrim.esm|083DAC",
+    "Skyrim.esm|083DAA",
+    "Skyrim.esm|083DAB"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0133BA",
+   "name": "Thonar",
+   "packages": [
+    "Skyrim.esm|052201",
+    "Skyrim.esm|036F18"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|0D6738"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|0D6738",
+    "Skyrim.esm|052201",
+    "Skyrim.esm|036F18"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0133BB",
+   "name": "Thongvor",
+   "packages": [
+    "Skyrim.esm|10FE78",
+    "Skyrim.esm|0A9272",
+    "Skyrim.esm|0AEC25",
+    "Skyrim.esm|052201",
+    "Skyrim.esm|0521FE",
+    "Skyrim.esm|052200",
+    "Skyrim.esm|0521FF",
+    "Skyrim.esm|0D6736",
+    "Skyrim.esm|0521F8",
+    "Skyrim.esm|036F0F"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|10FE78",
+    "Skyrim.esm|0A9272",
+    "Skyrim.esm|0AEC25",
+    "Skyrim.esm|0D6736",
+    "Skyrim.esm|052201",
+    "Skyrim.esm|0521FE",
+    "Skyrim.esm|052200",
+    "Skyrim.esm|0521FF",
+    "Skyrim.esm|0521F8",
+    "Skyrim.esm|036F0F"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01C181",
+   "name": "Thonjolf",
+   "packages": [
+    "Skyrim.esm|0A9271",
+    "Skyrim.esm|107836",
+    "Skyrim.esm|107835"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|01B210"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|0A9271",
+    "Skyrim.esm|107836",
+    "Skyrim.esm|01B210",
+    "Skyrim.esm|107835"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013367",
+   "name": "Threki",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|10FE03",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013BB6",
+   "name": "Tilma",
+   "packages": [
+    "Skyrim.esm|023E57",
+    "Skyrim.esm|091920"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|091920"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0B8827",
+   "name": "Tonilia",
+   "packages": [
+    "unofficial skyrim special edition patch.esp|041301",
+    "Skyrim.esm|0B882B"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|0B882B"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|019E1A",
+   "name": "Ugor",
+   "packages": [
+    "Skyrim.esm|01B210",
+    "Skyrim.esm|01B217"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|01B217",
+    "Skyrim.esm|01B210"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013B7E",
+   "name": "Umurn",
+   "packages": [
+    "Skyrim.esm|0606F7",
+    "Skyrim.esm|01B217"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|0606FA"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|0606F7",
+    "Skyrim.esm|0606FA",
+    "Skyrim.esm|01B217"
+   ],
+   "skills": {
+    "magicka": {
+     "from": 67,
+     "to": 50
+    },
+    "stamina": {
+     "from": 100,
+     "to": 117
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0132AC",
+   "name": "Una",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|0A3909",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0371D7",
+   "name": "Unmid",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|01CE16"
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 27,
+      "to": 22
+     },
+     "TwoHanded": {
+      "from": 27,
+      "to": 32
+     },
+     "HeavyArmor": {
+      "from": 22,
+      "to": 15
+     },
+     "LightArmor": {
+      "from": 20,
+      "to": 27
+     }
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|01C193",
+   "name": "UraggroShub",
+   "packages": [
+    "Skyrim.esm|0C9F0C",
+    "Skyrim.esm|036A5D",
+    "Skyrim.esm|036A5F"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|0C9F0C",
+    "Skyrim.esm|036A5F"
+   ],
+   "class": {
+    "from": "Skyrim.esm|01317D",
+    "to": "Skyrim.esm|013179"
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 20,
+      "to": 27
+     },
+     "Archery": {
+      "from": 34,
+      "to": 15
+     },
+     "HeavyArmor": {
+      "from": 25,
+      "to": 32
+     },
+     "LightArmor": {
+      "from": 28,
+      "to": 15
+     },
+     "Sneak": {
+      "from": 35,
+      "to": 15
+     },
+     "Alteration": {
+      "from": 22,
+      "to": 28
+     },
+     "Conjuration": {
+      "from": 15,
+      "to": 34
+     },
+     "Destruction": {
+      "from": 15,
+      "to": 34
+     },
+     "Restoration": {
+      "from": 28,
+      "to": 22
+     }
+    },
+    "magicka": {
+     "from": 130,
+     "to": 145
+    },
+    "stamina": {
+     "from": 80,
+     "to": 65
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0918E2",
+   "name": "Uthgerd",
+   "packages": [
+    "Skyrim.esm|092B29",
+    "unofficial skyrim special edition patch.esp|0139FA",
+    "Skyrim.esm|091917"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|092B29",
+    "Skyrim.esm|091917"
+   ],
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|01CE15"
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 31,
+      "to": 24
+     },
+     "TwoHanded": {
+      "from": 29,
+      "to": 36
+     }
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|072B04",
+   "name": "Vald",
+   "combatStyle": {
+    "from": "Skyrim.esm|03BE1B",
+    "to": "Skyrim.esm|03DECE"
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 20,
+      "to": 35
+     },
+     "TwoHanded": {
+      "from": 25,
+      "to": 41
+     },
+     "Block": {
+      "from": 20,
+      "to": 30
+     },
+     "HeavyArmor": {
+      "from": 15,
+      "to": 20
+     },
+     "LightArmor": {
+      "from": 20,
+      "to": 30
+     }
+    },
+    "health": {
+     "from": 35,
+     "to": 112
+    },
+    "stamina": {
+     "from": 70,
+     "to": 98
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|029DAF",
+   "name": "VanrythGatharian",
+   "packages": [
+    "unofficial skyrim special edition patch.esp|077A6D",
+    "Skyrim.esm|0EF577"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|0EF577"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|019A26",
+   "name": "VarniusJunius",
+   "packages": [
+    "Skyrim.esm|0862D9",
+    "unofficial skyrim special edition patch.esp|006CAB",
+    "unofficial skyrim special edition patch.esp|006CAC"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|01B210",
+    "Skyrim.esm|01B217"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|0862D9",
+    "Skyrim.esm|01B210",
+    "Skyrim.esm|01B217"
+   ],
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|09E0E5",
+     "rank": 0
+    },
+    {
+     "form": "Skyrim.esm|0F49BC",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013380",
+   "name": "Vekel",
+   "packages": [
+    "Skyrim.esm|10F117",
+    "Skyrim.esm|10F116",
+    "Skyrim.esm|10F115",
+    "Skyrim.esm|10F114",
+    "Skyrim.esm|10F119",
+    "Skyrim.esm|10F118",
+    "unofficial skyrim special edition patch.esp|0412FF",
+    "Skyrim.esm|044A69"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|10F117",
+    "Skyrim.esm|10F116",
+    "Skyrim.esm|10F115",
+    "Skyrim.esm|10F114",
+    "Skyrim.esm|10F119",
+    "Skyrim.esm|10F118",
+    "Skyrim.esm|044A69"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01CD90",
+   "name": "Vex",
+   "packages": [
+    "Skyrim.esm|10F11F",
+    "Skyrim.esm|10F11E",
+    "Skyrim.esm|10F11D",
+    "Skyrim.esm|10F11C",
+    "Skyrim.esm|10F11B",
+    "Skyrim.esm|10F11A",
+    "unofficial skyrim special edition patch.esp|041302",
+    "Skyrim.esm|0E3F8F"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|10F11F",
+    "Skyrim.esm|10F11E",
+    "Skyrim.esm|10F11D",
+    "Skyrim.esm|10F11C",
+    "Skyrim.esm|10F11B",
+    "Skyrim.esm|10F11A",
+    "Skyrim.esm|0E3F8F"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013BB5",
+   "name": "VignarGrayMane",
+   "packages": [
+    "Skyrim.esm|0A9275",
+    "Skyrim.esm|0946F9",
+    "Skyrim.esm|01B210",
+    "Skyrim.esm|02C38E"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|02C38F"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|0A9275",
+    "Skyrim.esm|0946F9",
+    "Skyrim.esm|02C38F",
+    "Skyrim.esm|01B210",
+    "Skyrim.esm|02C38E"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|014129",
+   "name": "ViolaGiordano",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|0F18FB",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01411C",
+   "name": "VoldseaGiryon",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|0267E3",
+     "rank": 0
+    }
+   ],
+   "crimeFaction": {
+    "from": "Skyrim.esm|02816F",
+    "to": "Skyrim.esm|0267E3"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0B117E",
+   "name": "WEJS01AvengeGhost",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0C19F7",
+   "name": "WEJS01Ghost",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|09A544",
+   "name": "WEOrcHunter",
+   "combatStyle": {
+    "from": null,
+    "to": "Skyrim.esm|03BE1D"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0D74F5",
+   "name": "WhiterunTempleWoundedSoldier",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|017322",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0661AF",
+   "name": "Willem",
+   "packages": [
+    "Skyrim.esm|10C06A",
+    "Skyrim.esm|01E618",
+    "Skyrim.esm|01E620",
+    "Skyrim.esm|10FB3E",
+    "Skyrim.esm|0661AC"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|0661AC"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|014146",
+   "name": "Wuunferth",
+   "packages": [
+    "unofficial skyrim special edition patch.esp|02F6AA",
+    "Skyrim.esm|035EA6"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|034BE9"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|034BE9",
+    "Skyrim.esm|035EA6"
+   ],
+   "combatStyle": {
+    "from": null,
+    "to": "Skyrim.esm|03BE1C"
+   },
+   "spellsAdded": [
+    "Skyrim.esm|072316",
+    "Skyrim.esm|07231A",
+    "Skyrim.esm|07231C",
+    "Skyrim.esm|0BB967",
+    "Skyrim.esm|0C969B",
+    "Skyrim.esm|0C96A2",
+    "Skyrim.esm|0CAB65"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|019DEF",
+   "name": "Wylandriah",
+   "combatStyle": {
+    "from": null,
+    "to": "Skyrim.esm|03BE1C"
+   },
+   "spellsAdded": [
+    "Skyrim.esm|072316",
+    "Skyrim.esm|07231A",
+    "Skyrim.esm|07231C",
+    "Skyrim.esm|0BB967",
+    "Skyrim.esm|0C969B",
+    "Skyrim.esm|0C96A2",
+    "Skyrim.esm|0CAB65"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|03BC26",
+   "name": "Yamarz",
+   "packages": [
+    "Skyrim.esm|01B210",
+    "Skyrim.esm|01B217"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|01B217",
+    "Skyrim.esm|01B210"
+   ],
+   "skills": {
+    "magicka": {
+     "from": 67,
+     "to": 50
+    },
+    "stamina": {
+     "from": 50,
+     "to": 67
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|013BAB",
+   "name": "Ysolda",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|093B17",
+     "rank": 0
+    }
+   ],
+   "flagsAdded": [
+    "Essential"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|03A19A",
+   "name": "Zaria",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|05091C",
+     "rank": 0
+    }
+   ],
+   "crimeFaction": {
+    "from": null,
+    "to": "Skyrim.esm|028170"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|03B0E5",
+   "name": "dunAlftandYagGraGortwog",
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 27,
+      "to": 24
+     },
+     "HeavyArmor": {
+      "from": 32,
+      "to": 29
+     },
+     "Alteration": {
+      "from": 15,
+      "to": 22
+     },
+     "Conjuration": {
+      "from": 15,
+      "to": 25
+     },
+     "Illusion": {
+      "from": 26,
+      "to": 15
+     }
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0CAB2F",
+   "name": "dunAngiREF",
+   "packages": [
+    "unofficial skyrim special edition patch.esp|047B09",
+    "Skyrim.esm|0D034D"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|0D034D"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|048C2F",
+   "name": "dunDarklightIllia",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|02816B",
+     "rank": 0
+    }
+   ],
+   "crimeFaction": {
+    "from": null,
+    "to": "Skyrim.esm|02816B"
+   },
+   "perksAdded": [
+    {
+     "perk": "Skyrim.esm|053128",
+     "rank": 1
+    },
+    {
+     "perk": "Skyrim.esm|0581EA",
+     "rank": 1
+    },
+    {
+     "perk": "Skyrim.esm|0581F5",
+     "rank": 1
+    },
+    {
+     "perk": "Skyrim.esm|0581F8",
+     "rank": 1
+    },
+    {
+     "perk": "Skyrim.esm|0581F9",
+     "rank": 1
+    },
+    {
+     "perk": "Skyrim.esm|0D7999",
+     "rank": 1
+    }
+   ],
+   "spellsAdded": [
+    "Skyrim.esm|0400AC",
+    "Skyrim.esm|072316",
+    "Skyrim.esm|072317",
+    "Skyrim.esm|07231A",
+    "Skyrim.esm|07231B",
+    "Skyrim.esm|07231C",
+    "Skyrim.esm|0BB96A",
+    "Skyrim.esm|0C969C",
+    "Skyrim.esm|0F95EB",
+    "Skyrim.esm|101064",
+    "Skyrim.esm|10F7F7"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0AB6FF",
+   "name": "dunFolgunthur_MikrulGauldurson",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0CD63E",
+   "name": "dunForelhostLvlGhostBase",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0CD63F",
+   "name": "dunForelhostLvlGhostMelee1HFemale",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   },
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|07A2B1",
+   "name": "dunForelhostLvlGhostMelee1HMale",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   },
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0CD644",
+   "name": "dunForelhostLvlGhostTankFemale",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   },
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0CD643",
+   "name": "dunForelhostLvlGhostTankMale",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   },
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0CD642",
+   "name": "dunForelhostLvlGhostWizardFemale",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0CD640",
+   "name": "dunForelhostLvlGhostWizardMale",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0C8668",
+   "name": "dunFortNeugrad_LvlBanditMelee1HCarryFirewood",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0A6842",
+   "name": "dunGeirmundSigdis",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0A6848",
+   "name": "dunGeirmundSigdisDuplicate",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|09D761",
+   "name": "dunHagsEnd_DBAssassin",
+   "keywordsAdded": [
+    "Skyrim.esm|06F6FB"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0642C1",
+   "name": "dunHalldirsBoss_HalldirFire",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0642C2",
+   "name": "dunHalldirsBoss_HalldirFrost",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0642C3",
+   "name": "dunHalldirsBoss_HalldirStorm",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0B289A",
+   "name": "dunHalldirs_LvlBanditGhostMelee1H",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0B289F",
+   "name": "dunHalldirs_LvlBanditGhostMeleeBerserker",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0B289C",
+   "name": "dunHalldirs_LvlBanditGhostMeleeTank",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0B28A3",
+   "name": "dunHalldirs_LvlBanditGhostMeleeTankAmbush",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0B289D",
+   "name": "dunHalldirs_LvlBanditGhostMissile",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0B28A5",
+   "name": "dunHalldirs_LvlBanditGhostWizardAmbush",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|055BA7",
+   "name": "dunHarmugstahlAdventurer",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|02816C",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0E7EA9",
+   "name": "dunHunterBear",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0C029C",
+   "name": "dunHunterChild",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|02816B",
+     "rank": 0
+    }
+   ],
+   "crimeFaction": {
+    "from": null,
+    "to": "Skyrim.esm|02816B"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0185F6",
+   "name": "dunHunterFroki",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|02816B",
+     "rank": 0
+    }
+   ],
+   "crimeFaction": {
+    "from": null,
+    "to": "Skyrim.esm|02816B"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0E7EAF",
+   "name": "dunHunterMammoth",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0E662B",
+   "name": "dunHunterMudcrab",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0E7EAD",
+   "name": "dunHunterSabreCat",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0E662E",
+   "name": "dunHunterSkeeverGuardian",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0E7EB2",
+   "name": "dunHunterTroll",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0E662D",
+   "name": "dunHunterWolfGuardian",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|10349B",
+   "name": "dunMS06PotemaSkeleton",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0154C8",
+   "name": "dunMarkarthWizardSecurity_Melee_EvenTonedF",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|094389",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0154C7",
+   "name": "dunMarkarthWizardSecurity_Melee_EvenTonedM",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|094389",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0154CA",
+   "name": "dunMarkarthWizardSecurity_Missile_EvenTonedF",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|094389",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0154C9",
+   "name": "dunMarkarthWizardSecurity_Missile_EvenTonedM",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|094389",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0C1A9E",
+   "name": "dunNorthwatchPrisoner01",
+   "packages": [
+    "unofficial skyrim special edition patch.esp|02BB64"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|03EAB9"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|03EAB9"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0C1A9F",
+   "name": "dunNorthwatchPrisoner02",
+   "packages": [
+    "unofficial skyrim special edition patch.esp|02BB65"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|03EAB9"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|03EAB9"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0C1AA3",
+   "name": "dunNorthwatchPrisoner03",
+   "packages": [
+    "unofficial skyrim special edition patch.esp|02BB66",
+    "Skyrim.esm|03EAB9"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|03EAB9"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|03A187",
+   "name": "dunPOIReachLoversCorpse01",
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 20,
+      "to": 15
+     },
+     "TwoHanded": {
+      "from": 25,
+      "to": 15
+     },
+     "Block": {
+      "from": 20,
+      "to": 15
+     },
+     "Smithing": {
+      "from": 20,
+      "to": 15
+     },
+     "LightArmor": {
+      "from": 20,
+      "to": 15
+     },
+     "Alchemy": {
+      "from": 15,
+      "to": 20
+     },
+     "Alteration": {
+      "from": 15,
+      "to": 20
+     },
+     "Conjuration": {
+      "from": 15,
+      "to": 25
+     },
+     "Illusion": {
+      "from": 15,
+      "to": 20
+     },
+     "Restoration": {
+      "from": 15,
+      "to": 20
+     }
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0D97F0",
+   "name": "dunPOISmugglerLvlBanditMissileAggro1024",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0D1684",
+   "name": "dunPOITrappedWolf",
+   "factionsAdded": [
+    {
+     "form": "Skyrim.esm|0AA784",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0DD99E",
+   "name": "dunPOITundra_LvlThalmor01",
+   "packages": [
+    "unofficial skyrim special edition patch.esp|15DD40",
+    "Skyrim.esm|0AF9BB"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|0AF9BB"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0DD99F",
+   "name": "dunPOITundra_LvlThalmor02",
+   "packages": [
+    "unofficial skyrim special edition patch.esp|15DD40",
+    "Skyrim.esm|0AF9BB"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "Skyrim.esm|0AF9BB"
+   ],
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0ECF13",
+   "name": "dunReachwaterRockSigdisDuplicate",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0C1908",
+   "name": "dunRebelsCairnLvlDraugrBossRedEagle",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|078C13",
+   "name": "dunRobbersGorge_LvlBanditBoss",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0EE52B",
+   "name": "dunRobbersGorge_LvlBanditGuard",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|078C18",
+   "name": "dunRobbersGorge_LvlBanditMeleeAny",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|078C16",
+   "name": "dunRobbersGorge_LvlBanditMeleeBerserker",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|078C17",
+   "name": "dunRobbersGorge_LvlBanditMeleeTank",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|078C14",
+   "name": "dunRobbersGorge_LvlBanditMissile",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0B94E4",
+   "name": "dunRobbersGorge_LvlBanditSentry",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|078C15",
+   "name": "dunRobbersGorge_LvlBanditWizard",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|096E4D",
+   "name": "dunSkuldafnDragonDraugrUnaggressive",
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 87,
+      "to": 65
+     },
+     "Archery": {
+      "from": 87,
+      "to": 65
+     },
+     "Block": {
+      "from": 87,
+      "to": 65
+     },
+     "Sneak": {
+      "from": 100,
+      "to": 97
+     }
+    },
+    "health": {
+     "from": 2255,
+     "to": 1860
+    },
+    "stamina": {
+     "from": 230,
+     "to": 197
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0725F6",
+   "name": "dunSnowyPOIGhost",
+   "class": {
+    "from": "Skyrim.esm|013176",
+    "to": "Skyrim.esm|017008"
+   },
+   "spellsAdded": [
+    "Skyrim.esm|0D2060"
+   ],
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|03ED80",
+   "name": "dunValthumeHevnoraakGhost",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0743AE",
+   "name": "dunYngvildLvlGhostMeleeCommoner",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|074361",
+   "name": "dunYngvildLvlGhostMeleeEvenToned",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|074360",
+   "name": "dunYngvildLvlGhostMeleeNord",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|104B61",
+   "name": "encGhost01Magic",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|104B60",
+   "name": "encGhost02Magic",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|104B5F",
+   "name": "encGhost03Magic",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|104B5E",
+   "name": "encGhost04Magic",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|104B5D",
+   "name": "encGhost05Magic",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|104B5C",
+   "name": "encGhost06Magic",
+   "keywordsAdded": [
+    "Skyrim.esm|000EDF",
+    "Skyrim.esm|013796",
+    "Skyrim.esm|0D205E",
+    "Skyrim.esm|0F23C5"
+   ]
+  }
+ ]
+}

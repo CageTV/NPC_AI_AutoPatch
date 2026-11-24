@@ -17,6 +17,7 @@ namespace Core
 		Summary          g_info;
 		std::vector<Row> g_rows;
 		std::map<std::uint32_t, std::pair<std::string, nlohmann::json>> g_expected;  // NPC form id -> (profile used, its entry): for the Inspect page
+		std::map<std::uint32_t, std::pair<std::string, nlohmann::json>> g_baseline;  // NPC form id -> (baseline profile, its entry): for the Inspect page
 
 		std::filesystem::path Dir() { return std::filesystem::path("Data/SKSE/Plugins/NPCAIAutoPatch"); }
 
@@ -87,6 +88,7 @@ namespace Core
 			g_cfg.followers = j.value("followers", true);
 			g_cfg.forward = j.value("forward", true);
 			g_cfg.icaioStep = j.value("icaio", true);
+			g_cfg.baseline = j.value("baseline", true);
 			g_cfg.profile = Lower(j.value("profile", std::string()));
 			g_cfg.language = Lower(j.value("language", std::string("auto")));
 			if (j.contains("offProfiles")) {
@@ -138,6 +140,7 @@ namespace Core
 		j["followers"] = g_cfg.followers;
 		j["forward"] = g_cfg.forward;
 		j["icaio"] = g_cfg.icaioStep;
+		j["baseline"] = g_cfg.baseline;
 		j["language"] = g_cfg.language;
 		if (!g_cfg.profile.empty()) {
 			j["profile"] = g_cfg.profile;
@@ -270,7 +273,7 @@ namespace Core
 				}
 				std::ifstream in(entry.path());
 				const auto    prof = nlohmann::json::parse(in, nullptr, false, true);
-				if (prof.is_discarded() || prof.value("type", std::string()) != "forward") {
+				if (prof.is_discarded() || prof.value("type", std::string()) != "forward" || prof.value("baseline", false)) {
 					continue;
 				}
 				const std::string name = prof.value("name", entry.path().stem().string());
@@ -470,7 +473,19 @@ namespace Core
 						}
 						if (!has) {
 							if (g_cfg.apply) {
+								const auto sizeBefore = npc->factions.size();
 								npc->factions.push_back({ fac, static_cast<std::int8_t>(fa.value("rank", 0)) });
+								// self-check (first few): did the faction stay on the record?
+								static int checked = 0;
+								if (checked < 8) {
+									++checked;
+									bool now = false;
+									for (const auto& fr : npc->factions) {
+										now = now || fr.faction == fac;
+									}
+									SKSE::log::info("faction add check: {} gets {:08X}: list {} -> {} entries, on the record afterwards: {}", row.name, fac->GetFormID(), sizeBefore,
+										npc->factions.size(), now ? "yes" : "NO");
+								}
 							}
 							done.push_back("faction");
 						}
@@ -546,6 +561,356 @@ namespace Core
 		}
 	}
 
+	// ---- "baseline" profiles: the gameplay data a bug-fix patch (USSEP) put on NPC records, put back on the NPCs a later mod took over with a copy of the
+	// vanilla record (a look replacer): class, skills, health/magicka/stamina, perks, spells, keywords, crime faction, combat style, packages, factions,
+	// Protected / Essential, confidence. Every field follows one rule: the winner is changed only if it still has the value the base game has ("from");
+	// a value the winner chose itself is kept. Fields an NPC takes from a template are never touched. Nothing visual is carried.
+	namespace
+	{
+		int IntOr(const nlohmann::json& a_j, const char* a_key, int a_default)
+		{
+			const auto it = a_j.find(a_key);
+			return it != a_j.end() && it->is_number_integer() ? it->get<int>() : a_default;
+		}
+
+		std::string StrOr(const nlohmann::json& a_j, const char* a_key)
+		{
+			const auto it = a_j.find(a_key);
+			return it != a_j.end() && it->is_string() ? it->get<std::string>() : std::string();
+		}
+
+		std::string StrOf(const nlohmann::json& a_j) { return a_j.is_string() ? a_j.get<std::string>() : std::string(); }
+
+		void Baseline(RE::TESDataHandler* a_dh, std::vector<Row>& a_rows, Summary& a_info)
+		{
+			using Tpl = RE::ACTOR_BASE_DATA::TEMPLATE_USE_FLAG;
+			std::error_code ec;
+			const auto      dir = Dir() / "profiles";
+			if (!std::filesystem::is_directory(dir, ec)) {
+				return;
+			}
+			static const char* const kSkill[18] = { "OneHanded", "TwoHanded", "Archery", "Block", "Smithing", "HeavyArmor", "LightArmor", "Pickpocket", "Lockpicking",
+				"Sneak", "Alchemy", "Speech", "Alteration", "Conjuration", "Destruction", "Illusion", "Restoration", "Enchanting" };
+			// the profiles go from the lowest "priority" up (USSEP first, USMP on top of it), so a later one starts from what the earlier one left
+			std::vector<std::pair<int, nlohmann::json>> profiles;
+			for (const auto& entry : std::filesystem::directory_iterator(dir, ec)) {
+				if (entry.path().extension() != ".json") {
+					continue;
+				}
+				std::ifstream in(entry.path());
+				auto          prof = nlohmann::json::parse(in, nullptr, false, true);
+				if (prof.is_discarded() || prof.value("type", std::string()) != "forward" || !prof.value("baseline", false)) {
+					continue;
+				}
+				if (!prof.contains("name")) {
+					prof["name"] = entry.path().stem().string();
+				}
+				profiles.emplace_back(prof.value("priority", 0), std::move(prof));
+			}
+			std::stable_sort(profiles.begin(), profiles.end(), [](const auto& x, const auto& y) {
+				return std::make_tuple(x.first, x.second.value("name", std::string())) < std::make_tuple(y.first, y.second.value("name", std::string()));
+			});
+			for (const auto& [priority, prof] : profiles) {
+				(void)priority;
+				const std::string name = prof.value("name", std::string());
+				const std::string requires_ = prof.value("requires", std::string());
+				if (!requires_.empty() && !a_dh->LookupModByName(requires_)) {
+					SKSE::log::info("baseline profile '{}': {} is not loaded, skipped", name, requires_);
+					a_info.profilesMissing.push_back(name);
+					continue;
+				}
+				if (g_cfg.offProfiles.count(Lower(name))) {
+					a_info.profilesOff.push_back(name);
+					continue;
+				}
+				std::set<std::string> own;
+				for (const auto& o : prof.value("ownPlugins", nlohmann::json::array())) {
+					own.insert(Lower(o.get<std::string>()));
+				}
+				a_info.profiles.push_back(name);
+				std::map<std::string, int> counts;  // what was put back, by kind
+				int                        npcs = 0, absent = 0, noSpellList = 0, unresolved = 0;
+				std::vector<std::string>   missEx;  // the first few references that name no record
+				for (const auto& e : prof["npcs"]) {
+					auto* f0 = FindRef(a_dh, StrOr(e, "npc"));
+					auto* npc = f0 ? f0->As<RE::TESNPC>() : nullptr;
+					if (!npc) {
+						++absent;
+						continue;
+					}
+					g_baseline[npc->GetFormID()] = { name, e };
+					const auto chain = ChainOf(npc);
+					if (chain.empty() || own.count(chain.back())) {
+						++a_info.skipped["baseline: the patch's own record wins"];
+						continue;
+					}
+					bool wins = false;
+					for (const auto& c : chain) {
+						wins = wins || g_cfg.wins.count(c) > 0;
+					}
+					if (wins) {
+						++a_info.skipped["baseline: a plugin that must win changes this NPC"];
+						continue;
+					}
+					const auto uses = [&](Tpl a_t) { return npc->actorData.templateUseFlags.any(a_t); };
+					const auto form = [&](const std::string& a_ref) -> RE::TESForm* { return a_ref.empty() ? nullptr : FindRef(a_dh, a_ref); };
+					std::vector<std::string> done;
+					const auto               note = [&](const char* a_what) {
+                        if (std::find(done.begin(), done.end(), a_what) == done.end()) {
+                            done.push_back(a_what);
+                        }
+					};
+					const auto miss = [&](const std::string& a_what) {
+						++unresolved;
+						if (missEx.size() < 12) {
+							missEx.push_back(e.value("name", std::string()) + ": " + a_what);
+						}
+					};
+
+					// class, crime faction, combat style: a single reference. "from" empty means the base game has none.
+					const auto single = [&](const char* a_key, auto a_get, auto a_set, auto a_cast) {
+						if (!e.contains(a_key)) {
+							return;
+						}
+						const auto& v = e[a_key];
+						auto*       to = a_cast(form(StrOr(v, "to")));
+						const auto  fromRef = StrOr(v, "from");
+						auto*       from = a_cast(form(fromRef));
+						if (!to || (!fromRef.empty() && !from)) {
+							miss(std::string(a_key));
+							return;
+						}
+						if (a_get() != to && a_get() == from) {
+							if (g_cfg.apply) {
+								a_set(to);
+							}
+							note(a_key);
+						}
+					};
+					if (!uses(Tpl::kStats)) {
+						single("class", [&] { return npc->npcClass; }, [&](auto* x) { npc->npcClass = x; }, [](RE::TESForm* x) { return x ? x->As<RE::TESClass>() : nullptr; });
+					}
+					if (!uses(Tpl::kBaseData)) {
+						single("crimeFaction", [&] { return npc->crimeFaction; }, [&](auto* x) { npc->crimeFaction = x; }, [](RE::TESForm* x) { return x ? x->As<RE::TESFaction>() : nullptr; });
+					}
+					if (!uses(Tpl::kAIData) && !uses(Tpl::kTraits)) {
+						single("combatStyle", [&] { return npc->combatStyle; }, [&](auto* x) { npc->combatStyle = x; }, [](RE::TESForm* x) { return x ? x->As<RE::TESCombatStyle>() : nullptr; });
+					}
+
+					// skills, health, magicka, stamina
+					if (e.contains("skills") && !uses(Tpl::kStats)) {
+						const auto& sk = e["skills"];
+						auto&       ps = npc->playerSkills;
+						for (int i = 0; i < 18; ++i) {
+							for (const auto& [part, arr] : { std::pair<const char*, std::uint8_t*>{ "values", ps.values }, { "offsets", ps.offsets } }) {
+								if (!sk.contains(part) || !sk[part].contains(kSkill[i])) {
+									continue;
+								}
+								const auto& c = sk[part][kSkill[i]];
+								const int   from = IntOr(c, "from", -1), to = IntOr(c, "to", -1);
+								if (from >= 0 && to >= 0 && arr[i] == from && arr[i] != to) {
+									if (g_cfg.apply) {
+										arr[i] = static_cast<std::uint8_t>(to);
+									}
+									note("skills");
+								}
+							}
+						}
+						for (const auto& [key, field] : { std::pair<const char*, std::uint16_t*>{ "health", &ps.health }, { "magicka", &ps.magicka }, { "stamina", &ps.stamina } }) {
+							if (sk.contains(key)) {
+								const int from = IntOr(sk[key], "from", -1), to = IntOr(sk[key], "to", -1);
+								if (from >= 0 && to >= 0 && *field == from && *field != to) {
+									if (g_cfg.apply) {
+										*field = static_cast<std::uint16_t>(to);
+									}
+									note("skills");
+								}
+							}
+						}
+					}
+
+					// perks, spells, keywords: added when missing
+					if (e.contains("perksAdded") && !uses(Tpl::kSpells)) {
+						for (const auto& p : e["perksAdded"]) {
+							auto* pf = form(StrOr(p, "perk"));
+							auto* perk = pf ? pf->As<RE::BGSPerk>() : nullptr;
+							if (!perk) {
+								miss(std::string("perk"));
+							} else if (!npc->GetPerkIndex(perk)) {
+								if (g_cfg.apply) {
+									npc->AddPerk(perk, static_cast<std::int8_t>(IntOr(p, "rank", 1)));
+								}
+								note("perks");
+							}
+						}
+					}
+					if (e.contains("spellsAdded") && !uses(Tpl::kSpells)) {
+						auto* sl = npc->GetSpellList();
+						if (!sl) {
+							++noSpellList;  // the record has no spell list at all: creating one is not done here
+						} else {
+							// an NPC's spell list holds spells, leveled spells and shouts
+							for (const auto& s : e["spellsAdded"]) {
+								auto* sf = form(StrOf(s));
+								if (auto* sp = sf ? sf->As<RE::SpellItem>() : nullptr) {
+									if (!sl->GetIndex(sp)) {
+										if (g_cfg.apply) {
+											sl->AddSpell(sp);
+										}
+										note("spells");
+									}
+								} else if (auto* lv = sf ? sf->As<RE::TESLevSpell>() : nullptr) {
+									if (!sl->GetIndex(lv)) {
+										if (g_cfg.apply) {
+											sl->AddLevSpell(lv);
+										}
+										note("spells");
+									}
+								} else if (auto* sh = sf ? sf->As<RE::TESShout>() : nullptr) {
+									if (!sl->GetIndex(sh)) {
+										if (g_cfg.apply) {
+											sl->AddShout(sh);
+										}
+										note("spells");
+									}
+								} else {
+									miss(std::string("spell"));
+								}
+							}
+						}
+					}
+					if (e.contains("keywordsAdded") && !uses(Tpl::kKeywords)) {
+						for (const auto& k : e["keywordsAdded"]) {
+							auto* kf = form(StrOf(k));
+							auto* kw = kf ? kf->As<RE::BGSKeyword>() : nullptr;
+							if (!kw) {
+								miss(std::string("keyword"));
+							} else if (!npc->HasKeyword(kw)) {
+								if (g_cfg.apply) {
+									npc->AddKeyword(kw);
+								}
+								note("keywords");
+							}
+						}
+					}
+
+					// factions
+					if (!uses(Tpl::kFactions)) {
+						for (const auto& fa : e.value("factionsAdded", nlohmann::json::array())) {
+							auto* ff = form(StrOr(fa, "form"));
+							auto* fac = ff ? ff->As<RE::TESFaction>() : nullptr;
+							if (!fac) {
+								miss(std::string("faction"));
+								continue;
+							}
+							bool has = false;
+							for (const auto& fr : npc->factions) {
+								has = has || fr.faction == fac;
+							}
+							if (!has) {
+								if (g_cfg.apply) {
+									npc->factions.push_back({ fac, static_cast<std::int8_t>(IntOr(fa, "rank", 0)) });
+								}
+								note("factions");
+							}
+						}
+					}
+
+					// Protected / Essential and confidence
+					if (e.contains("flagsAdded") && !uses(Tpl::kBaseData)) {
+						for (const auto& fl : e["flagsAdded"]) {
+							const auto flag = StrOf(fl) == "Essential" ? RE::ACTOR_BASE_DATA::Flag::kEssential : RE::ACTOR_BASE_DATA::Flag::kProtected;
+							if (npc->actorData.actorBaseFlags.none(flag)) {
+								if (g_cfg.apply) {
+									npc->actorData.actorBaseFlags.set(flag);
+								}
+								note("flags");
+							}
+						}
+					}
+					if (e.contains("confidence") && !uses(Tpl::kAIData)) {
+						const int to = IntOr(e["confidence"], "to", -1), from = IntOr(e["confidence"], "from", -1), now = Confidence(npc);
+						if (to >= 0 && now != to && now == from) {
+							if (g_cfg.apply) {
+								SetConfidence(npc, to);
+							}
+							note("confidence");
+						}
+					}
+
+					// packages: an AI overhaul's profile that covers this NPC decides its packages (the overhaul's list already carries USSEP's where it matters).
+					// Only when the winner still has the base game's list: a list a later mod changed itself is kept.
+					if (e.contains("packages") && !uses(Tpl::kAIPackages) && !g_expected.count(npc->GetFormID())) {
+						std::vector<RE::TESPackage*> want, cur, before;
+						bool                         ok = true, beforeOk = true;
+						for (const auto& r : e["packages"]) {
+							auto* pf = form(StrOf(r));
+							auto* pk = pf ? pf->As<RE::TESPackage>() : nullptr;
+							if (pk) {
+								want.push_back(pk);
+							} else {
+								ok = false;
+							}
+						}
+						for (const auto& r : e.value("packagesBefore", nlohmann::json::array())) {
+							auto* pf = form(StrOf(r));
+							auto* pk = pf ? pf->As<RE::TESPackage>() : nullptr;
+							if (pk) {
+								before.push_back(pk);
+							} else {
+								beforeOk = false;
+							}
+						}
+						for (auto* pk : npc->aiPackages.packages) {
+							cur.push_back(pk);
+						}
+						if (!ok || !beforeOk) {
+							miss(std::string("packages"));
+						} else if (cur == before && want != cur) {
+							if (g_cfg.apply) {
+								auto& l = npc->aiPackages.packages;
+								l.clear();
+								for (auto it = want.rbegin(); it != want.rend(); ++it) {
+									l.push_front(*it);
+								}
+							}
+							note("packages");
+						}
+					}
+
+					if (done.empty()) {
+						++a_info.skipped["baseline: already has the patch's data"];
+						continue;
+					}
+					Row row;
+					row.name = e.value("name", std::string());
+					row.town = "baseline: " + name;
+					row.plugin = chain.back();
+					std::string what;
+					for (const auto& d : done) {
+						what += (what.empty() ? "" : ", ") + d;
+						++counts[d];
+					}
+					row.status = g_cfg.apply ? Status::Patched : Status::Planned;
+					row.reason = std::string(g_cfg.apply ? "put back: " : "would put back: ") + what + " (winner: " + row.plugin + ")";
+					++a_info.forwarded[name];
+					++npcs;
+					a_rows.push_back(row);
+				}
+				std::string kinds;
+				for (const auto& [k, n] : counts) {
+					kinds += (kinds.empty() ? "" : ", ") + k + " " + std::to_string(n);
+				}
+				a_info.profileUnresolved[name] = unresolved;
+				for (const auto& m : missEx) {
+					SKSE::log::info("    no record for {}", m);
+				}
+				SKSE::log::info("baseline profile '{}': {} NPCs got data back ({}); {} NPCs of the profile are not in this game, {} references name no record, {} NPCs have no spell list",
+					name, npcs, kinds.empty() ? "nothing" : kinds, absent, unresolved, noSpellList);
+			}
+		}
+	}
+
 	// ---- the Inspect page: what the game has on one NPC against what the overhaul's profile says
 	namespace
 	{
@@ -583,9 +948,15 @@ namespace Core
 		const auto add = [&](const std::string& w, const std::string& now, const std::string& want, int st) { r.rows.push_back({ w, now, want, st }); };
 		const auto it = g_expected.find(a_npc->GetFormID());
 		const nlohmann::json* e = it == g_expected.end() ? nullptr : &it->second.second;
+		const auto            bt = g_baseline.find(a_npc->GetFormID());
+		const nlohmann::json* bl = bt == g_baseline.end() ? nullptr : &bt->second.second;
 		if (e) {
 			r.profile = it->second.first;
-		} else {
+		}
+		if (bl) {
+			r.profile += (r.profile.empty() ? "" : " + ") + bt->second.first;
+		}
+		if (!e && !bl) {
 			r.note = "The loaded AI overhaul profile does not change this person. What the game has is listed for information.";
 		}
 		if (a_npc->actorData.templateUseFlags.any(RE::ACTOR_BASE_DATA::TEMPLATE_USE_FLAG::kAIPackages)) {
@@ -688,6 +1059,73 @@ namespace Core
 			}
 			(void)a_live;
 		}
+
+		// the baseline profile (USSEP): gameplay data the patch put on this NPC. 1 = the game has it, 2 = still the base game's value, 0 = something else (kept)
+		if (bl) {
+			const auto& b = *bl;
+			const auto  ref = [&](const char* a_key, const char* a_name, const void* a_now, auto a_cast) {
+                if (!b.contains(a_key)) {
+                    return;
+                }
+                const std::string toRef = StrOr(b[a_key], "to"), fromRef = StrOr(b[a_key], "from");
+                auto*             toF = toRef.empty() ? nullptr : FindRef(dh, toRef);
+                auto*             fromF = fromRef.empty() ? nullptr : FindRef(dh, fromRef);
+                const void*       to = toF ? a_cast(toF) : nullptr;
+                const void*       from = fromF ? a_cast(fromF) : nullptr;
+                const auto        text = [&](const void* p) { return p ? RefText(static_cast<const RE::TESForm*>(p)) : std::string("(none)"); };
+                add(a_name, text(a_now), toF ? RefText(toF) : toRef, a_now == to ? 1 : (a_now == from ? 2 : 0));
+			};
+			ref("class", "Class (USSEP)", a_npc->npcClass, [](RE::TESForm* f) -> const void* { return f->As<RE::TESClass>(); });
+			ref("crimeFaction", "Crime faction (USSEP)", a_npc->crimeFaction, [](RE::TESForm* f) -> const void* { return f->As<RE::TESFaction>(); });
+			ref("combatStyle", "Combat style (USSEP)", a_npc->combatStyle, [](RE::TESForm* f) -> const void* { return f->As<RE::TESCombatStyle>(); });
+			if (b.contains("skills")) {
+				static const char* const kSkill[18] = { "OneHanded", "TwoHanded", "Archery", "Block", "Smithing", "HeavyArmor", "LightArmor", "Pickpocket", "Lockpicking",
+					"Sneak", "Alchemy", "Speech", "Alteration", "Conjuration", "Destruction", "Illusion", "Restoration", "Enchanting" };
+				const auto& ps = a_npc->playerSkills;
+				for (const auto& part : { std::pair<const char*, const std::uint8_t*>{ "values", ps.values }, { "offsets", ps.offsets } }) {
+					if (!b["skills"].contains(part.first)) {
+						continue;
+					}
+					for (int i = 0; i < 18; ++i) {
+						if (b["skills"][part.first].contains(kSkill[i])) {
+							const auto& c = b["skills"][part.first][kSkill[i]];
+							const int   from = IntOr(c, "from", -1), to = IntOr(c, "to", -1), now = part.second[i];
+							add(std::string("Skill ") + kSkill[i] + (std::string(part.first) == "offsets" ? " (offset, USSEP)" : " (USSEP)"), std::to_string(now), std::to_string(to),
+								now == to ? 1 : (now == from ? 2 : 0));
+						}
+					}
+				}
+			}
+			for (const auto& p : b.value("perksAdded", nlohmann::json::array())) {
+				auto* pf = FindRef(dh, StrOr(p, "perk"));
+				auto* perk = pf ? pf->As<RE::BGSPerk>() : nullptr;
+				if (perk) {
+					const bool has = a_npc->GetPerkIndex(perk).has_value();
+					add("Perk (USSEP)", has ? "present" : "missing", RefText(perk), has ? 1 : 2);
+				}
+			}
+			for (const auto& k : b.value("keywordsAdded", nlohmann::json::array())) {
+				auto* kf = FindRef(dh, StrOf(k));
+				auto* kw = kf ? kf->As<RE::BGSKeyword>() : nullptr;
+				if (kw) {
+					const bool has = a_npc->HasKeyword(kw);
+					add("Keyword (USSEP)", has ? "present" : "missing", RefText(kw), has ? 1 : 2);
+				}
+			}
+			if (!e) {
+				for (const auto& fa : b.value("factionsAdded", nlohmann::json::array())) {
+					auto* ff = FindRef(dh, StrOr(fa, "form"));
+					auto* fac = ff ? ff->As<RE::TESFaction>() : nullptr;
+					if (fac) {
+						bool has = false;
+						for (const auto& fr : a_npc->factions) {
+							has = has || fr.faction == fac;
+						}
+						add("Faction (USSEP)", has ? "present" : "missing", RefText(fac), has ? 1 : 2);
+					}
+				}
+			}
+		}
 		return r;
 	}
 
@@ -698,7 +1136,11 @@ namespace Core
 		if (needle.empty()) {
 			return out;
 		}
-		for (const auto& [id, pr] : g_expected) {
+		for (const auto* src : { &g_expected, &g_baseline }) {
+		for (const auto& [id, pr] : *src) {
+			if (src == &g_baseline && g_expected.count(id)) {
+				continue;
+			}
 			auto* npc = RE::TESForm::LookupByID<RE::TESNPC>(id);
 			if (!npc) {
 				continue;
@@ -708,11 +1150,58 @@ namespace Core
 			if (Lower(name).find(needle) != std::string::npos || Lower(ed).find(needle) != std::string::npos) {
 				out.emplace_back(name + "  (" + ed + ")", id);
 				if (out.size() >= a_max) {
-					break;
+					return out;
 				}
 			}
 		}
+		}
 		return out;
+	}
+
+	void Recheck(const char* a_when)
+	{
+		auto* dh = RE::TESDataHandler::GetSingleton();
+		if (!dh) {
+			return;
+		}
+		int total = 0, missing = 0, readded = 0;
+		std::string examples;
+		for (const auto* src : { &g_expected, &g_baseline }) {
+			for (const auto& [id, pr] : *src) {
+				const auto& e = pr.second;
+				if (!e.contains("factionsAdded")) {
+					continue;
+				}
+				auto* npc = RE::TESForm::LookupByID<RE::TESNPC>(id);
+				if (!npc) {
+					continue;
+				}
+				for (const auto& fa : e["factionsAdded"]) {
+					auto* ff = FindRef(dh, StrOr(fa, "form"));
+					auto* fac = ff ? ff->As<RE::TESFaction>() : nullptr;
+					if (!fac) {
+						continue;
+					}
+					++total;
+					bool has = false;
+					for (const auto& fr : npc->factions) {
+						has = has || fr.faction == fac;
+					}
+					if (!has) {
+						++missing;
+						if (examples.size() < 200) {
+							examples += (examples.empty() ? "" : "; ") + std::string(npc->GetName()) + " (" + std::to_string(npc->factions.size()) + " factions)";
+						}
+						if (g_cfg.apply) {
+							npc->factions.push_back({ fac, static_cast<std::int8_t>(IntOr(fa, "rank", 0)) });
+							++readded;
+						}
+					}
+				}
+			}
+		}
+		SKSE::log::info("recheck at {}: {} faction adds in the profiles, {} missing from the records, {} put back{}{}", a_when, total, missing, readded,
+			examples.empty() ? "" : " - e.g. ", examples);
 	}
 
 	void Run()
@@ -724,11 +1213,16 @@ namespace Core
 		LoadConfig();
 		g_rows.clear();
 		g_expected.clear();
+		g_baseline.clear();
 		g_info = Summary{};
 		const auto audit = Audit(dh);
 		auto finish = [&]() {
 		if (g_cfg.forward) {
 			Forward(dh, g_rows, g_info);
+			g_info.ran = g_info.ran || !g_info.profiles.empty();
+		}
+		if (g_cfg.baseline) {
+			Baseline(dh, g_rows, g_info);
 			g_info.ran = g_info.ran || !g_info.profiles.empty();
 		}
 		int nPatched = 0, nPlanned = 0, nLeft = 0;

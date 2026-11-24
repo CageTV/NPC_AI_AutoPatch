@@ -34,6 +34,12 @@ namespace
 			} catch (const std::exception& e) {
 				SKSE::log::error("failed: {}", e.what());
 			}
+		} else if (a_msg->type == SKSE::MessagingInterface::kInputLoaded) {
+			Core::Recheck("the main menu");
+		} else if (a_msg->type == SKSE::MessagingInterface::kNewGame) {
+			Core::Recheck("a new game");
+		} else if (a_msg->type == SKSE::MessagingInterface::kPostLoadGame) {
+			Core::Recheck("a save loaded");
 		}
 	}
 }

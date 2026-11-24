@@ -1,0 +1,362 @@
+{
+ "format": 1,
+ "id": "usmp",
+ "name": "USMP (modders patch)",
+ "type": "forward",
+ "family": "usmp",
+ "baseline": true,
+ "priority": 1,
+ "requires": "Unofficial Skyrim Modders Patch.esp",
+ "ownPlugins": [
+  "Unofficial Skyrim Modders Patch.esp"
+ ],
+ "npcs": [
+  {
+   "npc": "Skyrim.esm|09BCAF",
+   "name": "CiceroDawnstar",
+   "packages": [
+    "Unofficial Skyrim Special Edition Patch.esp|037D98",
+    "Skyrim.esm|09BCB3"
+   ],
+   "packagesRemoved": [
+    "unofficial skyrim special edition patch.esp|037D98"
+   ],
+   "packagesBefore": [
+    "unofficial skyrim special edition patch.esp|037D98",
+    "Skyrim.esm|09BCB3"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|015CFE",
+   "name": "DBInitiate2",
+   "packages": [
+    "Skyrim.esm|037D0F",
+    "Skyrim.esm|037D11",
+    "Skyrim.esm|037CBA",
+    "Skyrim.esm|037D97",
+    "Unofficial Skyrim Special Edition Patch.esp|037D99",
+    "Skyrim.esm|015D0A"
+   ],
+   "packagesRemoved": [
+    "unofficial skyrim special edition patch.esp|037D99"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|037D0F",
+    "Skyrim.esm|037D11",
+    "Skyrim.esm|037CBA",
+    "Skyrim.esm|037D97",
+    "unofficial skyrim special edition patch.esp|037D99",
+    "Skyrim.esm|015D0A"
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|00C5FF",
+   "name": "DLC1EncDragon07FrostNoScript",
+   "skills": {
+    "health": {
+     "from": 4363,
+     "to": 4163
+    }
+   },
+   "keywordsAdded": [
+    "Dawnguard.esm|00CD59"
+   ]
+  },
+  {
+   "npc": "Dragonborn.esm|03D5C1",
+   "name": "DLC2EncDragon03FireNoScript_MQ06",
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 87,
+      "to": 65
+     },
+     "Archery": {
+      "from": 87,
+      "to": 65
+     },
+     "Block": {
+      "from": 87,
+      "to": 65
+     },
+     "Sneak": {
+      "from": 100,
+      "to": 97
+     }
+    },
+    "health": {
+     "from": 2255,
+     "to": 1860
+    },
+    "stamina": {
+     "from": 230,
+     "to": 197
+    }
+   },
+   "spellsAdded": [
+    "Skyrim.esm|0FEA9D",
+    "Skyrim.esm|0FEAA0",
+    "Skyrim.esm|10C4E3"
+   ]
+  },
+  {
+   "npc": "Dragonborn.esm|0322B1",
+   "name": "DLC2EncWerebear",
+   "factionsAdded": [
+    {
+     "form": "Unofficial Skyrim Modders Patch.esp|06E40B",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Dragonborn.esm|0322B3",
+   "name": "DLC2SummonWerebear",
+   "factionsAdded": [
+    {
+     "form": "Unofficial Skyrim Modders Patch.esp|06E40B",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0FEA9B",
+   "name": "EncDragon03FireNoScript",
+   "spellsAdded": [
+    "Skyrim.esm|10C4E3"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0A2C8C",
+   "name": "HousecarlMarkarth",
+   "packages": [
+    "Unofficial Skyrim Special Edition Patch.esp|02EF1F"
+   ],
+   "packagesRemoved": [
+    "unofficial skyrim special edition patch.esp|02EF1F"
+   ],
+   "packagesBefore": [
+    "unofficial skyrim special edition patch.esp|02EF1F"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0A2C91",
+   "name": "HousecarlRiften",
+   "packages": [
+    "Unofficial Skyrim Special Edition Patch.esp|02EF1E"
+   ],
+   "packagesRemoved": [
+    "unofficial skyrim special edition patch.esp|02EF1E"
+   ],
+   "packagesBefore": [
+    "unofficial skyrim special edition patch.esp|02EF1E"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0A2C8F",
+   "name": "HousecarlSolitude",
+   "packages": [
+    "Unofficial Skyrim Special Edition Patch.esp|02EF1D"
+   ],
+   "packagesRemoved": [
+    "unofficial skyrim special edition patch.esp|02EF1D"
+   ],
+   "packagesBefore": [
+    "unofficial skyrim special edition patch.esp|02EF1D"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0A2C8E",
+   "name": "HousecarlWhiterun",
+   "packages": [
+    "Skyrim.esm|100770",
+    "Skyrim.esm|0E0EC6",
+    "Unofficial Skyrim Special Edition Patch.esp|00C51E"
+   ],
+   "packagesRemoved": [
+    "unofficial skyrim special edition patch.esp|00C51E"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|100770",
+    "Skyrim.esm|0E0EC6",
+    "unofficial skyrim special edition patch.esp|00C51E"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0A2C90",
+   "name": "HousecarlWindhelm",
+   "packages": [
+    "Unofficial Skyrim Special Edition Patch.esp|02EF1C"
+   ],
+   "packagesRemoved": [
+    "unofficial skyrim special edition patch.esp|02EF1C"
+   ],
+   "packagesBefore": [
+    "unofficial skyrim special edition patch.esp|02EF1C"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0567C8",
+   "name": "LvlDraugrAmbushMelee1HMale",
+   "confidence": {
+    "from": 2,
+    "to": 4
+   }
+  },
+  {
+   "npc": "Skyrim.esm|09E07A",
+   "name": "MQ306DragonA",
+   "factionsAdded": [
+    {
+     "form": "Dragonborn.esm|0200E7",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|09E07B",
+   "name": "MQ306DragonB",
+   "factionsAdded": [
+    {
+     "form": "Dragonborn.esm|0200E7",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|09E07C",
+   "name": "MQ306DragonC",
+   "factionsAdded": [
+    {
+     "form": "Dragonborn.esm|0200E7",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|029DAA",
+   "name": "Syndus",
+   "packages": [
+    "Unofficial Skyrim Special Edition Patch.esp|077A6D",
+    "Skyrim.esm|0EF577"
+   ],
+   "packagesRemoved": [
+    "unofficial skyrim special edition patch.esp|077A6D"
+   ],
+   "packagesBefore": [
+    "unofficial skyrim special edition patch.esp|077A6D",
+    "Skyrim.esm|0EF577"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|07EB38",
+   "name": "TG02EncMercenaryTemplate",
+   "combatStyle": {
+    "from": null,
+    "to": "Skyrim.esm|068849"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|07EB39",
+   "name": "TG02Mercenary01",
+   "combatStyle": {
+    "from": null,
+    "to": "Skyrim.esm|068849"
+   }
+  },
+  {
+   "npc": "Skyrim.esm|019E1A",
+   "name": "Ugor",
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 27,
+      "to": 33
+     },
+     "Archery": {
+      "from": 26,
+      "to": 34
+     },
+     "Block": {
+      "from": 27,
+      "to": 33
+     },
+     "LightArmor": {
+      "from": 26,
+      "to": 35
+     },
+     "Sneak": {
+      "from": 19,
+      "to": 22
+     }
+    },
+    "health": {
+     "from": 100,
+     "to": 140
+    },
+    "stamina": {
+     "from": 75,
+     "to": 95
+    }
+   }
+  },
+  {
+   "npc": "Skyrim.esm|0918E2",
+   "name": "Uthgerd",
+   "packages": [
+    "Skyrim.esm|092B29",
+    "Unofficial Skyrim Special Edition Patch.esp|0139FA",
+    "Skyrim.esm|091917"
+   ],
+   "packagesRemoved": [
+    "unofficial skyrim special edition patch.esp|0139FA"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|092B29",
+    "unofficial skyrim special edition patch.esp|0139FA",
+    "Skyrim.esm|091917"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|1051FB",
+   "name": "WEAssassinTemplate",
+   "factionsAdded": [
+    {
+     "form": "Unofficial Skyrim Modders Patch.esp|000876",
+     "rank": 0
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0B94E4",
+   "name": "dunRobbersGorge_LvlBanditSentry",
+   "packages": [
+    "Unofficial Skyrim Modders Patch.esp|000801",
+    "Unofficial Skyrim Modders Patch.esp|000800",
+    "Skyrim.esm|0EE536"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|0EE399",
+    "Skyrim.esm|0EE39D",
+    "Skyrim.esm|0EE39A",
+    "Skyrim.esm|0EE39E",
+    "Skyrim.esm|0B8CA3"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|0EE399",
+    "Skyrim.esm|0EE39D",
+    "Skyrim.esm|0EE39A",
+    "Skyrim.esm|0EE39E",
+    "Skyrim.esm|0B8CA3",
+    "Skyrim.esm|0EE536"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|096E4D",
+   "name": "dunSkuldafnDragonDraugrUnaggressive",
+   "spellsAdded": [
+    "Skyrim.esm|10C4E3"
+   ]
+  }
+ ]
+}
