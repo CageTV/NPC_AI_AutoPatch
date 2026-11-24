@@ -67,17 +67,18 @@ def confidence(b):
 def main(a):
     src, plugin, pid, pname, out_json = a[0], a[1], a[2], a[3], a[4]
     mast = dict(x.split("=", 1) for x in a[5:])
+    mast_l = {k.lower(): v for k, v in mast.items()}
     npcs_dir = os.path.join(src, "Npcs")
     entries = []
     skipped = collections.Counter()
     for f in sorted(os.listdir(npcs_dir)):
         m = re.match(r"(.*) - ([0-9A-F]{6})_(.+?)\.yaml$", f)
         name, fid, origin = m.groups()
-        d = mast.get(origin)
+        d = mast.get(origin) or mast_l.get(origin.lower())  # plugin names differ in case between plugins' headers
         orig = None
         if d:
             for g in os.listdir(d):
-                if g.endswith(" - %s_%s.yaml" % (fid, origin)):
+                if g.lower().endswith((" - %s_%s.yaml" % (fid, origin)).lower()):
                     orig = os.path.join(d, g)
                     break
         if not orig:

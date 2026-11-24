@@ -58,19 +58,19 @@ def main(a):
         for g in os.listdir(prior_dir):
             m = re.match(r".* - ([0-9A-F]{6})_(.+?)\.yaml$", g)
             if m:
-                prior[(m.group(1), m.group(2))] = os.path.join(prior_dir, g)
+                prior[(m.group(1), m.group(2).lower())] = os.path.join(prior_dir, g)
     index = {}
     for origin, d in mast.items():
         for g in os.listdir(d):
             m = re.match(r".* - ([0-9A-F]{6})_(.+?)\.yaml$", g)
-            if m and m.group(2) == origin:
-                index[(m.group(1), origin)] = os.path.join(d, g)
+            if m and m.group(2).lower() == origin.lower():
+                index[(m.group(1), origin.lower())] = os.path.join(d, g)
     entries = []
     skipped = collections.Counter()
     for f in sorted(os.listdir(npcs_dir)):
         m = re.match(r"(.*) - ([0-9A-F]{6})_(.+?)\.yaml$", f)
         name, fid, origin = m.groups()
-        orig = prior.get((fid, origin)) or index.get((fid, origin))
+        orig = prior.get((fid, origin.lower())) or index.get((fid, origin.lower()))
         if not orig:
             skipped["original record not available (%s)" % origin] += 1
             continue

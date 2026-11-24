@@ -1153,6 +1153,25 @@
    }
   },
   {
+   "npc": "HearthFires.esm|003F5F",
+   "name": "BYOHUrchin_Lucia",
+   "packages": [
+    "AI Overhaul.esp|249AC2",
+    "AI Overhaul.esp|29FBCD",
+    "HearthFires.esm|003F5A",
+    "HearthFires.esm|003F59",
+    "HearthFires.esm|003F58",
+    "Skyrim.esm|0317C8"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": [
+    "HearthFires.esm|003F5A",
+    "HearthFires.esm|003F59",
+    "HearthFires.esm|003F58",
+    "Skyrim.esm|0317C8"
+   ]
+  },
+  {
    "npc": "Skyrim.esm|013BBD",
    "name": "BalgruuftheGreater",
    "flagsAdded": [
@@ -2007,6 +2026,25 @@
    },
    "flagsAdded": [
     "Protected"
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|005A9B",
+   "name": "DLC1TestAngry",
+   "packages": [
+    "AI Overhaul.esp|00194A",
+    "Skyrim.esm|02C91C",
+    "Skyrim.esm|02C91D",
+    "Skyrim.esm|1036F3"
+   ],
+   "packagesRemoved": [
+    "Skyrim.esm|1062A6"
+   ],
+   "packagesBefore": [
+    "Skyrim.esm|1062A6",
+    "Skyrim.esm|02C91C",
+    "Skyrim.esm|02C91D",
+    "Skyrim.esm|1036F3"
    ]
   },
   {
@@ -10354,6 +10392,17 @@
     "from": 3,
     "to": 0
    }
+  },
+  {
+   "npc": "ccBGSSSE001-Fish.esm|000B30",
+   "name": "ccBGSSSE001_MiscMorthal_LvlBanditWizardImperialM",
+   "packages": [
+    "Skyrim.esm|01E619",
+    "AI Overhaul.esp|3889E4",
+    "Skyrim.esm|09361E"
+   ],
+   "packagesRemoved": [],
+   "packagesBefore": []
   }
  ]
 }

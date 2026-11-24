@@ -41,9 +41,21 @@ Japanese, Chinese and Korean need a font that SKSE Menu Framework only loads whe
 Skyrim SE/AE 1.6.1170 or newer (or Skyrim VR / 1.6.1130 and older with the older DLL), SKSE and Address Library. The two overhauls are independent and each is optional: with only AI Overhaul (1.9 or 1.9.5) it restores its AI on overridden NPCs; with only Immersive Citizens - AI Overhaul 0.4.0.2 it gives its AI to mod-added town people; with both it does both. Whichever is not installed is skipped. SKSE Menu Framework for the in-game pages (optional).
 
 ## Making a profile
-`profiles/*.json` hold, per NPC, the references a plugin gives it. An AI overhaul's profile (type `forward`) carries packages, removed packages, factions, override lists, flags and confidence; `tools/build_forward_profile.py` builds one from a Spriggit export of the overhaul's plugin. A bug-fix patch's profile (`"baseline": true`) carries the gameplay data listed above; `tools/build_baseline_profile.py` builds one from the patch's export and the exports of the plugins it patches (`prior=` names an earlier patch it sits on, `priority=` the order). Both can be rerun for a new version. Nothing in a profile is a master.
+A profile (`profiles/*.json`) names, per NPC, what a plugin gives that NPC, as `Plugin.esp|LocalID` references; nothing in it is a master. Two kinds:
 
-Shipped profiles: AI Overhaul 1.9 and 1.9.5, USSEP 4.3.9c (498 NPCs) and USMP 2.6.8b (24 NPCs, mostly housecarl packages: USMP's NPC changes are mainly on dragons and creatures). Each is used only when its plugin is loaded.
+- **forward** (an AI overhaul): packages, removed packages, factions, the four override lists, Protected / Essential, confidence. Header: `"type": "forward"`, `"requires": "<plugin>"`, `"ownPlugins": [...]`, optional `"family"` (versions of one overhaul: only the best-fitting one is used) and `"priority"`.
+- **baseline** (a bug-fix patch): class, skill values, health / magicka / stamina, perks, spells, keywords, crime faction, combat style, packages, factions, Protected / Essential, confidence. Header adds `"baseline": true`; `"priority"` is the order profiles are applied in (lowest first).
+
+To make one from a plugin you have, with one command (needs Python 3 and [Spriggit](https://github.com/Mutagen-Modding/Spriggit) on your PATH):
+
+```
+python tools/make_profile.py --kind forward  --plugin "<path>/AI Overhaul.esp" --id my-overhaul --name "My Overhaul" --out profiles/my-overhaul.json
+python tools/make_profile.py --kind baseline --plugin "<path>/SomePatch.esp"   --id some-patch  --name "Some Patch"  --out profiles/some-patch.json
+```
+
+It reads the plugin's masters from its header, finds them in the game's Data folder (`--data`, or `--search <mod folder>` for masters that live in a mod), exports them with Spriggit (cached, so the next profile is fast), compares the plugin's NPC records with the originals and writes the profile. `--prior <plugin>` makes a baseline patch start from an earlier patch's records (USMP on USSEP); `--base latest` compares with the masters' latest records instead of the original ones (default `original`: a patch like USSEP then also carries what Update.esm fixed, which a look replacer built from the vanilla record loses too). Read the printed counts, then copy the file to `Data/SKSE/Plugins/NPCAIAutoPatch/profiles/`. The lower-level scripts `tools/build_forward_profile.py` and `tools/build_baseline_profile.py` take an existing export. Rerun it for a new version of the plugin.
+
+Shipped profiles: AI Overhaul 1.9 (422 NPCs) and 1.9.5 (420), USSEP 4.3.9c (498) and USMP 2.6.8b (24; mostly housecarl packages, because USMP's NPC changes are mainly on dragons and creatures). Each is used only when its plugin is loaded.
 
 ## Credits
 - **AI Overhaul** is by SpiderAkira and mnikjom (Nexus mod 21654). The profiles list references taken from its plugin; this plugin needs the mod installed and contains none of its files. Please endorse and support it.
