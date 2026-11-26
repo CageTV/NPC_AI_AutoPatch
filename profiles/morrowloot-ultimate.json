@@ -1,0 +1,2456 @@
+{
+ "format": 1,
+ "id": "morrowloot-ultimate",
+ "name": "MorrowLoot Ultimate (items)",
+ "type": "forward",
+ "requires": "MLU.esp",
+ "ownPlugins": [
+  "MLU.esp"
+ ],
+ "npcs": [
+  {
+   "npc": "Skyrim.esm|01E7D7",
+   "name": "Ancano",
+   "itemsAdded": [
+    {
+     "item": "MLU.esp|1A9100",
+     "count": 1
+    },
+    {
+     "item": "MLU.esp|1C7762",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|07EAC7",
+   "name": "BlackreachDragon",
+   "itemsAdded": [
+    {
+     "item": "MLU.esp|05C889",
+     "count": 1
+    }
+   ],
+   "templateFlagsRemoved": [
+    "Inventory"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0D0577",
+   "name": "CWBattleTullius",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|0135B8",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|013841",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|01397F",
+     "count": 20
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "MLU.esp|1FA1A0",
+     "count": 1
+    },
+    {
+     "item": "MLU.esp|339205",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0D0575",
+   "name": "CWBattleUlfric",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|0A69D7",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Skyrim.esm|0139AC",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|028AD3",
+   "name": "DA01MalynVaren",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|10E4F5",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0834FE",
+   "name": "DA02Champion",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|04B586",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Dragonborn.esm|0282E4",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|039BE4",
+     "count": 2
+    }
+   ],
+   "templateFlagsRemoved": [
+    "SpellList",
+    "Stats"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|04D6CA",
+   "name": "DB10_LvlPenitusOculatus_NazirFighter",
+   "itemsAdded": [
+    {
+     "item": "Skyrim.esm|0C3DEF",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|015CFA",
+   "name": "DBInitiate1",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|0139AE",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Dragonborn.esm|01CDAE",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|015CFE",
+   "name": "DBInitiate2",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|0139AE",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Skyrim.esm|01398E",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|01A73E",
+   "name": "DLC01SoulCairnReaper",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|013980",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Skyrim.esm|0139B4",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|003788",
+   "name": "DLC1AlthadanVyrthur",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|0BE193",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "MLU.esp|3392DB",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|00336A",
+   "name": "DLC1Isran",
+   "itemsRemoved": [
+    {
+     "item": "Dawnguard.esm|00DD55",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "MLU.esp|1E5D8C",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|014BFB",
+   "name": "DLC1_WESC09TaronDreth",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|044CD6",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Skyrim.esm|0C9A33",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dragonborn.esm|03888B",
+   "name": "DLC2HrodulfCorpse",
+   "itemsAdded": [
+    {
+     "item": "Skyrim.esm|0C891B",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dragonborn.esm|02662F",
+   "name": "DLC2KagrumezBanditBoss",
+   "itemsRemoved": [
+    {
+     "item": "Dragonborn.esm|01FF0F",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Skyrim.esm|03DF1F",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dragonborn.esm|031862",
+   "name": "DLC2MerchMerchant",
+   "itemsRemoved": [
+    {
+     "item": "Dragonborn.esm|018ED5",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dragonborn.esm|01CAF3",
+   "name": "DLC2SV02Ancarion",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|07D986",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Dragonborn.esm|01CDB5",
+     "count": 1
+    }
+   ],
+   "templateFlagsRemoved": [
+    "Inventory",
+    "Stats"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0640B7",
+   "name": "EncDraugr05TemplateMissileEbony",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|01398B",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "MLU.esp|1B841B",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01327E",
+   "name": "GeneralTullius",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|0135B8",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|013841",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|01397F",
+     "count": 20
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "MLU.esp|1FA1A0",
+     "count": 1
+    },
+    {
+     "item": "MLU.esp|339205",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0136B3",
+   "name": "JouaneManette",
+   "itemsAdded": [
+    {
+     "item": "Skyrim.esm|013962",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|10349B",
+   "name": "MLdunMS06PotemaSkeleton",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|10782F",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Skyrim.esm|0BEF6E",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01CD91",
+   "name": "Niruin",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|01703D",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Skyrim.esm|01399D",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|019E22",
+   "name": "Ogol",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|013983",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Skyrim.esm|01398B",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01414D",
+   "name": "Ulfric",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|0A69D7",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Skyrim.esm|0139AC",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|062128",
+   "name": "WE24Orc",
+   "itemsAdded": [
+    {
+     "item": "MLU.esp|176689",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|01398C",
+     "count": 1
+    }
+   ],
+   "templateFlagsRemoved": [
+    "AIPackages",
+    "AttackData",
+    "DefPackList",
+    "Inventory",
+    "Script",
+    "SpellList",
+    "Stats"
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009B7",
+   "name": "ccBGSSSE025_EncBanditTemplateMeleeGolden",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009DB",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009DB",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009BF",
+   "name": "ccBGSSSE025_EncBanditTemplateMeleeSeducer",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009E3",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009E3",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE037-Curios.esl|000865",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009A6",
+   "name": "ccBGSSSE025_EncBanditTemplateMissileGolden",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|00080E",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|00080F",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|00082B",
+     "count": 20
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009E9",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00080E",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00080F",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00082B",
+     "count": 20
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009E9",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009A7",
+   "name": "ccBGSSSE025_EncBanditTemplateMissileSeducer",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|000802",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000821",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|00082A",
+     "count": 20
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009E4",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000802",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000821",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00082A",
+     "count": 20
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009E4",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE037-Curios.esl|000865",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|000A06",
+   "name": "ccBGSSSE025_EncDarkSeducerArcher",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|00098E",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000998",
+     "count": 40
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000A08",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00098E",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000998",
+     "count": 40
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000A08",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|000A07",
+   "name": "ccBGSSSE025_EncDarkSeducerWarrior",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009D6",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009D6",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009CB",
+   "name": "ccBGSSSE025_EncGoldenBanditMelee1HImperialF",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009DB",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009DB",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009B8",
+   "name": "ccBGSSSE025_EncGoldenBanditMelee1HImperialM",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009DB",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009DB",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009B9",
+   "name": "ccBGSSSE025_EncGoldenBanditMelee1HKhajiitM",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009DB",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009DB",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009BA",
+   "name": "ccBGSSSE025_EncGoldenBanditMelee1HNordF",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009DB",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009DB",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009BB",
+   "name": "ccBGSSSE025_EncGoldenBanditMelee1HNordM",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009DB",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009DB",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009BC",
+   "name": "ccBGSSSE025_EncGoldenBanditMelee1HOrcM",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009DB",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009DB",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009BD",
+   "name": "ccBGSSSE025_EncGoldenBanditMelee1HRedguardF",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009DB",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009DB",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009BE",
+   "name": "ccBGSSSE025_EncGoldenBanditMelee1HRedguardM",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009DB",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009DB",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009CD",
+   "name": "ccBGSSSE025_EncGoldenBanditMissileImperialF",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|00080E",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|00080F",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|00082B",
+     "count": 20
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009E9",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00080E",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00080F",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00082B",
+     "count": 20
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009E9",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009C6",
+   "name": "ccBGSSSE025_EncGoldenBanditMissileImperialM",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|00080E",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|00080F",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|00082B",
+     "count": 20
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009E9",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00080E",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00080F",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00082B",
+     "count": 20
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009E9",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009B6",
+   "name": "ccBGSSSE025_EncGoldenBanditMissileKhajiitM",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|00080E",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|00080F",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|00082B",
+     "count": 20
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009E9",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00080E",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00080F",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00082B",
+     "count": 20
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009E9",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009B5",
+   "name": "ccBGSSSE025_EncGoldenBanditMissileNordF",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|00080E",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|00080F",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|00082B",
+     "count": 20
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009E9",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00080E",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00080F",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00082B",
+     "count": 20
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009E9",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009C7",
+   "name": "ccBGSSSE025_EncGoldenBanditMissileNordM",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|00080E",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|00080F",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|00082B",
+     "count": 20
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009E9",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00080E",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00080F",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00082B",
+     "count": 20
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009E9",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|000999",
+   "name": "ccBGSSSE025_EncGoldenBanditMissileRedguardF",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|00080E",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|00080F",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|00082B",
+     "count": 20
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009E9",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00080E",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00080F",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00082B",
+     "count": 20
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009E9",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|00099A",
+   "name": "ccBGSSSE025_EncGoldenBanditMissileRedguardM",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|00080E",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|00080F",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|00082B",
+     "count": 20
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009E9",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00080E",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00080F",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00082B",
+     "count": 20
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009E9",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|00099B",
+   "name": "ccBGSSSE025_EncGoldenBanditMissileWoodElfF",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|00080E",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|00080F",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|00082B",
+     "count": 20
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009E9",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00080E",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00080F",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00082B",
+     "count": 20
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009E9",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|00099C",
+   "name": "ccBGSSSE025_EncGoldenBanditMissileWoodElfM",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|00080E",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|00080F",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|00082B",
+     "count": 20
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009E9",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00080E",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00080F",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00082B",
+     "count": 20
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009E9",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|000880",
+   "name": "ccBGSSSE025_EncGoldenSaintArcher",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|000992",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000996",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000997",
+     "count": 40
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000992",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000996",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000997",
+     "count": 40
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009C8",
+   "name": "ccBGSSSE025_EncGoldenSaintWarrior",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009D7",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009D7",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009B0",
+   "name": "ccBGSSSE025_EncSeducerBanditBoss2HNordM",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|000821",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009E0",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000A0F",
+     "count": 2
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D56",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 3
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000821",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009E0",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000A0F",
+     "count": 2
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D56",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 3
+    },
+    {
+     "item": "ccBGSSSE037-Curios.esl|000865",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009C0",
+   "name": "ccBGSSSE025_EncSeducerBanditMelee1HImperialF",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009E3",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009E3",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009C1",
+   "name": "ccBGSSSE025_EncSeducerBanditMelee1HImperialM",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009E3",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009E3",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009C2",
+   "name": "ccBGSSSE025_EncSeducerBanditMelee1HKhajiitM",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009E3",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009E3",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009C3",
+   "name": "ccBGSSSE025_EncSeducerBanditMelee1HNordF",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009E3",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009E3",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009C4",
+   "name": "ccBGSSSE025_EncSeducerBanditMelee1HNordM",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009E3",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009E3",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009C5",
+   "name": "ccBGSSSE025_EncSeducerBanditMelee1HOrcM",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009E3",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009E3",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009C9",
+   "name": "ccBGSSSE025_EncSeducerBanditMelee1HRedguardF",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009E3",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009E3",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009CA",
+   "name": "ccBGSSSE025_EncSeducerBanditMelee1HRedguardM",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009E3",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009E3",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|00099D",
+   "name": "ccBGSSSE025_EncSeducerBanditMissileImperialF",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|000802",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000821",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|00082A",
+     "count": 20
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009E4",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000802",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000821",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00082A",
+     "count": 20
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009E4",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE037-Curios.esl|000865",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|00099E",
+   "name": "ccBGSSSE025_EncSeducerBanditMissileImperialM",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|000802",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000821",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|00082A",
+     "count": 20
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009E4",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000802",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000821",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00082A",
+     "count": 20
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009E4",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE037-Curios.esl|000865",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|00099F",
+   "name": "ccBGSSSE025_EncSeducerBanditMissileKhajiitM",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|000802",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000821",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|00082A",
+     "count": 20
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009E4",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000802",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000821",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00082A",
+     "count": 20
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009E4",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE037-Curios.esl|000865",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009A0",
+   "name": "ccBGSSSE025_EncSeducerBanditMissileNordF",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|000802",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000821",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|00082A",
+     "count": 20
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009E4",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000802",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000821",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00082A",
+     "count": 20
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009E4",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE037-Curios.esl|000865",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009A1",
+   "name": "ccBGSSSE025_EncSeducerBanditMissileNordM",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|000802",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000821",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|00082A",
+     "count": 20
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009E4",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000802",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000821",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00082A",
+     "count": 20
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009E4",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE037-Curios.esl|000865",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009A2",
+   "name": "ccBGSSSE025_EncSeducerBanditMissileRedguardF",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|000802",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000821",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|00082A",
+     "count": 20
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009E4",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000802",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000821",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00082A",
+     "count": 20
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009E4",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE037-Curios.esl|000865",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009A3",
+   "name": "ccBGSSSE025_EncSeducerBanditMissileRedguardM",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|000802",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000821",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|00082A",
+     "count": 20
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009E4",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000802",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000821",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00082A",
+     "count": 20
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009E4",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE037-Curios.esl|000865",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009A4",
+   "name": "ccBGSSSE025_EncSeducerBanditMissileWoodElfF",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|000802",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000821",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|00082A",
+     "count": 20
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009E4",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000802",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000821",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00082A",
+     "count": 20
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009E4",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE037-Curios.esl|000865",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0009A5",
+   "name": "ccBGSSSE025_EncSeducerBanditMissileWoodElfM",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|000802",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000821",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|00082A",
+     "count": 20
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009E4",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D57",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000802",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000821",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00082A",
+     "count": 20
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009E4",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D57",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE037-Curios.esl|000865",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|095E21",
+   "name": "ccBGSSSE025_EncSummonDarkSeducerArcher",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|00098E",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000998",
+     "count": 40
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000A08",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00098E",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000998",
+     "count": 40
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000A08",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|1CAD42",
+   "name": "ccBGSSSE025_EncSummonDarkSeducerArcherAtrForge",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|00098E",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000998",
+     "count": 40
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000A08",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00098E",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000998",
+     "count": 40
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000A08",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0BE6B2",
+   "name": "ccBGSSSE025_EncSummonDarkSeducerArcherBoss",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|00098E",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000998",
+     "count": 40
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000A08",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|00098E",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000998",
+     "count": 40
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000A08",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|095E22",
+   "name": "ccBGSSSE025_EncSummonDarkSeducerWarrior",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009D6",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009D6",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|1CAD43",
+   "name": "ccBGSSSE025_EncSummonDarkSeducerWarriorAtrForge",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009D6",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009D6",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0BE6B3",
+   "name": "ccBGSSSE025_EncSummonDarkSeducerWarriorBoss",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009D6",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009D6",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|095E1F",
+   "name": "ccBGSSSE025_EncSummonGoldenSaintArcher",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|000992",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000996",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000997",
+     "count": 40
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000992",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000996",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000997",
+     "count": 40
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|1CAD44",
+   "name": "ccBGSSSE025_EncSummonGoldenSaintArcherAtrForge",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|000992",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000996",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000997",
+     "count": 40
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000992",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000996",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000997",
+     "count": 40
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0BE6B4",
+   "name": "ccBGSSSE025_EncSummonGoldenSaintArcherBoss",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|000992",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000996",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000997",
+     "count": 40
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000992",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000996",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000997",
+     "count": 40
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|095E20",
+   "name": "ccBGSSSE025_EncSummonGoldenSaintWarrior",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009D7",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009D7",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|1CAD45",
+   "name": "ccBGSSSE025_EncSummonGoldenSaintWarriorAtrForge",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009D7",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009D7",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|0BE6B5",
+   "name": "ccBGSSSE025_EncSummonGoldenSaintWarriorBoss",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|0009D7",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|0009D7",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "ccBGSSSE025-AdvDSGS.esm|000A84",
+   "name": "ccBGSSSE025_EncWarlockAtro06BossBretonM",
+   "itemsRemoved": [
+    {
+     "item": "ccbgssse025-advdsgs.esm|000AF0",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000AFD",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000B0C",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000B63",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D54",
+     "count": 2
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D56",
+     "count": 2
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|000D5B",
+     "count": 2
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|03AB41",
+     "count": 1
+    },
+    {
+     "item": "ccbgssse025-advdsgs.esm|19D3C6",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000AF0",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000AFD",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000B0C",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000B63",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D54",
+     "count": 2
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D56",
+     "count": 2
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|000D5B",
+     "count": 2
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|03AB41",
+     "count": 1
+    },
+    {
+     "item": "ccBGSSSE025-AdvDSGS.esm|19D3C6",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|02333A",
+   "name": "dunAnsilvundLuahAlSkaven",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|0E0FDB",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Skyrim.esm|044CD6",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|10F8B4",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|10F8B5",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|10FACD",
+     "count": 1
+    }
+   ],
+   "templateFlagsRemoved": [
+    "AttackData",
+    "SpellList"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|03725E",
+   "name": "dunRagSaerek",
+   "itemsAdded": [
+    {
+     "item": "Skyrim.esm|0139B2",
+     "count": 1
+    }
+   ],
+   "templateFlagsRemoved": [
+    "AIData",
+    "AIPackages",
+    "AttackData",
+    "DefPackList",
+    "Factions",
+    "Inventory",
+    "ModelAnimation",
+    "Script",
+    "SpellList",
+    "Stats",
+    "Traits"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|037231",
+   "name": "dunRagnTorsten",
+   "itemsAdded": [
+    {
+     "item": "MLU.esp|05CACA",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|0139B1",
+     "count": 1
+    }
+   ],
+   "templateFlagsRemoved": [
+    "AIData",
+    "AIPackages",
+    "AttackData",
+    "DefPackList",
+    "Factions",
+    "Inventory",
+    "ModelAnimation",
+    "Script",
+    "SpellList",
+    "Stats",
+    "Traits"
+   ]
+  }
+ ],
+ "family": "loot",
+ "priority": 0
+}
