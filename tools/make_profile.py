@@ -91,6 +91,7 @@ def export(plugin, cache, version):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--behaviour", action="store_true", help="forward only: a behaviour mod (also class, combat style none, removed spells, added perks)")
     ap.add_argument("--kind", choices=("forward", "baseline"), required=True)
     ap.add_argument("--plugin", required=True)
     ap.add_argument("--id", required=True)
@@ -158,6 +159,7 @@ def main():
     out = os.path.abspath(a.out)
     if a.kind == "forward":
         import build_forward_profile as b
+        b.BEHAVIOUR = a.behaviour
         b.main([src, plugin_name, a.id, a.name, out] + pairs)
     else:
         import build_baseline_profile as b

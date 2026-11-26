@@ -39,8 +39,8 @@ namespace Core
 		{
 			g_cfg = Config{};
 			g_cfg.excludeNames = { "corpse" };
-			g_cfg.protectNames = { "serana", "valerica" };
-			g_cfg.wins = { "better vampires.esp", "relationship dialogue overhaul.esp", "nwsfollowerframework.esp", "nwsff_noteammagicdamage.esp", "vampirelordserana.esp", "npc spell variance.esp" };  // see DefaultWins()
+			// protectNames: empty by default (names are exact, lower case)
+			g_cfg.wins = { "better vampires.esp", "relationship dialogue overhaul.esp", "nwsfollowerframework.esp", "nwsff_noteammagicdamage.esp" };  // see DefaultWins()
 			std::ifstream in(Dir() / "config.json");
 			if (!in) {
 				in.open("Data/SKSE/Plugins/ICAIOAutoPatch/config.json");  // the settings of the earlier name, read once
@@ -101,7 +101,7 @@ namespace Core
 		};
 	}
 
-	std::vector<std::string> DefaultWins() { return { "better vampires.esp", "relationship dialogue overhaul.esp", "nwsfollowerframework.esp", "nwsff_noteammagicdamage.esp", "vampirelordserana.esp", "npc spell variance.esp" }; }
+	std::vector<std::string> DefaultWins() { return { "better vampires.esp", "relationship dialogue overhaul.esp", "nwsfollowerframework.esp", "nwsff_noteammagicdamage.esp" }; }
 
 	bool IsLoaded(const std::string& a_plugin)
 	{
@@ -339,13 +339,85 @@ namespace Core
 				auto*       to = toF ? toF->As<RE::TESCombatStyle>() : nullptr;
 				auto*       fromF = fromRef.empty() ? nullptr : FindRef(a_dh, fromRef);
 				auto*       from = fromF ? fromF->As<RE::TESCombatStyle>() : nullptr;
-				if (!to || (!fromRef.empty() && !from)) {
+				if (toRef.empty()) {
+					// a behaviour mod (Serana - Lamae's Daughter) clears the combat style: cleared when the winner still has the value the mod found
+					if (from && CombatStyleOf(a_npc) == from) {
+						if (g_cfg.apply) {
+							a_npc->combatStyle = nullptr;
+						}
+						note("combat style");
+					}
+				} else if (!to || (!fromRef.empty() && !from)) {
 					a_miss("combat style");
 				} else if (a_npc->combatStyle != to && CombatStyleOf(a_npc) == from) {
 					if (g_cfg.apply) {
 						a_npc->combatStyle = to;
 					}
 					note("combat style");
+				}
+			}
+
+			// behaviour mods: class (changed when the winner still has the value the mod found)
+			if (a_e.contains("class") && !uses(Tpl::kStats)) {
+				const auto& v = a_e["class"];
+				auto*       toF = str(v, "to").empty() ? nullptr : FindRef(a_dh, str(v, "to"));
+				auto*       fromF = str(v, "from").empty() ? nullptr : FindRef(a_dh, str(v, "from"));
+				auto*       to = toF ? toF->As<RE::TESClass>() : nullptr;
+				auto*       from = fromF ? fromF->As<RE::TESClass>() : nullptr;
+				if (!to || !from) {
+					a_miss("class");
+				} else if (a_npc->npcClass == from && a_npc->npcClass != to) {
+					if (g_cfg.apply) {
+						a_npc->npcClass = to;
+					}
+					note("class");
+				}
+			}
+
+			// behaviour mods: perks added when missing
+			if (a_e.contains("perksAdded") && !uses(Tpl::kSpells)) {
+				for (const auto& p : a_e["perksAdded"]) {
+					auto* pf = str(p, "perk").empty() ? nullptr : FindRef(a_dh, str(p, "perk"));
+					auto* perk = pf ? pf->As<RE::BGSPerk>() : nullptr;
+					if (!perk) {
+						a_miss("perk");
+					} else if (!a_npc->GetPerkIndex(perk)) {
+						if (g_cfg.apply) {
+							a_npc->AddPerk(perk, static_cast<std::int8_t>(num(p, "rank", 1)));
+						}
+						note("perks");
+					}
+				}
+			}
+
+			// behaviour mods: spells they took off the NPC (the base game's spell list), taken off again when the winner has them
+			if (a_e.contains("spellsRemoved") && !uses(Tpl::kSpells)) {
+				if (auto* sl = a_npc->GetSpellList()) {
+					for (const auto& s : a_e["spellsRemoved"]) {
+						auto* sf = s.is_string() ? FindRef(a_dh, s.get<std::string>()) : nullptr;
+						if (auto* sp = sf ? sf->As<RE::SpellItem>() : nullptr) {
+							if (sl->GetIndex(sp)) {
+								if (g_cfg.apply) {
+									sl->RemoveSpell(sp);
+								}
+								note("spells removed");
+							}
+						} else if (auto* lv = sf ? sf->As<RE::TESLevSpell>() : nullptr) {
+							if (sl->GetIndex(lv)) {
+								if (g_cfg.apply) {
+									sl->RemoveLevSpell(lv);
+								}
+								note("spells removed");
+							}
+						} else if (auto* sh = sf ? sf->As<RE::TESShout>() : nullptr) {
+							if (sl->GetIndex(sh)) {
+								if (g_cfg.apply) {
+									sl->RemoveShout(sh);
+								}
+								note("spells removed");
+							}
+						}
+					}
 				}
 			}
 

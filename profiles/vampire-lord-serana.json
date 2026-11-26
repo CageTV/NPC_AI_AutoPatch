@@ -1,0 +1,138 @@
+{
+ "format": 1,
+ "id": "vampire-lord-serana",
+ "name": "Serana - Lamae's Daughter (behaviour)",
+ "type": "forward",
+ "requires": "VampireLordSerana.esp",
+ "ownPlugins": [
+  "VampireLordSerana.esp"
+ ],
+ "npcs": [
+  {
+   "npc": "Dawnguard.esm|002B6C",
+   "name": "DLC1Serana",
+   "lists": {
+    "combat": {
+     "from": null,
+     "to": "VampireLordSerana.esp|0008BC"
+    }
+   },
+   "class": {
+    "from": "Skyrim.esm|02E00F",
+    "to": "VampireLordSerana.esp|000868"
+   },
+   "combatStyle": {
+    "from": "Dawnguard.esm|011F34",
+    "to": ""
+   },
+   "perksAdded": [
+    {
+     "perk": "Skyrim.esm|03AF81",
+     "rank": 1
+    }
+   ],
+   "spellsRemoved": [
+    "Dawnguard.esm|011F32",
+    "Dawnguard.esm|011F35",
+    "Skyrim.esm|0C969C"
+   ],
+   "statOffsets": {
+    "magicka": {
+     "from": 0,
+     "to": 50
+    },
+    "stamina": {
+     "from": 0,
+     "to": 10
+    }
+   },
+   "spellsAdded": [
+    "VampireLordSerana.esp|000899"
+   ],
+   "skills": {
+    "health": {
+     "from": 199,
+     "to": 200
+    },
+    "magicka": {
+     "from": 94,
+     "to": 400
+    }
+   }
+  },
+  {
+   "npc": "Dawnguard.esm|003B8B",
+   "name": "DLC1Valerica",
+   "lists": {
+    "combat": {
+     "from": null,
+     "to": "VampireLordSerana.esp|0008BC"
+    }
+   },
+   "confidence": {
+    "from": 2,
+    "to": 4
+   },
+   "class": {
+    "from": "Skyrim.esm|02E00F",
+    "to": "VampireLordSerana.esp|000868"
+   },
+   "combatStyle": {
+    "from": "Skyrim.esm|03BE1B",
+    "to": ""
+   },
+   "perksAdded": [
+    {
+     "perk": "Skyrim.esm|03AF81",
+     "rank": 1
+    },
+    {
+     "perk": "Skyrim.esm|053128",
+     "rank": 1
+    }
+   ],
+   "spellsRemoved": [
+    "Skyrim.esm|033976",
+    "Skyrim.esm|040000",
+    "Skyrim.esm|0C969E",
+    "Skyrim.esm|0F5B59"
+   ],
+   "statOffsets": {
+    "magicka": {
+     "from": 0,
+     "to": 70
+    }
+   },
+   "spellsAdded": [
+    "VampireLordSerana.esp|000866",
+    "VampireLordSerana.esp|000899"
+   ],
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 33,
+      "to": 50
+     },
+     "LightArmor": {
+      "from": 33,
+      "to": 50
+     },
+     "Sneak": {
+      "from": 34,
+      "to": 50
+     }
+    },
+    "health": {
+     "from": 231,
+     "to": 300
+    },
+    "magicka": {
+     "from": 86,
+     "to": 500
+    }
+   }
+  }
+ ],
+ "family": "vampire-lord-serana",
+ "priority": 5
+}

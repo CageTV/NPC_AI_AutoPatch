@@ -17,6 +17,7 @@ import sys
 NL = chr(10)
 CR = chr(13)
 LISTS = {"SpectatorOverridePackageList": "spectator", "CombatOverridePackageList": "combat", "ObserveDeadBodyOverridePackageList": "observe", "GuardWarnOverridePackageList": "guardWarn"}
+BEHAVIOUR = False  # make_profile.py --behaviour: a behaviour mod (Serana - Lamae's Daughter) also carries class, combat style "none", removed spells and added perks
 CONF = ["Cowardly", "Cautious", "Average", "Brave", "Foolhardy"]
 
 
@@ -157,6 +158,20 @@ def main(a):
         x, y = single(P, "CombatStyle"), single(A, "CombatStyle")
         if y and x != y:
             e["combatStyle"] = {"from": x, "to": y}
+        if BEHAVIOUR:
+            from build_baseline_profile import perks
+            cx, cy = single(P, "Class"), single(A, "Class")
+            if cy and cx != cy:
+                e["class"] = {"from": cx, "to": cy}
+            if x and not y:
+                e["combatStyle"] = {"from": x, "to": ""}  # the behaviour mod clears the combat style
+            pk_a, pk_p = perks(A), perks(P)
+            pk = [{"perk": k, "rank": v} for k, v in pk_a.items() if k not in pk_p]
+            if pk:
+                e["perksAdded"] = pk
+            gone_s = [s for s in spells(P) if s not in spells(A)]
+            if gone_s:
+                e["spellsRemoved"] = gone_s
         for key, short, names in (("Aggression", "aggression", AGGR), ("Assistance", "assistance", ASSIST)):
             va, vp = ai_level(A, key, names), ai_level(P, key, names)
             if va is not None and va != vp:
