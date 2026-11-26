@@ -2,7 +2,8 @@
 
 For every NPC the overhaul overrides, compares its record with the record it overrides (the master's yaml) and writes only the AI part of the difference:
 packages (the overhaul's list in order, and the ones it removed), factions it added, the spectator / combat / observe / guard-warn override lists, the
-Protected / Essential flags and the confidence. The result is data: it names records by 'Plugin.esp|LocalID', no overhaul is a master of anything.
+Protected / Essential flags and the confidence; since 0.5.0 also factions it removed, the combat style, aggression, assistance, health / magicka /
+stamina offsets, spells it added and inventory items it added. The result is data: it names records by 'Plugin.esp|LocalID', no overhaul is a master of anything.
 
 Usage: python build_forward_profile.py <overhaul yaml dir> <overhaul plugin file name> <profile id> <profile name> <out json> <masters-yaml: Plugin=dir ...>
 Example: python build_forward_profile.py work/aio "AI Overhaul.esp" ai-overhaul "AI Overhaul SSE" profiles/ai-overhaul.json Skyrim.esm=E:/.../yaml_vanilla/Npcs
@@ -64,6 +65,45 @@ def confidence(b):
     return CONF.index(m.group(1)) if m and m.group(1) in CONF else 0 if "AIData" in b else None
 
 
+AGGR = ["Unaggressive", "Aggressive", "VeryAggressive", "Frenzied"]
+ASSIST = ["HelpsNobody", "HelpsAllies", "HelpsFriendsAndAllies"]  # Spriggit / Mutagen names (not "HelpsFriends")
+TEMPLATE_FLAGS = ["Traits", "Stats", "Factions", "SpellList", "AIData", "AIPackages", "ModelAnimation", "BaseData", "Inventory", "Script",
+                  "DefPackList", "AttackData", "Keywords"]
+
+
+def template_flags(b):
+    t = b.get("Configuration", "")
+    m = re.search(r"  TemplateFlags:\n((?:  - [^\n]+\n)+)", t)
+    return set(re.findall(r"- (\w+)", m.group(1))) if m else set()
+
+
+def ai_level(b, key, names):
+    # Spriggit leaves out a value that is the default (index 0)
+    if "AIData" not in b:
+        return None
+    m = re.search(r"^  " + key + r": (\w+)$", b["AIData"], re.M)
+    return names.index(m.group(1)) if m and m.group(1) in names else 0
+
+
+def offset(b, key):
+    # Configuration HealthOffset / MagickaOffset / StaminaOffset; left out when 0
+    if "Configuration" not in b:
+        return None
+    m = re.search(r"^  " + key + r": (-?\d+)$", b["Configuration"], re.M)
+    return int(m.group(1)) if m else 0
+
+
+def spells(b):
+    return [ref(x) for x in re.findall(r"^- ([0-9A-F]{6}:[^\n]+)$", b.get("ActorEffect", ""), re.M)]
+
+
+def items(b):
+    out = collections.OrderedDict()
+    for m in re.finditer(r"^- Item:\n    Item: ([0-9A-F]{6}:[^\n]+)\n    Count: (-?\d+)$", b.get("Items", ""), re.M):
+        out[ref(m.group(1))] = out.get(ref(m.group(1)), 0) + int(m.group(2))
+    return out
+
+
 def main(a):
     src, plugin, pid, pname, out_json = a[0], a[1], a[2], a[3], a[4]
     mast = dict(x.split("=", 1) for x in a[5:])
@@ -110,6 +150,48 @@ def main(a):
         ca, cp = confidence(A), confidence(P)
         if ca is not None and ca != cp:
             e["confidence"] = {"from": cp, "to": ca}
+        # 0.5.0: the rest of what an AI overhaul changes on the NPC itself (found in the community SkyPatcher patch for AI Overhaul)
+        gone = [k for k in fp if k not in fa]
+        if gone:
+            e["factionsRemoved"] = gone
+        x, y = single(P, "CombatStyle"), single(A, "CombatStyle")
+        if y and x != y:
+            e["combatStyle"] = {"from": x, "to": y}
+        for key, short, names in (("Aggression", "aggression", AGGR), ("Assistance", "assistance", ASSIST)):
+            va, vp = ai_level(A, key, names), ai_level(P, key, names)
+            if va is not None and va != vp:
+                e[short] = {"from": vp if vp is not None else 0, "to": va}
+        offs = {}
+        for key, short in (("HealthOffset", "health"), ("MagickaOffset", "magicka"), ("StaminaOffset", "stamina")):
+            va, vp = offset(A, key), offset(P, key)
+            if va is not None and va != vp:
+                offs[short] = {"from": vp if vp is not None else 0, "to": va}
+        if offs:
+            e["statOffsets"] = offs
+        sa, sp = spells(A), spells(P)
+        if [s for s in sa if s not in sp]:
+            e["spellsAdded"] = [s for s in sa if s not in sp]
+        ia, ip = items(A), items(P)
+        add_items = [{"item": k, "count": v} for k, v in ia.items() if k not in ip]
+        if add_items:
+            e["itemsAdded"] = add_items
+        # skill values / offsets and base health / magicka / stamina (AI Overhaul retunes some College mages); same shape as a baseline profile
+        from build_baseline_profile import skills  # late import: that module imports this one
+        sa_, sp_ = skills(A), skills(P)
+        sk = {}
+        for part in ("values", "offsets"):
+            ch = {k: {"from": sp_.get(part, {}).get(k), "to": v} for k, v in sa_.get(part, {}).items() if sp_.get(part, {}).get(k) != v}
+            if ch:
+                sk[part] = ch
+        for key in ("health", "magicka", "stamina"):
+            if key in sa_ and sa_[key] != sp_.get(key):
+                sk[key] = {"from": sp_.get(key), "to": sa_[key]}
+        if sk:
+            e["skills"] = sk
+        # template flags the overhaul turned off (Brutius: "use the template's AI packages" off, so the overhaul's own packages count)
+        tf = sorted(f for f in template_flags(P) - template_flags(A) if f in TEMPLATE_FLAGS)
+        if tf:
+            e["templateFlagsRemoved"] = tf
         if len(e) > 2:
             entries.append(e)
         else:

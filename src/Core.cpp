@@ -18,6 +18,7 @@ namespace Core
 		std::vector<Row> g_rows;
 		std::map<std::uint32_t, std::pair<std::string, nlohmann::json>> g_expected;  // NPC form id -> (profile used, its entry): for the Inspect page
 		std::map<std::uint32_t, std::pair<std::string, nlohmann::json>> g_baseline;  // NPC form id -> (baseline profile, its entry): for the Inspect page
+		std::map<std::uint32_t, std::set<std::uint32_t>>                g_factionsTakenOff;  // NPC form id -> factions the forward step removed (for Recheck)
 		std::map<std::uint32_t, std::vector<std::pair<std::string, std::string>>> g_why;  // NPC form id -> (step, why it was left alone): for the Inspect page
 
 		std::filesystem::path Dir() { return std::filesystem::path("Data/SKSE/Plugins/NPCAIAutoPatch"); }
@@ -230,10 +231,234 @@ namespace Core
 		}
 
 		int  Confidence(const RE::TESNPC* a_npc) { return (reinterpret_cast<const std::uint8_t*>(&a_npc->aiData)[0] >> 2) & 7; }
+		// An NPC whose record names no combat style gets the game's default one (Skyrim.esm 00003D) when the game loads it, so "none" in a profile
+		// means "none or that default" (seen on Anoriath, 2026-11-25). Returns the NPC's combat style with the default read as none.
+		RE::TESCombatStyle* CombatStyleOf(const RE::TESNPC* a_npc)
+		{
+			static auto* def = RE::TESForm::LookupByID<RE::TESCombatStyle>(0x0000003D);
+			return a_npc->combatStyle == def ? nullptr : a_npc->combatStyle;
+		}
+
+		// how many of an item the NPC's base inventory lists (TESContainer::GetObjectCount is not in the older CommonLib)
+		int CountInBase(const RE::TESNPC* a_npc, const RE::TESBoundObject* a_obj)
+		{
+			int n = 0;
+			for (std::uint32_t i = 0; i < a_npc->numContainerObjects; ++i) {
+				if (const auto* c = a_npc->containerObjects[i]; c && c->obj == a_obj) {
+					n += c->count;
+				}
+			}
+			return n;
+		}
+
+		// a template flag by its Spriggit / Mutagen name
+		RE::ACTOR_BASE_DATA::TEMPLATE_USE_FLAG TemplateFlagOf(const std::string& a_name)
+		{
+			using F = RE::ACTOR_BASE_DATA::TEMPLATE_USE_FLAG;
+			static const std::map<std::string, F> kMap = { { "Traits", F::kTraits }, { "Stats", F::kStats }, { "Factions", F::kFactions }, { "SpellList", F::kSpells },
+				{ "AIData", F::kAIData }, { "AIPackages", F::kAIPackages }, { "BaseData", F::kBaseData }, { "Inventory", F::kInventory }, { "Script", F::kScript },
+				{ "DefPackList", F::kAIDefPackList }, { "AttackData", F::kAttackData }, { "Keywords", F::kKeywords } };
+			const auto it = kMap.find(a_name);
+			return it == kMap.end() ? F::kNone : it->second;
+		}
+
 		void SetConfidence(RE::TESNPC* a_npc, int a_v)
 		{
 			auto* raw = reinterpret_cast<std::uint8_t*>(&a_npc->aiData);
 			raw[0] = static_cast<std::uint8_t>((raw[0] & ~(7 << 2)) | ((a_v & 7) << 2));
+		}
+
+		// 0.5.0: the rest of what an AI overhaul changes on the NPC record itself (the community SkyPatcher patch for AI Overhaul showed these):
+		// factions it removed, combat style, aggression, assistance, health / magicka / stamina offsets, spells and inventory items it added.
+		// Same rule as the other fields: a value is changed only when the winner still has the value the overhaul found ("from"); a value the winner
+		// chose itself is kept. Fields the NPC takes from a template are never touched.
+		void ForwardMore(RE::TESDataHandler* a_dh, RE::TESNPC* a_npc, const nlohmann::json& a_e, std::vector<std::string>& a_done,
+			const std::function<void(const std::string&)>& a_miss)
+		{
+			using Tpl = RE::ACTOR_BASE_DATA::TEMPLATE_USE_FLAG;
+			const auto uses = [&](Tpl a_t) { return a_npc->actorData.templateUseFlags.any(a_t); };
+			const auto note = [&](const char* a_what) {
+				if (std::find(a_done.begin(), a_done.end(), a_what) == a_done.end()) {
+					a_done.push_back(a_what);
+				}
+			};
+			const auto str = [](const nlohmann::json& a_j, const char* a_key) {
+				const auto it = a_j.find(a_key);
+				return it != a_j.end() && it->is_string() ? it->get<std::string>() : std::string();
+			};
+			const auto num = [](const nlohmann::json& a_j, const char* a_key, int a_def) {
+				const auto it = a_j.find(a_key);
+				return it != a_j.end() && it->is_number_integer() ? it->get<int>() : a_def;
+			};
+
+			// factions the overhaul removed: taken off when the winner still has them (remembered, so the recheck after a save load can do it again)
+			if (a_e.contains("factionsRemoved") && !uses(Tpl::kFactions)) {
+				for (const auto& r : a_e["factionsRemoved"]) {
+					auto* ff = r.is_string() ? FindRef(a_dh, r.get<std::string>()) : nullptr;
+					auto* fac = ff ? ff->As<RE::TESFaction>() : nullptr;
+					if (!fac) {
+						continue;  // a faction that is not in this game is not on the record either
+					}
+					auto& l = a_npc->factions;
+					for (auto it = l.begin(); it != l.end(); ++it) {
+						if (it->faction == fac) {
+							if (g_cfg.apply) {
+								l.erase(it);
+								g_factionsTakenOff[a_npc->GetFormID()].insert(fac->GetFormID());
+							}
+							note("faction removed");
+							break;
+						}
+					}
+				}
+			}
+
+			// combat style
+			if (a_e.contains("combatStyle") && !uses(Tpl::kAIData) && !uses(Tpl::kTraits)) {
+				const auto& v = a_e["combatStyle"];
+				const auto  toRef = str(v, "to"), fromRef = str(v, "from");
+				auto*       toF = toRef.empty() ? nullptr : FindRef(a_dh, toRef);
+				auto*       to = toF ? toF->As<RE::TESCombatStyle>() : nullptr;
+				auto*       fromF = fromRef.empty() ? nullptr : FindRef(a_dh, fromRef);
+				auto*       from = fromF ? fromF->As<RE::TESCombatStyle>() : nullptr;
+				if (!to || (!fromRef.empty() && !from)) {
+					a_miss("combat style");
+				} else if (a_npc->combatStyle != to && CombatStyleOf(a_npc) == from) {
+					if (g_cfg.apply) {
+						a_npc->combatStyle = to;
+					}
+					note("combat style");
+				}
+			}
+
+			// aggression, assistance (two bits each in the AI data)
+			if (!uses(Tpl::kAIData)) {
+				if (a_e.contains("aggression")) {
+					const int to = num(a_e["aggression"], "to", -1), from = num(a_e["aggression"], "from", -1);
+					const int now = static_cast<int>(a_npc->GetAggressionLevel());
+					if (to >= 0 && to <= 3 && now != to && now == from) {
+						if (g_cfg.apply) {
+							a_npc->SetAggressionLevel(static_cast<RE::ACTOR_AGGRESSION>(to));
+						}
+						note("aggression");
+					}
+				}
+				if (a_e.contains("assistance")) {
+					const int to = num(a_e["assistance"], "to", -1), from = num(a_e["assistance"], "from", -1);
+					const int now = static_cast<int>(a_npc->GetAssistanceLevel());
+					if (to >= 0 && to <= 2 && now != to && now == from) {
+						if (g_cfg.apply) {
+							a_npc->SetAssistanceLevel(static_cast<RE::ACTOR_ASSISTANCE>(to));
+						}
+						note("assistance");
+					}
+				}
+			}
+
+			// health / magicka / stamina offsets
+			if (a_e.contains("statOffsets") && !uses(Tpl::kStats)) {
+				const auto& so = a_e["statOffsets"];
+				auto&       ad = a_npc->actorData;
+				for (const auto& [key, field] : { std::pair<const char*, std::int16_t*>{ "health", &ad.healthOffset }, { "magicka", &ad.magickaOffset }, { "stamina", &ad.staminaOffset } }) {
+					if (!so.contains(key)) {
+						continue;
+					}
+					const int to = num(so[key], "to", INT_MIN), from = num(so[key], "from", INT_MIN);
+					if (to != INT_MIN && from != INT_MIN && *field == from && *field != to) {
+						if (g_cfg.apply) {
+							*field = static_cast<std::int16_t>(to);
+						}
+						note("stats");
+					}
+				}
+			}
+
+			// skill values / offsets, base health / magicka / stamina
+			if (a_e.contains("skills") && !uses(Tpl::kStats)) {
+				static const char* const kSkill[18] = { "OneHanded", "TwoHanded", "Archery", "Block", "Smithing", "HeavyArmor", "LightArmor", "Pickpocket", "Lockpicking",
+					"Sneak", "Alchemy", "Speech", "Alteration", "Conjuration", "Destruction", "Illusion", "Restoration", "Enchanting" };
+				const auto& sk = a_e["skills"];
+				auto&       ps = a_npc->playerSkills;
+				for (int i = 0; i < 18; ++i) {
+					for (const auto& [part, arr] : { std::pair<const char*, std::uint8_t*>{ "values", ps.values }, { "offsets", ps.offsets } }) {
+						if (!sk.contains(part) || !sk[part].contains(kSkill[i])) {
+							continue;
+						}
+						const auto& c = sk[part][kSkill[i]];
+						const int   from = num(c, "from", -1), to = num(c, "to", -1);
+						if (from >= 0 && to >= 0 && arr[i] == from && arr[i] != to) {
+							if (g_cfg.apply) {
+								arr[i] = static_cast<std::uint8_t>(to);
+							}
+							note("skills");
+						}
+					}
+				}
+				for (const auto& [key, field] : { std::pair<const char*, std::uint16_t*>{ "health", &ps.health }, { "magicka", &ps.magicka }, { "stamina", &ps.stamina } }) {
+					if (sk.contains(key)) {
+						const int from = num(sk[key], "from", -1), to = num(sk[key], "to", -1);
+						if (from >= 0 && to >= 0 && *field == from && *field != to) {
+							if (g_cfg.apply) {
+								*field = static_cast<std::uint16_t>(to);
+							}
+							note("skills");
+						}
+					}
+				}
+			}
+
+			// spells, leveled spells and shouts the overhaul added (only when the record has a spell list)
+			if (a_e.contains("spellsAdded") && !uses(Tpl::kSpells)) {
+				if (auto* sl = a_npc->GetSpellList()) {
+					for (const auto& s : a_e["spellsAdded"]) {
+						auto* sf = s.is_string() ? FindRef(a_dh, s.get<std::string>()) : nullptr;
+						if (auto* sp = sf ? sf->As<RE::SpellItem>() : nullptr) {
+							if (!sl->GetIndex(sp)) {
+								if (g_cfg.apply) {
+									sl->AddSpell(sp);
+								}
+								note("spells");
+							}
+						} else if (auto* lv = sf ? sf->As<RE::TESLevSpell>() : nullptr) {
+							if (!sl->GetIndex(lv)) {
+								if (g_cfg.apply) {
+									sl->AddLevSpell(lv);
+								}
+								note("spells");
+							}
+						} else if (auto* sh = sf ? sf->As<RE::TESShout>() : nullptr) {
+							if (!sl->GetIndex(sh)) {
+								if (g_cfg.apply) {
+									sl->AddShout(sh);
+								}
+								note("spells");
+							}
+						} else {
+							a_miss("spell " + (s.is_string() ? s.get<std::string>() : std::string("?")));
+						}
+					}
+				}
+			}
+
+			// inventory items the overhaul added: added when the winner has none of that item
+			if (a_e.contains("itemsAdded") && !uses(Tpl::kInventory)) {
+				for (const auto& it : a_e["itemsAdded"]) {
+					const auto r = str(it, "item");
+					auto*      f = r.empty() ? nullptr : FindRef(a_dh, r);
+					auto*      obj = f ? f->As<RE::TESBoundObject>() : nullptr;
+					const int  count = num(it, "count", 1);
+					if (!obj) {
+						a_miss("item " + r);
+						continue;
+					}
+					if (count > 0 && CountInBase(a_npc, obj) == 0) {
+						if (g_cfg.apply) {
+							a_npc->AddObjectToContainer(obj, count, nullptr);
+						}
+						note("items");
+					}
+				}
+			}
 		}
 
 		void Forward(RE::TESDataHandler* a_dh, std::vector<Row>& a_rows, Summary& a_info)
@@ -396,6 +621,17 @@ namespace Core
 						continue;
 					}
 					std::vector<std::string> done;
+					// 0.5.0: template flags the overhaul turned off (Brutius: AI packages). Done first: the package step below skips an NPC that takes its
+					// packages from a template. Only when the winner still has the flag on (it has the overhaul's "before" value).
+					for (const auto& tf : e.value("templateFlagsRemoved", nlohmann::json::array())) {
+						const auto flag = TemplateFlagOf(tf.is_string() ? tf.get<std::string>() : std::string());
+						if (flag != RE::ACTOR_BASE_DATA::TEMPLATE_USE_FLAG::kNone && npc->actorData.templateUseFlags.any(flag)) {
+							if (g_cfg.apply) {
+								npc->actorData.templateUseFlags.reset(flag);
+							}
+							done.push_back("template flag");
+						}
+					}
 					// packages: the overhaul's list in its order, then what later mods added that the overhaul did not remove
 					if (e.contains("packages") && !npc->actorData.templateUseFlags.any(RE::ACTOR_BASE_DATA::TEMPLATE_USE_FLAG::kAIPackages)) {
 						std::vector<RE::TESPackage*> want, cur, removed;
@@ -530,6 +766,10 @@ namespace Core
 							done.push_back("confidence");
 						}
 					}
+					ForwardMore(a_dh, npc, e, done, [&](const std::string& a_what) {
+						++missing;
+						SKSE::log::info("forward profile '{}': {} keeps its {}, no record for it", name, row.name, a_what);
+					});
 					if (done.empty()) {
 						skip("already has the overhaul's AI");
 						continue;
@@ -681,7 +921,7 @@ namespace Core
 						single("crimeFaction", [&] { return npc->crimeFaction; }, [&](auto* x) { npc->crimeFaction = x; }, [](RE::TESForm* x) { return x ? x->As<RE::TESFaction>() : nullptr; });
 					}
 					if (!uses(Tpl::kAIData) && !uses(Tpl::kTraits)) {
-						single("combatStyle", [&] { return npc->combatStyle; }, [&](auto* x) { npc->combatStyle = x; }, [](RE::TESForm* x) { return x ? x->As<RE::TESCombatStyle>() : nullptr; });
+						single("combatStyle", [&] { return CombatStyleOf(npc); }, [&](auto* x) { npc->combatStyle = x; }, [](RE::TESForm* x) { return x ? x->As<RE::TESCombatStyle>() : nullptr; });
 					}
 
 					// skills, health, magicka, stamina
@@ -1034,6 +1274,104 @@ namespace Core
 			}
 		}
 
+		// 0.5.0 fields of the overhaul: removed factions, combat style, aggression, assistance, stat offsets, spells, items
+		if (e) {
+			const auto& x = *e;
+			for (const auto& r : x.value("factionsRemoved", nlohmann::json::array())) {
+				auto* f = r.is_string() ? FindRef(dh, r.get<std::string>()) : nullptr;
+				auto* fac = f ? f->As<RE::TESFaction>() : nullptr;
+				if (!fac) {
+					continue;
+				}
+				bool has = false;
+				for (const auto& fr : a_npc->factions) {
+					has = has || fr.faction == fac;
+				}
+				add("Faction the overhaul removes", has ? "still there" : "removed", RefText(fac), has ? 2 : 1);
+			}
+			if (x.contains("combatStyle")) {
+				auto* toF = x["combatStyle"].value("to", std::string()).empty() ? nullptr : FindRef(dh, x["combatStyle"].value("to", std::string()));
+				auto* fromF = x["combatStyle"]["from"].is_string() ? FindRef(dh, x["combatStyle"]["from"].get<std::string>()) : nullptr;
+				const RE::TESForm* now = a_npc->combatStyle;
+				const RE::TESForm* nowOrNone = CombatStyleOf(a_npc);  // the game's default style counts as none
+				add("Combat style", now ? RefText(now) : std::string("(none)"), toF ? RefText(toF) : x["combatStyle"].value("to", std::string()),
+					toF && now == toF ? 1 : (nowOrNone == fromF ? 2 : 0));
+			}
+			static const char* const kAggr[] = { "Unaggressive", "Aggressive", "Very aggressive", "Frenzied" };
+			static const char* const kAssist[] = { "Helps nobody", "Helps allies", "Helps friends" };
+			const auto level = [&](const char* a_key, const char* a_label, int a_now, const char* const* a_names, int a_n) {
+				if (!x.contains(a_key)) {
+					return;
+				}
+				const int  to = x[a_key].value("to", -1), from = x[a_key].value("from", -1);
+				const auto nm = [&](int v) { return v >= 0 && v < a_n ? std::string(a_names[v]) : std::to_string(v); };
+				add(a_label, nm(a_now), nm(to), a_now == to ? 1 : (a_now == from ? 2 : 0));
+			};
+			level("aggression", "Aggression", static_cast<int>(a_npc->GetAggressionLevel()), kAggr, 4);
+			level("assistance", "Assistance", static_cast<int>(a_npc->GetAssistanceLevel()), kAssist, 3);
+			if (x.contains("statOffsets")) {
+				const auto& so = x["statOffsets"];
+				for (const auto& [key, label, val] : { std::tuple<const char*, const char*, int>{ "health", "Health offset", a_npc->actorData.healthOffset },
+						 { "magicka", "Magicka offset", a_npc->actorData.magickaOffset }, { "stamina", "Stamina offset", a_npc->actorData.staminaOffset } }) {
+					if (so.contains(key)) {
+						const int to = so[key].value("to", 0), from = so[key].value("from", 0);
+						add(label, std::to_string(val), std::to_string(to), val == to ? 1 : (val == from ? 2 : 0));
+					}
+				}
+			}
+			if (x.contains("spellsAdded")) {
+				auto* sl = a_npc->GetSpellList();
+				for (const auto& s : x["spellsAdded"]) {
+					auto* sf = s.is_string() ? FindRef(dh, s.get<std::string>()) : nullptr;
+					bool  has = false;
+					if (sl && sf) {
+						if (auto* sp = sf->As<RE::SpellItem>()) {
+							has = sl->GetIndex(sp).has_value();
+						} else if (auto* lv = sf->As<RE::TESLevSpell>()) {
+							has = sl->GetIndex(lv).has_value();
+						} else if (auto* sh = sf->As<RE::TESShout>()) {
+							has = sl->GetIndex(sh).has_value();
+						}
+					}
+					add("Spell", has ? "present" : "missing", sf ? RefText(sf) : StrOf(s) + "  (no record in this game)", has ? 1 : 2);
+				}
+			}
+			for (const auto& it : x.value("itemsAdded", nlohmann::json::array())) {
+				const auto r = it.value("item", std::string());
+				auto*      f = r.empty() ? nullptr : FindRef(dh, r);
+				auto*      obj = f ? f->As<RE::TESBoundObject>() : nullptr;
+				const int  n = obj ? CountInBase(a_npc, obj) : 0;
+				add("Item (base inventory)", n > 0 ? "x" + std::to_string(n) : "missing", obj ? RefText(obj) + " x" + std::to_string(it.value("count", 1)) : r + "  (no record in this game)",
+					n > 0 ? 1 : 2);
+			}
+			for (const auto& tf : x.value("templateFlagsRemoved", nlohmann::json::array())) {
+				const auto nm = tf.is_string() ? tf.get<std::string>() : std::string();
+				const auto flag = TemplateFlagOf(nm);
+				if (flag != RE::ACTOR_BASE_DATA::TEMPLATE_USE_FLAG::kNone) {
+					const bool on = a_npc->actorData.templateUseFlags.any(flag);
+					add("Template flag " + nm, on ? "on" : "off", "off", on ? 2 : 1);
+				}
+			}
+			if (x.contains("skills")) {
+				static const char* const kSk[18] = { "OneHanded", "TwoHanded", "Archery", "Block", "Smithing", "HeavyArmor", "LightArmor", "Pickpocket", "Lockpicking",
+					"Sneak", "Alchemy", "Speech", "Alteration", "Conjuration", "Destruction", "Illusion", "Restoration", "Enchanting" };
+				const auto& ps = a_npc->playerSkills;
+				for (const auto& part : { std::pair<const char*, const std::uint8_t*>{ "values", ps.values }, { "offsets", ps.offsets } }) {
+					if (!x["skills"].contains(part.first)) {
+						continue;
+					}
+					for (int i = 0; i < 18; ++i) {
+						if (x["skills"][part.first].contains(kSk[i])) {
+							const auto& c = x["skills"][part.first][kSk[i]];
+							const int   from = IntOr(c, "from", -1), to = IntOr(c, "to", -1), now = part.second[i];
+							add(std::string("Skill ") + kSk[i] + (std::string(part.first) == "offsets" ? " (offset)" : ""), std::to_string(now), std::to_string(to),
+								now == to ? 1 : (now == from ? 2 : 0));
+						}
+					}
+				}
+			}
+		}
+
 		// confidence of the base record. The live actor value is not read here: the actor structure differs between game builds and reading it crashed on 1.7.104.
 		// A save can keep an actor value the base record no longer has: check that one with `getav confidence` in the console.
 		{
@@ -1061,7 +1399,8 @@ namespace Core
                 const void*       to = toF ? a_cast(toF) : nullptr;
                 const void*       from = fromF ? a_cast(fromF) : nullptr;
                 const auto        text = [&](const void* p) { return p ? RefText(static_cast<const RE::TESForm*>(p)) : std::string("(none)"); };
-                add(a_name, text(a_now), toF ? RefText(toF) : toRef, a_now == to ? 1 : (a_now == from ? 2 : 0));
+                const void*       nowCmp = std::string_view(a_key) == "combatStyle" ? static_cast<const void*>(CombatStyleOf(a_npc)) : a_now;
+                add(a_name, text(a_now), toF ? RefText(toF) : toRef, a_now == to ? 1 : (nowCmp == from ? 2 : 0));
 			};
 			ref("class", "Class (USSEP)", a_npc->npcClass, [](RE::TESForm* f) -> const void* { return f->As<RE::TESClass>(); });
 			ref("crimeFaction", "Crime faction (USSEP)", a_npc->crimeFaction, [](RE::TESForm* f) -> const void* { return f->As<RE::TESFaction>(); });
@@ -1197,6 +1536,31 @@ namespace Core
 		}
 		SKSE::log::info("recheck at {}: {} faction adds in the profiles, {} missing from the records, {} put back{}{}", a_when, total, missing, readded,
 			examples.empty() ? "" : " - e.g. ", examples);
+		// factions the forward step took off at data load: a loaded save can bring them back the same way
+		int takenOff = 0, back = 0, again = 0;
+		for (const auto& [id, facs] : g_factionsTakenOff) {
+			auto* npc = RE::TESForm::LookupByID<RE::TESNPC>(id);
+			if (!npc) {
+				continue;
+			}
+			for (const auto facId : facs) {
+				++takenOff;
+				auto& l = npc->factions;
+				for (auto it = l.begin(); it != l.end(); ++it) {
+					if (it->faction && it->faction->GetFormID() == facId) {
+						++back;
+						if (g_cfg.apply) {
+							l.erase(it);
+							++again;
+						}
+						break;
+					}
+				}
+			}
+		}
+		if (takenOff) {
+			SKSE::log::info("recheck at {}: {} factions taken off, {} were back on the records, {} taken off again", a_when, takenOff, back, again);
+		}
 	}
 
 	void Run()
@@ -1209,6 +1573,7 @@ namespace Core
 		g_rows.clear();
 		g_expected.clear();
 		g_baseline.clear();
+		g_factionsTakenOff.clear();
 		g_why.clear();
 		g_info = Summary{};
 		const auto audit = Audit(dh);

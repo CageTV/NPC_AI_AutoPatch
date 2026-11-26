@@ -89,7 +89,13 @@
    "confidence": {
     "from": 2,
     "to": 1
-   }
+   },
+   "itemsAdded": [
+    {
+     "item": "Skyrim.esm|0C13C3",
+     "count": 1
+    }
+   ]
   },
   {
    "npc": "Skyrim.esm|019DC7",
@@ -211,7 +217,13 @@
      "from": null,
      "to": "AI Overhaul.esp|193565"
     }
-   }
+   },
+   "itemsAdded": [
+    {
+     "item": "AI Overhaul.esp|000D63",
+     "count": 1
+    }
+   ]
   },
   {
    "npc": "Skyrim.esm|019BFF",
@@ -251,7 +263,39 @@
     "Skyrim.esm|023E54",
     "Skyrim.esm|023E53",
     "Skyrim.esm|023E52"
-   ]
+   ],
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 28,
+      "to": 26
+     },
+     "Archery": {
+      "from": 29,
+      "to": 28
+     },
+     "Block": {
+      "from": 24,
+      "to": 23
+     },
+     "HeavyArmor": {
+      "from": 15,
+      "to": 25
+     },
+     "LightArmor": {
+      "from": 31,
+      "to": 27
+     },
+     "Sneak": {
+      "from": 26,
+      "to": 25
+     },
+     "Speech": {
+      "from": 28,
+      "to": 27
+     }
+    }
+   }
   },
   {
    "npc": "Skyrim.esm|01360B",
@@ -300,6 +344,25 @@
     "combat": {
      "from": null,
      "to": "AI Overhaul.esp|193565"
+    }
+   },
+   "statOffsets": {
+    "magicka": {
+     "from": 0,
+     "to": 150
+    }
+   },
+   "spellsAdded": [
+    "Skyrim.esm|012FCC",
+    "Skyrim.esm|043324",
+    "Skyrim.esm|05AD5C",
+    "Skyrim.esm|0640B6",
+    "Skyrim.esm|100E75"
+   ],
+   "skills": {
+    "magicka": {
+     "from": null,
+     "to": 150
     }
    }
   },
@@ -706,6 +769,12 @@
    },
    "flagsAdded": [
     "Protected"
+   ],
+   "itemsAdded": [
+    {
+     "item": "Skyrim.esm|09C6FD",
+     "count": 1
+    }
    ]
   },
   {
@@ -735,7 +804,15 @@
    },
    "flagsAdded": [
     "Protected"
-   ]
+   ],
+   "combatStyle": {
+    "from": null,
+    "to": "Skyrim.esm|03BE1D"
+   },
+   "aggression": {
+    "from": 0,
+    "to": 1
+   }
   },
   {
    "npc": "Skyrim.esm|013387",
@@ -795,6 +872,60 @@
     "spectator": {
      "from": null,
      "to": "AI Overhaul.esp|18E45F"
+    }
+   },
+   "statOffsets": {
+    "health": {
+     "from": -49,
+     "to": 0
+    }
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 20,
+      "to": 22
+     },
+     "Archery": {
+      "from": 15,
+      "to": 17
+     },
+     "Smithing": {
+      "from": 15,
+      "to": 19
+     },
+     "LightArmor": {
+      "from": 15,
+      "to": 17
+     },
+     "Sneak": {
+      "from": 15,
+      "to": 18
+     },
+     "Alchemy": {
+      "from": 15,
+      "to": 19
+     },
+     "Speech": {
+      "from": 15,
+      "to": 18
+     },
+     "Enchanting": {
+      "from": 20,
+      "to": 24
+     }
+    },
+    "health": {
+     "from": 1,
+     "to": 75
+    },
+    "magicka": {
+     "from": 50,
+     "to": 60
+    },
+    "stamina": {
+     "from": 50,
+     "to": 60
     }
    }
   },
@@ -885,7 +1016,23 @@
     "Skyrim.esm|036A66",
     "Skyrim.esm|036A64",
     "Skyrim.esm|036A65"
-   ]
+   ],
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 57,
+      "to": 15
+     },
+     "Sneak": {
+      "from": 36,
+      "to": 15
+     },
+     "Destruction": {
+      "from": 15,
+      "to": 78
+     }
+    }
+   }
   },
   {
    "npc": "Skyrim.esm|029DAD",
@@ -1057,7 +1204,31 @@
     "Skyrim.esm|023E59",
     "Skyrim.esm|023E57",
     "Skyrim.esm|0A2CCF"
-   ]
+   ],
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 23,
+      "to": 22
+     },
+     "Archery": {
+      "from": 21,
+      "to": 20
+     },
+     "Block": {
+      "from": 21,
+      "to": 20
+     },
+     "HeavyArmor": {
+      "from": 24,
+      "to": 22
+     },
+     "LightArmor": {
+      "from": 20,
+      "to": 25
+     }
+    }
+   }
   },
   {
    "npc": "Skyrim.esm|014140",
@@ -1109,7 +1280,27 @@
      "form": "Skyrim.esm|01745F",
      "rank": 0
     }
-   ]
+   ],
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 28,
+      "to": 23
+     },
+     "TwoHanded": {
+      "from": 28,
+      "to": 33
+     },
+     "HeavyArmor": {
+      "from": 24,
+      "to": 15
+     },
+     "LightArmor": {
+      "from": 20,
+      "to": 29
+     }
+    }
+   }
   },
   {
    "npc": "Skyrim.esm|019A2A",
@@ -2017,7 +2208,27 @@
    },
    "flagsAdded": [
     "Protected"
-   ]
+   ],
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 26,
+      "to": 19
+     },
+     "TwoHanded": {
+      "from": 19,
+      "to": 26
+     },
+     "HeavyArmor": {
+      "from": 26,
+      "to": 15
+     },
+     "LightArmor": {
+      "from": 15,
+      "to": 26
+     }
+    }
+   }
   },
   {
    "npc": "Dawnguard.esm|005A9B",
@@ -2087,6 +2298,18 @@
     "spectator": {
      "from": null,
      "to": "AI Overhaul.esp|18E45F"
+    }
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 41,
+      "to": 83
+     },
+     "TwoHanded": {
+      "from": 83,
+      "to": 41
+     }
     }
    }
   },
@@ -2761,6 +2984,13 @@
    },
    "flagsAdded": [
     "Protected"
+   ],
+   "spellsAdded": [
+    "Skyrim.esm|034C58",
+    "Skyrim.esm|040000",
+    "Skyrim.esm|05AD5D",
+    "Skyrim.esm|072315",
+    "Skyrim.esm|07231A"
    ]
   },
   {
@@ -2779,7 +3009,23 @@
     "Skyrim.esm|037DD1",
     "Skyrim.esm|037DCF",
     "Skyrim.esm|037DD0"
-   ]
+   ],
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 27,
+      "to": 21
+     },
+     "HeavyArmor": {
+      "from": 27,
+      "to": 21
+     },
+     "Alteration": {
+      "from": 20,
+      "to": 32
+     }
+    }
+   }
   },
   {
    "npc": "Skyrim.esm|013354",
@@ -3156,7 +3402,31 @@
     "Skyrim.esm|036A6E",
     "Skyrim.esm|036A6C",
     "Skyrim.esm|036A6D"
-   ]
+   ],
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 28,
+      "to": 22
+     },
+     "HeavyArmor": {
+      "from": 28,
+      "to": 22
+     },
+     "Alteration": {
+      "from": 15,
+      "to": 28
+     },
+     "Conjuration": {
+      "from": 15,
+      "to": 34
+     },
+     "Illusion": {
+      "from": 35,
+      "to": 15
+     }
+    }
+   }
   },
   {
    "npc": "Skyrim.esm|013B9D",
@@ -3223,6 +3493,26 @@
     "combat": {
      "from": null,
      "to": "AI Overhaul.esp|193565"
+    }
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 23,
+      "to": 28
+     },
+     "TwoHanded": {
+      "from": 33,
+      "to": 28
+     },
+     "HeavyArmor": {
+      "from": 15,
+      "to": 24
+     },
+     "LightArmor": {
+      "from": 29,
+      "to": 20
+     }
     }
    }
   },
@@ -3396,7 +3686,20 @@
      "from": null,
      "to": "AI Overhaul.esp|18E45F"
     }
-   }
+   },
+   "combatStyle": {
+    "from": null,
+    "to": "Skyrim.esm|03BE1C"
+   },
+   "spellsAdded": [
+    "Skyrim.esm|072316",
+    "Skyrim.esm|07231A",
+    "Skyrim.esm|07231C",
+    "Skyrim.esm|0ABDF3",
+    "Skyrim.esm|0C969B",
+    "Skyrim.esm|0C96A2",
+    "Skyrim.esm|0CAB66"
+   ]
   },
   {
    "npc": "Skyrim.esm|01C197",
@@ -3433,7 +3736,55 @@
     "Skyrim.esm|023E59",
     "Skyrim.esm|023E57",
     "Skyrim.esm|023E52"
-   ]
+   ],
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 30,
+      "to": 25
+     },
+     "TwoHanded": {
+      "from": 25,
+      "to": 39
+     },
+     "Archery": {
+      "from": 15,
+      "to": 24
+     },
+     "Block": {
+      "from": 20,
+      "to": 30
+     },
+     "Smithing": {
+      "from": 35,
+      "to": 20
+     },
+     "HeavyArmor": {
+      "from": 15,
+      "to": 33
+     },
+     "Pickpocket": {
+      "from": 25,
+      "to": 15
+     },
+     "Sneak": {
+      "from": 20,
+      "to": 15
+     },
+     "Speech": {
+      "from": 36,
+      "to": 20
+     }
+    },
+    "health": {
+     "from": 170,
+     "to": 181
+    },
+    "stamina": {
+     "from": 135,
+     "to": 124
+    }
+   }
   },
   {
    "npc": "Skyrim.esm|0136BF",
@@ -3646,7 +3997,13 @@
    "confidence": {
     "from": 2,
     "to": 1
-   }
+   },
+   "itemsAdded": [
+    {
+     "item": "Skyrim.esm|0C13F9",
+     "count": 1
+    }
+   ]
   },
   {
    "npc": "Skyrim.esm|01347E",
@@ -3812,6 +4169,12 @@
     "Skyrim.esm|034C0A",
     "Skyrim.esm|01B210",
     "Skyrim.esm|0C97B8"
+   ],
+   "itemsAdded": [
+    {
+     "item": "Skyrim.esm|0C13F9",
+     "count": 1
+    }
    ]
   },
   {
@@ -3830,7 +4193,10 @@
    "confidence": {
     "from": 3,
     "to": 1
-   }
+   },
+   "factionsRemoved": [
+    "Skyrim.esm|028173"
+   ]
   },
   {
    "npc": "Skyrim.esm|0C247E",
@@ -3899,6 +4265,10 @@
    "confidence": {
     "from": 3,
     "to": 1
+   },
+   "aggression": {
+    "from": 1,
+    "to": 0
    }
   },
   {
@@ -4103,7 +4473,13 @@
    "confidence": {
     "from": 2,
     "to": 0
-   }
+   },
+   "itemsAdded": [
+    {
+     "item": "Skyrim.esm|0FE2B3",
+     "count": 1
+    }
+   ]
   },
   {
    "npc": "Skyrim.esm|019C01",
@@ -4566,6 +4942,17 @@
     "Skyrim.esm|01BCE1",
     "Skyrim.esm|01B210",
     "Skyrim.esm|01B217"
+   ],
+   "combatStyle": {
+    "from": null,
+    "to": "Skyrim.esm|02DFB3"
+   },
+   "spellsAdded": [
+    "Dawnguard.esm|010F6A",
+    "Skyrim.esm|033976",
+    "Skyrim.esm|0F5B58",
+    "Skyrim.esm|0F5B5C",
+    "Skyrim.esm|0F5B5D"
    ]
   },
   {
@@ -4596,6 +4983,17 @@
     "Skyrim.esm|01BCE1",
     "Skyrim.esm|01B210",
     "Skyrim.esm|01B217"
+   ],
+   "combatStyle": {
+    "from": null,
+    "to": "Skyrim.esm|02DFB3"
+   },
+   "spellsAdded": [
+    "Dawnguard.esm|010F6A",
+    "Skyrim.esm|033976",
+    "Skyrim.esm|0F5B58",
+    "Skyrim.esm|0F5B5C",
+    "Skyrim.esm|0F5B5D"
    ]
   },
   {
@@ -4814,7 +5212,13 @@
    "confidence": {
     "from": 2,
     "to": 1
-   }
+   },
+   "itemsAdded": [
+    {
+     "item": "Skyrim.esm|0C13F9",
+     "count": 1
+    }
+   ]
   },
   {
    "npc": "Skyrim.esm|013668",
@@ -4878,6 +5282,94 @@
     "combat": {
      "from": null,
      "to": "AI Overhaul.esp|193565"
+    }
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 5,
+      "to": 24
+     },
+     "TwoHanded": {
+      "from": 5,
+      "to": 25
+     },
+     "Archery": {
+      "from": 5,
+      "to": 19
+     },
+     "Block": {
+      "from": 5,
+      "to": 20
+     },
+     "Smithing": {
+      "from": 5,
+      "to": 26
+     },
+     "HeavyArmor": {
+      "from": 5,
+      "to": 15
+     },
+     "LightArmor": {
+      "from": 5,
+      "to": 24
+     },
+     "Pickpocket": {
+      "from": 5,
+      "to": 15
+     },
+     "Lockpicking": {
+      "from": 5,
+      "to": 15
+     },
+     "Sneak": {
+      "from": 5,
+      "to": 19
+     },
+     "Alchemy": {
+      "from": 5,
+      "to": 22
+     },
+     "Speech": {
+      "from": 5,
+      "to": 24
+     },
+     "Alteration": {
+      "from": 5,
+      "to": 15
+     },
+     "Conjuration": {
+      "from": 5,
+      "to": 15
+     },
+     "Destruction": {
+      "from": 5,
+      "to": 15
+     },
+     "Illusion": {
+      "from": 5,
+      "to": 15
+     },
+     "Restoration": {
+      "from": 5,
+      "to": 15
+     },
+     "Enchanting": {
+      "from": 5,
+      "to": 22
+     }
+    },
+    "health": {
+     "from": 628,
+     "to": 91
+    },
+    "magicka": {
+     "from": 61038,
+     "to": 67
+    },
+    "stamina": {
+     "from": 49185,
+     "to": 67
     }
    }
   },
@@ -4972,6 +5464,30 @@
    "confidence": {
     "from": 2,
     "to": 0
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 24,
+      "to": 22
+     },
+     "HeavyArmor": {
+      "from": 19,
+      "to": 17
+     },
+     "Alteration": {
+      "from": 15,
+      "to": 19
+     },
+     "Conjuration": {
+      "from": 15,
+      "to": 22
+     },
+     "Illusion": {
+      "from": 22,
+      "to": 15
+     }
+    }
    }
   },
   {
@@ -5408,7 +5924,10 @@
    "confidence": {
     "from": 2,
     "to": 1
-   }
+   },
+   "factionsRemoved": [
+    "Skyrim.esm|0F18FB"
+   ]
   },
   {
    "npc": "Skyrim.esm|0138B6",
@@ -5513,7 +6032,10 @@
    "confidence": {
     "from": 2,
     "to": 1
-   }
+   },
+   "factionsRemoved": [
+    "Skyrim.esm|036633"
+   ]
   },
   {
    "npc": "Skyrim.esm|01328F",
@@ -5560,6 +6082,14 @@
    "name": "JouaneManette",
    "flagsAdded": [
     "Protected"
+   ],
+   "spellsAdded": [
+    "Skyrim.esm|034C38",
+    "Skyrim.esm|072315",
+    "Skyrim.esm|072319",
+    "Skyrim.esm|0C969A",
+    "Skyrim.esm|0C969B",
+    "Skyrim.esm|0F95ED"
    ]
   },
   {
@@ -5604,7 +6134,31 @@
     "Skyrim.esm|036A71",
     "Skyrim.esm|098B99",
     "Skyrim.esm|036E90"
-   ]
+   ],
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 27,
+      "to": 24
+     },
+     "HeavyArmor": {
+      "from": 22,
+      "to": 19
+     },
+     "Alteration": {
+      "from": 15,
+      "to": 22
+     },
+     "Conjuration": {
+      "from": 15,
+      "to": 25
+     },
+     "Illusion": {
+      "from": 26,
+      "to": 15
+     }
+    }
+   }
   },
   {
    "npc": "Skyrim.esm|01361A",
@@ -6368,7 +6922,10 @@
    "confidence": {
     "from": 2,
     "to": 0
-   }
+   },
+   "factionsRemoved": [
+    "Skyrim.esm|0F18FB"
+   ]
   },
   {
    "npc": "Skyrim.esm|047CAD",
@@ -6459,7 +7016,10 @@
    "confidence": {
     "from": 2,
     "to": 0
-   }
+   },
+   "factionsRemoved": [
+    "Skyrim.esm|01365C"
+   ]
   },
   {
    "npc": "Skyrim.esm|01361D",
@@ -6552,6 +7112,34 @@
    "confidence": {
     "from": 2,
     "to": 0
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 22,
+      "to": 19
+     },
+     "Block": {
+      "from": 19,
+      "to": 17
+     },
+     "LightArmor": {
+      "from": 20,
+      "to": 22
+     },
+     "Alteration": {
+      "from": 20,
+      "to": 22
+     },
+     "Conjuration": {
+      "from": 15,
+      "to": 20
+     },
+     "Illusion": {
+      "from": 24,
+      "to": 20
+     }
+    }
    }
   },
   {
@@ -6697,6 +7285,19 @@
    },
    "flagsAdded": [
     "Protected"
+   ],
+   "combatStyle": {
+    "from": null,
+    "to": "Skyrim.esm|03BE1C"
+   },
+   "spellsAdded": [
+    "Skyrim.esm|072316",
+    "Skyrim.esm|07231B",
+    "Skyrim.esm|0BB967",
+    "Skyrim.esm|0BB969",
+    "Skyrim.esm|0BB96B",
+    "Skyrim.esm|0CAB65",
+    "Skyrim.esm|0F95EB"
    ]
   },
   {
@@ -7054,7 +7655,31 @@
     "Skyrim.esm|024B81",
     "Skyrim.esm|024B80",
     "Skyrim.esm|024B7E"
-   ]
+   ],
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 22,
+      "to": 19
+     },
+     "HeavyArmor": {
+      "from": 22,
+      "to": 19
+     },
+     "Alteration": {
+      "from": 20,
+      "to": 27
+     },
+     "Conjuration": {
+      "from": 20,
+      "to": 30
+     },
+     "Illusion": {
+      "from": 36,
+      "to": 25
+     }
+    }
+   }
   },
   {
    "npc": "Skyrim.esm|01434D",
@@ -7249,7 +7874,10 @@
    "confidence": {
     "from": 3,
     "to": 1
-   }
+   },
+   "factionsRemoved": [
+    "Skyrim.esm|0E77CF"
+   ]
   },
   {
    "npc": "Skyrim.esm|01C19B",
@@ -7271,7 +7899,31 @@
     "Skyrim.esm|036E99",
     "Skyrim.esm|036E98",
     "Skyrim.esm|036E9A"
-   ]
+   ],
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 19,
+      "to": 17
+     },
+     "HeavyArmor": {
+      "from": 19,
+      "to": 17
+     },
+     "Alteration": {
+      "from": 20,
+      "to": 24
+     },
+     "Conjuration": {
+      "from": 20,
+      "to": 27
+     },
+     "Illusion": {
+      "from": 32,
+      "to": 25
+     }
+    }
+   }
   },
   {
    "npc": "Skyrim.esm|01336F",
@@ -7326,7 +7978,19 @@
     "Skyrim.esm|023E54",
     "Skyrim.esm|023E53",
     "Skyrim.esm|0A2CCF"
-   ]
+   ],
+   "skills": {
+    "values": {
+     "LightArmor": {
+      "from": 20,
+      "to": 25
+     },
+     "Pickpocket": {
+      "from": 20,
+      "to": 15
+     }
+    }
+   }
   },
   {
    "npc": "Skyrim.esm|01329C",
@@ -7508,7 +8172,13 @@
      "from": null,
      "to": "AI Overhaul.esp|193565"
     }
-   }
+   },
+   "itemsAdded": [
+    {
+     "item": "Skyrim.esm|06A707",
+     "count": 1
+    }
+   ]
   },
   {
    "npc": "Skyrim.esm|014142",
@@ -7788,7 +8458,31 @@
     "Skyrim.esm|098B9D",
     "Skyrim.esm|036E95",
     "Skyrim.esm|036E96"
-   ]
+   ],
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 27,
+      "to": 24
+     },
+     "HeavyArmor": {
+      "from": 22,
+      "to": 19
+     },
+     "Alteration": {
+      "from": 15,
+      "to": 22
+     },
+     "Conjuration": {
+      "from": 15,
+      "to": 25
+     },
+     "Illusion": {
+      "from": 26,
+      "to": 15
+     }
+    }
+   }
   },
   {
    "npc": "Skyrim.esm|013479",
@@ -7952,7 +8646,13 @@
    "confidence": {
     "from": 2,
     "to": 1
-   }
+   },
+   "itemsAdded": [
+    {
+     "item": "AI Overhaul.esp|000D66",
+     "count": 1
+    }
+   ]
   },
   {
    "npc": "Skyrim.esm|01414C",
@@ -7978,6 +8678,30 @@
    "confidence": {
     "from": 2,
     "to": 0
+   },
+   "skills": {
+    "values": {
+     "OneHanded": {
+      "from": 24,
+      "to": 22
+     },
+     "HeavyArmor": {
+      "from": 24,
+      "to": 22
+     },
+     "Alteration": {
+      "from": 15,
+      "to": 19
+     },
+     "Conjuration": {
+      "from": 15,
+      "to": 22
+     },
+     "Illusion": {
+      "from": 22,
+      "to": 15
+     }
+    }
    }
   },
   {
@@ -8835,7 +9559,13 @@
      "from": null,
      "to": "AI Overhaul.esp|193565"
     }
-   }
+   },
+   "itemsAdded": [
+    {
+     "item": "Skyrim.esm|09E131",
+     "count": 1
+    }
+   ]
   },
   {
    "npc": "Skyrim.esm|0133B8",
@@ -9316,6 +10046,21 @@
     "Skyrim.esm|0AF513",
     "Skyrim.esm|0AF4EA",
     "Skyrim.esm|0AF4F7"
+   ],
+   "combatStyle": {
+    "from": null,
+    "to": "Skyrim.esm|03BE1C"
+   },
+   "spellsAdded": [
+    "Skyrim.esm|033976",
+    "Skyrim.esm|072316",
+    "Skyrim.esm|07231B",
+    "Skyrim.esm|0C969C",
+    "Skyrim.esm|0C96A2",
+    "Skyrim.esm|0CAB65",
+    "Skyrim.esm|0F5B59",
+    "Skyrim.esm|0F5B5C",
+    "Skyrim.esm|0F5B5D"
    ]
   },
   {
@@ -9475,7 +10220,10 @@
    "confidence": {
     "from": 2,
     "to": 1
-   }
+   },
+   "factionsRemoved": [
+    "Skyrim.esm|01365C"
+   ]
   },
   {
    "npc": "Skyrim.esm|013609",
@@ -9605,6 +10353,10 @@
    "confidence": {
     "from": 2,
     "to": 1
+   },
+   "assistance": {
+    "from": 0,
+    "to": 2
    }
   },
   {
@@ -9932,7 +10684,13 @@
      "from": null,
      "to": "AI Overhaul.esp|193565"
     }
-   }
+   },
+   "itemsAdded": [
+    {
+     "item": "Skyrim.esm|09C6FD",
+     "count": 1
+    }
+   ]
   },
   {
    "npc": "Skyrim.esm|0133BF",
@@ -10212,7 +10970,20 @@
      "from": null,
      "to": "AI Overhaul.esp|18E45F"
     }
-   }
+   },
+   "combatStyle": {
+    "from": null,
+    "to": "Skyrim.esm|03BE1C"
+   },
+   "spellsAdded": [
+    "Skyrim.esm|072316",
+    "Skyrim.esm|07231A",
+    "Skyrim.esm|07231C",
+    "Skyrim.esm|0BB967",
+    "Skyrim.esm|0C969B",
+    "Skyrim.esm|0C96A2",
+    "Skyrim.esm|0CAB65"
+   ]
   },
   {
    "npc": "Skyrim.esm|019DEF",
@@ -10233,6 +11004,19 @@
    },
    "flagsAdded": [
     "Protected"
+   ],
+   "combatStyle": {
+    "from": null,
+    "to": "Skyrim.esm|03BE1C"
+   },
+   "spellsAdded": [
+    "Skyrim.esm|072316",
+    "Skyrim.esm|07231A",
+    "Skyrim.esm|07231C",
+    "Skyrim.esm|0BB967",
+    "Skyrim.esm|0C969B",
+    "Skyrim.esm|0C96A2",
+    "Skyrim.esm|0CAB65"
    ]
   },
   {

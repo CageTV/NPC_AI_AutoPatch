@@ -34,5 +34,7 @@
 #include <optional>
 #include <set>
 #include <array>
+#include <climits>
+#include <functional>
 
 using namespace std::literals;
