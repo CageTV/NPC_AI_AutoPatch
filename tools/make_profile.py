@@ -92,6 +92,7 @@ def export(plugin, cache, version):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--behaviour", action="store_true", help="forward only: a behaviour mod (also class, combat style none, removed spells, added perks)")
+    ap.add_argument("--only", default="", help="forward only: comma list of fields to keep (for example itemsAdded,templateFlagsRemoved)")
     ap.add_argument("--kind", choices=("forward", "baseline"), required=True)
     ap.add_argument("--plugin", required=True)
     ap.add_argument("--id", required=True)
@@ -160,6 +161,7 @@ def main():
     if a.kind == "forward":
         import build_forward_profile as b
         b.BEHAVIOUR = a.behaviour
+        b.ONLY = set(x.strip() for x in a.only.split(",") if x.strip()) or None
         b.main([src, plugin_name, a.id, a.name, out] + pairs)
     else:
         import build_baseline_profile as b

@@ -1,0 +1,1718 @@
+{
+ "format": 1,
+ "id": "open-world-loot",
+ "name": "Open World Loot (items)",
+ "type": "forward",
+ "requires": "Open World Loot.esp",
+ "ownPlugins": [
+  "Open World Loot.esp"
+ ],
+ "npcs": [
+  {
+   "npc": "Skyrim.esm|016973",
+   "name": "CWQuartermasterImperial",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|0135B8",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|013841",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|01397F",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|013986",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|037C0E",
+     "count": 12
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008FC",
+     "count": 1
+    },
+    {
+     "item": "Open World Loot.esp|000A43",
+     "count": 20
+    },
+    {
+     "item": "Open World Loot.esp|000A44",
+     "count": 1
+    },
+    {
+     "item": "Open World Loot.esp|000A54",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|016ACE",
+   "name": "CWQuartermasterSons",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|01397F",
+     "count": 12
+    },
+    {
+     "item": "Skyrim.esm|013985",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|013986",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|000816",
+     "count": 1
+    },
+    {
+     "item": "Open World Loot.esp|000819",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|041B2D",
+   "name": "CWSiegeSonsSoldier",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|013955",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|01397F",
+     "count": 10
+    },
+    {
+     "item": "Skyrim.esm|013986",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|03B562",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|000816",
+     "count": 1
+    },
+    {
+     "item": "Open World Loot.esp|000819",
+     "count": 1
+    },
+    {
+     "item": "Open World Loot.esp|000AD7",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|087B99",
+   "name": "DBRecurringTarget5Falkreath",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|01397D",
+     "count": 20
+    },
+    {
+     "item": "Skyrim.esm|0302CA",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|000A11",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|01541C",
+   "name": "DLC1Beleval",
+   "itemsRemoved": [
+    {
+     "item": "Dawnguard.esm|000801",
+     "count": 1
+    },
+    {
+     "item": "Dawnguard.esm|000BB3",
+     "count": 15
+    },
+    {
+     "item": "Dawnguard.esm|00D098",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F5",
+     "count": 1
+    },
+    {
+     "item": "Open World Loot.esp|0008F8",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|01541E",
+   "name": "DLC1Celann",
+   "itemsRemoved": [
+    {
+     "item": "Dawnguard.esm|00D098",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F5",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|010DE5",
+   "name": "DLC1DawnguardExterior01",
+   "itemsRemoved": [
+    {
+     "item": "Dawnguard.esm|000801",
+     "count": 1
+    },
+    {
+     "item": "Dawnguard.esm|000BB3",
+     "count": 12
+    },
+    {
+     "item": "Dawnguard.esm|00D098",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F5",
+     "count": 1
+    },
+    {
+     "item": "Open World Loot.esp|0008F8",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|010DE6",
+   "name": "DLC1DawnguardExterior02",
+   "itemsRemoved": [
+    {
+     "item": "Dawnguard.esm|000801",
+     "count": 1
+    },
+    {
+     "item": "Dawnguard.esm|00DD55",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F6",
+     "count": 1
+    },
+    {
+     "item": "Open World Loot.esp|0008F8",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|010DE7",
+   "name": "DLC1DawnguardExterior03",
+   "itemsRemoved": [
+    {
+     "item": "Dawnguard.esm|00D098",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F5",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|010DED",
+   "name": "DLC1DawnguardExterior04",
+   "itemsRemoved": [
+    {
+     "item": "Dawnguard.esm|00DD55",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F6",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|01541D",
+   "name": "DLC1Durak",
+   "itemsRemoved": [
+    {
+     "item": "Dawnguard.esm|000801",
+     "count": 1
+    },
+    {
+     "item": "Dawnguard.esm|000BB3",
+     "count": 14
+    },
+    {
+     "item": "Dawnguard.esm|00D098",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F5",
+     "count": 1
+    },
+    {
+     "item": "Open World Loot.esp|0008F8",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|00336F",
+   "name": "DLC1EncHunterTemplate",
+   "itemsRemoved": [
+    {
+     "item": "Dawnguard.esm|00D098",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F5",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|003370",
+   "name": "DLC1EncHunterTemplateMagic",
+   "itemsRemoved": [
+    {
+     "item": "Dawnguard.esm|00D098",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F5",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|003371",
+   "name": "DLC1EncHunterTemplateMissile",
+   "itemsRemoved": [
+    {
+     "item": "Dawnguard.esm|000801",
+     "count": 1
+    },
+    {
+     "item": "Dawnguard.esm|000BB3",
+     "count": 24
+    },
+    {
+     "item": "Dawnguard.esm|00D098",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F5",
+     "count": 1
+    },
+    {
+     "item": "Open World Loot.esp|0008F8",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|00336D",
+   "name": "DLC1FlorentiusBaenius",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|037C1B",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|10E0DD",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F9",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|0CC848",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|01541B",
+   "name": "DLC1Ingjard",
+   "itemsRemoved": [
+    {
+     "item": "Dawnguard.esm|000801",
+     "count": 1
+    },
+    {
+     "item": "Dawnguard.esm|000BB3",
+     "count": 15
+    },
+    {
+     "item": "Dawnguard.esm|00DD55",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F6",
+     "count": 1
+    },
+    {
+     "item": "Open World Loot.esp|0008F8",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|00336A",
+   "name": "DLC1Isran",
+   "itemsRemoved": [
+    {
+     "item": "Dawnguard.esm|00DD55",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F6",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|003261",
+   "name": "DLC1LvlDawnguardMissile",
+   "itemsRemoved": [
+    {
+     "item": "Dawnguard.esm|000801",
+     "count": 1
+    },
+    {
+     "item": "Dawnguard.esm|000BB3",
+     "count": 8
+    },
+    {
+     "item": "Dawnguard.esm|00D098",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F5",
+     "count": 1
+    },
+    {
+     "item": "Open World Loot.esp|0008F8",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|013EC7",
+   "name": "DLC1LvlDawnguardMissile_NoCrime",
+   "itemsRemoved": [
+    {
+     "item": "Dawnguard.esm|000801",
+     "count": 1
+    },
+    {
+     "item": "Dawnguard.esm|000BB3",
+     "count": 8
+    },
+    {
+     "item": "Dawnguard.esm|00D098",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F5",
+     "count": 1
+    },
+    {
+     "item": "Open World Loot.esp|0008F8",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|003D05",
+   "name": "DLC1Malkus",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|037C1B",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Skyrim.esm|02DF99",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|003D7B",
+   "name": "DLC1MalkusDead",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|037C1B",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Skyrim.esm|02DF99",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|011E5E",
+   "name": "DLC1Modhna",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|037C1B",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Skyrim.esm|02DF99",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|011E5D",
+   "name": "DLC1Namasur",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|037C1B",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Skyrim.esm|02DF99",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dawnguard.esm|003361",
+   "name": "DLC1Orthjolf",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|037C1B",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Skyrim.esm|02DF99",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dragonborn.esm|037FE3",
+   "name": "DLC2dunHaknirGarukWindrime",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|017177",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|037C1B",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008BC",
+     "count": 1
+    },
+    {
+     "item": "Open World Loot.esp|0008F4",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Dragonborn.esm|037FE5",
+   "name": "DLC2dunHaknirThalinEbonhand",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|0165BA",
+     "count": 2
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F4",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "npc": "Dragonborn.esm|037FF4",
+   "name": "DLC2dunHaknir_LvlBanditGhostMelee1HFemale",
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F4",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|04F78D",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|10E0DD",
+     "count": 1
+    }
+   ],
+   "templateFlagsRemoved": [
+    "Inventory"
+   ]
+  },
+  {
+   "npc": "Dragonborn.esm|038001",
+   "name": "DLC2dunHaknir_LvlBanditGhostMelee1HFemale_Weak",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|037C1B",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F4",
+     "count": 1
+    }
+   ],
+   "templateFlagsRemoved": [
+    "Inventory"
+   ]
+  },
+  {
+   "npc": "Dragonborn.esm|037FF5",
+   "name": "DLC2dunHaknir_LvlBanditGhostMelee1HMale",
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F4",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|04F78D",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|10E0DD",
+     "count": 1
+    }
+   ],
+   "templateFlagsRemoved": [
+    "Inventory"
+   ]
+  },
+  {
+   "npc": "Dragonborn.esm|038002",
+   "name": "DLC2dunHaknir_LvlBanditGhostMelee1HMale_Weak",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|037C1B",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F4",
+     "count": 1
+    }
+   ],
+   "templateFlagsRemoved": [
+    "Inventory"
+   ]
+  },
+  {
+   "npc": "Dragonborn.esm|037FFF",
+   "name": "DLC2dunHaknir_LvlBanditGhostMeleeTankFemale",
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F4",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|04F78D",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|08FFFB",
+     "count": 1
+    }
+   ],
+   "templateFlagsRemoved": [
+    "Inventory"
+   ]
+  },
+  {
+   "npc": "Dragonborn.esm|038009",
+   "name": "DLC2dunHaknir_LvlBanditGhostMeleeTankFemale_Weak",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|037C1B",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F4",
+     "count": 1
+    }
+   ],
+   "templateFlagsRemoved": [
+    "Inventory"
+   ]
+  },
+  {
+   "npc": "Dragonborn.esm|037FFA",
+   "name": "DLC2dunHaknir_LvlBanditGhostMeleeTankMale",
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F4",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|04F78D",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|08FFFB",
+     "count": 1
+    }
+   ],
+   "templateFlagsRemoved": [
+    "Inventory"
+   ]
+  },
+  {
+   "npc": "Dragonborn.esm|03800A",
+   "name": "DLC2dunHaknir_LvlBanditGhostMeleeTankMale_Weak",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|037C1B",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F4",
+     "count": 1
+    }
+   ],
+   "templateFlagsRemoved": [
+    "Inventory"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|06762E",
+   "name": "EncAlikr00Template",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|07A91A",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F2",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|06762F",
+   "name": "EncAlikr01TemplateMagic",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|01397E",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|000999",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|067630",
+   "name": "EncAlikr01TemplateMelee",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|01397E",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|07A91A",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F2",
+     "count": 1
+    },
+    {
+     "item": "Open World Loot.esp|000999",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|067631",
+   "name": "EncAlikr01TemplateMissile",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|01397E",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|000999",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|067632",
+   "name": "EncAlikr02TemplateMagic",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|01397E",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|000999",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|067633",
+   "name": "EncAlikr02TemplateMelee",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|01397E",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|07A91A",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F2",
+     "count": 1
+    },
+    {
+     "item": "Open World Loot.esp|000999",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|067634",
+   "name": "EncAlikr02TemplateMissile",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|01397E",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|000999",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|067635",
+   "name": "EncAlikr03TemplateMagic",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|01397E",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|000999",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|067636",
+   "name": "EncAlikr03TemplateMelee",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|013986",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|07A91A",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F2",
+     "count": 1
+    },
+    {
+     "item": "Open World Loot.esp|000999",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|067637",
+   "name": "EncAlikr03TemplateMissile",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|013986",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|000999",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|067638",
+   "name": "EncAlikr04TemplateMagic",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|01397E",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|000999",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|067639",
+   "name": "EncAlikr04TemplateMelee",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|07A91A",
+     "count": 2
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F2",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|06763A",
+   "name": "EncAlikr04TemplateMissile",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|013986",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|000999",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|06763B",
+   "name": "EncAlikr05TemplateMagic",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|01397E",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|000999",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|06763C",
+   "name": "EncAlikr05TemplateMelee",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|07A91A",
+     "count": 2
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F2",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|06763D",
+   "name": "EncAlikr05TemplateMissile",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|013986",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|000999",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|06763E",
+   "name": "EncAlikr06TemplateMagic",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|01397E",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|000999",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|06763F",
+   "name": "EncAlikr06TemplateMelee",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|07A91A",
+     "count": 2
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F2",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|067640",
+   "name": "EncAlikr06TemplateMissile",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|013986",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|000999",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|045BE0",
+   "name": "EncSiegeImperialArcherTemplate",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|013841",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|01397F",
+     "count": 15
+    },
+    {
+     "item": "Skyrim.esm|013986",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008FF",
+     "count": 1
+    },
+    {
+     "item": "Open World Loot.esp|000A54",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|045BE4",
+   "name": "EncSiegeSonsArcherTemplate",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|01397F",
+     "count": 15
+    },
+    {
+     "item": "Skyrim.esm|013986",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|03B562",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|000816",
+     "count": 1
+    },
+    {
+     "item": "Open World Loot.esp|000819",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|013B81",
+   "name": "Ghorbash",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|013983",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|000837",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|019E1E",
+   "name": "Lob",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|013983",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Skyrim.esm|08CA42",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0A9548",
+   "name": "LvlSilverhandBoss",
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008FB",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|03DED1",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|08CA38",
+     "count": 1
+    }
+   ],
+   "templateFlagsRemoved": [
+    "Inventory"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|02AB87",
+   "name": "LvlSilverhandMelee1H",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|10AA19",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F9",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|06466C",
+   "name": "LvlSilverhandMelee1HAggro1024",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|10AA19",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F9",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|02AB89",
+   "name": "LvlSilverhandMelee2H",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|10C6FB",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008FA",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|02AB88",
+   "name": "LvlSilverhandMissile",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|10AA19",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F9",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0DC8DA",
+   "name": "MS07LvlBlackbloodMeleeBerserkerCommonerM",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|037C21",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008EF",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|088F0C",
+   "name": "MS07LvlBlackbloodMeleeBerserkerCommonerMAmbush",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|037C21",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008EF",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0DC8DB",
+   "name": "MS07LvlBlackbloodMeleeTankEvenTonedM",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|037C1B",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|039D2D",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F4",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0DC8DC",
+   "name": "MS07LvlBlackbloodMissileNordM",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|037C1B",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F4",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0DC8D9",
+   "name": "MS07LvlBlackbloodWizardCondescendingM",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|01397E",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F4",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0DC8D8",
+   "name": "MS07LvlBlackbloodWizardNordM",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|01397E",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F4",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|058B3F",
+   "name": "MS08AlikrKematuGuard",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|07A91A",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F2",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|10F5A1",
+   "name": "MS08AlikrKematuGuard02",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|07A91A",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F2",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|10F5AA",
+   "name": "MS08AlikrKematuGuard03",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|07A91A",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F2",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|020071",
+   "name": "MS08AlikrWarrior",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|07A91A",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F2",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|055FB2",
+   "name": "MS08AlikrWarriorWhiterun",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|07A91A",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F2",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|108CF5",
+   "name": "MS08AlikrWarriorWhiterun02",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|07A91A",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F2",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|021601",
+   "name": "MS08Kematu",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|07A91A",
+     "count": 2
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008EE",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|01C3AB",
+   "name": "Nazir",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|07A91A",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008EE",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|084D13",
+   "name": "TGCrownGhost01",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|01391E",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|0139A1",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008ED",
+     "count": 1
+    },
+    {
+     "item": "Open World Loot.esp|000B0F",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|084D16",
+   "name": "TGCrownGhost02",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|0139A1",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|000B0F",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|084D18",
+   "name": "TGCrownGhost03",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|0139A0",
+     "count": 2
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|000B0B",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|084D15",
+   "name": "TGCrownGhostBase",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|01391E",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|0139A1",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008ED",
+     "count": 1
+    },
+    {
+     "item": "Open World Loot.esp|000B0F",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|019E1A",
+   "name": "Ugor",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|013955",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|013989",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|000836",
+     "count": 1
+    },
+    {
+     "item": "Open World Loot.esp|000885",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0E5F38",
+   "name": "dunDaintySloadLvlSailor",
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F4",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|0D790B",
+     "count": 1
+    }
+   ],
+   "templateFlagsRemoved": [
+    "Inventory"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|100567",
+   "name": "dunDaintySloadLvlSailorAmbush",
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F4",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|0D790B",
+     "count": 1
+    }
+   ],
+   "templateFlagsRemoved": [
+    "Inventory"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|05B615",
+   "name": "dunDaintySloadLvlSailorExterior",
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F4",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|0D790B",
+     "count": 1
+    }
+   ],
+   "templateFlagsRemoved": [
+    "Inventory"
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|100566",
+   "name": "dunDaintySloadLvlSailorOutfit",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|07A91A",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008F4",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|09CB62",
+   "name": "dunKilkreathGhostImperialMelee",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|0135B8",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008FC",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0E77DA",
+   "name": "dunKilkreathGhostImperialMissile",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|0135B8",
+     "count": 1
+    },
+    {
+     "item": "Skyrim.esm|013841",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008FC",
+     "count": 1
+    },
+    {
+     "item": "Open World Loot.esp|0008FF",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "npc": "Skyrim.esm|0F5BBC",
+   "name": "dunKilkreathGhostMelee",
+   "itemsRemoved": [
+    {
+     "item": "Skyrim.esm|0135B8",
+     "count": 1
+    }
+   ],
+   "itemsAdded": [
+    {
+     "item": "Open World Loot.esp|0008FC",
+     "count": 1
+    }
+   ]
+  }
+ ],
+ "family": "loot",
+ "priority": 0
+}

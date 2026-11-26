@@ -18,6 +18,7 @@ NL = chr(10)
 CR = chr(13)
 LISTS = {"SpectatorOverridePackageList": "spectator", "CombatOverridePackageList": "combat", "ObserveDeadBodyOverridePackageList": "observe", "GuardWarnOverridePackageList": "guardWarn"}
 BEHAVIOUR = False  # make_profile.py --behaviour: a behaviour mod (Serana - Lamae's Daughter) also carries class, combat style "none", removed spells and added perks
+ONLY = None  # make_profile.py --only a,b: keep just these fields of each NPC (Open World Loot: itemsAdded,templateFlagsRemoved)
 CONF = ["Cowardly", "Cautious", "Average", "Brave", "Foolhardy"]
 
 
@@ -187,6 +188,9 @@ def main(a):
         if [s for s in sa if s not in sp]:
             e["spellsAdded"] = [s for s in sa if s not in sp]
         ia, ip = items(A), items(P)
+        gone_items = [{"item": k, "count": v} for k, v in ip.items() if k not in ia and v > 0]
+        if gone_items:
+            e["itemsRemoved"] = gone_items  # items the plugin took away: taken off again when the winner still has exactly that stack
         add_items = [{"item": k, "count": v} for k, v in ia.items() if k not in ip]
         if add_items:
             e["itemsAdded"] = add_items
@@ -207,6 +211,8 @@ def main(a):
         tf = sorted(f for f in template_flags(P) - template_flags(A) if f in TEMPLATE_FLAGS)
         if tf:
             e["templateFlagsRemoved"] = tf
+        if ONLY:
+            e = {k: v for k, v in e.items() if k in ("npc", "name") or k in ONLY}
         if len(e) > 2:
             entries.append(e)
         else:

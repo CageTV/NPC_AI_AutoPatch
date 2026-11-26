@@ -549,6 +549,27 @@ namespace Core
 					}
 				}
 			}
+
+			// inventory items the plugin took away (Open World Loot replaces vanilla items with its own leveled lists): removed when the winner still has
+			// exactly that stack, so an item another mod changed is left alone
+			if (a_e.contains("itemsRemoved") && !uses(Tpl::kInventory)) {
+				for (const auto& it : a_e["itemsRemoved"]) {
+					const auto r = str(it, "item");
+					auto*      f = r.empty() ? nullptr : FindRef(a_dh, r);
+					auto*      obj = f ? f->As<RE::TESBoundObject>() : nullptr;
+					const int  count = num(it, "count", 1);
+					if (!obj) {
+						a_miss("item " + r);
+						continue;
+					}
+					if (count > 0 && CountInBase(a_npc, obj) == count) {
+						if (g_cfg.apply) {
+							a_npc->RemoveObjectFromContainer(obj, count);
+						}
+						note("items removed");
+					}
+				}
+			}
 		}
 
 		void Forward(RE::TESDataHandler* a_dh, std::vector<Row>& a_rows, Summary& a_info)
