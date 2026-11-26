@@ -39,7 +39,7 @@ namespace Core
 		{
 			g_cfg = Config{};
 			g_cfg.excludeNames = { "corpse" };
-			g_cfg.wins = { "better vampires.esp", "relationship dialogue overhaul.esp", "nwsfollowerframework.esp", "nwsff_noteammagicdamage.esp" };  // see DefaultWins()
+			g_cfg.wins = { "better vampires.esp", "relationship dialogue overhaul.esp", "nwsfollowerframework.esp", "nwsff_noteammagicdamage.esp", "vampirelordserana.esp", "npc spell variance.esp" };  // see DefaultWins()
 			std::ifstream in(Dir() / "config.json");
 			if (!in) {
 				in.open("Data/SKSE/Plugins/ICAIOAutoPatch/config.json");  // the settings of the earlier name, read once
@@ -94,7 +94,7 @@ namespace Core
 		};
 	}
 
-	std::vector<std::string> DefaultWins() { return { "better vampires.esp", "relationship dialogue overhaul.esp", "nwsfollowerframework.esp", "nwsff_noteammagicdamage.esp" }; }
+	std::vector<std::string> DefaultWins() { return { "better vampires.esp", "relationship dialogue overhaul.esp", "nwsfollowerframework.esp", "nwsff_noteammagicdamage.esp", "vampirelordserana.esp", "npc spell variance.esp" }; }
 
 	bool IsLoaded(const std::string& a_plugin)
 	{
