@@ -39,6 +39,7 @@ namespace Core
 		{
 			g_cfg = Config{};
 			g_cfg.excludeNames = { "corpse" };
+			g_cfg.protectNames = { "serana", "valerica" };
 			g_cfg.wins = { "better vampires.esp", "relationship dialogue overhaul.esp", "nwsfollowerframework.esp", "nwsff_noteammagicdamage.esp", "vampirelordserana.esp", "npc spell variance.esp" };  // see DefaultWins()
 			std::ifstream in(Dir() / "config.json");
 			if (!in) {
@@ -73,6 +74,12 @@ namespace Core
 			if (j.contains("excludePlugins")) {
 				for (const auto& e : j["excludePlugins"]) {
 					g_cfg.exclude.insert(Lower(e.get<std::string>()));
+				}
+			}
+			if (j.contains("protectNames")) {
+				g_cfg.protectNames.clear();
+				for (const auto& e : j["protectNames"]) {
+					g_cfg.protectNames.insert(Lower(e.get<std::string>()));
 				}
 			}
 			if (j.contains("excludeNames")) {
@@ -129,6 +136,10 @@ namespace Core
 		j["excludePlugins"] = nlohmann::json::array();
 		for (const auto& e : g_cfg.exclude) {
 			j["excludePlugins"].push_back(e);
+		}
+		j["protectNames"] = nlohmann::json::array();
+		for (const auto& e : g_cfg.protectNames) {
+			j["protectNames"].push_back(e);
 		}
 		j["excludeNames"] = nlohmann::json::array();
 		for (const auto& e : g_cfg.excludeNames) {
@@ -228,6 +239,13 @@ namespace Core
 				}
 			}
 			return {};
+		}
+
+		// true when the NPC's full name is on the "protectNames" list (exact, case-insensitive)
+		bool ProtectedByName(const RE::TESNPC* a_npc)
+		{
+			const char* n = a_npc ? a_npc->GetName() : nullptr;
+			return n && *n && g_cfg.protectNames.count(Lower(n));
 		}
 
 		int  Confidence(const RE::TESNPC* a_npc) { return (reinterpret_cast<const std::uint8_t*>(&a_npc->aiData)[0] >> 2) & 7; }
@@ -620,6 +638,10 @@ namespace Core
 						skip("a plugin that must win (Better Vampires) changes this NPC");
 						continue;
 					}
+					if (ProtectedByName(npc)) {
+						skip("its name is on the protected list");
+						continue;
+					}
 					std::vector<std::string> done;
 					// 0.5.0: template flags the overhaul turned off (Brutius: AI packages). Done first: the package step below skips an NPC that takes its
 					// packages from a template. Only when the winner still has the flag on (it has the overhaul's "before" value).
@@ -877,6 +899,11 @@ namespace Core
 						++a_info.winsSkipped[w];
 						++a_info.skipped["baseline: a plugin that must win changes this NPC"];
 						g_why[npc->GetFormID()].emplace_back(name, "a plugin that must win changes this NPC: " + w);
+						continue;
+					}
+					if (ProtectedByName(npc)) {
+						++a_info.skipped["baseline: its name is on the protected list"];
+						g_why[npc->GetFormID()].emplace_back(name, "its name is on the protected list");
 						continue;
 					}
 					const auto uses = [&](Tpl a_t) { return npc->actorData.templateUseFlags.any(a_t); };
@@ -1784,6 +1811,10 @@ namespace Core
 						skip("a plugin that must win (Better Vampires) changes this NPC");
 						continue;
 					}
+				}
+				if (ProtectedByName(npc)) {
+					skip("its name is on the protected list");
+					continue;
 				}
 				const auto lname = Lower(row.name);
 				bool       named = false;
